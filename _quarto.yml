@@ -7,15 +7,19 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: Syllabus
       - about.qmd
-  sidebar:
-    style: "docked"
-    search: true
-    contents:
-      - section: "Syllabus"
-        contents:
-          - index.qmd
+      
+      
+  # sidebar:
+  #   style: "docked"
+  #   search: true
+  #   contents:
+  #     - section: "Syllabus"
+  #       contents:
+  #         - index.qmd
+  
+  
 format:
   html:
     theme: darkly
