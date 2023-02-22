@@ -1,6 +1,21 @@
 ---
 title: "Course Preparation"
 subtitle: "Things required before getting an add code"
+
+format:
+  html:
+    code-fold: true
+    code-tools: false
+    code-copy: true
+    highlight-style: github
 ---
 
 lets go!
+
+    does this have a copy button?
+
+    afad
+
+```bash
+pwd
+```
