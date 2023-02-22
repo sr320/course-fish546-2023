@@ -9,6 +9,8 @@ website:
       - href: index.qmd
         text: Syllabus
       - about.qmd
+      - schedule.qmd
+      - before.qmd
       
       
   # sidebar:
