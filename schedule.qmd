@@ -2,32 +2,22 @@
 title: "Schedule"
 ---
 
-This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be GitHub, with each student creating their own repository.
-
-\`\`\`
-
-T 3:00-4:20
-
-Th 9:30-11:20 (Office hours)
-
-\`\`\`
-
 \*\*Please see \[Youtube for screencast tutorials\](https://www.youtube.com/playlist?list=PLCNCeK00xVPb2AisXOPWMCyNwnJCQr9kJ)\*\*
 
-| Week | Date  | Topic | Project Status | Homework |
-|------|-------|-------|----------------|----------|
-| zero | March | go    | yes            |          |
-| one  |       |       |                |          |
-| two  |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
-|      |       |       |                |          |
+| Week | Date      | Topic                             | Project Status | Homework |
+|---------------|---------------|---------------|---------------|---------------|
+| zero | last week | [Preparing for class](before.qmd) | Establish Repo |          |
+| one  |           |                                   |                |          |
+| two  |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
+|      |           |                                   |                |          |
 
 \| Week \<br\> (slides)\| Description \| Reading \| Quiz & PP \|
 

@@ -1,0 +1,20 @@
+---
+title: "Course Preparation"
+subtitle: "Things required before getting an add code"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+---
+
+This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed.
+
+1.  
+
+
+```bash
+test
+```
