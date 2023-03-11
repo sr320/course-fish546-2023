@@ -12,9 +12,62 @@ format:
 
 This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed.
 
-1.  
+1.  Submit your github ID using the form below
 
+2.  Establish an account on raven (Roberts Lab Rstudio Server)
 
-```bash
-test
-```
+3.  Establish account on Roberts Lab (srlab) hyak account
+
+4.  
+
+5.  Read: [Introducing the Shell](https://swcarpentry.github.io/shell-novice/01-intro/) Read: [Navigating Files and Directories](http://swcarpentry.github.io/shell-novice/02-filedir/) Complete this bash tutorial
+
+6.  Read: [Organize your data and code](https://kbroman.org/steps2rr/pages/organize.html)
+
+7.  Learn (remember) proper project (repo) structure.
+
+::: panel-tabset
+## File Structure
+
+-   Good file structure
+
+    -   All project files in one main folder
+
+    -   Subfolders (data, code, output)
+
+-   Main folder is R project
+
+    -   Self-contained project
+
+    -   Use relative instead of absolute paths
+
+-   Good folder & file names
+
+    -   Descriptive but not too long
+
+    -   No spaces
+
+    -   Consistent format
+
+## Data
+
+-   Raw data
+
+    -   In separate folder from cleaned data
+
+    -   Never change!
+
+    -   Each file should have metadata
+
+## Code
+
+-   Scripts with code
+
+    -   Relative file paths to read in and create files
+
+    -   Lots of comments
+
+    -   Order: libraries, data, user-created functions, everything else
+
+    -   Good variable & column names
+:::

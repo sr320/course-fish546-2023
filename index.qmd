@@ -2,10 +2,20 @@
 title: "Syllabus"
 ---
 
-This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be GitHub, with each student creating their own repository.
-
-\`\`\`
+This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories. 
 
 T 3:00-4:20
 
 Th 9:30-11:20 (Office hours)
+
+------------------------------------------------------------------------
+
+
+
+## Repo List
+
+| Name or UserID | course repo  | project repo  |
+|----------------|--------------|---------------|
+|                |              |               |
+|                |              |               |
+|                |              |               |
