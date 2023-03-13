@@ -42,16 +42,11 @@ Next, let's find out where we are by running a command called `pwd` (which stand
 pwd
 ```
 
----
+------------------------------------------------------------------------
 
-To understand what a "home directory" is,
-let's have a look at how the file system as a whole is organized.
-At the top is the **root directory**
-that holds everything else.
-We refer to it using a slash character `/` on its own;
-this is the leading slash in `/home/jovyan`.
+To understand what a "home directory" is, let's have a look at how the file system as a whole is organized. At the top is the **root directory** that holds everything else. We refer to it using a slash character `/` on its own; this is the leading slash in `/home/jovyan`.
 
----
+------------------------------------------------------------------------
 
 ::: callout-note
 There are two meanings for the \`/\` character. When it appears at the front of a file or directory name, it refers to the root directory. When it appears \*inside\* a name, it's just a separator.
@@ -63,9 +58,10 @@ So that we have the same experience lets navigate to the 'data-shell' directory.
 
 Let's see what's in this directory by running `ls`, which stands for "listing":
 
-```bash
+``` bash
 ls
 ```
+
     creatures  molecules           pizza.cfg
     data       north-pacific-gyre  solar.pdf
     Desktop    notes.txt           writing
@@ -74,7 +70,7 @@ ls
 
 `ls` prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns. We can make its output more comprehensible by using the **flag** `-F`, which tells `ls` to add a trailing `/` to the names of directories:
 
-```bash
+``` bash
 ls -F
 ```
 
@@ -88,9 +84,9 @@ Here, we can see that `data-shell` contains seven **sub-directories**. The names
 
 Now let's take a look at what's in `data-shell` directory by running `ls -F data`, i.e., the command `ls` with the **arguments** `-F` and `data`. The second argument --- the one *without* a leading dash --- tells `ls` that we want a listing of something other than our current working directory:
 
-```bash
+``` bash
  ls -F data
- ```
+```
 
     amino-acids.txt  animal-counts/  animals.txt  elements/  morse.txt  pdb/  planets.txt  salmon.txt  sunspot.txt
 
@@ -102,7 +98,7 @@ Notice, by the way that we spelled the directory name `data`. It doesn't have a 
 
 If we run `ls -F /data` (*with* a leading slash) we get a different answer, because `/data` is an **absolute path**:
 
-```bash
+``` bash
 ls -F /data
 ```
 
@@ -112,7 +108,7 @@ The leading `/` tells the computer to follow the path from the root of the files
 
 If we wanted to use the \*\*absolute path\* to list out the contents of this directory we could used
 
-```bash
+``` bash
 ls -F /home/jovyan/data-shell/data/
 ```
 
@@ -128,19 +124,19 @@ Each of her physical samples is labelled according to her lab's convention with 
 
 If she is in her home directory, Nelle can see what files she has using the command:
 
-```bash
+``` bash
 ls north-pacific-gyre/2012-07-03/
 ```
 
 This is a lot to type, but she can let the shell do most of the work. If she types:
 
-```bash
+``` bash
 ls nor
 ```
 
 and then presses tab, the shell automatically completes the directory name for her:
 
-```bash
+``` bash
 ls north-pacific-gyre/
 ```
 
