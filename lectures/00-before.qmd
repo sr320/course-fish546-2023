@@ -12,19 +12,17 @@ format:
 
 This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed.
 
-1.  Submit your github ID using the form below
+1.  Submit your github ID using [this form](https://docs.google.com/forms/d/e/1FAIpQLSd0MUPej4xJhIWiS8wLztpzXK7iak3DYPjFLzIcgAKIMTfy2Q/viewform?usp=sf_link).
 
-2.  Establish an account on raven (Roberts Lab Rstudio Server)
+2.  [Establish account](https://robertslab.github.io/resources/mox_Adding-a-User/) on Roberts Lab (srlab) hyak account
 
-3.  [Establish account](https://robertslab.github.io/resources/mox_Adding-a-User/) on Roberts Lab (srlab) hyak account
+3.  Read: [Introducing the Shell](https://swcarpentry.github.io/shell-novice/01-intro/) \
+    Read: [Navigating Files and Directories](http://swcarpentry.github.io/shell-novice/02-filedir/) \
+    Complete [this bash tutorial](https://sr320.github.io/course-fish546-2023/assignments/00-bash.html)
 
-4.  
+4.  Read: [Organize your data and code](https://kbroman.org/steps2rr/pages/organize.html)
 
-5.  Read: [Introducing the Shell](https://swcarpentry.github.io/shell-novice/01-intro/) Read: [Navigating Files and Directories](http://swcarpentry.github.io/shell-novice/02-filedir/) Complete this bash tutorial
-
-6.  Read: [Organize your data and code](https://kbroman.org/steps2rr/pages/organize.html)
-
-7.  Learn (remember) proper project (repo) structure.
+5.  Learn (remember) proper project (repo) structure.
 
 ::: panel-tabset
 ## File Structure
