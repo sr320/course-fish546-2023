@@ -19,3 +19,20 @@ Th 9:30-11:20 (Office hours)
 |                |              |               |
 |                |              |               |
 |                |              |               |
+
+
+---
+
+Textbook:
+
+[Bioinformatics Data Skills](https://www.amazon.com/Bioinformatics-Data-Skills-Reproducible-Research/dp/1449367372/):
+
+Reproducible and Robust Research with Open Source Tools
+By Vince Buffalo
+Publisher: O'Reilly Media
+Final Release Date: July 2015
+Pages: 538
+
+* [The Supplementary Material Repository for Bioinformatics Data Skills](https://github.com/vsbuffalo/bds-files)
+
+[@uw](https://drive.google.com/a/uw.edu/file/d/0BwVK83sm6XQGWGNZUmlLckdZU1E/view?usp=sharing)

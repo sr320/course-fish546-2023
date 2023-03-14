@@ -16,7 +16,7 @@ This course is designed for graduate students with core computational competence
 
 2.  Establish an account on raven (Roberts Lab Rstudio Server)
 
-3.  Establish account on Roberts Lab (srlab) hyak account
+3.  [Establish account](https://robertslab.github.io/resources/mox_Adding-a-User/) on Roberts Lab (srlab) hyak account
 
 4.  
 

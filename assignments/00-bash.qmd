@@ -9,11 +9,13 @@ format:
     highlight-style: github
 ---
 
-For this we will be using UW JupyterHub Terminal instance.
+::: callout-warning
+For this self directed tutorial you will need to download [data-shell.zip](https://d.pr/f/BDaGTy) and navigate to using a terminal. This could be "Terminal" within Rstudio, or a stand alone application. 
+:::
 
-The file will be preloaded on your instance but from reference this is the file - [data-shell.zip](https://d.pr/f/BDaGTy)
 
-The part of the operating system responsible for managing files and directories is called the **file system**.ß It organizes our data into files, which hold information, and directories (also called "folders"), which hold files or other directories.
+
+The part of the operating system responsible for managing files and directories is called the **file system**. It organizes our data into files, which hold information, and directories (also called "folders"), which hold files or other directories.
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories. To start exploring them, let's open a shell window:
 
@@ -52,7 +54,10 @@ To understand what a "home directory" is, let's have a look at how the file syst
 There are two meanings for the \`/\` character. When it appears at the front of a file or directory name, it refers to the root directory. When it appears \*inside\* a name, it's just a separator.
 :::
 
-So that we have the same experience lets navigate to the 'data-shell' directory.
+
+::: callout-warning
+So that we have the same experience navigate to the 'data-shell' directory.
+:::
 
 ## ls
 
@@ -166,7 +171,9 @@ If she presses tab again, Bash will add `2012-07-03/` to the command, since it's
 
 We now know how to explore files and directories, but how do we create them in the first place? Let's go back to `data-shell`, and use `ls -F` to see what it contains:
 
-    $ ls -F
+``` bash
+ls -F
+```
 
     creatures/  molecules/           pizza.cfg
     data/       north-pacific-gyre/  solar.pdf
@@ -174,11 +181,15 @@ We now know how to explore files and directories, but how do we create them in t
 
 Let's create a new directory called `thesis` using the command `mkdir thesis` (which has no output):
 
-    $ mkdir thesis
+``` bash
+mkdir thesis
+```
 
 As you might (or might not) guess from its name, `mkdir` means "make directory". Since `thesis` is a relative path (i.e., doesn't have a leading slash), the new directory is made below the current working directory:
 
-    $ ls -F
+``` bash
+ls -F
+```
 
     creatures/  north-pacific-gyre/  thesis/
     data/       notes.txt            writing/
@@ -187,12 +198,16 @@ As you might (or might not) guess from its name, `mkdir` means "make directory".
 
 However, there's nothing in it yet:
 
-    $ ls -F thesis
+``` bash
+ls -F thesis
+```
 
 Let's change our working directory to `thesis` using `cd`, then run a text editor called Nano to create a file called `draft.txt`:
 
-    $ cd thesis
-    $ nano draft.txt
+``` bash
+cd thesis
+nano draft.txt
+```
 
 #### Which Editor?
 
@@ -206,17 +221,23 @@ Let's type in a few lines of text, then use **Control-O** to write our data to d
 
 Once our file is saved, we can use **Control-X** to quit the editor and return to the shell. (Unix documentation often uses the shorthand `^A` to mean "control-A".) `nano` doesn't leave any output on the screen after it exits, but `ls` now shows that we have created a file called `draft.txt`:
 
-    $ ls
+``` bash
+ls
+```
 
     draft.txt
 
 Let's tidy up by running `rm draft.txt`:
 
-    $ rm draft.txt
+``` bash
+rm draft.txt
+```
 
 This command removes files ("rm" is short for "remove"). If we run `ls` again, its output is empty once more, which tells us that our file is gone:
 
-    $ ls
+``` bash
+ls
+```
 
 #### Deleting Is Forever
 
@@ -382,7 +403,9 @@ The command `ls -R` lists the contents of directories recursively, i.e., lists t
 
 Now that we know a few basic commands, we can finally look at the shell's most powerful feature: the ease with which it lets us combine existing programs in new ways. We'll start with a directory called `molecules` that contains six files describing some simple organic molecules. The `.pdb` extension indicates that these files are in Protein Data Bank format, a simple text format that specifies the type and position of each atom in the molecule.
 
-    $ ls molecules
+``` bash
+ls molecules
+```
 
     cubane.pdb    ethane.pdb    methane.pdb
     octane.pdb    pentane.pdb   propane.pdb
@@ -391,7 +414,10 @@ Now that we know a few basic commands, we can finally look at the shell's most p
 
 Let's go into that directory with `cd` and run the command `wc *.pdb`. `wc` is the "word count" command: it counts the number of lines, words, and characters in files. The `*` in `*.pdb` matches zero or more characters, so the shell turns `*.pdb` into a complete list of `.pdb` files:
 
-    $ cd molecules
+``` bash
+cd molecules
+```
+
     $ wc *.pdb
 
       20  156 1158 cubane.pdb
@@ -412,7 +438,9 @@ When the shell sees a wildcard, it expands the wildcard to create a list of matc
 
 If we run `wc -l` instead of just `wc`, the output shows only the number of lines per file:
 
-    $ wc -l *.pdb
+``` bash
+wc -l *.pdb
+```
 
       20  cubane.pdb
       12  ethane.pdb
@@ -428,11 +456,15 @@ We can also use `-w` to get only the number of words, or `-c` to get only the nu
 
 Which of these files is shortest? It's an easy question to answer when there are only six files, but what if there were 6000? Our first step toward a solution is to run the command:
 
-    $ wc -l *.pdb > lengths
+``` bash
+wc -l *.pdb > lengths
+```
 
 The `>` tells the shell to [redirect](../../gloss.html#redirect) the command's output to a file instead of printing it to the screen. The shell will create the file if it doesn't exist, or overwrite the contents of that file if it does. (This is why there is no screen output: everything that `wc` would have printed has gone into the file `lengths` instead.) `ls lengths` confirms that the file exists:
 
-    $ ls lengths
+``` bash
+ls lengths
+```
 
     lengths
 
@@ -440,7 +472,9 @@ The `>` tells the shell to [redirect](../../gloss.html#redirect) the command's o
 
 We can now send the content of `lengths` to the screen using `cat lengths`. `cat` stands for "concatenate": it prints the contents of files one after another. There's only one file in this case, so `cat` just shows us what it contains:
 
-    $ cat lengths
+``` bash
+cat lengths
+```
 
       20  cubane.pdb
       12  ethane.pdb
@@ -454,7 +488,9 @@ We can now send the content of `lengths` to the screen using `cat lengths`. `cat
 
 Now let's use the `sort` command to sort its contents. We will also use the -n flag to specify that the sort is numerical instead of alphabetical. This does *not* change the file; instead, it sends the sorted result to the screen:
 
-    $ sort -n lengths
+``` bash
+sort -n lengths
+```
 
       9  methane.pdb
      12  ethane.pdb
@@ -468,8 +504,10 @@ Now let's use the `sort` command to sort its contents. We will also use the -n f
 
 We can put the sorted list of lines in another temporary file called `sorted-lengths` by putting `> sorted-lengths` after the command, just as we used `> lengths` to put the output of `wc` into `lengths`. Once we've done that, we can run another command called `head` to get the first few lines in `sorted-lengths`:
 
-    $ sort -n lengths > sorted-lengths
-    $ head -1 sorted-lengths
+``` bash
+sort -n lengths > sorted-lengths
+head -1 sorted-lengths
+```
 
       9  methane.pdb
 
@@ -479,7 +517,9 @@ Using the parameter `-1` with `head` tells it that we only want the first line o
 
 If you think this is confusing, you're in good company: even once you understand what `wc`, `sort`, and `head` do, all those intermediate files make it hard to follow what's going on. We can make it easier to understand by running `sort` and `head` together:
 
-    $ sort -n lengths | head -1
+``` bash
+sort -n lengths | head -1
+```
 
       9  methane.pdb
 
@@ -487,7 +527,9 @@ The vertical bar between the two commands is called a [pipe](../../gloss.html#pi
 
 We can use another pipe to send the output of `wc` directly to `sort`, which then sends its output to `head`:
 
-    $ wc -l *.pdb | sort -n | head -1
+``` bash
+wc -l *.pdb | sort -n | head -1
+```
 
       9  methane.pdb
 
@@ -511,8 +553,10 @@ As well as using `>` to redirect a program's output, we can use `<` to redirect 
 
 Nelle has run her samples through the assay machines and created 1520 files in the `north-pacific-gyre/2012-07-03` directory described earlier. As a quick sanity check, she types:
 
-    $ cd north-pacific-gyre/2012-07-03
-    $ wc -l *.txt
+``` bash
+cd north-pacific-gyre/2012-07-03
+wc -l *.txt
+```
 
 The output is 1520 lines that look like this:
 
@@ -526,7 +570,9 @@ The output is 1520 lines that look like this:
 
 Now she types this:
 
-    $ wc -l *.txt | sort -n | head -5
+``` bash
+wc -l *.txt | sort -n | head -5
+```
 
      240 NENE02018B.txt
      300 NENE01729A.txt
@@ -536,7 +582,9 @@ Now she types this:
 
 Whoops: one of the files is 60 lines shorter than the others. When she goes back and checks it, she sees that she did that assay at 8:00 on a Monday morning---someone was probably in using the machine on the weekend, and she forgot to reset it. Before re-running that sample, she checks to see if any files have too much data:
 
-    $ wc -l *.txt | sort -n | tail -5
+``` bash
+wc -l *.txt | sort -n | tail -5
+```
 
      300 NENE02040A.txt
      300 NENE02040B.txt
@@ -546,7 +594,9 @@ Whoops: one of the files is 60 lines shorter than the others. When she goes back
 
 Those numbers look good---but what's that 'Z' doing there in the third-to-last line? All of her samples should be marked 'A' or 'B'; by convention, her lab uses 'Z' to indicate samples with missing information. To find others like it, she does this:
 
-    $ ls *Z.txt
+``` bash
+ls *Z.txt
+```
 
     NENE01971Z.txt    NENE02040Z.txt
 
