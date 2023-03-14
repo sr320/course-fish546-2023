@@ -1,0 +1,83 @@
+---
+title: "Getting Started"
+subtitle: "week 01"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+---
+
+# Expectations
+
+# Setting up for Success!
+
+As part of this class you will be learning fundamental skills in working with genomic data. In addition you will be carrying out an independent project throughout the quarter. Generally Tuesday will be learning a skillset and Thursday will be working on your independent project.
+
+Each student will have two GitHub repositories, one where you complete "classwork" and as one devoted to your project. Both need to be in the organization `course-fish546-2023`.
+
+The name of these repos:\
+preferredname-*classwork* and\
+preferredname-projectdescriptor
+
+::: callout-important
+Make sure you have you local repo clone in logical location (eg \~/Documents/GitHub) and that you do not move, nor place in Dropbox or similar syncing directory.
+:::
+
+Be sure to comply with guidelines
+
+
+::: panel-tabset
+## File Structure
+
+-   Good file structure
+
+    -   All project files in one main folder
+
+    -   Subfolders (data, code, output)
+
+-   Main folder is R project
+
+    -   Self-contained project
+
+    -   Use relative instead of absolute paths
+
+-   Good folder & file names
+
+    -   Descriptive but not too long
+
+    -   No spaces
+
+    -   Consistent format
+
+## Data
+
+-   Raw data
+
+    -   In separate folder from cleaned data
+
+    -   Never change!
+
+    -   Each file should have metadata
+
+## Code
+
+-   Scripts with code
+
+    -   Relative file paths to read in and create files
+
+    -   Lots of comments
+
+    -   Order: libraries, data, user-created functions, everything else
+
+    -   Good variable & column names
+:::
+
+
+There will be times when files are two big to include in repositories (or even you laptop). There will also be times when you have to run code outside of a GitHub repository. You will need to determine a way to effectively document this in your repository. 
+
+# Working in the command-line
+
+# 
