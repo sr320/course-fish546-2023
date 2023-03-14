@@ -12,19 +12,21 @@ format:
 
 This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed.
 
-1.  Submit your github ID using the form below
+1.  Submit your github ID using the form below.
 
-2.  Establish an account on raven (Roberts Lab Rstudio Server)
+\<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd0MUPej4xJhIWiS8wLztpzXK7iak3DYPjFLzIcgAKIMTfy2Q/viewform?embedded=true" width="640" height="648" frameborder="0" marginheight="0" marginwidth="0"\>Loading...\</iframe\>
 
-3.  [Establish account](https://robertslab.github.io/resources/mox_Adding-a-User/) on Roberts Lab (srlab) hyak account
+1.  Establish an account on raven (Roberts Lab Rstudio Server)
 
-4.  
+2.  [Establish account](https://robertslab.github.io/resources/mox_Adding-a-User/) on Roberts Lab (srlab) hyak account
 
-5.  Read: [Introducing the Shell](https://swcarpentry.github.io/shell-novice/01-intro/) Read: [Navigating Files and Directories](http://swcarpentry.github.io/shell-novice/02-filedir/) Complete this bash tutorial
+3.  Read: [Introducing the Shell](https://swcarpentry.github.io/shell-novice/01-intro/) \
+    Read: [Navigating Files and Directories](http://swcarpentry.github.io/shell-novice/02-filedir/) \
+    Complete [this bash tutorial](assignments/bash.qmd)
 
-6.  Read: [Organize your data and code](https://kbroman.org/steps2rr/pages/organize.html)
+4.  Read: [Organize your data and code](https://kbroman.org/steps2rr/pages/organize.html)
 
-7.  Learn (remember) proper project (repo) structure.
+5.  Learn (remember) proper project (repo) structure.
 
 ::: panel-tabset
 ## File Structure

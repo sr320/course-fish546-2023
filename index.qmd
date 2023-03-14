@@ -2,7 +2,7 @@
 title: "Syllabus"
 ---
 
-This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories. 
+This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories.
 
 T 3:00-4:20
 
@@ -10,29 +10,22 @@ Th 9:30-11:20 (Office hours)
 
 ------------------------------------------------------------------------
 
-
-
 ## Repo List
 
-| Name or UserID | course repo  | project repo  |
-|----------------|--------------|---------------|
-|                |              |               |
-|                |              |               |
-|                |              |               |
+| Name or UserID | course repo | project repo |
+|----------------|-------------|--------------|
+|                |             |              |
+|                |             |              |
+|                |             |              |
 
-
----
+------------------------------------------------------------------------
 
 Textbook:
 
 [Bioinformatics Data Skills](https://www.amazon.com/Bioinformatics-Data-Skills-Reproducible-Research/dp/1449367372/):
 
-Reproducible and Robust Research with Open Source Tools
-By Vince Buffalo
-Publisher: O'Reilly Media
-Final Release Date: July 2015
-Pages: 538
+Reproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O'Reilly Media Final Release Date: July 2015 Pages: 538
 
-* [The Supplementary Material Repository for Bioinformatics Data Skills](https://github.com/vsbuffalo/bds-files)
+-   [The Supplementary Material Repository for Bioinformatics Data Skills](https://github.com/vsbuffalo/bds-files)
 
-[@uw](https://drive.google.com/a/uw.edu/file/d/0BwVK83sm6XQGWGNZUmlLckdZU1E/view?usp=sharing)
+[\@uw](https://drive.google.com/a/uw.edu/file/d/0BwVK83sm6XQGWGNZUmlLckdZU1E/view?usp=sharing)
