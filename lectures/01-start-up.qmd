@@ -123,3 +123,17 @@ ls /Applications/bioinfo/
 ```{bash}
 /Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h
 ```
+
+## Make Blast Database
+
+see <https://www.uniprot.org/downloads>
+
+https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+
+```{bash}
+cd ../data
+curl -O https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+mv uniprot_sprot.fasta.gz uniprot_sprot_r2023_01.fasta.gz
+gunzip -k uniprot_sprot_r2023_01.fasta.gz
+ls ../data
+```
