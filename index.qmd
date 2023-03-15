@@ -10,6 +10,10 @@ Th 9:30-11:20 (Office hours)
 
 ------------------------------------------------------------------------
 
+Course GitHub Organization: <https://github.com/course-fish546-2023>
+
+---
+
 ## Repo List
 
 | Name or UserID | course repo | project repo |

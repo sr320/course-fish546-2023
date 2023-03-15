@@ -16,8 +16,7 @@ This course is designed for graduate students with core computational competence
 
 2.  [Establish account](https://robertslab.github.io/resources/mox_Adding-a-User/) on Roberts Lab (srlab) hyak account
 
-3.  Read: [Introducing the Shell](https://swcarpentry.github.io/shell-novice/01-intro/)\
-    Read: [Navigating Files and Directories](http://swcarpentry.github.io/shell-novice/02-filedir/)\
+3.  Read: [Introduction to the Command Line for Genomics](https://datacarpentry.org/shell-genomics/)    
     Complete [this bash tutorial](https://sr320.github.io/course-fish546-2023/assignments/00-bash.html)
 
 4.  Read: [Organize your data and code](https://kbroman.org/steps2rr/pages/organize.html)
