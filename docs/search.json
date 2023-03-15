@@ -1,122 +1,24 @@
 [
   {
-    "objectID": "assignments/00-bash.html",
-    "href": "assignments/00-bash.html",
-    "title": "bash",
-    "section": "",
-    "text": "Warning\n\n\n\nFor this self directed tutorial you will need to download data-shell.zip and navigate to using a terminal. This could be “Terminal” within Rstudio, or a stand alone application.\nThe part of the operating system responsible for managing files and directories is called the file system. It organizes our data into files, which hold information, and directories (also called “folders”), which hold files or other directories.\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories. To start exploring them, let’s open a shell window:\nThe dollar sign is a prompt, which shows us that the shell is waiting for input; your shell may show something more elaborate.\nType the command whoami, then press the Enter key (sometimes marked Return) to send the command to the shell. The command’s output is the ID of the current user, i.e., it shows us who the shell thinks we are:\nMore specifically, when we type whoami the shell:\nNext, let’s find out where we are by running a command called pwd (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in unless we explicitly specify something else. Here, the computer’s response is /home/jovyan\nTo understand what a “home directory” is, let’s have a look at how the file system as a whole is organized. At the top is the root directory that holds everything else. We refer to it using a slash character / on its own; this is the leading slash in /home/jovyan."
-  },
-  {
-    "objectID": "assignments/00-bash.html#ls",
-    "href": "assignments/00-bash.html#ls",
-    "title": "bash",
-    "section": "ls",
-    "text": "ls\nLet’s see what’s in this directory by running ls, which stands for “listing”:\nls\ncreatures  molecules           pizza.cfg\ndata       north-pacific-gyre  solar.pdf\nDesktop    notes.txt           writing\n\nls prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns. We can make its output more comprehensible by using the flag -F, which tells ls to add a trailing / to the names of directories:\nls -F\ncreatures/  molecules/           pizza.cfg\ndata/       north-pacific-gyre/  solar.pdf\nDesktop/    notes.txt            writing/\nHere, we can see that data-shell contains seven sub-directories. The names that don’t have trailing slashes, like notes.txt, pizza.cfg, and solar.pdf, are plain old files. And note that there is a space between ls and -F: without it, the shell thinks we’re trying to run a command called ls-F, which doesn’t exist."
-  },
-  {
-    "objectID": "assignments/00-bash.html#relative-path",
-    "href": "assignments/00-bash.html#relative-path",
-    "title": "bash",
-    "section": "relative path",
-    "text": "relative path\nNow let’s take a look at what’s in data-shell directory by running ls -F data, i.e., the command ls with the arguments -F and data. The second argument — the one without a leading dash — tells ls that we want a listing of something other than our current working directory:\n ls -F data\namino-acids.txt  animal-counts/  animals.txt  elements/  morse.txt  pdb/  planets.txt  salmon.txt  sunspot.txt\nThe output shows us that there are four text files and two sub-sub-directories. Organizing things hierarchically in this way helps us keep track of our work: it’s possible to put hundreds of files in our home directory, just as it’s possible to pile hundreds of printed papers on our desk, but it’s a self-defeating strategy.\nNotice, by the way that we spelled the directory name data. It doesn’t have a trailing slash: that’s added to directory names by ls when we use the -F flag to help us tell things apart. And it doesn’t begin with a slash because it’s a relative path, i.e., it tells ls how to find something from where we are, rather than from the root of the file system."
-  },
-  {
-    "objectID": "assignments/00-bash.html#absolute-path",
-    "href": "assignments/00-bash.html#absolute-path",
-    "title": "bash",
-    "section": "absolute path",
-    "text": "absolute path\nIf we run ls -F /data (with a leading slash) we get a different answer, because /data is an absolute path:\nls -F /data\nNote you will get an “No file” warning here. This is because we this directory does not exist.\nThe leading / tells the computer to follow the path from the root of the filesystem, so it always refers to exactly one directory, no matter where we are when we run the command.\nIf we wanted to use the **absolute path* to list out the contents of this directory we could used\nls -F /home/jovyan/data-shell/data/\nNote this would work no matter what our pwd is."
-  },
-  {
-    "objectID": "assignments/00-bash.html#nelles-pipeline-organizing-files",
-    "href": "assignments/00-bash.html#nelles-pipeline-organizing-files",
-    "title": "bash",
-    "section": "Nelle’s Pipeline: Organizing Files",
-    "text": "Nelle’s Pipeline: Organizing Files\nKnowing just this much about files and directories, Nelle is ready to organize the files that the protein assay machine will create. First, she creates a directory called north-pacific-gyre (to remind herself where the data came from). Inside that, she creates a directory called 2012-07-03, which is the date she started processing the samples. She used to use names like conference-paper and revised-results, but she found them hard to understand after a couple of years. (The final straw was when she found herself creating a directory called revised-revised-results-3.)\n\nNelle names her directories “year-month-day”, with leading zeroes for months and days, because the shell displays file and directory names in alphabetical order. If she used month names, December would come before July; if she didn’t use leading zeroes, November (‘11’) would come before July (‘7’).\n\nEach of her physical samples is labelled according to her lab’s convention with a unique ten-character ID, such as “NENE01729A”. This is what she used in her collection log to record the location, time, depth, and other characteristics of the sample, so she decides to use it as part of each data file’s name. Since the assay machine’s output is plain text, she will call her files NENE01729A.txt, NENE01812A.txt, and so on. All 1520 files will go into the same directory.\nIf she is in her home directory, Nelle can see what files she has using the command:\nls north-pacific-gyre/2012-07-03/\nThis is a lot to type, but she can let the shell do most of the work. If she types:\nls nor\nand then presses tab, the shell automatically completes the directory name for her:\nls north-pacific-gyre/\nIf she presses tab again, Bash will add 2012-07-03/ to the command, since it’s the only possible completion. Pressing tab again does nothing, since there are 1520 possibilities; pressing tab twice brings up a list of all the files, and so on. This is called tab completion, and we will see it in many other tools as we go on."
-  },
-  {
-    "objectID": "assignments/00-bash.html#key-points",
-    "href": "assignments/00-bash.html#key-points",
-    "title": "bash",
-    "section": "Key Points",
-    "text": "Key Points\n\nThe file system is responsible for managing information on the disk.\nInformation is stored in files, which are stored in directories (folders).\nDirectories can also store other directories, which forms a directory tree.\n/ on its own is the root directory of the whole filesystem.\nA relative path specifies a location starting from the current location.\nAn absolute path specifies a location from the root of the filesystem.\nDirectory names in a path are separated with / on Unix, but \\ on Windows.\n.. means “the directory above the current one”; . on its own means “the current directory”.\nMost files’ names are something.extension. The extension isn’t required, and doesn’t guarantee anything, but is normally used to indicate the type of data in the file.\nMost commands take options (flags) which begin with a -."
-  },
-  {
-    "objectID": "assignments/00-bash.html#word-count",
-    "href": "assignments/00-bash.html#word-count",
-    "title": "bash",
-    "section": "word count",
-    "text": "word count\nLet’s go into that directory with cd and run the command wc *.pdb. wc is the “word count” command: it counts the number of lines, words, and characters in files. The * in *.pdb matches zero or more characters, so the shell turns *.pdb into a complete list of .pdb files:\ncd molecules\n$ wc *.pdb\n\n  20  156 1158 cubane.pdb\n  12   84  622 ethane.pdb\n   9   57  422 methane.pdb\n  30  246 1828 octane.pdb\n  21  165 1226 pentane.pdb\n  15  111  825 propane.pdb\n 107  819 6081 total\n\nWildcards\n* is a wildcard. It matches zero or more characters, so *.pdb matches ethane.pdb, propane.pdb, and so on. On the other hand, p*.pdb only matches pentane.pdb and propane.pdb, because the ‘p’ at the front only matches itself.\n? is also a wildcard, but it only matches a single character. This means that p?.pdb matches pi.pdb or p5.pdb, but not propane.pdb. We can use any number of wildcards at a time: for example, p*.p?* matches anything that starts with a ‘p’ and ends with ‘.’, ‘p’, and at least one more character (since the ‘?’ has to match one character, and the final * can match any number of characters). Thus, p*.p?* would match preferred.practice, and even p.pi (since the first * can match no characters at all), but not quality.practice (doesn’t start with ‘p’) or preferred.p (there isn’t at least one character after the ‘.p’).\nWhen the shell sees a wildcard, it expands the wildcard to create a list of matching filenames before running the command that was asked for. This means that commands like wc and ls never see the wildcard characters, just what those wildcards matched. This is another example of orthogonal design.\nIf we run wc -l instead of just wc, the output shows only the number of lines per file:\nwc -l *.pdb\n  20  cubane.pdb\n  12  ethane.pdb\n   9  methane.pdb\n  30  octane.pdb\n  21  pentane.pdb\n  15  propane.pdb\n 107  total\nWe can also use -w to get only the number of words, or -c to get only the number of characters."
-  },
-  {
-    "objectID": "assignments/00-bash.html#redirect",
-    "href": "assignments/00-bash.html#redirect",
-    "title": "bash",
-    "section": "redirect",
-    "text": "redirect\nWhich of these files is shortest? It’s an easy question to answer when there are only six files, but what if there were 6000? Our first step toward a solution is to run the command:\nwc -l *.pdb > lengths\nThe > tells the shell to redirect the command’s output to a file instead of printing it to the screen. The shell will create the file if it doesn’t exist, or overwrite the contents of that file if it does. (This is why there is no screen output: everything that wc would have printed has gone into the file lengths instead.) ls lengths confirms that the file exists:\nls lengths\nlengths"
-  },
-  {
-    "objectID": "assignments/00-bash.html#cat",
-    "href": "assignments/00-bash.html#cat",
-    "title": "bash",
-    "section": "cat",
-    "text": "cat\nWe can now send the content of lengths to the screen using cat lengths. cat stands for “concatenate”: it prints the contents of files one after another. There’s only one file in this case, so cat just shows us what it contains:\ncat lengths\n  20  cubane.pdb\n  12  ethane.pdb\n   9  methane.pdb\n  30  octane.pdb\n  21  pentane.pdb\n  15  propane.pdb\n 107  total"
-  },
-  {
-    "objectID": "assignments/00-bash.html#sort",
-    "href": "assignments/00-bash.html#sort",
-    "title": "bash",
-    "section": "sort",
-    "text": "sort\nNow let’s use the sort command to sort its contents. We will also use the -n flag to specify that the sort is numerical instead of alphabetical. This does not change the file; instead, it sends the sorted result to the screen:\nsort -n lengths\n  9  methane.pdb\n 12  ethane.pdb\n 15  propane.pdb\n 20  cubane.pdb\n 21  pentane.pdb\n 30  octane.pdb\n107  total"
-  },
-  {
-    "objectID": "assignments/00-bash.html#head",
-    "href": "assignments/00-bash.html#head",
-    "title": "bash",
-    "section": "head",
-    "text": "head\nWe can put the sorted list of lines in another temporary file called sorted-lengths by putting > sorted-lengths after the command, just as we used > lengths to put the output of wc into lengths. Once we’ve done that, we can run another command called head to get the first few lines in sorted-lengths:\nsort -n lengths > sorted-lengths\nhead -1 sorted-lengths\n  9  methane.pdb\nUsing the parameter -1 with head tells it that we only want the first line of the file; -20 would get the first 20, and so on. Since sorted-lengths contains the lengths of our files ordered from least to greatest, the output of head must be the file with the fewest lines."
-  },
-  {
-    "objectID": "assignments/00-bash.html#pipe",
-    "href": "assignments/00-bash.html#pipe",
-    "title": "bash",
-    "section": "pipe",
-    "text": "pipe\nIf you think this is confusing, you’re in good company: even once you understand what wc, sort, and head do, all those intermediate files make it hard to follow what’s going on. We can make it easier to understand by running sort and head together:\nsort -n lengths | head -1\n  9  methane.pdb\nThe vertical bar between the two commands is called a pipe. It tells the shell that we want to use the output of the command on the left as the input to the command on the right. The computer might create a temporary file if it needs to, or copy data from one program to the other in memory, or something else entirely; we don’t have to know or care.\nWe can use another pipe to send the output of wc directly to sort, which then sends its output to head:\nwc -l *.pdb | sort -n | head -1\n  9  methane.pdb\n\nHere’s what actually happens behind the scenes when we create a pipe. When a computer runs a program—any program—it creates a process in memory to hold the program’s software and its current state. Every process has an input channel called standard input. (By this point, you may be surprised that the name is so memorable, but don’t worry: most Unix programmers call it “stdin”. Every process also has a default output channel called standard output (or “stdout”).\n\n\nThe shell is actually just another program. Under normal circumstances, whatever we type on the keyboard is sent to the shell on its standard input, and whatever it produces on standard output is displayed on our screen. When we tell the shell to run a program, it creates a new process and temporarily sends whatever we type on our keyboard to that process’s standard input, and whatever the process sends to standard output to the screen.\nHere’s what happens when we run wc -l *.pdb > lengths. The shell starts by telling the computer to create a new process to run the wc program. Since we’ve provided some filenames as parameters, wc reads from them instead of from standard input. And since we’ve used > to redirect output to a file, the shell connects the process’s standard output to that file.\nIf we run wc -l *.pdb | sort -n instead, the shell creates two processes (one for each process in the pipe) so that wc and sort run simultaneously. The standard output of wc is fed directly to the standard input of sort; since there’s no redirection with >, sort’s output goes to the screen. And if we run wc -l *.pdb | sort -n | head -1, we get three processes with data flowing from the files, through wc to sort, and from sort through head to the screen.\nThis simple idea is why Unix has been so successful. Instead of creating enormous programs that try to do many different things, Unix programmers focus on creating lots of simple tools that each do one job well, and that work well with each other. This programming model is called pipes and filters. We’ve already seen pipes; a filter is a program like wc or sort that transforms a stream of input into a stream of output. Almost all of the standard Unix tools can work this way: unless told to do otherwise, they read from standard input, do something with what they’ve read, and write to standard output.\nThe key is that any program that reads lines of text from standard input and writes lines of text to standard output can be combined with every other program that behaves this way as well. You can and should write your programs this way so that you and other people can put those programs into pipes to multiply their power.\n\n\nRedirecting Input\nAs well as using > to redirect a program’s output, we can use < to redirect its input, i.e., to read from a file instead of from standard input. For example, instead of writing wc ammonia.pdb, we could write wc < ammonia.pdb. In the first case, wc gets a command line parameter telling it what file to open. In the second, wc doesn’t have any command line parameters, so it reads from standard input, but we have told the shell to send the contents of ammonia.pdb to wc’s standard input."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories.\nT 3:00-4:20\nTh 9:30-11:20 (Office hours)\nCourse GitHub Organization: https://github.com/course-fish546-2023"
-  },
-  {
-    "objectID": "index.html#repo-list",
-    "href": "index.html#repo-list",
-    "title": "Syllabus",
-    "section": "Repo List",
-    "text": "Repo List\n\n\n\nName or UserID\ncourse repo\nproject repo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTextbook:\nBioinformatics Data Skills:\nReproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O’Reilly Media Final Release Date: July 2015 Pages: 538\n\nThe Supplementary Material Repository for Bioinformatics Data Skills\n\n@uw"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "lectures/00-before.html",
-    "href": "lectures/00-before.html",
-    "title": "Course Preparation",
-    "section": "",
-    "text": "This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed.\n\nSubmit your github ID using this form.\nEstablish account on Roberts Lab (srlab) hyak account\nRead: Introducing the Shell\nRead: Navigating Files and Directories\nComplete this bash tutorial\nRead: Organize your data and code\nReview and become fammilar with Markdown\nRequest account on Roberts Lab Rstudio server.\nLearn (remember) proper project (repo) structure.\n\n\nFile StructureDataCode\n\n\n\nGood file structure\n\nAll project files in one main folder\nSubfolders (data, code, output)\n\nMain folder is R project\n\nSelf-contained project\nUse relative instead of absolute paths\n\nGood folder & file names\n\nDescriptive but not too long\nNo spaces\nConsistent format\n\n\n\n\n\nRaw data\n\nIn separate folder from cleaned data\nNever change!\nEach file should have metadata\n\n\n\n\n\nScripts with code\n\nRelative file paths to read in and create files\nLots of comments\nOrder: libraries, data, user-created functions, everything else\nGood variable & column names"
-  },
-  {
     "objectID": "lectures/01-start-up.html",
     "href": "lectures/01-start-up.html",
     "title": "Getting Started",
     "section": "",
-    "text": "Text Reading\nHow to Learn Bioinformatics 1-18;\nSetting Up and Managing a Bioinformatics Project 21-35;\nRemedial Unix Shell 37-54\n\n\nExpectations\n\n\nSetting up for Success!\nAs part of this class you will be learning fundamental skills in working with genomic data. In addition you will be carrying out an independent project throughout the quarter. Generally Tuesday will be learning a skillset and Thursday will be working on your independent project.\nEach student will have two GitHub repositories, one where you complete “classwork” and as one devoted to your project. Both need to be in the organization course-fish546-2023.\nThe name of these repos:\npreferredname-classwork and\npreferredname-projectdescriptor\n\n\n\n\n\n\nImportant\n\n\n\nMake sure you have you local repo clone in logical location (eg ~/Documents/GitHub) and that you do not move, nor place in Dropbox or similar syncing directory.\n\n\nBe sure to comply with guidelines\n\nFile StructureDataCode\n\n\n\nGood file structure\n\nAll project files in one main folder\nSubfolders (data, code, output)\n\nMain folder is R project\n\nSelf-contained project\nUse relative instead of absolute paths\n\nGood folder & file names\n\nDescriptive but not too long\nNo spaces\nConsistent format\n\n\n\n\n\nRaw data\n\nIn separate folder from cleaned data\nNever change!\nEach file should have metadata\n\n\n\n\n\nScripts with code\n\nRelative file paths to read in and create files\nLots of comments\nOrder: libraries, data, user-created functions, everything else\nGood variable & column names\n\n\n\n\n\nThere will be times when files are two big to include in repositories (or even you laptop). There will also be times when you have to run code outside of a GitHub repository. You will need to determine a way to effectively document this in your repository.\n\n\nWorking in the command-line\nHaving already reviewed the prep material and completed the bash tutorial you are now ready to get to coding.\nFor the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code."
+    "text": "How to Learn Bioinformatics 1-18;\nSetting Up and Managing a Bioinformatics Project 21-35;\nRemedial Unix Shell 37-54"
+  },
+  {
+    "objectID": "lectures/01-start-up.html#downloading-software",
+    "href": "lectures/01-start-up.html#downloading-software",
+    "title": "Getting Started",
+    "section": "Downloading software",
+    "text": "Downloading software\nNCBI Blast Software is at\nhttps://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/\n\n\n\n\n\n\nTip\n\n\n\nIt is best to decide on central location on computer where software will be downloaded.\n\n\nhttps://github.com/RobertsLab/code/blob/master/09-blast.ipynb\ncd /Applications/bioinfo/\ncurl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz\ntar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz\nls /Applications/bioinfo/\n/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h"
+  },
+  {
+    "objectID": "lectures/01-start-up.html#make-blast-database",
+    "href": "lectures/01-start-up.html#make-blast-database",
+    "title": "Getting Started",
+    "section": "Make Blast Database",
+    "text": "Make Blast Database\nsee https://www.uniprot.org/downloads\nhttps://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz\ncd ../data\ncurl -O https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz\nmv uniprot_sprot.fasta.gz uniprot_sprot_r2023_01.fasta.gz\ngunzip -k uniprot_sprot_r2023_01.fasta.gz\nls ../data"
   },
   {
     "objectID": "schedule.html",

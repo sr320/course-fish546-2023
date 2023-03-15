@@ -80,6 +80,10 @@ Be sure to comply with guidelines
     -   Good variable & column names
 :::
 
+::: callout-warning
+Max GitHub file size is 100MB
+:::
+
 There will be times when files are two big to include in repositories (or even you laptop). There will also be times when you have to run code outside of a GitHub repository. You will need to determine a way to effectively document this in your repository.
 
 # Working in the command-line
@@ -108,19 +112,19 @@ It is best to decide on central location on computer where software will be down
 
 https://github.com/RobertsLab/code/blob/master/09-blast.ipynb
 
-```{bash}
+```bash
 cd /Applications/bioinfo/
 curl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz
 tar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz
-cd -
+
 ```
 
-```{bash}
+```bash
 ls /Applications/bioinfo/
 
 ```
 
-```{bash}
+```bash
 /Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h
 ```
 
@@ -130,7 +134,7 @@ see <https://www.uniprot.org/downloads>
 
 https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 
-```{bash}
+```bash
 cd ../data
 curl -O https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 mv uniprot_sprot.fasta.gz uniprot_sprot_r2023_01.fasta.gz
