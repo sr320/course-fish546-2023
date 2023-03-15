@@ -10,12 +10,11 @@ format:
     highlight-style: github
 ---
 
-# Text Reading 
+# Text Reading
 
-How to Learn Bioinformatics 1-18;    
-Setting Up and Managing a Bioinformatics Project 21-35;  
-Remedial Unix Shell 37-54  
-
+How to Learn Bioinformatics 1-18;\
+Setting Up and Managing a Bioinformatics Project 21-35;\
+Remedial Unix Shell 37-54
 
 # Expectations
 
@@ -34,7 +33,6 @@ Make sure you have you local repo clone in logical location (eg \~/Documents/Git
 :::
 
 Be sure to comply with guidelines
-
 
 ::: panel-tabset
 ## File Structure
@@ -82,21 +80,46 @@ Be sure to comply with guidelines
     -   Good variable & column names
 :::
 
-
-There will be times when files are two big to include in repositories (or even you laptop). There will also be times when you have to run code outside of a GitHub repository. You will need to determine a way to effectively document this in your repository. 
+There will be times when files are two big to include in repositories (or even you laptop). There will also be times when you have to run code outside of a GitHub repository. You will need to determine a way to effectively document this in your repository.
 
 # Working in the command-line
 
 Having already reviewed the prep material and completed the [bash tutorial](https://sr320.github.io/course-fish546-2023/assignments/00-bash.html) you are now ready to get to coding.
 
-For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code. 
+For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.
 
+In your code directory create a file.
 
+`01-blast.Rmd`
 
+::: callout-tip
+Rmarkdown is a good option as you can use markdown, add pictures and more!
+:::
 
+## Downloading software
 
+NCBI Blast Software is at
 
+<https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/>
 
+::: callout-tip
+It is best to decide on central location on computer where software will be downloaded.
+:::
 
+https://github.com/RobertsLab/code/blob/master/09-blast.ipynb
 
+```{bash}
+cd /Applications/bioinfo/
+curl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz
+tar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz
+cd -
+```
 
+```{bash}
+ls /Applications/bioinfo/
+
+```
+
+```{bash}
+/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h
+```
