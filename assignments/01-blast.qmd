@@ -3,7 +3,7 @@ title: "NCBI Blast"
 
 format:
   html:
-    code-fold: true
+    code-fold: false
     code-tools: true
     code-copy: true
     highlight-style: github
@@ -33,7 +33,7 @@ tar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz
 ls /Applications/bioinfo/
 ```
 
-``` bash
+```{bash}
 /Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h
 ```
 
@@ -66,7 +66,7 @@ curl https://eagle.fish.washington.edu/cnidarian/Ab_4denovo_CLC6_a.fa \
 > ../data/Ab_4denovo_CLC6_a.fa
 ```
 
-```bash
+```{bash}
 head ../data/Ab_4denovo_CLC6_a.fa
 echo "How many sequences are there?"
 grep -c ">" ../data/Ab_4denovo_CLC6_a.fa
@@ -87,7 +87,7 @@ grep -c ">" ../data/Ab_4denovo_CLC6_a.fa
 
 ```
 
-```
+```{bash}
 head -2 ../output/Ab_4-uniprot_blastx.tab
 wc -l ../output/Ab_4-uniprot_blastx.tab
 ```
@@ -113,7 +113,7 @@ https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Crev
 ```
 
 
-```bash
+```{.bash .code-overflow-wrap}
 curl -O -H "Accept: text/plain; format=tsv" "https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29"
 ```
 
