@@ -4,10 +4,10 @@ title: "Schedule"
 
 \*\*Please see \[Youtube for screencast tutorials\](https://www.youtube.com/playlist?list=PLCNCeK00xVPb2AisXOPWMCyNwnJCQr9kJ)\*\*
 
-| Week  | Date      | Topic                                         |                                                                                                  | Project Status  | Homework |
+| Week  | Date      | Topic                                         | Assignment                                                                                       | Project Status  | Homework |
 |----------|----------|-------------|-------------------------|----------|----------|
-| zero  | last week | [Preparing for class](lectures/00-before.qmd) |                                                                                                  |                 |          |
-| one   |           | [Getting Started](lectures/01-start-up.qmd)   |                                                                                                  | Establish Repos |          |
+| zero  | last week | [Preparing for class](lectures/00-before.qmd) | [bash](assignments/00-bash.qmd)                                                                  |                 |          |
+| one   |           | [Getting Started](lectures/01-start-up.qmd)   | [NCBI Blast](assignments/01-blast.qmd)                                                           | Establish Repos |          |
 | two   |           |                                               | Retrieving Bioinformatics Data 109-124, Unix Data tools 125-168                                  |                 |          |
 | three |           |                                               | Working with Sequence Data 339-354; Git for Scientists 67-83; Working with Remote Machines 57-66 |                 |          |
 | four  |           |                                               | Working with Alignment Data 355-383,                                                             |                 |          |
