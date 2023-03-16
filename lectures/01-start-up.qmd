@@ -17,7 +17,9 @@ How to Learn Bioinformatics 1-18;\
 Setting Up and Managing a Bioinformatics Project 21-35;\
 Remedial Unix Shell 37-54
 
-# Expectations
+# Objectives
+
+
 
 # Setting up for Success!
 
