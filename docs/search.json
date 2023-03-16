@@ -25,7 +25,14 @@
     "href": "assignments/01-blast.html#run-blast",
     "title": "NCBI Blast",
     "section": "Run Blast",
-    "text": "Run Blast\n/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx \\\n-query ../data/Ab_4denovo_CLC6_a.fa \\\n-db ../blastdb/uniprot_sprot_r2023_01 \\\n-out ../output/Ab_4-uniprot_blastx.tab \\\n-evalue 1E-20 \\\n-num_threads 20 \\\n-max_target_seqs 1 \\\n-outfmt 6"
+    "text": "Run Blast\n/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx \\\n-query ../data/Ab_4denovo_CLC6_a.fa \\\n-db ../blastdb/uniprot_sprot_r2023_01 \\\n-out ../output/Ab_4-uniprot_blastx.tab \\\n-evalue 1E-20 \\\n-num_threads 20 \\\n-max_target_seqs 1 \\\n-outfmt 6\nhead -2 ../output/Ab_4-uniprot_blastx.tab\nwc -l ../output/Ab_4-uniprot_blastx.tab\nNeed to convert sp|Q08013|SSRG_RAT to get accession number out."
+  },
+  {
+    "objectID": "assignments/01-blast.html#getting-more-information",
+    "href": "assignments/01-blast.html#getting-more-information",
+    "title": "NCBI Blast",
+    "section": "Getting more information",
+    "text": "Getting more information\n\n\n\n\n\n\n\n\n\nhttps://www.uniprot.org/uniprotkb\n\n\n\n\n\n\n\n\n\nhttps://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29\ncurl -O -H \"Accept: text/plain; format=tsv\" \"https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29\""
   },
   {
     "objectID": "assignments/00-bash.html",

@@ -73,7 +73,7 @@ grep -c ">" ../data/Ab_4denovo_CLC6_a.fa
 
 ## Run Blast
 
-```{bash}
+```bash
 /Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx \
 -query ../data/Ab_4denovo_CLC6_a.fa \
 -db ../blastdb/uniprot_sprot_r2023_01 \
@@ -83,5 +83,35 @@ grep -c ">" ../data/Ab_4denovo_CLC6_a.fa
 -max_target_seqs 1 \
 -outfmt 6
 
+```
+
+```
+head -2 ../output/Ab_4-uniprot_blastx.tab
+wc -l ../output/Ab_4-uniprot_blastx.tab
+```
+
+Need to convert `sp|Q08013|SSRG_RAT` to get accession number out. 
+
+
+
+## Getting more information
+
+```{r schemat, echo = FALSE, out.width = "70%", fig.align = "center"}
+knitr::include_graphics("../img/uniprot.png")
+```
+
+https://www.uniprot.org/uniprotkb
+
+```{r api, echo = FALSE, out.width = "70%", fig.align = "center"}
+knitr::include_graphics("../img/uniprot-api.png")
+```
+
+```
+https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29
+```
+
+
+```bash
+curl -O -H "Accept: text/plain; format=tsv" "https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29"
 ```
 
