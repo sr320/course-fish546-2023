@@ -8,16 +8,19 @@ This course will teach core computing skills as well as project specific approac
 
 T 3:00-4:20
 
-Th 9:30-11:20 (Office hours)
+Th 9:30-11:20
+
+Location FSH 203
 
 While you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) googling code, and 3) installing software (in that order).
 
-
 ------------------------------------------------------------------------
 
-Course GitHub Organization: <https://github.com/course-fish546-2023>
+Course[^1] GitHub Organization: <https://github.com/course-fish546-2023>
 
----
+[^1]: https://github.com/sr320/course-fish546-2023
+
+------------------------------------------------------------------------
 
 ## Repo List
 
@@ -38,3 +41,17 @@ Reproducible and Robust Research with Open Source Tools By Vince Buffalo Publish
 -   [The Supplementary Material Repository for Bioinformatics Data Skills](https://github.com/vsbuffalo/bds-files)
 
 [\@uw](https://drive.google.com/a/uw.edu/file/d/0BwVK83sm6XQGWGNZUmlLckdZU1E/view?usp=sharing)
+
+------------------------------------------------------------------------
+
+## Grading
+
+Each week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week's reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the ["Topic" each week](schedule.qmd) before class (and before answering the question set.
+
+| *Assignments*                    | Grade percentage | *comment*                 |
+|----------------------------------|------------------|---------------------------|
+| Weekly Question Set              | 25%              | due Tuesday at 3:00pm     |
+| Weekly Class Assignment          | 35%              | due Friday at 5:00pm      |
+| Weekly Research Project Progress | 20%              | assessed Friday at 5:00pm |
+| Project Presentation             | 10%              | Week 5: slidedeck         |
+| Project Completion               | 10%              | Week 10: compendium       |

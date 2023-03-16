@@ -75,3 +75,7 @@ This course is designed for graduate students with core computational competence
 
     -   Good variable & column names
 :::
+
+## Software
+
+Please have Rstudio and Git installed. We will use other software but will install as part of class.

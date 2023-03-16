@@ -123,7 +123,7 @@
     "href": "index.html",
     "title": "Syllabus",
     "section": "",
-    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories.\nT 3:00-4:20\nTh 9:30-11:20 (Office hours)\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) googling code, and 3) installing software (in that order).\n\nCourse GitHub Organization: https://github.com/course-fish546-2023"
+    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories.\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) googling code, and 3) installing software (in that order).\n\nCourse1 GitHub Organization: https://github.com/course-fish546-2023"
   },
   {
     "objectID": "index.html#repo-list",
@@ -151,7 +151,7 @@
     "href": "lectures/00-before.html",
     "title": "Course Preparation",
     "section": "",
-    "text": "This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed.\n\nSubmit your github ID using this form.\nEstablish account on Roberts Lab (srlab) hyak account\nRead: Introduction to the Command Line for Genomics\nComplete this bash tutorial\nRead: Organize your data and code\nReview and become familiar with Markdown\nRequest account on Roberts Lab Rstudio server using the repo Issues.\n\n\n\nLearn (remember) proper project (repo) structure.\n\n\nFile StructureDataCode\n\n\n\nGood file structure\n\nAll project files in one main folder\nSubfolders (data, code, output)\n\nMain folder is R project\n\nSelf-contained project\nUse relative instead of absolute paths\n\nGood folder & file names\n\nDescriptive but not too long\nNo spaces\nConsistent format\n\n\n\n\n\nRaw data\n\nIn separate folder from cleaned data\nNever change!\nEach file should have metadata\n\n\n\n\n\nScripts with code\n\nRelative file paths to read in and create files\nLots of comments\nOrder: libraries, data, user-created functions, everything else\nGood variable & column names"
+    "text": "This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed."
   },
   {
     "objectID": "lectures/01-start-up.html",
@@ -166,5 +166,19 @@
     "title": "Bioinformatics - FISH 546",
     "section": "",
     "text": "Week\nDate\nTopic\nAssignment\nProject Status\nHW\n\n\n\n\nzero\nlast week\nPreparing for class\nbash\n\n\n\n\none\n\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\n\ntwo\n\nRNA-Seq\n\n\n\n\n\nthree\n\nFunctional Enrichment\n\n\n\n\n\nfour\n\nGenetic Variation\n\n\n\n\n\nfive\n\n\n\n\n\n\n\nsix\n\n\n\n\n\n\n\nseven\n\n\n\n\n\n\n\neight\n\n\n\n\n\n\n\nnine\n\n\n\n\n\n\n\nten"
+  },
+  {
+    "objectID": "index.html#grading",
+    "href": "index.html#grading",
+    "title": "Syllabus",
+    "section": "Grading",
+    "text": "Grading\nEach week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week’s reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the “Topic” each week before class (and before answering the question set.\n\n\n\n\n\n\n\n\nAssignments\nGrade percentage\ncomment\n\n\n\n\nWeekly Question Set\n25%\ndue Tuesday at 3:00pm\n\n\nWeekly Class Assignment\n35%\ndue Friday at 5:00pm\n\n\nWeekly Research Project Progress\n20%\nassessed Friday at 5:00pm\n\n\nProject Presentation\n10%\nWeek 5: slidedeck\n\n\nProject Completion\n10%\nWeek 10: compendium"
+  },
+  {
+    "objectID": "lectures/00-before.html#software",
+    "href": "lectures/00-before.html#software",
+    "title": "Course Preparation",
+    "section": "Software",
+    "text": "Software\nPlease have Rstudio and Git installed. We will use other software but will install as part of class."
   }
 ]
