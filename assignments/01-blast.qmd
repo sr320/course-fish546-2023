@@ -4,7 +4,7 @@ title: "NCBI Blast"
 format:
   html:
     code-fold: true
-    code-tools: false
+    code-tools: true
     code-copy: true
     highlight-style: github
 ---

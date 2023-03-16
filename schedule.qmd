@@ -1,76 +1,26 @@
 ---
 title: "Schedule"
+
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
 ---
 
-\*\*Please see \[Youtube for screencast tutorials\](https://www.youtube.com/playlist?list=PLCNCeK00xVPb2AisXOPWMCyNwnJCQr9kJ)\*\*
-
-| Week  | Date      | Topic                                         | Assignment                                                                                       | Project Status  | Homework |
-|----------|----------|-------------|-------------------------|----------|----------|
-| zero  | last week | [Preparing for class](lectures/00-before.qmd) | [bash](assignments/00-bash.qmd)                                                                  |                 |          |
-| one   |           | [Getting Started](lectures/01-start-up.qmd)   | [NCBI Blast](assignments/01-blast.qmd)                                                           | Establish Repos |          |
-| two   |           |                                               | Retrieving Bioinformatics Data 109-124, Unix Data tools 125-168                                  |                 |          |
-| three |           |                                               | Working with Sequence Data 339-354; Git for Scientists 67-83; Working with Remote Machines 57-66 |                 |          |
-| four  |           |                                               | Working with Alignment Data 355-383,                                                             |                 |          |
-| five  |           |                                               | Working with Range Data 329-338                                                                  |                 |          |
-| six   |           |                                               |                                                                                                  |                 |          |
-| seven |           |                                               |                                                                                                  |                 |          |
-| eight |           |                                               |                                                                                                  |                 |          |
-| nine  |           |                                               |                                                                                                  |                 |          |
-| ten   |           |                                               |                                                                                                  |                 |          |
-|       |           |                                               |                                                                                                  |                 |          |
-
-\| Week \<br\> (slides)\| Description \| Reading \| Quiz & PP \|
-
-\| \-\-\-\-\-- \| \-\-\-\-\-\-\-\-\-\-- \| \-\-\-\-\-- \| \-\-\-\-\-\-\-\-\-\-- \|
-
-\| \[zero\](http://sr320.github.io/course-fish546-2021/00-Notes/) \<br\> \| \[Biology\](https://github.com/sr320/course-fish546-2021/blob/master/00-Notes/BioInfo_Intro.pdf), Course Framework, \[Getting set-up\](https://github.com/sr320/course-fish546-2021/wiki#getting-started) \| Preface xiii-xxv; \<br\> How to Learn Bioinformatics 1-18; \<br\> Roberts and Gavery (2018) \[\_Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects\_\](http://eagle.fish.washington.edu/whale/pub/jsr37309_1r8rd0.pdf) \| \[Questions\](https://github.com/sr320/course-fish546-2021/issues?utf8=%E2%9C%93&q=is%3Aissue%20label%3Aquiz%20milestone%3A%22Week%200%22%20) \|
-
-\| \[one\](http://sr320.github.io/course-fish546-2021/01-Notes/) \| \[Bash\](https://github.com/sr320/course-fish546-2021/blob/master/01-Notes/Tutorials/Navigating-commandline.md), version control, Project Set-up \| Setting Up and Managing a Bioinformatics Project 21-35; \<br\> Remedial Unix Shell 37-54 \| \[Questions\](https://github.com/sr320/course-fish546-2021/issues?utf8=%E2%9C%93&q=is%3Aissue%20label%3Aquiz%20milestone%3A%22Week%201%22%20)
-
-\| \[two\](http://sr320.github.io/course-fish546-2021/02-Notes/) \| \[Jupyter\](https://github.com/sr320/course-fish546-2021/wiki#jupyter), \[Annotation\](https://github.com/sr320/fun-gen/blob/master/Jupyter/03-Local-Blast.ipynb) \| Retrieving Bioinformatics Data 109-124, Unix Data tools 125-168 \| \[Questions\](https://github.com/sr320/course-fish546-2021/issues?q=is%3Aissue+milestone%3A%22Week+2%22+)\|
-
-\| \[three\](http://sr320.github.io/course-fish546-2021/03-Notes/) \| Projects, Git \| Working with Sequence Data 339-354; Git for Scientists 67-83; Working with Remote Machines 57-66 \| \[Questions\](https://github.com/sr320/course-fish546-2021/milestone/4) \|
-
-\| \[four\](http://sr320.github.io/course-fish546-2021/04-Notes/) \| \[Mox\](https://robertslab.github.io/resources/mox_Adding-a-User/), \[FastQC\](https://youtu.be/5LYnq84Pjzk), RNA-Seq \| Working with Alignment Data 355-383, \| \[Questions\](https://github.com/sr320/course-fish546-2021/milestone/5) \|
-
-\| five \| Just Projects \| \| \[Questions\](https://github.com/sr320/course-fish546-2021/issues/69) \|
-
-\| \[six\](http://sr320.github.io/course-fish546-2021/06-Notes/) \| R and find_xargs \| Bioinformatics Shell Scripting, Writing Pipelines 395-423 \|\[Questions\](https://github.com/sr320/course-fish546-2021/milestone/7) \|
-
-\| \[seven\](http://sr320.github.io/course-fish546-2021/07-Notes/) \| Genome Browser \| Working with Alignment Data 355-383, Working with Range Data 329-338 \|\[Questions\](https://github.com/sr320/course-fish546-2021/milestone/8) \|
-
-\| eight \| Very fun stuff \| 💻 \| \[Questions\](https://github.com/sr320/course-fish546-2021/milestone/9) \|
-
-\| nine \| \| Presentations \| \|
-
-\## Textbook
-
-\> \[Bioinformatics Data Skills\](https://www.amazon.com/Bioinformatics-Data-Skills-Reproducible-Research/dp/1449367372/):
-
-\> Reproducible and Robust Research with Open Source Tools
-
-\> By Vince Buffalo
-
-\> Publisher: O'Reilly Media
-
-\> Final Release Date: July 2015
-
-\> Pages: 538
-
-\* \[The Supplementary Material Repository for Bioinformatics Data Skills\](https://github.com/vsbuffalo/bds-files)
-
-\[\@uw\](https://drive.google.com/a/uw.edu/file/d/0BwVK83sm6XQGWGNZUmlLckdZU1E/view?usp=sharing)
-
-\## Grading
-
-\- \[Quizzes\](https://github.com/sr320/course-fish546-2021/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3Aquiz+) (10✖️3) = 30 \*\*DUE Friday Midnight\*\* \_Weekly\_
-
-\- \[Project Progress\](https://github.com/sr320/course-fish546-2021/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3Aproject-progress+) (10✖️3) = 30 \*\*DUE Friday Midnight\*\* \_Weekly\_
-
-\- Draft Product (Week 5) = 15
-
-\- Final Product (Week 10) = 25
-
-➡️ \[\_conversion\_\](https://raw.githubusercontent.com/sr320/LabDocs/master/GradeScale.txt)
-
-\-\--
+| Week  | Date      | Topic                                         | Assignment                             | Project Status  | HW  |
+|----------|----------|-------------|----------------|----------|----------|
+| zero  | last week | [Preparing for class](lectures/00-before.qmd) | [bash](assignments/00-bash.qmd)        |                 |     |
+| one   |           | [Getting Started](lectures/01-start-up.qmd)   | [NCBI Blast](assignments/01-blast.qmd) | Establish Repos |     |
+| two   |           | RNA-Seq                                       |                                        |                 |     |
+| three |           | Functional Enrichment                         |                                        |                 |     |
+| four  |           | Genetic Variation                             |                                        |                 |     |
+| five  |           |                                               |                                        |                 |     |
+| six   |           |                                               |                                        |                 |     |
+| seven |           |                                               |                                        |                 |     |
+| eight |           |                                               |                                        |                 |     |
+| nine  |           |                                               |                                        |                 |     |
+| ten   |           |                                               |                                        |                 |     |
+|       |           |                                               |                                        |                 |     |
