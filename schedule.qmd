@@ -8,6 +8,7 @@ format:
     code-tools: FALSE
     code-copy: true
     highlight-style: github
+    code-overflow: wrap
 ---
 
 | Week  | Date      | Topic                                         | Assignment                             | Project Status  | HW  |

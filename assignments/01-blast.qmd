@@ -7,6 +7,7 @@ format:
     code-tools: true
     code-copy: true
     highlight-style: github
+    code-overflow: wrap
 ---
 
 ## Downloading software
