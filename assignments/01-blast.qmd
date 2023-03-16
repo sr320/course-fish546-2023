@@ -8,6 +8,7 @@ format:
     code-copy: true
     highlight-style: github
     code-overflow: wrap
+    
 ---
 
 ## Downloading software
@@ -22,7 +23,7 @@ It is best to decide on central location on computer where software will be down
 
 https://github.com/RobertsLab/code/blob/master/09-blast.ipynb
 
-``` bash
+```{.bash .code-overflow-wrap}
 cd /Applications/bioinfo/
 curl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz
 tar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz
@@ -42,7 +43,7 @@ see <https://www.uniprot.org/downloads>
 
 https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 
-``` bash
+```bash
 cd ../data
 curl -O https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 mv uniprot_sprot.fasta.gz uniprot_sprot_r2023_01.fasta.gz
