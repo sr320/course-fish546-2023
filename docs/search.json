@@ -4,7 +4,7 @@
     "href": "assignments/01-blast.html",
     "title": "NCBI Blast",
     "section": "",
-    "text": "NCBI Blast Software is at\nhttps://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/\n\n\n\n\n\n\nTip\n\n\n\nIt is best to decide on central location on computer where software will be downloaded.\n\n\nhttps://github.com/RobertsLab/code/blob/master/09-blast.ipynb\ncd /Applications/bioinfo/\ncurl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz\ntar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz\nls /Applications/bioinfo/\n\n/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h\n\nUSAGE\n  blastx [-h] [-help] [-import_search_strategy filename]\n    [-export_search_strategy filename] [-task task_name] [-db database_name]\n    [-dbsize num_letters] [-gilist filename] [-seqidlist filename]\n    [-negative_gilist filename] [-negative_seqidlist filename]\n    [-taxids taxids] [-negative_taxids taxids] [-taxidlist filename]\n    [-negative_taxidlist filename] [-ipglist filename]\n    [-negative_ipglist filename] [-entrez_query entrez_query]\n    [-db_soft_mask filtering_algorithm] [-db_hard_mask filtering_algorithm]\n    [-subject subject_input_file] [-subject_loc range] [-query input_file]\n    [-out output_file] [-evalue evalue] [-word_size int_value]\n    [-gapopen open_penalty] [-gapextend extend_penalty]\n    [-qcov_hsp_perc float_value] [-max_hsps int_value]\n    [-xdrop_ungap float_value] [-xdrop_gap float_value]\n    [-xdrop_gap_final float_value] [-searchsp int_value]\n    [-sum_stats bool_value] [-max_intron_length length] [-seg SEG_options]\n    [-soft_masking soft_masking] [-matrix matrix_name]\n    [-threshold float_value] [-culling_limit int_value]\n    [-best_hit_overhang float_value] [-best_hit_score_edge float_value]\n    [-subject_besthit] [-window_size int_value] [-ungapped] [-lcase_masking]\n    [-query_loc range] [-strand strand] [-parse_deflines]\n    [-query_gencode int_value] [-outfmt format] [-show_gis]\n    [-num_descriptions int_value] [-num_alignments int_value]\n    [-line_length line_length] [-html] [-sorthits sort_hits]\n    [-sorthsps sort_hsps] [-max_target_seqs num_sequences]\n    [-num_threads int_value] [-mt_mode int_value] [-remote]\n    [-comp_based_stats compo] [-use_sw_tback] [-version]\n\nDESCRIPTION\n   Translated Query-Protein Subject BLAST 2.13.0+\n\nUse '-help' to print detailed descriptions of command line arguments"
+    "text": "For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.\nIn your code directory create a file.\n01-blast.Rmd"
   },
   {
     "objectID": "assignments/01-blast.html#make-blast-database",
@@ -123,21 +123,21 @@
     "href": "index.html",
     "title": "Syllabus",
     "section": "",
-    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories.\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) googling code, and 3) installing software (in that order).\n\nCourse1 GitHub Organization: https://github.com/course-fish546-2023"
+    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
   },
   {
     "objectID": "index.html#repo-list",
     "href": "index.html#repo-list",
     "title": "Syllabus",
     "section": "Repo List",
-    "text": "Repo List\n\n\n\nName or UserID\ncourse repo\nproject repo"
+    "text": "Repo List\n\n\n\nName or UserID\ncoursework repo\nproject repo"
   },
   {
     "objectID": "index.html#textbook",
     "href": "index.html#textbook",
     "title": "Syllabus",
-    "section": "Textbook:",
-    "text": "Textbook:\nBioinformatics Data Skills:\nReproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O’Reilly Media Final Release Date: July 2015 Pages: 538\n\nThe Supplementary Material Repository for Bioinformatics Data Skills\n\n@uw"
+    "section": "Textbook",
+    "text": "Textbook\nBioinformatics Data Skills:\nReproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O’Reilly Media Final Release Date: July 2015 Pages: 538\n\nThe Supplementary Material Repository for Bioinformatics Data Skills\n\n@uw"
   },
   {
     "objectID": "about.html",
@@ -180,5 +180,26 @@
     "title": "Course Preparation",
     "section": "Software",
     "text": "Software\nPlease have Rstudio and Git installed. We will use other software but will install as part of class."
+  },
+  {
+    "objectID": "assignments/01-blast.html#downloading-software",
+    "href": "assignments/01-blast.html#downloading-software",
+    "title": "NCBI Blast",
+    "section": "Downloading software",
+    "text": "Downloading software\nNCBI Blast Software is at\nhttps://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/\n\n\n\n\n\n\nTip\n\n\n\nIt is best to decide on central location on computer where software will be downloaded.\n\n\nhttps://github.com/RobertsLab/code/blob/master/09-blast.ipynb\ncd /Applications/bioinfo/\ncurl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz\ntar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz\nls /Applications/bioinfo/\n\n/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h\n\nUSAGE\n  blastx [-h] [-help] [-import_search_strategy filename]\n    [-export_search_strategy filename] [-task task_name] [-db database_name]\n    [-dbsize num_letters] [-gilist filename] [-seqidlist filename]\n    [-negative_gilist filename] [-negative_seqidlist filename]\n    [-taxids taxids] [-negative_taxids taxids] [-taxidlist filename]\n    [-negative_taxidlist filename] [-ipglist filename]\n    [-negative_ipglist filename] [-entrez_query entrez_query]\n    [-db_soft_mask filtering_algorithm] [-db_hard_mask filtering_algorithm]\n    [-subject subject_input_file] [-subject_loc range] [-query input_file]\n    [-out output_file] [-evalue evalue] [-word_size int_value]\n    [-gapopen open_penalty] [-gapextend extend_penalty]\n    [-qcov_hsp_perc float_value] [-max_hsps int_value]\n    [-xdrop_ungap float_value] [-xdrop_gap float_value]\n    [-xdrop_gap_final float_value] [-searchsp int_value]\n    [-sum_stats bool_value] [-max_intron_length length] [-seg SEG_options]\n    [-soft_masking soft_masking] [-matrix matrix_name]\n    [-threshold float_value] [-culling_limit int_value]\n    [-best_hit_overhang float_value] [-best_hit_score_edge float_value]\n    [-subject_besthit] [-window_size int_value] [-ungapped] [-lcase_masking]\n    [-query_loc range] [-strand strand] [-parse_deflines]\n    [-query_gencode int_value] [-outfmt format] [-show_gis]\n    [-num_descriptions int_value] [-num_alignments int_value]\n    [-line_length line_length] [-html] [-sorthits sort_hits]\n    [-sorthsps sort_hsps] [-max_target_seqs num_sequences]\n    [-num_threads int_value] [-mt_mode int_value] [-remote]\n    [-comp_based_stats compo] [-use_sw_tback] [-version]\n\nDESCRIPTION\n   Translated Query-Protein Subject BLAST 2.13.0+\n\nUse '-help' to print detailed descriptions of command line arguments"
+  },
+  {
+    "objectID": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
+    "href": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
+    "title": "NCBI Blast",
+    "section": "Joining blast table with annotation table",
+    "text": "Joining blast table with annotation table"
+  },
+  {
+    "objectID": "index.html#format",
+    "href": "index.html#format",
+    "title": "Syllabus",
+    "section": "Format",
+    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.\n\nCourse1 GitHub Organization: https://github.com/course-fish546-2023"
   }
 ]

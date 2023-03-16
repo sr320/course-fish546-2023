@@ -1,5 +1,6 @@
 ---
 title: "NCBI Blast"
+subtitle: "Taking a set of unknown sequence files and annotating them"
 
 format:
   html:
@@ -10,6 +11,17 @@ format:
     code-overflow: wrap
     
 ---
+
+For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.
+
+In your code directory create a file.
+
+`01-blast.Rmd`
+
+::: callout-tip
+Rmarkdown is a good option as you can use markdown, add pictures and more!
+:::
+
 
 ## Downloading software
 
@@ -117,3 +129,5 @@ https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Crev
 curl -O -H "Accept: text/plain; format=tsv" "https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29"
 ```
 
+
+## Joining blast table with annotation table 

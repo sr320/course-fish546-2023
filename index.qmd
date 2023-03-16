@@ -4,7 +4,7 @@ title: "Syllabus"
 
 ## About
 
-This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The course primary course platform will be centered around GitHub, with each student creating their own repositories.
+This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.
 
 T 3:00-4:20
 
@@ -12,7 +12,11 @@ Th 9:30-11:20
 
 Location FSH 203
 
-While you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) googling code, and 3) installing software (in that order).
+While you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order).
+
+## Format
+
+This class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week's assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.
 
 ------------------------------------------------------------------------
 
@@ -24,15 +28,15 @@ Course[^1] GitHub Organization: <https://github.com/course-fish546-2023>
 
 ## Repo List
 
-| Name or UserID | course repo | project repo |
-|----------------|-------------|--------------|
-|                |             |              |
-|                |             |              |
-|                |             |              |
+| Name or UserID | coursework repo | project repo |
+|----------------|-----------------|--------------|
+|                |                 |              |
+|                |                 |              |
+|                |                 |              |
 
 ------------------------------------------------------------------------
 
-## Textbook:
+## Textbook
 
 [Bioinformatics Data Skills](https://www.amazon.com/Bioinformatics-Data-Skills-Reproducible-Research/dp/1449367372/):
 
