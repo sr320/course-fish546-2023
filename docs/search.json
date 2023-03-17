@@ -7,6 +7,13 @@
     "text": "For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.\nIn your code directory create a file.\n01-blast.Rmd"
   },
   {
+    "objectID": "assignments/01-blast.html#downloading-software",
+    "href": "assignments/01-blast.html#downloading-software",
+    "title": "NCBI Blast",
+    "section": "Downloading software",
+    "text": "Downloading software\nNCBI Blast Software is at\nhttps://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/\n\n\n\n\n\n\nTip\n\n\n\nIt is best to decide on central location on computer where software will be downloaded.\n\n\nhttps://github.com/RobertsLab/code/blob/master/09-blast.ipynb\ncd /Applications/bioinfo/\ncurl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz\ntar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz\nls /Applications/bioinfo/\n\n/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h\n\nUSAGE\n  blastx [-h] [-help] [-import_search_strategy filename]\n    [-export_search_strategy filename] [-task task_name] [-db database_name]\n    [-dbsize num_letters] [-gilist filename] [-seqidlist filename]\n    [-negative_gilist filename] [-negative_seqidlist filename]\n    [-taxids taxids] [-negative_taxids taxids] [-taxidlist filename]\n    [-negative_taxidlist filename] [-ipglist filename]\n    [-negative_ipglist filename] [-entrez_query entrez_query]\n    [-db_soft_mask filtering_algorithm] [-db_hard_mask filtering_algorithm]\n    [-subject subject_input_file] [-subject_loc range] [-query input_file]\n    [-out output_file] [-evalue evalue] [-word_size int_value]\n    [-gapopen open_penalty] [-gapextend extend_penalty]\n    [-qcov_hsp_perc float_value] [-max_hsps int_value]\n    [-xdrop_ungap float_value] [-xdrop_gap float_value]\n    [-xdrop_gap_final float_value] [-searchsp int_value]\n    [-sum_stats bool_value] [-max_intron_length length] [-seg SEG_options]\n    [-soft_masking soft_masking] [-matrix matrix_name]\n    [-threshold float_value] [-culling_limit int_value]\n    [-best_hit_overhang float_value] [-best_hit_score_edge float_value]\n    [-subject_besthit] [-window_size int_value] [-ungapped] [-lcase_masking]\n    [-query_loc range] [-strand strand] [-parse_deflines]\n    [-query_gencode int_value] [-outfmt format] [-show_gis]\n    [-num_descriptions int_value] [-num_alignments int_value]\n    [-line_length line_length] [-html] [-sorthits sort_hits]\n    [-sorthsps sort_hsps] [-max_target_seqs num_sequences]\n    [-num_threads int_value] [-mt_mode int_value] [-remote]\n    [-comp_based_stats compo] [-use_sw_tback] [-version]\n\nDESCRIPTION\n   Translated Query-Protein Subject BLAST 2.13.0+\n\nUse '-help' to print detailed descriptions of command line arguments"
+  },
+  {
     "objectID": "assignments/01-blast.html#make-blast-database",
     "href": "assignments/01-blast.html#make-blast-database",
     "title": "NCBI Blast",
@@ -33,6 +40,13 @@
     "title": "NCBI Blast",
     "section": "Getting more information",
     "text": "Getting more information\n\n\n\n\n\n\n\n\n\nhttps://www.uniprot.org/uniprotkb\n\n\n\n\n\n\n\n\n\nhttps://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29\ncurl -O -H \"Accept: text/plain; format=tsv\" \"https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29\""
+  },
+  {
+    "objectID": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
+    "href": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
+    "title": "NCBI Blast",
+    "section": "Joining blast table with annotation table",
+    "text": "Joining blast table with annotation table"
   },
   {
     "objectID": "assignments/00-bash.html",
@@ -121,23 +135,37 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Syllabus",
+    "title": "Bioinformatics for Environmental Sciences",
     "section": "",
     "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
   },
   {
+    "objectID": "index.html#format",
+    "href": "index.html#format",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Format",
+    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.\n\nCourse1 GitHub Organization: https://github.com/course-fish546-2023"
+  },
+  {
     "objectID": "index.html#repo-list",
     "href": "index.html#repo-list",
-    "title": "Syllabus",
+    "title": "Bioinformatics for Environmental Sciences",
     "section": "Repo List",
     "text": "Repo List\n\n\n\nName or UserID\ncoursework repo\nproject repo"
   },
   {
     "objectID": "index.html#textbook",
     "href": "index.html#textbook",
-    "title": "Syllabus",
+    "title": "Bioinformatics for Environmental Sciences",
     "section": "Textbook",
     "text": "Textbook\nBioinformatics Data Skills:\nReproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O’Reilly Media Final Release Date: July 2015 Pages: 538\n\nThe Supplementary Material Repository for Bioinformatics Data Skills\n\n@uw"
+  },
+  {
+    "objectID": "index.html#grading",
+    "href": "index.html#grading",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Grading",
+    "text": "Grading\nEach week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week’s reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the “Topic” each week before class (and before answering the question set.\n\n\n\n\n\n\n\n\nAssignments\nGrade percentage\ncomment\n\n\n\n\nWeekly Question Set\n25%\ndue Tuesday at 3:00pm\n\n\nWeekly Class Assignment\n35%\ndue Friday at 5:00pm\n\n\nWeekly Research Project Progress\n20%\nassessed Friday at 5:00pm\n\n\nProject Presentation\n10%\nWeek 5: slidedeck\n\n\nProject Completion\n10%\nWeek 10: compendium"
   },
   {
     "objectID": "about.html",
@@ -154,6 +182,13 @@
     "text": "This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed."
   },
   {
+    "objectID": "lectures/00-before.html#software",
+    "href": "lectures/00-before.html#software",
+    "title": "Course Preparation",
+    "section": "Software",
+    "text": "Software\nPlease have Rstudio and Git installed. We will use other software but will install as part of class."
+  },
+  {
     "objectID": "lectures/01-start-up.html",
     "href": "lectures/01-start-up.html",
     "title": "Getting Started",
@@ -166,40 +201,5 @@
     "title": "Bioinformatics - FISH 546",
     "section": "",
     "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-Seq\n\n\n\n\napr 10\nweek 03\nFunctional Enrichment\n\n\n\n\napr 17\nweek 04\nGenetic Variation\n\n\n\n\napr 24\nweek 05\n\n\nSlides\n\n\nmay 01\nweek 06\nGenomic Ranges\n\n\n\n\nmay 08\nweek 07\nDNA methylation\n\n\n\n\nmay 15\nweek 08\n\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
-  },
-  {
-    "objectID": "index.html#grading",
-    "href": "index.html#grading",
-    "title": "Syllabus",
-    "section": "Grading",
-    "text": "Grading\nEach week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week’s reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the “Topic” each week before class (and before answering the question set.\n\n\n\n\n\n\n\n\nAssignments\nGrade percentage\ncomment\n\n\n\n\nWeekly Question Set\n25%\ndue Tuesday at 3:00pm\n\n\nWeekly Class Assignment\n35%\ndue Friday at 5:00pm\n\n\nWeekly Research Project Progress\n20%\nassessed Friday at 5:00pm\n\n\nProject Presentation\n10%\nWeek 5: slidedeck\n\n\nProject Completion\n10%\nWeek 10: compendium"
-  },
-  {
-    "objectID": "lectures/00-before.html#software",
-    "href": "lectures/00-before.html#software",
-    "title": "Course Preparation",
-    "section": "Software",
-    "text": "Software\nPlease have Rstudio and Git installed. We will use other software but will install as part of class."
-  },
-  {
-    "objectID": "assignments/01-blast.html#downloading-software",
-    "href": "assignments/01-blast.html#downloading-software",
-    "title": "NCBI Blast",
-    "section": "Downloading software",
-    "text": "Downloading software\nNCBI Blast Software is at\nhttps://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/\n\n\n\n\n\n\nTip\n\n\n\nIt is best to decide on central location on computer where software will be downloaded.\n\n\nhttps://github.com/RobertsLab/code/blob/master/09-blast.ipynb\ncd /Applications/bioinfo/\ncurl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz\ntar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz\nls /Applications/bioinfo/\n\n/Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h\n\nUSAGE\n  blastx [-h] [-help] [-import_search_strategy filename]\n    [-export_search_strategy filename] [-task task_name] [-db database_name]\n    [-dbsize num_letters] [-gilist filename] [-seqidlist filename]\n    [-negative_gilist filename] [-negative_seqidlist filename]\n    [-taxids taxids] [-negative_taxids taxids] [-taxidlist filename]\n    [-negative_taxidlist filename] [-ipglist filename]\n    [-negative_ipglist filename] [-entrez_query entrez_query]\n    [-db_soft_mask filtering_algorithm] [-db_hard_mask filtering_algorithm]\n    [-subject subject_input_file] [-subject_loc range] [-query input_file]\n    [-out output_file] [-evalue evalue] [-word_size int_value]\n    [-gapopen open_penalty] [-gapextend extend_penalty]\n    [-qcov_hsp_perc float_value] [-max_hsps int_value]\n    [-xdrop_ungap float_value] [-xdrop_gap float_value]\n    [-xdrop_gap_final float_value] [-searchsp int_value]\n    [-sum_stats bool_value] [-max_intron_length length] [-seg SEG_options]\n    [-soft_masking soft_masking] [-matrix matrix_name]\n    [-threshold float_value] [-culling_limit int_value]\n    [-best_hit_overhang float_value] [-best_hit_score_edge float_value]\n    [-subject_besthit] [-window_size int_value] [-ungapped] [-lcase_masking]\n    [-query_loc range] [-strand strand] [-parse_deflines]\n    [-query_gencode int_value] [-outfmt format] [-show_gis]\n    [-num_descriptions int_value] [-num_alignments int_value]\n    [-line_length line_length] [-html] [-sorthits sort_hits]\n    [-sorthsps sort_hsps] [-max_target_seqs num_sequences]\n    [-num_threads int_value] [-mt_mode int_value] [-remote]\n    [-comp_based_stats compo] [-use_sw_tback] [-version]\n\nDESCRIPTION\n   Translated Query-Protein Subject BLAST 2.13.0+\n\nUse '-help' to print detailed descriptions of command line arguments"
-  },
-  {
-    "objectID": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
-    "href": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
-    "title": "NCBI Blast",
-    "section": "Joining blast table with annotation table",
-    "text": "Joining blast table with annotation table"
-  },
-  {
-    "objectID": "index.html#format",
-    "href": "index.html#format",
-    "title": "Syllabus",
-    "section": "Format",
-    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.\n\nCourse1 GitHub Organization: https://github.com/course-fish546-2023"
   }
 ]
