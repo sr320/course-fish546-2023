@@ -16,6 +16,6 @@ c)  **This class is strongly rooted in an independent project related to genomic
 
 
 
-c)  **What are two things you found most useful from the reading?**
+d)  **What are two things you found most useful from the reading?**
 
 

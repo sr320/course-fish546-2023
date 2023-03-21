@@ -1,0 +1,25 @@
+---
+title: "RNAs-seq"
+subtitle: "Counting on expression"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Reading
+
+- [Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects](https://d.pr/f/ngmWkw)
+
+- [Fitting Multifactorial Models of Differential Expression](https://marineomics.github.io/FUN_01_DGE_comparison_v2.html)
+
+
+# Objectives
+Learn how to take raw RNA sequence data and perform differential gene expression analysis.
+
+
+# RNA-seq

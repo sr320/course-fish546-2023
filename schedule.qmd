@@ -15,7 +15,7 @@ format:
 |------------|------------|--------------------|-----------------|------------|
 | last week |                                | [Preparing for class](lectures/00-before.qmd) | [bash](assignments/00-bash.qmd)        |                 |
 | mar 27    | [week 01](questions/week01.md) | [Getting Started](lectures/01-start-up.qmd)   | [NCBI Blast](assignments/01-blast.qmd) | Establish Repos |
-| apr 03    | week 02                        | RNA-Seq                                       |                                        |                 |
+| apr 03    | week 02                        | [RNA-Seq](lectures/rna-seq.qmd)               |                                        |                 |
 | apr 10    | week 03                        | Functional Enrichment                         |                                        |                 |
 | apr 17    | week 04                        | Genetic Variation                             |                                        |                 |
 | apr 24    | week 05                        |                                               |                                        | Slides          |
