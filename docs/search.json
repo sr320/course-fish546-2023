@@ -137,14 +137,21 @@
     "href": "index.html",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "",
-    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
+    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\n\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\n\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
   },
   {
     "objectID": "index.html#format",
     "href": "index.html#format",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "Format",
-    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.\n\nCourse1 GitHub Organization: https://github.com/course-fish546-2023"
+    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort."
+  },
+  {
+    "objectID": "index.html#links",
+    "href": "index.html#links",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Links",
+    "text": "Links\nJupyterHub Instance: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a\nCourse1 GitHub Organization: https://github.com/course-fish546-2023"
   },
   {
     "objectID": "index.html#repo-list",
@@ -166,6 +173,20 @@
     "title": "Bioinformatics for Environmental Sciences",
     "section": "Grading",
     "text": "Grading\nEach week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week’s reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the “Topic” each week before class (and before answering the question set.\n\n\n\n\n\n\n\n\nAssignments\nGrade percentage\ncomment\n\n\n\n\nWeekly Question Set\n25%\ndue Tuesday at 3:00pm\n\n\nWeekly Class Assignment\n35%\ndue Friday at 5:00pm\n\n\nWeekly Research Project Progress\n20%\nassessed Friday at 5:00pm\n\n\nProject Presentation\n10%\nWeek 5: slidedeck\n\n\nProject Completion\n10%\nWeek 10: compendium"
+  },
+  {
+    "objectID": "index.html#submitting-assignments",
+    "href": "index.html#submitting-assignments",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Submitting Assignments",
+    "text": "Submitting Assignments\n\nWeekly Question Set\nEach week there will be a markdown file linked in the schedule with a set of questions. You will add this to your course repo in a homework directory using the same filename. The only difference is you will include your answer to your questions.\n\n\nWeekly Class Assignment\nThis will completed in your course repo in a logical location. Use numeric prefix for file and directory names. The only thing you will need to be sure of is that all of your commits are pushed by Friday at 5:00pm.\n\n\nWeekly Research Project Progress\nThis will be assessed as a measure of progress from week to week. A primary means of assessment will be your response to issues, as well as accomplishment of self-assigned goals. In addition it will be expected that you use best principles as covered in the course."
+  },
+  {
+    "objectID": "index.html#useful-resources",
+    "href": "index.html#useful-resources",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials."
   },
   {
     "objectID": "about.html",

@@ -12,7 +12,7 @@ format:
 ---
 
 | Date      | Questions | Topic                                         | Assignment                             | Project Status  |
-|----------|------------|---------------|----------------|------------|
+|-----------|-----------|-----------------------------------------------|----------------------------------------|-----------------|
 | last week |           | [Preparing for class](lectures/00-before.qmd) | [bash](assignments/00-bash.qmd)        |                 |
 | mar 27    | week 01   | [Getting Started](lectures/01-start-up.qmd)   | [NCBI Blast](assignments/01-blast.qmd) | Establish Repos |
 | apr 03    | week 02   | RNA-Seq                                       |                                        |                 |

@@ -24,9 +24,8 @@ This course is designed for graduate students with core computational competence
 
 6.  Request account on Roberts Lab RStudio server using [this form.](https://forms.gle/v3ZaFyUabf9vYAQm7)
 
-```{=html}
 <!-- -->
-```
+
 7.  Learn (remember) proper project (repo) structure.
 
 ::: panel-tabset
