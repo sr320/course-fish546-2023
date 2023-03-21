@@ -25,11 +25,12 @@ This class is driven in part by students needs and will be somewhat flexible in 
 
 ## Links
 
-JupyterHub Instance: <https://jupyter.rttl.uw.edu/2023-spring-fish-546-a>
+JupyterHub[^1] Instance: <https://jupyter.rttl.uw.edu/2023-spring-fish-546-a>
 
-Course[^1] GitHub Organization: <https://github.com/course-fish546-2023>
+Course[^2] GitHub Organization: <https://github.com/course-fish546-2023>
 
-[^1]: https://github.com/sr320/course-fish546-2023
+[^1]: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a/hub/admin
+[^2]: https://github.com/sr320/course-fish546-2023
 
 ## Repo List
 
