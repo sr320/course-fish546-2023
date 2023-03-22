@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -109,7 +172,16 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#reading" id="toc-reading" class="nav-link active" data-scroll-target="#reading">Reading</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#sequence" id="toc-sequence" class="nav-link" data-scroll-target="#sequence">Sequence</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#sequence-file-format" id="toc-sequence-file-format" class="nav-link" data-scroll-target="#sequence-file-format">Sequence file format</a>
+  <ul class="collapse">
+  <li><a href="#quality-control" id="toc-quality-control" class="nav-link" data-scroll-target="#quality-control">Quality Control</a></li>
+  </ul></li>
+  <li><a href="#transcript-quantification-pseudo---alignment" id="toc-transcript-quantification-pseudo---alignment" class="nav-link" data-scroll-target="#transcript-quantification-pseudo---alignment">Transcript Quantification (Pseudo - alignment)</a></li>
+  <li><a href="#transcript-quantification-alignment" id="toc-transcript-quantification-alignment" class="nav-link" data-scroll-target="#transcript-quantification-alignment">Transcript Quantification (Alignment)</a></li>
+  <li><a href="#differential-expression-analysis-kallisto" id="toc-differential-expression-analysis-kallisto" class="nav-link" data-scroll-target="#differential-expression-analysis-kallisto">Differential Expression Analysis (Kallisto)</a></li>
+  <li><a href="#differential-expression-analysis-hisat" id="toc-differential-expression-analysis-hisat" class="nav-link" data-scroll-target="#differential-expression-analysis-hisat">Differential Expression Analysis (Hisat)</a></li>
+  <li><a href="#deseq2" id="toc-deseq2" class="nav-link" data-scroll-target="#deseq2">DESeq2</a></li>
   </ul>
 </nav>
     </div>
@@ -145,8 +217,13 @@ ul.task-list li input[type="checkbox"] {
 <h1>Objectives</h1>
 <p>Learn how to take raw RNA sequence data and perform differential gene expression analysis.</p>
 </section>
-<section id="sequence" class="level1">
-<h1>Sequence</h1>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>RNA sequencing (RNA-seq) is a powerful technology used to analyze gene expression levels across different conditions or tissues. The raw data generated from RNA-seq experiments is typically stored in fastq files, which contain millions of short sequencing reads that need to be preprocessed before performing differential gene expression analysis. In this tutorial, we will use Kallisto, a fast and accurate transcript quantification tool, to analyze RNA-seq data and identify differentially expressed genes.</p>
+</section>
+<section id="sequence-file-format" class="level1">
+<h1>Sequence file format</h1>
+<p>One common sequence product is a large amount of “short-reads”. This often refers to single-end or paired-end reads with a link of ~ 150bp. When data comes off of a sequencer it is often in FASTQ format. This file format contains both sequence and quality informaiton.</p>
 <p>A FASTQ file has four line-separated fields per sequence:</p>
 <ul>
 <li>Field 1 begins with a ‘@’ character and is followed by a sequence identifier and an optional description (like a FASTA title line).</li>
@@ -156,7 +233,148 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>https://en.wikipedia.org/wiki/FASTQ_format</p>
 <p>See also page 341 of the textbook.</p>
-<div class="quarto-video"><iframe src="https://www.youtube.com/embed/5LYnq84Pjzk" width="400" height="300" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="quality-control" class="level2">
+<h2 class="anchored" data-anchor-id="quality-control">Quality Control</h2>
+<p>The first step in analyzing RNA-seq data is to perform quality control checks on the raw fastq files. This step is crucial to ensure that the data is of high quality and can be accurately quantified. One popular tool for quality control is FastQC, which generates various quality metrics such as per-base sequence quality, adapter contamination, and GC content.</p>
+<p>To perform quality control using FastQC, run the following command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> input.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will generate a HTML report that can be viewed in a web browser.</p>
+<p>There are a few programs </p><div class="quarto-video"><iframe src="https://www.youtube.com/embed/5LYnq84Pjzk" width="400" height="300" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+</section>
+</section>
+<section id="transcript-quantification-pseudo---alignment" class="level1">
+<h1>Transcript Quantification (Pseudo - alignment)</h1>
+<p>After quality control, the next step is to quantify the transcript expression levels using Kallisto. Kallisto uses a pseudoalignment approach, which is much faster than traditional alignment-based methods and does not require a reference genome. Kallisto generates transcript-level abundance estimates that can be used for differential expression analysis.</p>
+<p>To quantify the transcript expression levels using Kallisto, run the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span> quant <span class="at">-i</span> index_file <span class="at">-o</span> output_folder input.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Replace index_file with the path to the Kallisto index file for the reference transcriptome, and replace output_folder with the name of the output folder.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Case Study
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://github.com/RobertsLab/paper-tanner-crab/blob/master/notebooks/kallisto-4libraries.ipynb" class="uri">https://github.com/RobertsLab/paper-tanner-crab/blob/master/notebooks/kallisto-4libraries.ipynb</a></p>
+</div>
+</div>
+</section>
+<section id="transcript-quantification-alignment" class="level1">
+<h1>Transcript Quantification (Alignment)</h1>
+<p><a href="https://daehwankimlab.github.io/hisat2/manual/">HiSat2</a></p>
+<p>Benefits to using <a href="https://daehwankimlab.github.io/hisat2/"><code>HISAT2</code></a> for alignments:</p>
+<ul>
+<li><p>Fast.</p></li>
+<li><p>Can detect exon/intron junctions (i.e.&nbsp;alternative isoform splice sites).</p></li>
+</ul>
+<p>For RNA-Seq, <a href="https://daehwankimlab.github.io/hisat2/"><code>HISAT2</code></a> alignments are frequently followed up using <a href="https://ccb.jhu.edu/software/stringtie/"><code>StringTie</code></a> for transcript assembly and quantitation of splice variants.</p>
+<p>General usage:</p>
+<ol type="1">
+<li><p>Build a <a href="https://daehwankimlab.github.io/hisat2/"><code>HISAT2</code></a> reference sequence index:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Hisat2 exons tab file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${programs_array</span><span class="op">[</span>hisat2_exons<span class="op">]</span><span class="va">}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${transcripts_gtf}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="st">"</span><span class="va">${exons}</span><span class="st">"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Hisat2 splice sites tab file</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${programs_array</span><span class="op">[</span>hisat2_splice_sites<span class="op">]</span><span class="va">}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${transcripts_gtf}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="st">"</span><span class="va">${splice_sites}</span><span class="st">"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Build Hisat2 reference index using splice sites and exons</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${programs_array</span><span class="op">[</span>hisat2_build<span class="op">]</span><span class="va">}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${genome_fasta}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${genome_index_name}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>--exon <span class="st">"</span><span class="va">${exons}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>--ss <span class="st">"</span><span class="va">${splice_sites}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>-p <span class="st">"</span><span class="va">${threads}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>2<span class="op">&gt;</span> hisat2-build_stats.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Perform alignment(s):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hisat2 alignments</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${programs_array</span><span class="op">[</span>hisat2<span class="op">]</span><span class="va">}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>-x <span class="st">"</span><span class="va">${genome_index_name}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>-1 <span class="st">"</span><span class="va">${fastq_list_R1}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>-2 <span class="st">"</span><span class="va">${fastq_list_R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>-S <span class="st">"</span><span class="va">${sample_name}</span><span class="st">"</span>.sam <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>--threads <span class="st">"</span><span class="va">${threads}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>2<span class="op">&gt;</span> <span class="st">"</span><span class="va">${sample_name}</span><span class="st">"</span>-hisat2_stats.txt</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort SAM files, convert to BAM, and index</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="va">${programs_array</span><span class="op">[</span>samtools_view<span class="op">]</span><span class="va">}</span> <span class="dt">\</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>-@ <span class="st">"</span><span class="va">${threads}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>-Su <span class="st">"</span><span class="va">${sample_name}</span><span class="st">"</span>.sam <span class="dt">\</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="va">${programs_array</span><span class="op">[</span>samtools_sort<span class="op">]</span><span class="va">}</span> <span class="at">-</span> <span class="dt">\</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>-@ <span class="st">"</span><span class="va">${threads}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>-o <span class="st">"</span><span class="va">${sample_name}</span><span class="st">"</span>.sorted.bam</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="va">${programs_array</span><span class="op">[</span>samtools_index<span class="op">]</span><span class="va">}</span> <span class="st">"</span><span class="va">${sample_name}</span><span class="st">"</span>.sorted.bam</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete unneccessary index files</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="st">"</span><span class="va">${genome_index_name}</span><span class="st">"</span><span class="pp">*</span>.ht2</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete unneeded SAM files</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> ./<span class="pp">*</span>.sam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>See links in the “use cases” section below for full-fledged scripts and advanced usage (e.g.&nbsp;assigning read groups to alignment files (SAM) for improved downstream handling/accessiblity).</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Case Studies
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><a href="https://robertslab.github.io/sams-notebook/2022/09/14/RNAseq-Alignments-P.generosa-Alignments-and-Alternative-Transcript-Identification-Using-Hisat2-and-StringTie-on-Mox.html">RNAseq Alignments - P.generosa Alignments and Alternative Transcript Identification Using Hisat2 and StringTie on Mox</a></p></li>
+<li><p><a href="https://robertslab.github.io/sams-notebook/2022/08/10/Splice-Site-Identification-S.namaycush-Liver-Parasitized-and-Non-Parasitized-SRA-RNAseq-Using-Hisat2-Stingtie-with-Genome-GCF_016432855.1.html">Splice Site Identification - S.namaycush Liver Parasitized and Non-Parasitized SRA RNAseq Using Hisat2-Stingtie with Genome GCF_016432855.1</a></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="differential-expression-analysis-kallisto" class="level1">
+<h1>Differential Expression Analysis (Kallisto)</h1>
+<p>A final step is to perform differential expression analysis using Sleuth, which is a tool for analyzing Kallisto output files. Sleuth performs hypothesis testing using a statistical model based on the negative binomial distribution and generates various output files, including a table of differentially expressed genes.</p>
+<p>To perform differential expression analysis using Sleuth, run the following commands:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sleuth)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>so <span class="ot">&lt;-</span> <span class="fu">sleuth_prep</span>(<span class="st">"output_folder"</span>, <span class="sc">~</span> condition)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>so <span class="ot">&lt;-</span> <span class="fu">sleuth_fit</span>(so)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>so <span class="ot">&lt;-</span> <span class="fu">sleuth_lrt</span>(so, <span class="st">"condition_treatment vs condition_control"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">sleuth_results</span>(so, <span class="st">"condition_treatment vs condition_control"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(results, <span class="st">"results_table.txt"</span>, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Replace condition with the name of the column in the sample information file that contains the condition labels, and replace condition_treatment and condition_control with the names of the conditions to be compared.</p>
+<p>This will perform differential expression analysis and generate a table of differentially expressed genes in the file results_table.txt.</p>
+</section>
+<section id="differential-expression-analysis-hisat" class="level1">
+<h1>Differential Expression Analysis (Hisat)</h1>
+<p>You’ll need to quantify gene expression levels from the BAM files generated by Hisat. This can be done using a tool such as featureCounts or HTSeq, which counts the number of reads that overlap with each gene in the reference genome.</p>
+<p>To account for differences in sequencing depth and other technical factors, it’s important to normalize the gene expression counts before conducting differential gene expression analysis. This can be done using a tool such as DESeq2, which normalizes the data using the median-of-ratios method.</p>
+<p>Now you’re ready to conduct differential gene expression analysis! This involves comparing the gene expression levels between two or more experimental groups to identify genes that are differentially expressed. You can do this using a tool such as DESeq2 or edgeR, which use statistical models to identify differentially expressed genes based on the normalized gene expression counts.</p>
+</section>
+<section id="deseq2" class="level1">
+<h1>DESeq2</h1>
+<p>User Guides - <a href="http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html">Analyzing RNA-seq data with DESeq2</a></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Case Studies
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><a href="https://github.com/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/02-Adult-data-analysis-QuantSeq2020.Rmd" class="uri">https://github.com/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/02-Adult-data-analysis-QuantSeq2020.Rmd</a> - draft code analyzing QuantSeq data from Olympia oyster gill tissue by two factors (population, pCO2 treatment). See <a href="https://github.com/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/2020-QuantSeq-Processing_Raw-to-Counts.ipynb">2020-QuantSeq-Processing_Raw-to-Counts.ipynb</a> and <a href="https://github.com/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/01-Importing-data-QuantSeq2020.Rmd">01-Importing-data-QuantSeq2020.Rmd</a> for steps prior to DeSeq2. Author: Laura Spencer <img src="https://img.shields.io/github/last-commit/laurahspencer/O.lurida_QuantSeq-2020" class="img-fluid" alt="GitHub last commit"></p></li>
+<li><p><a href="https://github.com/RobertsLab/paper-tanner-crab/blob/master/scripts/DESeq.Rmd" class="uri">https://github.com/RobertsLab/paper-tanner-crab/blob/master/scripts/DESeq.Rmd</a> <img src="https://img.shields.io/github/last-commit/RobertsLab/paper-tanner-crab.png" class="img-fluid" alt="GitHub last commit"></p></li>
+</ul>
+</div>
+</div>
+<p>.</p>
 
 
 </section>
