@@ -221,14 +221,14 @@
     "href": "lectures/02-rna-seq.html",
     "title": "RNAs-seq",
     "section": "",
-    "text": "Reading\n\nOpportunities in Functional Genomics: A Primer on Lab and Computational Aspects\nFitting Multifactorial Models of Differential Expression\n\n\n\nObjectives\nLearn how to take raw RNA sequence data and perform differential gene expression analysis.\n\n\nRNA-seq"
+    "text": "Reading\n\nOpportunities in Functional Genomics: A Primer on Lab and Computational Aspects\nFitting Multifactorial Models of Differential Expression\n\n\n\nObjectives\nLearn how to take raw RNA sequence data and perform differential gene expression analysis.\n\n\nSequence\nA FASTQ file has four line-separated fields per sequence:\n\nField 1 begins with a ‘@’ character and is followed by a sequence identifier and an optional description (like a FASTA title line).\nField 2 is the raw sequence letters.\nField 3 begins with a ‘+’ character and is optionally followed by the same sequence identifier (and any description) again.\nField 4 encodes the quality values for the sequence in Field 2, and must contain the same number of symbols as letters in the sequence.\n\nhttps://en.wikipedia.org/wiki/FASTQ_format\nSee also page 341 of the textbook."
   },
   {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Bioinformatics - FISH 546",
     "section": "",
-    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-Seq\n\n\n\n\napr 10\nweek 03\nFunctional Enrichment\n\n\n\n\napr 17\nweek 04\nGenetic Variation\n\n\n\n\napr 24\nweek 05\n\n\nSlides\n\n\nmay 01\nweek 06\nGenomic Ranges\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\n\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
+    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nGene Expression + Ariana Huffmyer\nRNA-seq\n\n\n\napr 10\nweek 03\nFunctional Enrichment\n\n\n\n\napr 17\nweek 04\nGenetic Variation\n\n\n\n\napr 24\nweek 05\n\n\nSlides\n\n\nmay 01\nweek 06\nGenomic Ranges\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\n\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
   },
   {
     "objectID": "questions/week02.html",

@@ -458,7 +458,7 @@ Which of these files is shortest? It's an easy question to answer when there are
 wc -l *.pdb > lengths
 ```
 
-The `>` tells the shell to [redirect](../../gloss.html#redirect) the command's output to a file instead of printing it to the screen. The shell will create the file if it doesn't exist, or overwrite the contents of that file if it does. (This is why there is no screen output: everything that `wc` would have printed has gone into the file `lengths` instead.) `ls lengths` confirms that the file exists:
+The `>` tells the shell to redirect the command's output to a file instead of printing it to the screen. The shell will create the file if it doesn't exist, or overwrite the contents of that file if it does. (This is why there is no screen output: everything that `wc` would have printed has gone into the file `lengths` instead.) `ls lengths` confirms that the file exists:
 
 ``` bash
 ls lengths
@@ -531,7 +531,7 @@ wc -l *.pdb | sort -n | head -1
 
       9  methane.pdb
 
-> Here's what actually happens behind the scenes when we create a pipe. When a computer runs a program---any program---it creates a [process](../../gloss.html#process) in memory to hold the program's software and its current state. Every process has an input channel called [standard input](../../gloss.html#standard-input). (By this point, you may be surprised that the name is so memorable, but don't worry: most Unix programmers call it "stdin". Every process also has a default output channel called [standard output](../../gloss.html#standard-output) (or "stdout").
+> Here's what actually happens behind the scenes when we create a pipe. When a computer runs a program---any program---it creates a process in memory to hold the program's software and its current state. Every process has an input channel called standard input. (By this point, you may be surprised that the name is so memorable, but don't worry: most Unix programmers call it "stdin". Every process also has a default output channel called standard output] (or "stdout")
 
 > The shell is actually just another program. Under normal circumstances, whatever we type on the keyboard is sent to the shell on its standard input, and whatever it produces on standard output is displayed on our screen. When we tell the shell to run a program, it creates a new process and temporarily sends whatever we type on our keyboard to that process's standard input, and whatever the process sends to standard output to the screen.
 >
@@ -539,7 +539,7 @@ wc -l *.pdb | sort -n | head -1
 >
 > If we run `wc -l *.pdb | sort -n` instead, the shell creates two processes (one for each process in the pipe) so that `wc` and `sort` run simultaneously. The standard output of `wc` is fed directly to the standard input of `sort`; since there's no redirection with `>`, `sort`'s output goes to the screen. And if we run `wc -l *.pdb | sort -n | head -1`, we get three processes with data flowing from the files, through `wc` to `sort`, and from `sort` through `head` to the screen.
 >
-> This simple idea is why Unix has been so successful. Instead of creating enormous programs that try to do many different things, Unix programmers focus on creating lots of simple tools that each do one job well, and that work well with each other. This programming model is called [pipes and filters](../../gloss.html#pipe-and-filter). We've already seen pipes; a [filter](../../gloss.html#filter) is a program like `wc` or `sort` that transforms a stream of input into a stream of output. Almost all of the standard Unix tools can work this way: unless told to do otherwise, they read from standard input, do something with what they've read, and write to standard output.
+> This simple idea is why Unix has been so successful. Instead of creating enormous programs that try to do many different things, Unix programmers focus on creating lots of simple tools that each do one job well, and that work well with each other. This programming model is called pipes and filters. We've already seen pipes; a filter is a program like `wc` or `sort` that transforms a stream of input into a stream of output. Almost all of the standard Unix tools can work this way: unless told to do otherwise, they read from standard input, do something with what they've read, and write to standard output.
 >
 > The key is that any program that reads lines of text from standard input and writes lines of text to standard output can be combined with every other program that behaves this way as well. You can *and should* write your programs this way so that you and other people can put those programs into pipes to multiply their power.
 

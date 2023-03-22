@@ -109,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#reading" id="toc-reading" class="nav-link active" data-scroll-target="#reading">Reading</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#rna-seq" id="toc-rna-seq" class="nav-link" data-scroll-target="#rna-seq">RNA-seq</a></li>
+  <li><a href="#sequence" id="toc-sequence" class="nav-link" data-scroll-target="#sequence">Sequence</a></li>
   </ul>
 </nav>
     </div>
@@ -145,8 +145,18 @@ ul.task-list li input[type="checkbox"] {
 <h1>Objectives</h1>
 <p>Learn how to take raw RNA sequence data and perform differential gene expression analysis.</p>
 </section>
-<section id="rna-seq" class="level1">
-<h1>RNA-seq</h1>
+<section id="sequence" class="level1">
+<h1>Sequence</h1>
+<p>A FASTQ file has four line-separated fields per sequence:</p>
+<ul>
+<li>Field 1 begins with a ‘@’ character and is followed by a sequence identifier and an optional description (like a FASTA title line).</li>
+<li>Field 2 is the raw sequence letters.</li>
+<li>Field 3 begins with a ‘+’ character and is optionally followed by the same sequence identifier (and any description) again.</li>
+<li>Field 4 encodes the quality values for the sequence in Field 2, and must contain the same number of symbols as letters in the sequence.</li>
+</ul>
+<p>https://en.wikipedia.org/wiki/FASTQ_format</p>
+<p>See also page 341 of the textbook.</p>
+<div class="quarto-video"><iframe src="https://www.youtube.com/embed/5LYnq84Pjzk" width="400" height="300" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 
 
 </section>
