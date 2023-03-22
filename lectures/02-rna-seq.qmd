@@ -52,7 +52,7 @@ fastqc input.fastq
 
 This will generate a HTML report that can be viewed in a web browser.
 
-There are a few programs {{< video https://youtu.be/5LYnq84Pjzk width="400" height="300">}}
+{{< video https://youtu.be/5LYnq84Pjzk width="400" height="300">}}
 
 # Transcript Quantification (Pseudo - alignment)
 
@@ -199,4 +199,9 @@ User Guides
 
 
 
-.
+
+# Supplemental Info
+## MarineOmics RNA-seq Panel Discussion
+
+{{< video https://youtu.be/-gQ59m2cck0 >}}
+
