@@ -186,7 +186,7 @@
     "href": "index.html#useful-resources",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "Useful Resources",
-    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials."
+    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials.\nsandbox.bio - Interactive bioinformatics tutorials"
   },
   {
     "objectID": "about.html",
@@ -257,5 +257,12 @@
     "title": "RNAs-seq",
     "section": "MarineOmics RNA-seq Panel Discussion",
     "text": "MarineOmics RNA-seq Panel Discussion"
+  },
+  {
+    "objectID": "index.html#platforms",
+    "href": "index.html#platforms",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Platforms",
+    "text": "Platforms\nJupyterHub1 Instance: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a\nCourse2 GitHub Organization: https://github.com/course-fish546-2023"
   }
 ]
