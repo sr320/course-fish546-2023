@@ -23,13 +23,18 @@ While you likely have perceptions of glamour in considering this course, a major
 
 This class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week's assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.
 
+::: {.callout-important style="color: orange"}
+It is expected that you come to class, or to queries, having already reviewed material provided so we can spend time together addressing questions and troubleshooting technical issues.
+:::
+
 ## Platforms
 
 JupyterHub[^1] Instance: <https://jupyter.rttl.uw.edu/2023-spring-fish-546-a>
 
+[^1]: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a/hub/admin
+
 Course[^2] GitHub Organization: <https://github.com/course-fish546-2023>
 
-[^1]: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a/hub/admin
 [^2]: https://github.com/sr320/course-fish546-2023
 
 ## Repo List
@@ -59,7 +64,7 @@ Reproducible and Robust Research with Open Source Tools By Vince Buffalo Publish
 Each week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week's reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the ["Topic" each week](schedule.qmd) before class (and before answering the question set.
 
 | *Assignments*                    | Grade percentage | *comment*                 |
-|------------------------------|------------------|------------------------|
+|------------------------------|-------------------|------------------------|
 | Weekly Question Set              | 25%              | due Tuesday at 3:00pm     |
 | Weekly Class Assignment          | 35%              | due Friday at 5:00pm      |
 | Weekly Research Project Progress | 20%              | assessed Friday at 5:00pm |
@@ -84,3 +89,4 @@ This will be assessed as a measure of progress from week to week. A primary mean
 
 -   [MarineOmics Portal](https://marineomics.github.io) - website with genomic tutorials.
 -   [sandbox.bio](https://sandbox.bio) - Interactive bioinformatics tutorials
+-   [Aquamine](https://aquamine.elsiklab.missouri.edu/) - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species

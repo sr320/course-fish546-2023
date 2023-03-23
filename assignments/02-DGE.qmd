@@ -1,0 +1,122 @@
+---
+title: "Differential Gene Expression"
+subtitle: "Can we cross the volcano?"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a "treatment", which generally speaking could be anything from environment, disease, developmental stage, tissue, species...
+
+As apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.
+
+## Data
+
+|               |          |
+|---------------|----------|
+| Sample        | SampleID |
+| D-control     | D54      |
+| D-control     | D55      |
+| D-control     | D56      |
+| D-control     | D57      |
+| D-control     | D58      |
+| D-control     | D59      |
+| D-control     | M45      |
+| D-control     | M46      |
+| D-control     | M48      |
+| D-control     | M49      |
+| D-control     | M89      |
+| D-control     | M90      |
+| D-desiccation | N48      |
+| D-desiccation | N49      |
+| D-desiccation | N50      |
+| D-desiccation | N51      |
+| D-desiccation | N52      |
+| D-desiccation | N53      |
+| D-desiccation | N54      |
+| D-desiccation | N55      |
+| D-desiccation | N56      |
+| D-desiccation | N57      |
+| D-desiccation | N58      |
+| D-desiccation | N59      |
+
+``` bash
+wget --recursive --no-parent --no-directories --accept '[DMN]*001.fastq.gz' https://owl.fish.washington.edu/nightingales/C_gigas/
+```
+
+# Software
+
+For this assignment we will be using [kallisto](https://pachterlab.github.io/kallisto/) (bash), DESeq2 (r).
+
+If you are loaded up with kallisto and ready to go you can skip the next few steps as I will demonstrate how to install kallisto on JupyterHub.
+
+# JupyterHub Approach
+
+Navigate through to a terminal and create directory in your home directory named `programs`
+
+``` bash
+jovyan@jupyter-sr320:~$ pwd
+/home/jovyan
+jovyan@jupyter-sr320:~$ mkdir programs
+```
+
+Grab (`wget`) the program from site listed above.
+
+``` bash
+jovyan@jupyter-sr320:~$ cd programs/
+jovyan@jupyter-sr320:~/programs$ wget https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v0.46.1.tar.gz
+```
+
+Uncompress the file.
+
+``` bash
+jovyan@jupyter-sr320:~/programs$ cd kallisto
+jovyan@jupyter-sr320:~/programs/kallisto$ ls
+kallisto  license.txt  README.md  test
+jovyan@jupyter-sr320:~/programs/kallisto$ ./kallisto 
+kallisto 0.46.1
+
+Usage: kallisto <CMD> [arguments] ..
+
+Where <CMD> can be one of:
+
+    index         Builds a kallisto index 
+    quant         Runs the quantification algorithm 
+    bus           Generate BUS files for single-cell data 
+    pseudo        Runs the pseudoalignment step 
+    merge         Merges several batch runs 
+    h5dump        Converts HDF5-formatted results to plaintext
+    inspect       Inspects and gives information about an index
+    version       Prints version information
+    cite          Prints citation information
+
+Running kallisto <CMD> without arguments prints usage information for <CMD>
+```
+
+## Building an Index
+
+# Raven Approach
+
+kallisto is already installed on raven (`/home/shared/kallisto/kallisto`).
+
+In appropriate Rmarkdown
+
+``` {{bash}}
+/home/shared/kallisto/kallisto
+```
+
+::: callout-note
+Creating index can take \~20 minutes.
+:::
+
+``` {{bash}}
+/home/shared/kallisto/kallisto \
+index -i \
+../data/cgigas_uk_roslin_v1_genomic-mito.index \
+../data/cgigas_uk_roslin_v1_genomic-mito.fa
+```
