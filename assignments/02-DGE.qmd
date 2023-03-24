@@ -117,7 +117,7 @@ Create a new file in the `.git/hooks/` directory of your repository called `pre-
 
 Add the following code to the `pre-commit` file:
 
-```
+```bash
 #!/bin/bash
 
 # Maximum file size (in bytes)

@@ -384,13 +384,13 @@ GitHub file size limit
 <p>You can use Git’s built-in hooks to automatically ignore files larger than 100 MB. Here are the steps to follow:</p>
 <p>Create a new file in the <code>.git/hooks/</code> directory of your repository called <code>pre-commit</code>.</p>
 <p>Add the following code to the <code>pre-commit</code> file:</p>
-<pre><code>#!/bin/bash
-
-# Maximum file size (in bytes)
-max_file_size=104857600
-
-# Find all files larger than max_file_size and add them to the .gitignore file
-find . -type f -size +$max_file_sizec -exec echo "{}" &gt;&gt; .gitignore \;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum file size (in bytes)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">max_file_size</span><span class="op">=</span>104857600</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all files larger than max_file_size and add them to the .gitignore file</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-size</span> +<span class="va">$max_file_sizec</span> <span class="at">-exec</span> echo <span class="st">"{}"</span> <span class="op">&gt;&gt;</span> .gitignore <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This code sets the max_file_size variable to 100 MB and then uses the find command to locate all files in the repository that are larger than the specified max_file_size. The exec option of the find command appends the name of each file that matches the criteria to the .gitignore file.</p>
 <p>Save the pre-commit file and make it executable by running the following command:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x .git/hooks/pre-commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -959,14 +959,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-117"><a href="#cb21-117" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a>Add the following code to the <span class="in">`pre-commit`</span> file:</span>
 <span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a><span class="in">#!/bin/bash</span></span>
+<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a><span class="in"># Maximum file size (in bytes)</span></span>
-<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a><span class="in">max_file_size=104857600</span></span>
+<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum file size (in bytes)</span></span>
+<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a><span class="va">max_file_size</span><span class="op">=</span>104857600</span>
 <span id="cb21-125"><a href="#cb21-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a><span class="in"># Find all files larger than max_file_size and add them to the .gitignore file</span></span>
-<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a><span class="in">find . -type f -size +$max_file_sizec -exec echo "{}" &gt;&gt; .gitignore \;</span></span>
+<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all files larger than max_file_size and add them to the .gitignore file</span></span>
+<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-size</span> +<span class="va">$max_file_sizec</span> <span class="at">-exec</span> echo <span class="st">"{}"</span> <span class="op">&gt;&gt;</span> .gitignore <span class="dt">\;</span></span>
 <span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-130"><a href="#cb21-130" aria-hidden="true" tabindex="-1"></a>This code sets the max_file_size variable to 100 MB and then uses the find command to locate all files in the repository that are larger than the specified max_file_size. The exec option of the find command appends the name of each file that matches the criteria to the .gitignore file.</span>
