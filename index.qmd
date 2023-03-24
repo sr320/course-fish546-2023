@@ -43,9 +43,22 @@ Raven: <http://raven.fish.washington.edu:8787>
 
 | Name or UserID | coursework repo | project repo |
 |----------------|-----------------|--------------|
+| Zachary        |                 |              |
+| Olivia         |                 |              |
+| Susan          |                 |              |
+| William        |                 |              |
+| Chris          |                 |              |
+| Haila          |                 |              |
+| Courtney Copps |                 |              |
+| Sarah Sophia   |                 |              |
+| Celeste        |                 |              |
+| Jordan         |                 |              |
+| Sarah          |                 |              |
+| Brian          |                 |              |
 |                |                 |              |
 |                |                 |              |
 |                |                 |              |
+
 
 ------------------------------------------------------------------------
 
@@ -66,7 +79,7 @@ Reproducible and Robust Research with Open Source Tools By Vince Buffalo Publish
 Each week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week's reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the ["Topic" each week](schedule.qmd) before class (and before answering the question set.
 
 | *Assignments*                    | Grade percentage | *comment*                 |
-|------------------------------|-------------------|------------------------|
+|-----------------------------|-------------------|------------------------|
 | Weekly Question Set              | 25%              | due Tuesday at 3:00pm     |
 | Weekly Class Assignment          | 35%              | due Friday at 5:00pm      |
 | Weekly Research Project Progress | 20%              | assessed Friday at 5:00pm |
