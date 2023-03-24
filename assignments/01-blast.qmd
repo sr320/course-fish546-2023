@@ -166,10 +166,19 @@ bltabl <- read.csv("../output/Ab_4-uniprot_blastx_sep.tab", sep = '\t', header =
 spgo <- read.csv("../data/uniprot_table_r2023_01.tab", sep = '\t', header = TRUE)
 ```
 
+
+
 ```{r}
 str(spgo)
 ```
+```{r}
 
+kbl(
+head(spgo)
+) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+```
 
 ```{r}
 
