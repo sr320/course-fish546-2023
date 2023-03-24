@@ -169,6 +169,13 @@ index -i \
 ## Downloading sequence reads
 
 
+``` bash
+wget --recursive --no-parent --no-directories \
+--accept '[DMN]*001.fastq.gz' \
+https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/
+```
+
+https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/
 
 ``` {{bash}}
 find ../data/*fastq.gz \

@@ -115,12 +115,45 @@ knitr::include_graphics("../img/uniprot-api.png")
 ```
 
     https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29
+    
+```{{bash}}   
+curl -O "Accept: text/plain; format=tsv" "https://rest.uniprot.org/uniprotkb/search?query=reviewed:true+AND+organism_id:9606"
+```
 
-``` {.bash .code-overflow-wrap}
-curl -O -H "Accept: text/plain; format=tsv" \
-"https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29"
+```{{bash}}
+curl -O -H "Accept: text/plain; format=tsv" "https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29"
 ```
 
 ## Joining blast table with annotation table
 
-At this point we have a blast output table and annotation table both with a Uniprot accession number. Thus we can join the two tables and be able to 
+At this point we have a blast output table and annotation table both with a Uniprot accession number. Thus we can join the two tables and be able to get more functional information about thet genes.
+
+
+
+```{bash}
+head -2 ../output/Ab_4-uniprot_blastx.tab
+wc -l ../output/Ab_4-uniprot_blastx.tab
+```
+
+```{bash}
+tr '|' '\t' < ../output/Ab_4-uniprot_blastx.tab | head -2
+```
+
+```{bash}
+tr '|' '\t' < ../output/Ab_4-uniprot_blastx.tab \
+> ../output/Ab_4-uniprot_blastx_sep.tab
+```
+
+
+```{bash}
+head -2 ../data/uniprot_table_r2023_01.tab
+wc -l ../data/uniprot_table_r2023_01.tab
+```
+```{r}
+library(tidyverse)
+```
+
+```{bash}
+
+```
+
