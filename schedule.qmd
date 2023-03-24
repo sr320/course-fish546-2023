@@ -25,3 +25,6 @@ format:
 | may 22    | week 09                        |                                                      |                                                        |                 |
 | may 29    | week 10                        | Presentations                                        |                                                        | Compendium      |
 |           |                                |                                                      |                                                        |                 |
+
+---
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/sr320/course-FISH546-2023?style=flat-square)
