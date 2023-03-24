@@ -109,7 +109,7 @@
     "href": "assignments/02-DGE.html#data",
     "title": "Differential Gene Expression",
     "section": "Data",
-    "text": "Data\n\n\n\nSample\nSampleID\n\n\nD-control\nD54\n\n\nD-control\nD55\n\n\nD-control\nD56\n\n\nD-control\nD57\n\n\nD-control\nD58\n\n\nD-control\nD59\n\n\nD-control\nM45\n\n\nD-control\nM46\n\n\nD-control\nM48\n\n\nD-control\nM49\n\n\nD-control\nM89\n\n\nD-control\nM90\n\n\nD-desiccation\nN48\n\n\nD-desiccation\nN49\n\n\nD-desiccation\nN50\n\n\nD-desiccation\nN51\n\n\nD-desiccation\nN52\n\n\nD-desiccation\nN53\n\n\nD-desiccation\nN54\n\n\nD-desiccation\nN55\n\n\nD-desiccation\nN56\n\n\nD-desiccation\nN57\n\n\nD-desiccation\nN58\n\n\nD-desiccation\nN59\n\n\n\nwget --recursive --no-parent --no-directories --accept '[DMN]*001.fastq.gz' https://owl.fish.washington.edu/nightingales/C_gigas/"
+    "text": "Data\n\n\n\nSample\nSampleID\n\n\nD-control\nD54\n\n\nD-control\nD55\n\n\nD-control\nD56\n\n\nD-control\nD57\n\n\nD-control\nD58\n\n\nD-control\nD59\n\n\nD-control\nM45\n\n\nD-control\nM46\n\n\nD-control\nM48\n\n\nD-control\nM49\n\n\nD-control\nM89\n\n\nD-control\nM90\n\n\nD-desiccation\nN48\n\n\nD-desiccation\nN49\n\n\nD-desiccation\nN50\n\n\nD-desiccation\nN51\n\n\nD-desiccation\nN52\n\n\nD-desiccation\nN53\n\n\nD-desiccation\nN54\n\n\nD-desiccation\nN55\n\n\nD-desiccation\nN56\n\n\nD-desiccation\nN57\n\n\nD-desiccation\nN58\n\n\nD-desiccation\nN59\n\n\n\nwget --recursive --no-parent --no-directories \\\n--accept '[DMN]*001.fastq.gz' \\\nhttps://owl.fish.washington.edu/nightingales/C_gigas/"
   },
   {
     "objectID": "assignments/02-DGE.html#downloading-reference",

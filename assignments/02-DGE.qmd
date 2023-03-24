@@ -46,7 +46,9 @@ As apposed to last week these files will be a little larger and compute effort w
 | D-desiccation | N59      |
 
 ``` bash
-wget --recursive --no-parent --no-directories --accept '[DMN]*001.fastq.gz' https://owl.fish.washington.edu/nightingales/C_gigas/
+wget --recursive --no-parent --no-directories \
+--accept '[DMN]*001.fastq.gz' \
+https://owl.fish.washington.edu/nightingales/C_gigas/
 ```
 
 # Software
