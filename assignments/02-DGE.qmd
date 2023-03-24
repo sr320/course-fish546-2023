@@ -55,7 +55,11 @@ For this assignment we will be using [kallisto](https://pachterlab.github.io/kal
 
 If you are loaded up with kallisto and ready to go you can skip the next few steps as I will demonstrate how to install kallisto on JupyterHub.
 
-# JupyterHub Approach
+# Installing kallisto
+
+::: callout-note
+## Just for reference if using raven for assignment (recommended).
+:::
 
 Navigate through to a terminal and create directory in your home directory named `programs`
 
@@ -98,9 +102,7 @@ Where <CMD> can be one of:
 Running kallisto <CMD> without arguments prints usage information for <CMD>
 ```
 
-## Building an Index
-
-# Raven Approach
+# Kallisto and DESeq2 on raven
 
 kallisto is already installed on raven (`/home/shared/kallisto/kallisto`).
 

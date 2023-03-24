@@ -37,6 +37,8 @@ Course[^2] GitHub Organization: <https://github.com/course-fish546-2023>
 
 [^2]: https://github.com/sr320/course-fish546-2023
 
+Raven: <http://raven.fish.washington.edu:8787>
+
 ## Repo List
 
 | Name or UserID | coursework repo | project repo |

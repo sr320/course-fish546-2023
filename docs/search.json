@@ -98,6 +98,20 @@
     "text": "pipe\nIf you think this is confusing, you’re in good company: even once you understand what wc, sort, and head do, all those intermediate files make it hard to follow what’s going on. We can make it easier to understand by running sort and head together:\nsort -n lengths | head -1\n  9  methane.pdb\nThe vertical bar between the two commands is called a pipe. It tells the shell that we want to use the output of the command on the left as the input to the command on the right. The computer might create a temporary file if it needs to, or copy data from one program to the other in memory, or something else entirely; we don’t have to know or care.\nWe can use another pipe to send the output of wc directly to sort, which then sends its output to head:\nwc -l *.pdb | sort -n | head -1\n  9  methane.pdb\n\nHere’s what actually happens behind the scenes when we create a pipe. When a computer runs a program—any program—it creates a process in memory to hold the program’s software and its current state. Every process has an input channel called standard input. (By this point, you may be surprised that the name is so memorable, but don’t worry: most Unix programmers call it “stdin”. Every process also has a default output channel called standard output] (or “stdout”)\n\n\nThe shell is actually just another program. Under normal circumstances, whatever we type on the keyboard is sent to the shell on its standard input, and whatever it produces on standard output is displayed on our screen. When we tell the shell to run a program, it creates a new process and temporarily sends whatever we type on our keyboard to that process’s standard input, and whatever the process sends to standard output to the screen.\nHere’s what happens when we run wc -l *.pdb > lengths. The shell starts by telling the computer to create a new process to run the wc program. Since we’ve provided some filenames as parameters, wc reads from them instead of from standard input. And since we’ve used > to redirect output to a file, the shell connects the process’s standard output to that file.\nIf we run wc -l *.pdb | sort -n instead, the shell creates two processes (one for each process in the pipe) so that wc and sort run simultaneously. The standard output of wc is fed directly to the standard input of sort; since there’s no redirection with >, sort’s output goes to the screen. And if we run wc -l *.pdb | sort -n | head -1, we get three processes with data flowing from the files, through wc to sort, and from sort through head to the screen.\nThis simple idea is why Unix has been so successful. Instead of creating enormous programs that try to do many different things, Unix programmers focus on creating lots of simple tools that each do one job well, and that work well with each other. This programming model is called pipes and filters. We’ve already seen pipes; a filter is a program like wc or sort that transforms a stream of input into a stream of output. Almost all of the standard Unix tools can work this way: unless told to do otherwise, they read from standard input, do something with what they’ve read, and write to standard output.\nThe key is that any program that reads lines of text from standard input and writes lines of text to standard output can be combined with every other program that behaves this way as well. You can and should write your programs this way so that you and other people can put those programs into pipes to multiply their power.\n\n\nRedirecting Input\nAs well as using > to redirect a program’s output, we can use < to redirect its input, i.e., to read from a file instead of from standard input. For example, instead of writing wc ammonia.pdb, we could write wc < ammonia.pdb. In the first case, wc gets a command line parameter telling it what file to open. In the second, wc doesn’t have any command line parameters, so it reads from standard input, but we have told the shell to send the contents of ammonia.pdb to wc’s standard input."
   },
   {
+    "objectID": "assignments/02-DGE.html",
+    "href": "assignments/02-DGE.html",
+    "title": "Differential Gene Expression",
+    "section": "",
+    "text": "For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a “treatment”, which generally speaking could be anything from environment, disease, developmental stage, tissue, species…\nAs apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment."
+  },
+  {
+    "objectID": "assignments/02-DGE.html#data",
+    "href": "assignments/02-DGE.html#data",
+    "title": "Differential Gene Expression",
+    "section": "Data",
+    "text": "Data\n\n\n\nSample\nSampleID\n\n\nD-control\nD54\n\n\nD-control\nD55\n\n\nD-control\nD56\n\n\nD-control\nD57\n\n\nD-control\nD58\n\n\nD-control\nD59\n\n\nD-control\nM45\n\n\nD-control\nM46\n\n\nD-control\nM48\n\n\nD-control\nM49\n\n\nD-control\nM89\n\n\nD-control\nM90\n\n\nD-desiccation\nN48\n\n\nD-desiccation\nN49\n\n\nD-desiccation\nN50\n\n\nD-desiccation\nN51\n\n\nD-desiccation\nN52\n\n\nD-desiccation\nN53\n\n\nD-desiccation\nN54\n\n\nD-desiccation\nN55\n\n\nD-desiccation\nN56\n\n\nD-desiccation\nN57\n\n\nD-desiccation\nN58\n\n\nD-desiccation\nN59\n\n\n\nwget --recursive --no-parent --no-directories --accept '[DMN]*001.fastq.gz' https://owl.fish.washington.edu/nightingales/C_gigas/"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Bioinformatics for Environmental Sciences",
@@ -116,7 +130,7 @@
     "href": "index.html#platforms",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "Platforms",
-    "text": "Platforms\nJupyterHub1 Instance: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a\nCourse2 GitHub Organization: https://github.com/course-fish546-2023"
+    "text": "Platforms\nJupyterHub1 Instance: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a\nCourse2 GitHub Organization: https://github.com/course-fish546-2023\nRaven: http://raven.fish.washington.edu:8787"
   },
   {
     "objectID": "index.html#repo-list",
@@ -207,7 +221,7 @@
     "href": "schedule.html",
     "title": "Bioinformatics - FISH 546",
     "section": "",
-    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nGene Expression + Ariana Huffmyer\nRNA-seq\n\n\n\napr 10\nweek 03\nR Fundamentals\n\n\n\n\napr 17\nweek 04\nFunctional Enrichment\n\n\n\n\napr 24\nweek 05\nGenetic Variation\n\nSlides\n\n\nmay 01\nweek 06\nMicrobiome\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
+    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\n\n\n\napr 10\nweek 03\nR Fundamentals\n\n\n\n\napr 17\nweek 04\nFunctional Enrichment\n\n\n\n\napr 24\nweek 05\nGenetic Variation\n\nSlides\n\n\nmay 01\nweek 06\nMicrobiome\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
   },
   {
     "objectID": "questions/week02.html",
@@ -222,26 +236,5 @@
     "title": "Bioinformatics - FISH 546",
     "section": "",
     "text": "What is your prior experience in this discipline?\nWhat do you hope to get out of this class?\nThis class is strongly rooted in an independent project related to genomic analyses. What specific project do you have in mind? If you do not have any data or preference, data can be provided / aquired. If you do not have a specfic project, what approach would you like to master as part of this class?\nWhat are two things you found most useful from the reading?"
-  },
-  {
-    "objectID": "assignments/02-DGE.html",
-    "href": "assignments/02-DGE.html",
-    "title": "Differential Gene Expression",
-    "section": "",
-    "text": "For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a “treatment”, which generally speaking could be anything from environment, disease, developmental stage, tissue, species…\nAs apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment."
-  },
-  {
-    "objectID": "assignments/02-DGE.html#data",
-    "href": "assignments/02-DGE.html#data",
-    "title": "Differential Gene Expression",
-    "section": "Data",
-    "text": "Data\n\n\n\nSample\nSampleID\n\n\nD-control\nD54\n\n\nD-control\nD55\n\n\nD-control\nD56\n\n\nD-control\nD57\n\n\nD-control\nD58\n\n\nD-control\nD59\n\n\nD-control\nM45\n\n\nD-control\nM46\n\n\nD-control\nM48\n\n\nD-control\nM49\n\n\nD-control\nM89\n\n\nD-control\nM90\n\n\nD-desiccation\nN48\n\n\nD-desiccation\nN49\n\n\nD-desiccation\nN50\n\n\nD-desiccation\nN51\n\n\nD-desiccation\nN52\n\n\nD-desiccation\nN53\n\n\nD-desiccation\nN54\n\n\nD-desiccation\nN55\n\n\nD-desiccation\nN56\n\n\nD-desiccation\nN57\n\n\nD-desiccation\nN58\n\n\nD-desiccation\nN59\n\n\n\nwget --recursive --no-parent --no-directories --accept '[DMN]*001.fastq.gz' https://owl.fish.washington.edu/nightingales/C_gigas/"
-  },
-  {
-    "objectID": "assignments/02-DGE.html#building-an-index",
-    "href": "assignments/02-DGE.html#building-an-index",
-    "title": "Differential Gene Expression",
-    "section": "Building an Index",
-    "text": "Building an Index"
   }
 ]
