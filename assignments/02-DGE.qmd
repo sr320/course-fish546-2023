@@ -102,9 +102,15 @@ Where <CMD> can be one of:
 Running kallisto <CMD> without arguments prints usage information for <CMD>
 ```
 
-# Kallisto and DESeq2 on raven
+# Running kallisto
 
 kallisto is already installed on raven (`/home/shared/kallisto/kallisto`).
+
+::: callout-warning
+## GitHub file size limit
+
+Commit early and often but `ignore` files that are larger that 100 MB (or you will likely lose everything since prior commit).
+:::
 
 In appropriate Rmarkdown
 
@@ -112,13 +118,148 @@ In appropriate Rmarkdown
 /home/shared/kallisto/kallisto
 ```
 
+## Downloading reference
+
+``` {{bash}}
+cd ../data
+curl -O 
+```
+
 ::: callout-note
-Creating index can take \~20 minutes.
+Creating index can take some time
 :::
 
 ``` {{bash}}
 /home/shared/kallisto/kallisto \
 index -i \
-../data/cgigas_uk_roslin_v1_genomic-mito.index \
-../data/cgigas_uk_roslin_v1_genomic-mito.fa
+../data/cgigas_roslin_rna.index \
+../data/rna.fna
 ```
+
+## Downloading sequence reads
+
+
+
+``` {{bash}}
+find ../data/*fastq.gz \
+| xargs basename -s _L001_R1_001.fastq.gz | xargs -I{} /home/shared/kallisto/kallisto \
+quant -i ../data/cgigas_roslin_rna.index \
+-o ../output/kallisto_01/{} \
+-t 40 \
+--single -l 100 -s 10 ../data/{}_L001_R1_001.fastq.gz
+```
+
+``` {{bash}}
+perl /home/shared/trinityrnaseq-v2.12.0/util/abundance_estimates_to_matrix.pl \
+--est_method kallisto \
+    --gene_trans_map none \
+    --out_prefix ../output/kallisto_01 \
+    --name_sample_by_basedir \
+    ../output/kallisto_01/control/D54_S145/abundance.tsv \
+    ../output/kallisto_01/control/D56_S136/abundance.tsv \
+    ../output/kallisto_01/control/D58_S144/abundance.tsv \
+    ../output/kallisto_01/control/M45_S140/abundance.tsv \
+    ../output/kallisto_01/control/M48_S137/abundance.tsv \
+    ../output/kallisto_01/control/M89_S138/abundance.tsv \
+    ../output/kallisto_01/control/D55_S146/abundance.tsv \
+    ../output/kallisto_01/control/D57_S143/abundance.tsv \
+    ../output/kallisto_01/control/D59_S142/abundance.tsv \
+    ../output/kallisto_01/control/M46_S141/abundance.tsv \
+    ../output/kallisto_01/control/M49_S139/abundance.tsv \
+    ../output/kallisto_01/control/M90_S147/abundance.tsv \
+    ../output/kallisto_01/dessication/N48_S194/abundance.tsv \
+    ../output/kallisto_01/dessication/N50_S187/abundance.tsv \
+    ../output/kallisto_01/dessication/N52_S184/abundance.tsv \
+    ../output/kallisto_01/dessication/N54_S193/abundance.tsv \
+    ../output/kallisto_01/dessication/N56_S192/abundance.tsv \
+    ../output/kallisto_01/dessication/N58_S195/abundance.tsv \
+    ../output/kallisto_01/dessication/N49_S185/abundance.tsv \
+    ../output/kallisto_01/dessication/N51_S186/abundance.tsv \
+    ../output/kallisto_01/dessication/N53_S188/abundance.tsv \
+    ../output/kallisto_01/dessication/N55_S190/abundance.tsv \
+    ../output/kallisto_01/dessication/N57_S191/abundance.tsv \
+    ../output/kallisto_01/dessication/N59_S189/abundance.tsv
+```
+
+
+
+# Running DESeq2
+
+Load packages:    
+```{{r}}
+library(DESeq2)
+library(tidyverse)
+library(pheatmap)
+library(RColorBrewer)
+library(data.table)
+```
+
+
+### Read in count matrix 
+
+```{{r}}
+countmatrix <- read.delim("../output/kallisto_01.isoform.counts.matrix", header = TRUE, sep = '\t')
+rownames(countmatrix) <- countmatrix$X
+countmatrix <- countmatrix[,-1]
+head(countmatrix)
+```
+
+
+Round integers up to hole numbers for further analysis:
+```{{r}}
+countmatrix <- round(countmatrix, 0)
+str(countmatrix)
+```
+
+## Get DEGs based on infection 
+    
+```{{r}}
+deseq2.colData <- data.frame(condition=factor(c(rep("control", 12), rep("desicatted", 12))), 
+                             type=factor(rep("single-read", 24)))
+rownames(deseq2.colData) <- colnames(data)
+deseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,
+                                     colData = deseq2.colData, 
+                                     design = ~ condition)
+```
+
+
+
+```{{r}}
+deseq2.dds <- DESeq(deseq2.dds)
+deseq2.res <- results(deseq2.dds)
+deseq2.res <- deseq2.res[order(rownames(deseq2.res)), ]
+```
+
+```{{r}}
+head(deseq2.res)
+```
+
+```{{r}}
+# Count number of hits with adjusted p-value less then 0.05
+dim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])
+```
+
+
+```{{r}}
+tmp <- deseq2.res
+# The main plot
+plot(tmp$baseMean, tmp$log2FoldChange, pch=20, cex=0.45, ylim=c(-3, 3), log="x", col="darkgray",
+     main="DEG Dessication  (pval <= 0.05)",
+     xlab="mean of normalized counts",
+     ylab="Log2 Fold Change")
+# Getting the significant points and plotting them again so they're a different color
+tmp.sig <- deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ]
+points(tmp.sig$baseMean, tmp.sig$log2FoldChange, pch=20, cex=0.45, col="red")
+# 2 FC lines
+abline(h=c(-1,1), col="blue")
+```
+
+```{{r}}
+write.table(tmp.sig, "../output/DEGlist.tab", row.names = T)
+
+```
+
+
+
+
+

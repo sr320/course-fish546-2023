@@ -112,6 +112,27 @@
     "text": "Data\n\n\n\nSample\nSampleID\n\n\nD-control\nD54\n\n\nD-control\nD55\n\n\nD-control\nD56\n\n\nD-control\nD57\n\n\nD-control\nD58\n\n\nD-control\nD59\n\n\nD-control\nM45\n\n\nD-control\nM46\n\n\nD-control\nM48\n\n\nD-control\nM49\n\n\nD-control\nM89\n\n\nD-control\nM90\n\n\nD-desiccation\nN48\n\n\nD-desiccation\nN49\n\n\nD-desiccation\nN50\n\n\nD-desiccation\nN51\n\n\nD-desiccation\nN52\n\n\nD-desiccation\nN53\n\n\nD-desiccation\nN54\n\n\nD-desiccation\nN55\n\n\nD-desiccation\nN56\n\n\nD-desiccation\nN57\n\n\nD-desiccation\nN58\n\n\nD-desiccation\nN59\n\n\n\nwget --recursive --no-parent --no-directories --accept '[DMN]*001.fastq.gz' https://owl.fish.washington.edu/nightingales/C_gigas/"
   },
   {
+    "objectID": "assignments/02-DGE.html#downloading-reference",
+    "href": "assignments/02-DGE.html#downloading-reference",
+    "title": "Differential Gene Expression",
+    "section": "Downloading reference",
+    "text": "Downloading reference\n```{bash}\ncd ../data\ncurl -O \n```\n\n\n\n\n\n\nNote\n\n\n\nCreating index can take some time\n\n\n```{bash}\n/home/shared/kallisto/kallisto \\\nindex -i \\\n../data/cgigas_roslin_rna.index \\\n../data/rna.fna\n```"
+  },
+  {
+    "objectID": "assignments/02-DGE.html#downloading-sequence-reads",
+    "href": "assignments/02-DGE.html#downloading-sequence-reads",
+    "title": "Differential Gene Expression",
+    "section": "Downloading sequence reads",
+    "text": "Downloading sequence reads\n```{bash}\nfind ../data/*fastq.gz \\\n| xargs basename -s _L001_R1_001.fastq.gz | xargs -I{} /home/shared/kallisto/kallisto \\\nquant -i ../data/cgigas_roslin_rna.index \\\n-o ../output/kallisto_01/{} \\\n-t 40 \\\n--single -l 100 -s 10 ../data/{}_L001_R1_001.fastq.gz\n```\n```{bash}\nperl /home/shared/trinityrnaseq-v2.12.0/util/abundance_estimates_to_matrix.pl \\\n--est_method kallisto \\\n    --gene_trans_map none \\\n    --out_prefix ../output/kallisto_01 \\\n    --name_sample_by_basedir \\\n    ../output/kallisto_01/control/D54_S145/abundance.tsv \\\n    ../output/kallisto_01/control/D56_S136/abundance.tsv \\\n    ../output/kallisto_01/control/D58_S144/abundance.tsv \\\n    ../output/kallisto_01/control/M45_S140/abundance.tsv \\\n    ../output/kallisto_01/control/M48_S137/abundance.tsv \\\n    ../output/kallisto_01/control/M89_S138/abundance.tsv \\\n    ../output/kallisto_01/control/D55_S146/abundance.tsv \\\n    ../output/kallisto_01/control/D57_S143/abundance.tsv \\\n    ../output/kallisto_01/control/D59_S142/abundance.tsv \\\n    ../output/kallisto_01/control/M46_S141/abundance.tsv \\\n    ../output/kallisto_01/control/M49_S139/abundance.tsv \\\n    ../output/kallisto_01/control/M90_S147/abundance.tsv \\\n    ../output/kallisto_01/dessication/N48_S194/abundance.tsv \\\n    ../output/kallisto_01/dessication/N50_S187/abundance.tsv \\\n    ../output/kallisto_01/dessication/N52_S184/abundance.tsv \\\n    ../output/kallisto_01/dessication/N54_S193/abundance.tsv \\\n    ../output/kallisto_01/dessication/N56_S192/abundance.tsv \\\n    ../output/kallisto_01/dessication/N58_S195/abundance.tsv \\\n    ../output/kallisto_01/dessication/N49_S185/abundance.tsv \\\n    ../output/kallisto_01/dessication/N51_S186/abundance.tsv \\\n    ../output/kallisto_01/dessication/N53_S188/abundance.tsv \\\n    ../output/kallisto_01/dessication/N55_S190/abundance.tsv \\\n    ../output/kallisto_01/dessication/N57_S191/abundance.tsv \\\n    ../output/kallisto_01/dessication/N59_S189/abundance.tsv\n```"
+  },
+  {
+    "objectID": "assignments/02-DGE.html#get-degs-based-on-infection",
+    "href": "assignments/02-DGE.html#get-degs-based-on-infection",
+    "title": "Differential Gene Expression",
+    "section": "Get DEGs based on infection",
+    "text": "Get DEGs based on infection\n```{r}\ndeseq2.colData <- data.frame(condition=factor(c(rep(\"control\", 12), rep(\"desicatted\", 12))), \n                             type=factor(rep(\"single-read\", 24)))\nrownames(deseq2.colData) <- colnames(data)\ndeseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,\n                                     colData = deseq2.colData, \n                                     design = ~ condition)\n```\n```{r}\ndeseq2.dds <- DESeq(deseq2.dds)\ndeseq2.res <- results(deseq2.dds)\ndeseq2.res <- deseq2.res[order(rownames(deseq2.res)), ]\n```\n```{r}\nhead(deseq2.res)\n```\n```{r}\n# Count number of hits with adjusted p-value less then 0.05\ndim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])\n```\n```{r}\ntmp <- deseq2.res\n# The main plot\nplot(tmp$baseMean, tmp$log2FoldChange, pch=20, cex=0.45, ylim=c(-3, 3), log=\"x\", col=\"darkgray\",\n     main=\"DEG Dessication  (pval <= 0.05)\",\n     xlab=\"mean of normalized counts\",\n     ylab=\"Log2 Fold Change\")\n# Getting the significant points and plotting them again so they're a different color\ntmp.sig <- deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ]\npoints(tmp.sig$baseMean, tmp.sig$log2FoldChange, pch=20, cex=0.45, col=\"red\")\n# 2 FC lines\nabline(h=c(-1,1), col=\"blue\")\n```\n```{r}\nwrite.table(tmp.sig, \"../output/DEGlist.tab\", row.names = T)\n\n```"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Bioinformatics for Environmental Sciences",

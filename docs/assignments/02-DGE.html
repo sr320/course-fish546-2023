@@ -173,7 +173,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
   <li><a href="#installing-kallisto" id="toc-installing-kallisto" class="nav-link" data-scroll-target="#installing-kallisto">Installing kallisto</a></li>
-  <li><a href="#kallisto-and-deseq2-on-raven" id="toc-kallisto-and-deseq2-on-raven" class="nav-link" data-scroll-target="#kallisto-and-deseq2-on-raven">Kallisto and DESeq2 on raven</a></li>
+  <li><a href="#running-kallisto" id="toc-running-kallisto" class="nav-link" data-scroll-target="#running-kallisto">Running kallisto</a>
+  <ul class="collapse">
+  <li><a href="#downloading-reference" id="toc-downloading-reference" class="nav-link" data-scroll-target="#downloading-reference">Downloading reference</a></li>
+  <li><a href="#downloading-sequence-reads" id="toc-downloading-sequence-reads" class="nav-link" data-scroll-target="#downloading-sequence-reads">Downloading sequence reads</a></li>
+  </ul></li>
+  <li><a href="#running-deseq2" id="toc-running-deseq2" class="nav-link" data-scroll-target="#running-deseq2">Running DESeq2</a>
+  <ul class="collapse">
+  <li><a href="#read-in-count-matrix" id="toc-read-in-count-matrix" class="nav-link" data-scroll-target="#read-in-count-matrix">Read in count matrix</a></li>
+  <li><a href="#get-degs-based-on-infection" id="toc-get-degs-based-on-infection" class="nav-link" data-scroll-target="#get-degs-based-on-infection">Get DEGs based on infection</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -358,13 +367,32 @@ Just for reference if using raven for assignment (recommended).
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> without arguments prints usage information for <span class="op">&lt;</span>CMD<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="kallisto-and-deseq2-on-raven" class="level1">
-<h1>Kallisto and DESeq2 on raven</h1>
+<section id="running-kallisto" class="level1">
+<h1>Running kallisto</h1>
 <p>kallisto is already installed on raven (<code>/home/shared/kallisto/kallisto</code>).</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+GitHub file size limit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Commit early and often but <code>ignore</code> files that are larger that 100 MB (or you will likely lose everything since prior commit).</p>
+</div>
+</div>
 <p>In appropriate Rmarkdown</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/kallisto/kallisto</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="downloading-reference" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-reference">Downloading reference</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../data</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -375,19 +403,127 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Creating index can take ~20 minutes.</p>
+<p>Creating index can take some time</p>
 </div>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/kallisto/kallisto</span> <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>index <span class="at">-i</span> <span class="dt">\</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>../data/cgigas_uk_roslin_v1_genomic-mito.index <span class="dt">\</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>../data/cgigas_uk_roslin_v1_genomic-mito.fa</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/shared/kallisto/kallisto</span> <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>index <span class="at">-i</span> <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>../data/cgigas_roslin_rna.index <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>../data/rna.fna</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="downloading-sequence-reads" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-sequence-reads">Downloading sequence reads</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ../data/<span class="pp">*</span>fastq.gz <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="fu">xargs</span> basename <span class="at">-s</span> _L001_R1_001.fastq.gz <span class="kw">|</span> <span class="fu">xargs</span> <span class="at">-I{}</span> /home/shared/kallisto/kallisto <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>quant <span class="at">-i</span> ../data/cgigas_roslin_rna.index <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>-o ../output/kallisto_01/{} <span class="dt">\</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>-t 40 <span class="dt">\</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>--single <span class="at">-l</span> 100 <span class="at">-s</span> 10 ../data/{}_L001_R1_001.fastq.gz</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">perl</span> /home/shared/trinityrnaseq-v2.12.0/util/abundance_estimates_to_matrix.pl <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>--est_method kallisto <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--gene_trans_map</span> none <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--out_prefix</span> ../output/kallisto_01 <span class="dt">\</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--name_sample_by_basedir</span> <span class="dt">\</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/D54_S145/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/D56_S136/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/D58_S144/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/M45_S140/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/M48_S137/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/M89_S138/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/D55_S146/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/D57_S143/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/D59_S142/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/M46_S141/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/M49_S139/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/control/M90_S147/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N48_S194/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N50_S187/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N52_S184/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N54_S193/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N56_S192/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N58_S195/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N49_S185/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N51_S186/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N53_S188/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N55_S190/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N57_S191/abundance.tsv <span class="dt">\</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    ../output/kallisto_01/dessication/N59_S189/abundance.tsv</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="running-deseq2" class="level1">
+<h1>Running DESeq2</h1>
+<p>Load packages:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="read-in-count-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="read-in-count-matrix">Read in count matrix</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>countmatrix <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"../output/kallisto_01.isoform.counts.matrix"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(countmatrix) <span class="ot">&lt;-</span> countmatrix<span class="sc">$</span>X</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>countmatrix <span class="ot">&lt;-</span> countmatrix[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(countmatrix)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Round integers up to hole numbers for further analysis:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>countmatrix <span class="ot">&lt;-</span> <span class="fu">round</span>(countmatrix, <span class="dv">0</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(countmatrix)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-degs-based-on-infection" class="level2">
+<h2 class="anchored" data-anchor-id="get-degs-based-on-infection">Get DEGs based on infection</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>deseq2.colData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">condition=</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"control"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"desicatted"</span>, <span class="dv">12</span>))), </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type=</span><span class="fu">factor</span>(<span class="fu">rep</span>(<span class="st">"single-read"</span>, <span class="dv">24</span>)))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(deseq2.colData) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(data)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>deseq2.dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">countData =</span> countmatrix,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">colData =</span> deseq2.colData, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">design =</span> <span class="sc">~</span> condition)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>deseq2.dds <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(deseq2.dds)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>deseq2.res <span class="ot">&lt;-</span> <span class="fu">results</span>(deseq2.dds)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>deseq2.res <span class="ot">&lt;-</span> deseq2.res[<span class="fu">order</span>(<span class="fu">rownames</span>(deseq2.res)), ]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(deseq2.res)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Count number of hits with adjusted p-value less then 0.05</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(deseq2.res[<span class="sc">!</span><span class="fu">is.na</span>(deseq2.res<span class="sc">$</span>padj) <span class="sc">&amp;</span> deseq2.res<span class="sc">$</span>padj <span class="sc">&lt;=</span> <span class="fl">0.05</span>, ])</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> deseq2.res</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The main plot</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tmp<span class="sc">$</span>baseMean, tmp<span class="sc">$</span>log2FoldChange, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">cex=</span><span class="fl">0.45</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">log=</span><span class="st">"x"</span>, <span class="at">col=</span><span class="st">"darkgray"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"DEG Dessication  (pval &lt;= 0.05)"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"mean of normalized counts"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Log2 Fold Change"</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the significant points and plotting them again so they're a different color</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>tmp.sig <span class="ot">&lt;-</span> deseq2.res[<span class="sc">!</span><span class="fu">is.na</span>(deseq2.res<span class="sc">$</span>padj) <span class="sc">&amp;</span> deseq2.res<span class="sc">$</span>padj <span class="sc">&lt;=</span> <span class="fl">0.05</span>, ]</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(tmp.sig<span class="sc">$</span>baseMean, tmp.sig<span class="sc">$</span>log2FoldChange, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">cex=</span><span class="fl">0.45</span>, <span class="at">col=</span><span class="st">"red"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 FC lines</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="at">col=</span><span class="st">"blue"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(tmp.sig, <span class="st">"../output/DEGlist.tab"</span>, <span class="at">row.names =</span> T)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -690,130 +826,270 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Differential Gene Expression"</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Can we cross the volcano?"</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a "treatment", which generally speaking could be anything from environment, disease, developmental stage, tissue, species...</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>As apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>|               |          |</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>|---------------|----------|</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>| Sample        | SampleID |</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>| D-control     | D54      |</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>| D-control     | D55      |</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>| D-control     | D56      |</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>| D-control     | D57      |</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>| D-control     | D58      |</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>| D-control     | D59      |</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>| D-control     | M45      |</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>| D-control     | M46      |</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>| D-control     | M48      |</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>| D-control     | M49      |</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>| D-control     | M89      |</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>| D-control     | M90      |</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N48      |</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N49      |</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N50      |</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N51      |</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N52      |</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N53      |</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N54      |</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N55      |</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N56      |</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N57      |</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N58      |</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N59      |</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--recursive</span> <span class="at">--no-parent</span> <span class="at">--no-directories</span> <span class="at">--accept</span> <span class="st">'[DMN]*001.fastq.gz'</span> https://owl.fish.washington.edu/nightingales/C_gigas/</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="fu"># Software</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>For this assignment we will be using <span class="co">[</span><span class="ot">kallisto</span><span class="co">](https://pachterlab.github.io/kallisto/)</span> (bash), DESeq2 (r).</span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>If you are loaded up with kallisto and ready to go you can skip the next few steps as I will demonstrate how to install kallisto on JupyterHub.</span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installing kallisto</span></span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just for reference if using raven for assignment (recommended).</span></span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>Navigate through to a terminal and create directory in your home directory named <span class="in">`programs`</span></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> pwd</span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/jovyan</span></span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> mkdir programs</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>Grab (<span class="in">`wget`</span>) the program from site listed above.</span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> cd programs/</span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> wget https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v0.46.1.tar.gz</span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>Uncompress the file.</span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> cd kallisto</span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ls</span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span>  license.txt  README.md  test</span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ./kallisto </span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span> 0.46.1</span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> [arguments] ..</span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="ex">Where</span> <span class="op">&lt;</span>CMD<span class="op">&gt;</span> can be one of:</span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>    <span class="ex">index</span>         Builds a kallisto index </span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>    <span class="ex">quant</span>         Runs the quantification algorithm </span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>    <span class="ex">bus</span>           Generate BUS files for single-cell data </span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pseudo</span>        Runs the pseudoalignment step </span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>    <span class="ex">merge</span>         Merges several batch runs </span>
-<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>    <span class="ex">h5dump</span>        Converts HDF5-formatted results to plaintext</span>
-<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>    <span class="ex">inspect</span>       Inspects and gives information about an index</span>
-<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>    <span class="ex">version</span>       Prints version information</span>
-<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>    <span class="ex">cite</span>          Prints citation information</span>
-<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> without arguments prints usage information for <span class="op">&lt;</span>CMD<span class="op">&gt;</span></span>
-<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a><span class="fu"># Kallisto and DESeq2 on raven</span></span>
-<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>kallisto is already installed on raven (<span class="in">`/home/shared/kallisto/kallisto`</span>).</span>
-<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>In appropriate Rmarkdown</span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a><span class="in">/home/shared/kallisto/kallisto</span></span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>Creating index can take \~20 minutes.</span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a><span class="in">/home/shared/kallisto/kallisto \</span></span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a><span class="in">index -i \</span></span>
-<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a><span class="in">../data/cgigas_uk_roslin_v1_genomic-mito.index \</span></span>
-<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a><span class="in">../data/cgigas_uk_roslin_v1_genomic-mito.fa</span></span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Differential Gene Expression"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Can we cross the volcano?"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a "treatment", which generally speaking could be anything from environment, disease, developmental stage, tissue, species...</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>As apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>|               |          |</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>|---------------|----------|</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>| Sample        | SampleID |</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>| D-control     | D54      |</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>| D-control     | D55      |</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>| D-control     | D56      |</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>| D-control     | D57      |</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>| D-control     | D58      |</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>| D-control     | D59      |</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>| D-control     | M45      |</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>| D-control     | M46      |</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>| D-control     | M48      |</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>| D-control     | M49      |</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>| D-control     | M89      |</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>| D-control     | M90      |</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N48      |</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N49      |</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N50      |</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N51      |</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N52      |</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N53      |</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N54      |</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N55      |</span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N56      |</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N57      |</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N58      |</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N59      |</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--recursive</span> <span class="at">--no-parent</span> <span class="at">--no-directories</span> <span class="at">--accept</span> <span class="st">'[DMN]*001.fastq.gz'</span> https://owl.fish.washington.edu/nightingales/C_gigas/</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a><span class="fu"># Software</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>For this assignment we will be using <span class="co">[</span><span class="ot">kallisto</span><span class="co">](https://pachterlab.github.io/kallisto/)</span> (bash), DESeq2 (r).</span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>If you are loaded up with kallisto and ready to go you can skip the next few steps as I will demonstrate how to install kallisto on JupyterHub.</span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installing kallisto</span></span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just for reference if using raven for assignment (recommended).</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>Navigate through to a terminal and create directory in your home directory named <span class="in">`programs`</span></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> pwd</span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/jovyan</span></span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> mkdir programs</span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a>Grab (<span class="in">`wget`</span>) the program from site listed above.</span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> cd programs/</span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> wget https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v0.46.1.tar.gz</span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>Uncompress the file.</span>
+<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> cd kallisto</span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ls</span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span>  license.txt  README.md  test</span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ./kallisto </span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span> 0.46.1</span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> [arguments] ..</span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a><span class="ex">Where</span> <span class="op">&lt;</span>CMD<span class="op">&gt;</span> can be one of:</span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-92"><a href="#cb19-92" aria-hidden="true" tabindex="-1"></a>    <span class="ex">index</span>         Builds a kallisto index </span>
+<span id="cb19-93"><a href="#cb19-93" aria-hidden="true" tabindex="-1"></a>    <span class="ex">quant</span>         Runs the quantification algorithm </span>
+<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a>    <span class="ex">bus</span>           Generate BUS files for single-cell data </span>
+<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pseudo</span>        Runs the pseudoalignment step </span>
+<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a>    <span class="ex">merge</span>         Merges several batch runs </span>
+<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a>    <span class="ex">h5dump</span>        Converts HDF5-formatted results to plaintext</span>
+<span id="cb19-98"><a href="#cb19-98" aria-hidden="true" tabindex="-1"></a>    <span class="ex">inspect</span>       Inspects and gives information about an index</span>
+<span id="cb19-99"><a href="#cb19-99" aria-hidden="true" tabindex="-1"></a>    <span class="ex">version</span>       Prints version information</span>
+<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a>    <span class="ex">cite</span>          Prints citation information</span>
+<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> without arguments prints usage information for <span class="op">&lt;</span>CMD<span class="op">&gt;</span></span>
+<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a><span class="fu"># Running kallisto</span></span>
+<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a>kallisto is already installed on raven (<span class="in">`/home/shared/kallisto/kallisto`</span>).</span>
+<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## GitHub file size limit</span></span>
+<span id="cb19-111"><a href="#cb19-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-112"><a href="#cb19-112" aria-hidden="true" tabindex="-1"></a>Commit early and often but <span class="in">`ignore`</span> files that are larger that 100 MB (or you will likely lose everything since prior commit).</span>
+<span id="cb19-113"><a href="#cb19-113" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-114"><a href="#cb19-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-115"><a href="#cb19-115" aria-hidden="true" tabindex="-1"></a>In appropriate Rmarkdown</span>
+<span id="cb19-116"><a href="#cb19-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-117"><a href="#cb19-117" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
+<span id="cb19-118"><a href="#cb19-118" aria-hidden="true" tabindex="-1"></a><span class="in">/home/shared/kallisto/kallisto</span></span>
+<span id="cb19-119"><a href="#cb19-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-120"><a href="#cb19-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a><span class="fu">## Downloading reference</span></span>
+<span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
+<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a><span class="in">cd ../data</span></span>
+<span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a><span class="in">curl -O </span></span>
+<span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-128"><a href="#cb19-128" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb19-129"><a href="#cb19-129" aria-hidden="true" tabindex="-1"></a>Creating index can take some time</span>
+<span id="cb19-130"><a href="#cb19-130" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb19-131"><a href="#cb19-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-132"><a href="#cb19-132" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
+<span id="cb19-133"><a href="#cb19-133" aria-hidden="true" tabindex="-1"></a><span class="in">/home/shared/kallisto/kallisto \</span></span>
+<span id="cb19-134"><a href="#cb19-134" aria-hidden="true" tabindex="-1"></a><span class="in">index -i \</span></span>
+<span id="cb19-135"><a href="#cb19-135" aria-hidden="true" tabindex="-1"></a><span class="in">../data/cgigas_roslin_rna.index \</span></span>
+<span id="cb19-136"><a href="#cb19-136" aria-hidden="true" tabindex="-1"></a><span class="in">../data/rna.fna</span></span>
+<span id="cb19-137"><a href="#cb19-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-138"><a href="#cb19-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-139"><a href="#cb19-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## Downloading sequence reads</span></span>
+<span id="cb19-140"><a href="#cb19-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-141"><a href="#cb19-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-142"><a href="#cb19-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-143"><a href="#cb19-143" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
+<span id="cb19-144"><a href="#cb19-144" aria-hidden="true" tabindex="-1"></a><span class="in">find ../data/*fastq.gz \</span></span>
+<span id="cb19-145"><a href="#cb19-145" aria-hidden="true" tabindex="-1"></a><span class="in">| xargs basename -s _L001_R1_001.fastq.gz | xargs -I{} /home/shared/kallisto/kallisto \</span></span>
+<span id="cb19-146"><a href="#cb19-146" aria-hidden="true" tabindex="-1"></a><span class="in">quant -i ../data/cgigas_roslin_rna.index \</span></span>
+<span id="cb19-147"><a href="#cb19-147" aria-hidden="true" tabindex="-1"></a><span class="in">-o ../output/kallisto_01/{} \</span></span>
+<span id="cb19-148"><a href="#cb19-148" aria-hidden="true" tabindex="-1"></a><span class="in">-t 40 \</span></span>
+<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a><span class="in">--single -l 100 -s 10 ../data/{}_L001_R1_001.fastq.gz</span></span>
+<span id="cb19-150"><a href="#cb19-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-151"><a href="#cb19-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-152"><a href="#cb19-152" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
+<span id="cb19-153"><a href="#cb19-153" aria-hidden="true" tabindex="-1"></a><span class="in">perl /home/shared/trinityrnaseq-v2.12.0/util/abundance_estimates_to_matrix.pl \</span></span>
+<span id="cb19-154"><a href="#cb19-154" aria-hidden="true" tabindex="-1"></a><span class="in">--est_method kallisto \</span></span>
+<span id="cb19-155"><a href="#cb19-155" aria-hidden="true" tabindex="-1"></a><span class="in">    --gene_trans_map none \</span></span>
+<span id="cb19-156"><a href="#cb19-156" aria-hidden="true" tabindex="-1"></a><span class="in">    --out_prefix ../output/kallisto_01 \</span></span>
+<span id="cb19-157"><a href="#cb19-157" aria-hidden="true" tabindex="-1"></a><span class="in">    --name_sample_by_basedir \</span></span>
+<span id="cb19-158"><a href="#cb19-158" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/D54_S145/abundance.tsv \</span></span>
+<span id="cb19-159"><a href="#cb19-159" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/D56_S136/abundance.tsv \</span></span>
+<span id="cb19-160"><a href="#cb19-160" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/D58_S144/abundance.tsv \</span></span>
+<span id="cb19-161"><a href="#cb19-161" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/M45_S140/abundance.tsv \</span></span>
+<span id="cb19-162"><a href="#cb19-162" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/M48_S137/abundance.tsv \</span></span>
+<span id="cb19-163"><a href="#cb19-163" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/M89_S138/abundance.tsv \</span></span>
+<span id="cb19-164"><a href="#cb19-164" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/D55_S146/abundance.tsv \</span></span>
+<span id="cb19-165"><a href="#cb19-165" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/D57_S143/abundance.tsv \</span></span>
+<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/D59_S142/abundance.tsv \</span></span>
+<span id="cb19-167"><a href="#cb19-167" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/M46_S141/abundance.tsv \</span></span>
+<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/M49_S139/abundance.tsv \</span></span>
+<span id="cb19-169"><a href="#cb19-169" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/control/M90_S147/abundance.tsv \</span></span>
+<span id="cb19-170"><a href="#cb19-170" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N48_S194/abundance.tsv \</span></span>
+<span id="cb19-171"><a href="#cb19-171" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N50_S187/abundance.tsv \</span></span>
+<span id="cb19-172"><a href="#cb19-172" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N52_S184/abundance.tsv \</span></span>
+<span id="cb19-173"><a href="#cb19-173" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N54_S193/abundance.tsv \</span></span>
+<span id="cb19-174"><a href="#cb19-174" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N56_S192/abundance.tsv \</span></span>
+<span id="cb19-175"><a href="#cb19-175" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N58_S195/abundance.tsv \</span></span>
+<span id="cb19-176"><a href="#cb19-176" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N49_S185/abundance.tsv \</span></span>
+<span id="cb19-177"><a href="#cb19-177" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N51_S186/abundance.tsv \</span></span>
+<span id="cb19-178"><a href="#cb19-178" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N53_S188/abundance.tsv \</span></span>
+<span id="cb19-179"><a href="#cb19-179" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N55_S190/abundance.tsv \</span></span>
+<span id="cb19-180"><a href="#cb19-180" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N57_S191/abundance.tsv \</span></span>
+<span id="cb19-181"><a href="#cb19-181" aria-hidden="true" tabindex="-1"></a><span class="in">    ../output/kallisto_01/dessication/N59_S189/abundance.tsv</span></span>
+<span id="cb19-182"><a href="#cb19-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-183"><a href="#cb19-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-184"><a href="#cb19-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-185"><a href="#cb19-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-186"><a href="#cb19-186" aria-hidden="true" tabindex="-1"></a><span class="fu"># Running DESeq2</span></span>
+<span id="cb19-187"><a href="#cb19-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-188"><a href="#cb19-188" aria-hidden="true" tabindex="-1"></a>Load packages:    </span>
+<span id="cb19-189"><a href="#cb19-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-190"><a href="#cb19-190" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span>
+<span id="cb19-191"><a href="#cb19-191" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb19-192"><a href="#cb19-192" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb19-193"><a href="#cb19-193" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb19-194"><a href="#cb19-194" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb19-195"><a href="#cb19-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-196"><a href="#cb19-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-197"><a href="#cb19-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-198"><a href="#cb19-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### Read in count matrix </span></span>
+<span id="cb19-199"><a href="#cb19-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-200"><a href="#cb19-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-201"><a href="#cb19-201" aria-hidden="true" tabindex="-1"></a>countmatrix <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"../output/kallisto_01.isoform.counts.matrix"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span>
+<span id="cb19-202"><a href="#cb19-202" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(countmatrix) <span class="ot">&lt;-</span> countmatrix<span class="sc">$</span>X</span>
+<span id="cb19-203"><a href="#cb19-203" aria-hidden="true" tabindex="-1"></a>countmatrix <span class="ot">&lt;-</span> countmatrix[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb19-204"><a href="#cb19-204" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(countmatrix)</span>
+<span id="cb19-205"><a href="#cb19-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-206"><a href="#cb19-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-207"><a href="#cb19-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-208"><a href="#cb19-208" aria-hidden="true" tabindex="-1"></a>Round integers up to hole numbers for further analysis:</span>
+<span id="cb19-209"><a href="#cb19-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-210"><a href="#cb19-210" aria-hidden="true" tabindex="-1"></a>countmatrix <span class="ot">&lt;-</span> <span class="fu">round</span>(countmatrix, <span class="dv">0</span>)</span>
+<span id="cb19-211"><a href="#cb19-211" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(countmatrix)</span>
+<span id="cb19-212"><a href="#cb19-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-213"><a href="#cb19-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-214"><a href="#cb19-214" aria-hidden="true" tabindex="-1"></a><span class="fu">## Get DEGs based on infection </span></span>
+<span id="cb19-215"><a href="#cb19-215" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-216"><a href="#cb19-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-217"><a href="#cb19-217" aria-hidden="true" tabindex="-1"></a>deseq2.colData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">condition=</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"control"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"desicatted"</span>, <span class="dv">12</span>))), </span>
+<span id="cb19-218"><a href="#cb19-218" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type=</span><span class="fu">factor</span>(<span class="fu">rep</span>(<span class="st">"single-read"</span>, <span class="dv">24</span>)))</span>
+<span id="cb19-219"><a href="#cb19-219" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(deseq2.colData) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(data)</span>
+<span id="cb19-220"><a href="#cb19-220" aria-hidden="true" tabindex="-1"></a>deseq2.dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">countData =</span> countmatrix,</span>
+<span id="cb19-221"><a href="#cb19-221" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">colData =</span> deseq2.colData, </span>
+<span id="cb19-222"><a href="#cb19-222" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">design =</span> <span class="sc">~</span> condition)</span>
+<span id="cb19-223"><a href="#cb19-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-224"><a href="#cb19-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-225"><a href="#cb19-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-226"><a href="#cb19-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-227"><a href="#cb19-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a>deseq2.dds <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(deseq2.dds)</span>
+<span id="cb19-229"><a href="#cb19-229" aria-hidden="true" tabindex="-1"></a>deseq2.res <span class="ot">&lt;-</span> <span class="fu">results</span>(deseq2.dds)</span>
+<span id="cb19-230"><a href="#cb19-230" aria-hidden="true" tabindex="-1"></a>deseq2.res <span class="ot">&lt;-</span> deseq2.res[<span class="fu">order</span>(<span class="fu">rownames</span>(deseq2.res)), ]</span>
+<span id="cb19-231"><a href="#cb19-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-232"><a href="#cb19-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-233"><a href="#cb19-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-234"><a href="#cb19-234" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(deseq2.res)</span>
+<span id="cb19-235"><a href="#cb19-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-236"><a href="#cb19-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-237"><a href="#cb19-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-238"><a href="#cb19-238" aria-hidden="true" tabindex="-1"></a><span class="co"># Count number of hits with adjusted p-value less then 0.05</span></span>
+<span id="cb19-239"><a href="#cb19-239" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(deseq2.res[<span class="sc">!</span><span class="fu">is.na</span>(deseq2.res<span class="sc">$</span>padj) <span class="sc">&amp;</span> deseq2.res<span class="sc">$</span>padj <span class="sc">&lt;=</span> <span class="fl">0.05</span>, ])</span>
+<span id="cb19-240"><a href="#cb19-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-241"><a href="#cb19-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-242"><a href="#cb19-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-243"><a href="#cb19-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-244"><a href="#cb19-244" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> deseq2.res</span>
+<span id="cb19-245"><a href="#cb19-245" aria-hidden="true" tabindex="-1"></a><span class="co"># The main plot</span></span>
+<span id="cb19-246"><a href="#cb19-246" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tmp<span class="sc">$</span>baseMean, tmp<span class="sc">$</span>log2FoldChange, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">cex=</span><span class="fl">0.45</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">log=</span><span class="st">"x"</span>, <span class="at">col=</span><span class="st">"darkgray"</span>,</span>
+<span id="cb19-247"><a href="#cb19-247" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"DEG Dessication  (pval &lt;= 0.05)"</span>,</span>
+<span id="cb19-248"><a href="#cb19-248" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"mean of normalized counts"</span>,</span>
+<span id="cb19-249"><a href="#cb19-249" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Log2 Fold Change"</span>)</span>
+<span id="cb19-250"><a href="#cb19-250" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the significant points and plotting them again so they're a different color</span></span>
+<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a>tmp.sig <span class="ot">&lt;-</span> deseq2.res[<span class="sc">!</span><span class="fu">is.na</span>(deseq2.res<span class="sc">$</span>padj) <span class="sc">&amp;</span> deseq2.res<span class="sc">$</span>padj <span class="sc">&lt;=</span> <span class="fl">0.05</span>, ]</span>
+<span id="cb19-252"><a href="#cb19-252" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(tmp.sig<span class="sc">$</span>baseMean, tmp.sig<span class="sc">$</span>log2FoldChange, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">cex=</span><span class="fl">0.45</span>, <span class="at">col=</span><span class="st">"red"</span>)</span>
+<span id="cb19-253"><a href="#cb19-253" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 FC lines</span></span>
+<span id="cb19-254"><a href="#cb19-254" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="at">col=</span><span class="st">"blue"</span>)</span>
+<span id="cb19-255"><a href="#cb19-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-256"><a href="#cb19-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-257"><a href="#cb19-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-258"><a href="#cb19-258" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(tmp.sig, <span class="st">"../output/DEGlist.tab"</span>, <span class="at">row.names =</span> T)</span>
+<span id="cb19-259"><a href="#cb19-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-260"><a href="#cb19-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb19-261"><a href="#cb19-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-262"><a href="#cb19-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-263"><a href="#cb19-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-264"><a href="#cb19-264" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
