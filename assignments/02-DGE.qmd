@@ -110,7 +110,35 @@ kallisto is already installed on raven (`/home/shared/kallisto/kallisto`).
 ## GitHub file size limit
 
 Commit early and often but `ignore` files that are larger that 100 MB (or you will likely lose everything since prior commit).
+
+You can use Git's built-in hooks to automatically ignore files larger than 100 MB. Here are the steps to follow:
+
+Create a new file in the `.git/hooks/` directory of your repository called `pre-commit`.
+
+Add the following code to the `pre-commit` file:
+
+```
+#!/bin/bash
+
+# Maximum file size (in bytes)
+max_file_size=104857600
+
+# Find all files larger than max_file_size and add them to the .gitignore file
+find . -type f -size +$max_file_sizec -exec echo "{}" >> .gitignore \;
+```
+
+This code sets the max_file_size variable to 100 MB and then uses the find command to locate all files in the repository that are larger than the specified max_file_size. The exec option of the find command appends the name of each file that matches the criteria to the .gitignore file.
+
+Save the pre-commit file and make it executable by running the following command:
+
+```bash
+chmod +x .git/hooks/pre-commit
+```
+With these changes, whenever you run a git commit command, Git will first execute the pre-commit hook, which will automatically add any files larger than 100 MB to the .gitignore file. This will prevent Git from tracking these files in the repository going forward.
+
 :::
+
+
 
 In appropriate Rmarkdown
 
