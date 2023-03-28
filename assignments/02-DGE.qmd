@@ -138,6 +138,9 @@ chmod +x .git/hooks/pre-commit
 ```
 With these changes, whenever you run a git commit command, Git will first execute the pre-commit hook, which will automatically add any files larger than 100 MB to the .gitignore file. This will prevent Git from tracking these files in the repository going forward.
 
+
+this might also 
+
 :::
 
 
@@ -149,6 +152,8 @@ In appropriate Rmarkdown
 ```
 
 ## Downloading reference
+
+https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna
 
 ``` {{bash}}
 cd ../data

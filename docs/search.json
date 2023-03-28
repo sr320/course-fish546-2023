@@ -116,7 +116,7 @@
     "href": "assignments/02-DGE.html#downloading-reference",
     "title": "Differential Gene Expression",
     "section": "Downloading reference",
-    "text": "Downloading reference\n```{bash}\ncd ../data\ncurl -O \n```\n\n\n\n\n\n\nNote\n\n\n\nCreating index can take some time\n\n\n```{bash}\n/home/shared/kallisto/kallisto \\\nindex -i \\\n../data/cgigas_roslin_rna.index \\\n../data/rna.fna\n```"
+    "text": "Downloading reference\nhttps://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna\n```{bash}\ncd ../data\ncurl -O \n```\n\n\n\n\n\n\nNote\n\n\n\nCreating index can take some time\n\n\n```{bash}\n/home/shared/kallisto/kallisto \\\nindex -i \\\n../data/cgigas_roslin_rna.index \\\n../data/rna.fna\n```"
   },
   {
     "objectID": "assignments/02-DGE.html#downloading-sequence-reads",
@@ -257,5 +257,12 @@
     "title": "Bioinformatics - FISH 546",
     "section": "",
     "text": "What is your prior experience in this discipline?\nWhat do you hope to get out of this class?\nThis class is strongly rooted in an independent project related to genomic analyses. What specific project do you have in mind? If you do not have any data or preference, data can be provided / aquired. If you do not have a specfic project, what approach would you like to master as part of this class?\nWhat are two things you found most useful from the reading?"
+  },
+  {
+    "objectID": "gerg.html",
+    "href": "gerg.html",
+    "title": "Genomic Ecology Reading Group",
+    "section": "",
+    "text": "This is a page with content not linked…"
   }
 ]
