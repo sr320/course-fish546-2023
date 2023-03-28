@@ -49,7 +49,7 @@ tar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz
 ls /Applications/bioinfo/
 ```
 
-```{bash}
+```{{bash}}
 /Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx -h
 ```
 
@@ -134,21 +134,21 @@ curl -O -H "Accept: text/plain; format=tsv" "https://rest.uniprot.org/uniprotkb/
 
 At this point we have a blast output table and annotation table both with a Uniprot accession number. Thus we can join the two tables and be able to get more functional information about thet genes.
 
-```{bash}
+```{{bash}}
 head -2 ../output/Ab_4-uniprot_blastx.tab
 wc -l ../output/Ab_4-uniprot_blastx.tab
 ```
 
-```{bash}
+```{{bash}}
 tr '|' '\t' < ../output/Ab_4-uniprot_blastx.tab | head -2
 ```
 
-```{bash}
+```{{bash}}
 tr '|' '\t' < ../output/Ab_4-uniprot_blastx.tab \
 > ../output/Ab_4-uniprot_blastx_sep.tab
 ```
 
-```{bash}
+```{{bash}}
 head -2 ../data/uniprot_table_r2023_01.tab
 wc -l ../data/uniprot_table_r2023_01.tab
 ```
