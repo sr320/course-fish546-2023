@@ -9,6 +9,7 @@ This course will teach core computing skills as well as project specific approac
 
 ------------------------------------------------------------------------
 
+
 T 3:00-4:20
 
 Th 9:30-11:20
@@ -38,6 +39,10 @@ Course[^2] GitHub Organization: <https://github.com/course-fish546-2023>
 [^2]: https://github.com/sr320/course-fish546-2023
 
 Raven: <http://raven.fish.washington.edu:8787>
+
+## Class Announcements 
+
+- see [GitHub issues](https://github.com/course-fish546-2023/assistance/issues?q=is%3Aissue+is%3Aopen+label%3AAnnouncement) 
 
 ## Repo List
 
