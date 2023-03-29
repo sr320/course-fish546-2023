@@ -105,3 +105,6 @@ This will be assessed as a measure of progress from week to week. A primary mean
 -   [MarineOmics Portal](https://marineomics.github.io) - website with genomic tutorials.
 -   [sandbox.bio](https://sandbox.bio) - Interactive bioinformatics tutorials
 -   [Aquamine](https://aquamine.elsiklab.missouri.edu/) - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species
+-   [Happy git with R](https://happygitwithr.com/index.html) - Happy Git provides opinionated instructions on how to: 1)Install Git and get it working smoothly with GitHub, in the shell and in the RStudio IDE.
+2) Develop a few key workflows that cover your most common tasks.
+3) Integrate Git and GitHub into your daily work with R and R Markdown.

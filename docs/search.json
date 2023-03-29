@@ -193,7 +193,7 @@
     "href": "index.html#useful-resources",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "Useful Resources",
-    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials.\nsandbox.bio - Interactive bioinformatics tutorials\nAquamine - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species"
+    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials.\nsandbox.bio - Interactive bioinformatics tutorials\nAquamine - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species\nHappy git with R - Happy Git provides opinionated instructions on how to: 1)Install Git and get it working smoothly with GitHub, in the shell and in the RStudio IDE.\n\n\nDevelop a few key workflows that cover your most common tasks.\nIntegrate Git and GitHub into your daily work with R and R Markdown."
   },
   {
     "objectID": "about.html",
