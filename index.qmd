@@ -53,8 +53,8 @@ Raven: <http://raven.fish.washington.edu:8787>
 | William        |                                                                                       |              |
 | Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework)           |              |
 | Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework)           |              |
-| Courtney Copps | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)     |              |
-| Sarah Sophia   | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework) |              |
+| Courtney       | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)     |              |
+| Sarah          | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework) |              |
 | Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework)       |              |
 | Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework)         |              |
 | Sarah          |                                                                                       |              |
