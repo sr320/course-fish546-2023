@@ -9,7 +9,6 @@ This course will teach core computing skills as well as project specific approac
 
 ------------------------------------------------------------------------
 
-
 T 3:00-4:20
 
 Th 9:30-11:20
@@ -40,30 +39,29 @@ Course[^2] GitHub Organization: <https://github.com/course-fish546-2023>
 
 Raven: <http://raven.fish.washington.edu:8787>
 
-## Class Announcements 
+## Class Announcements
 
-- see [GitHub issues](https://github.com/course-fish546-2023/assistance/issues?q=is%3Aissue+is%3Aopen+label%3AAnnouncement) 
+-   see [GitHub issues](https://github.com/course-fish546-2023/assistance/issues?q=is%3Aissue+is%3Aopen+label%3AAnnouncement)
 
 ## Repo List
 
-| Name or UserID | coursework repo | project repo |
-|----------------|-----------------|--------------|
-| Zachary        |                 |              |
-| Olivia         |                 |              |
-| Susan          |                 |              |
-| William        |                 |              |
-| Chris          |                 |              |
-| Haila          |                 |              |
-| Courtney Copps |                 |              |
-| Sarah Sophia   |                 |              |
-| Celeste        |                 |              |
-| Jordan         |                 |              |
-| Sarah          |                 |              |
-| Brian          |                 |              |
-|                |                 |              |
-|                |                 |              |
-|                |                 |              |
-
+| Name or UserID | coursework repo                                                                       | project repo |
+|----------------|---------------------------------------------------------------------------------------|--------------|
+| Zachary        |                                                                                       |              |
+| Olivia         |                                                                                       |              |
+| Susan          |                                                                                       |              |
+| William        |                                                                                       |              |
+| Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework)           |              |
+| Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework)           |              |
+| Courtney Copps | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)     |              |
+| Sarah Sophia   | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework) |              |
+| Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework)       |              |
+| Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework)         |              |
+| Sarah          |                                                                                       |              |
+| Brian          |                                                                                       |              |
+|                |                                                                                       |              |
+|                |                                                                                       |              |
+|                |                                                                                       |              |
 
 ------------------------------------------------------------------------
 
@@ -110,6 +108,9 @@ This will be assessed as a measure of progress from week to week. A primary mean
 -   [MarineOmics Portal](https://marineomics.github.io) - website with genomic tutorials.
 -   [sandbox.bio](https://sandbox.bio) - Interactive bioinformatics tutorials
 -   [Aquamine](https://aquamine.elsiklab.missouri.edu/) - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species
--   [Happy git with R](https://happygitwithr.com/index.html) - Happy Git provides opinionated instructions on how to: 1)Install Git and get it working smoothly with GitHub, in the shell and in the RStudio IDE.
-2) Develop a few key workflows that cover your most common tasks.
-3) Integrate Git and GitHub into your daily work with R and R Markdown.
+-   [Happy git with R](https://happygitwithr.com/index.html) - Happy Git provides opinionated instructions on how to:
+    -   Install Git and get it working smoothly with GitHub, in the shell and in the RStudio IDE.
+
+    -   Develop a few key workflows that cover your most common tasks.
+
+    -   Integrate Git and GitHub into your daily work with R and R Markdown.
