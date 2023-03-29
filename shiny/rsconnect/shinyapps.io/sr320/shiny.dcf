@@ -5,9 +5,9 @@ account: sr320
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8710311
-bundleId: 7024574
+bundleId: 7024717
 url: https://sr320.shinyapps.io/shiny/
-when: 1680110979.71471
-lastSyncTime: 1680110979.71473
+when: 1680113149.87672
+lastSyncTime: 1680113149.87673
 asMultiple: FALSE
 asStatic: FALSE
