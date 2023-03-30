@@ -261,9 +261,9 @@
   {
     "objectID": "questions/week02.html",
     "href": "questions/week02.html",
-    "title": "Bioinformatics - FISH 546",
+    "title": "Week 02 Questions",
     "section": "",
-    "text": "What do you feel was the most impressive thing you did in class last week was?\nWhat is your weekly goal for making progress on your project? What is the next step?\nThere were two readings this week, meant for two different audiences. Which reading did you get the most out of and why? Do you have any questions regarding the Journal of Shellfish Research paper?\nWhat is your favorite thing about markdown and why?"
+    "text": "You can simply copy and paste this markdown text\n## Week 02 Question Set\n\na)  **What do you feel was the most impressive thing you did in class last week was?**\n\nb)  **What is your weekly goal for making progress on your project? What is the next step?**\n\nc)  **There were two readings this week, meant for two different audiences. Which reading did you get the most out of and why? Do you have any questions regarding the Journal of Shellfish Research paper?**\n\nd)  **What is your favorite thing about markdown and why?**"
   },
   {
     "objectID": "questions/week01.html",
