@@ -119,7 +119,7 @@ Create a new file in the `.git/hooks/` directory of your repository called `pre-
 
 Add the following code to the `pre-commit` file:
 
-```bash
+``` bash
 #!/bin/bash
 
 # Maximum file size (in bytes)
@@ -133,17 +133,14 @@ This code sets the max_file_size variable to 100 MB and then uses the find comma
 
 Save the pre-commit file and make it executable by running the following command:
 
-```bash
+``` bash
 chmod +x .git/hooks/pre-commit
 ```
+
 With these changes, whenever you run a git commit command, Git will first execute the pre-commit hook, which will automatically add any files larger than 100 MB to the .gitignore file. This will prevent Git from tracking these files in the repository going forward.
 
-
-this might also 
-
+This might also work - `git reset --mixed HEAD~1`
 :::
-
-
 
 In appropriate Rmarkdown
 
@@ -172,7 +169,6 @@ index -i \
 ```
 
 ## Downloading sequence reads
-
 
 ``` bash
 wget --recursive --no-parent --no-directories \
@@ -223,12 +219,11 @@ perl /home/shared/trinityrnaseq-v2.12.0/util/abundance_estimates_to_matrix.pl \
     ../output/kallisto_01/dessication/N59_S189/abundance.tsv
 ```
 
-
-
 # Running DESeq2
 
-Load packages:    
-```{{r}}
+Load packages:
+
+``` {{r}}
 library(DESeq2)
 library(tidyverse)
 library(pheatmap)
@@ -236,26 +231,25 @@ library(RColorBrewer)
 library(data.table)
 ```
 
+### Read in count matrix
 
-### Read in count matrix 
-
-```{{r}}
+``` {{r}}
 countmatrix <- read.delim("../output/kallisto_01.isoform.counts.matrix", header = TRUE, sep = '\t')
 rownames(countmatrix) <- countmatrix$X
 countmatrix <- countmatrix[,-1]
 head(countmatrix)
 ```
 
-
 Round integers up to hole numbers for further analysis:
-```{{r}}
+
+``` {{r}}
 countmatrix <- round(countmatrix, 0)
 str(countmatrix)
 ```
 
-## Get DEGs based on infection 
-    
-```{{r}}
+## Get DEGs based on infection
+
+``` {{r}}
 deseq2.colData <- data.frame(condition=factor(c(rep("control", 12), rep("desicatted", 12))), 
                              type=factor(rep("single-read", 24)))
 rownames(deseq2.colData) <- colnames(data)
@@ -264,25 +258,22 @@ deseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,
                                      design = ~ condition)
 ```
 
-
-
-```{{r}}
+``` {{r}}
 deseq2.dds <- DESeq(deseq2.dds)
 deseq2.res <- results(deseq2.dds)
 deseq2.res <- deseq2.res[order(rownames(deseq2.res)), ]
 ```
 
-```{{r}}
+``` {{r}}
 head(deseq2.res)
 ```
 
-```{{r}}
+``` {{r}}
 # Count number of hits with adjusted p-value less then 0.05
 dim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])
 ```
 
-
-```{{r}}
+``` {{r}}
 tmp <- deseq2.res
 # The main plot
 plot(tmp$baseMean, tmp$log2FoldChange, pch=20, cex=0.45, ylim=c(-3, 3), log="x", col="darkgray",
@@ -296,12 +287,6 @@ points(tmp.sig$baseMean, tmp.sig$log2FoldChange, pch=20, cex=0.45, col="red")
 abline(h=c(-1,1), col="blue")
 ```
 
-```{{r}}
+``` {{r}}
 write.table(tmp.sig, "../output/DEGlist.tab", row.names = T)
-
 ```
-
-
-
-
-

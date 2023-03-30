@@ -130,7 +130,7 @@
     "href": "assignments/02-DGE.html#get-degs-based-on-infection",
     "title": "Differential Gene Expression",
     "section": "Get DEGs based on infection",
-    "text": "Get DEGs based on infection\n```{r}\ndeseq2.colData <- data.frame(condition=factor(c(rep(\"control\", 12), rep(\"desicatted\", 12))), \n                             type=factor(rep(\"single-read\", 24)))\nrownames(deseq2.colData) <- colnames(data)\ndeseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,\n                                     colData = deseq2.colData, \n                                     design = ~ condition)\n```\n```{r}\ndeseq2.dds <- DESeq(deseq2.dds)\ndeseq2.res <- results(deseq2.dds)\ndeseq2.res <- deseq2.res[order(rownames(deseq2.res)), ]\n```\n```{r}\nhead(deseq2.res)\n```\n```{r}\n# Count number of hits with adjusted p-value less then 0.05\ndim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])\n```\n```{r}\ntmp <- deseq2.res\n# The main plot\nplot(tmp$baseMean, tmp$log2FoldChange, pch=20, cex=0.45, ylim=c(-3, 3), log=\"x\", col=\"darkgray\",\n     main=\"DEG Dessication  (pval <= 0.05)\",\n     xlab=\"mean of normalized counts\",\n     ylab=\"Log2 Fold Change\")\n# Getting the significant points and plotting them again so they're a different color\ntmp.sig <- deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ]\npoints(tmp.sig$baseMean, tmp.sig$log2FoldChange, pch=20, cex=0.45, col=\"red\")\n# 2 FC lines\nabline(h=c(-1,1), col=\"blue\")\n```\n```{r}\nwrite.table(tmp.sig, \"../output/DEGlist.tab\", row.names = T)\n\n```"
+    "text": "Get DEGs based on infection\n```{r}\ndeseq2.colData <- data.frame(condition=factor(c(rep(\"control\", 12), rep(\"desicatted\", 12))), \n                             type=factor(rep(\"single-read\", 24)))\nrownames(deseq2.colData) <- colnames(data)\ndeseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,\n                                     colData = deseq2.colData, \n                                     design = ~ condition)\n```\n```{r}\ndeseq2.dds <- DESeq(deseq2.dds)\ndeseq2.res <- results(deseq2.dds)\ndeseq2.res <- deseq2.res[order(rownames(deseq2.res)), ]\n```\n```{r}\nhead(deseq2.res)\n```\n```{r}\n# Count number of hits with adjusted p-value less then 0.05\ndim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])\n```\n```{r}\ntmp <- deseq2.res\n# The main plot\nplot(tmp$baseMean, tmp$log2FoldChange, pch=20, cex=0.45, ylim=c(-3, 3), log=\"x\", col=\"darkgray\",\n     main=\"DEG Dessication  (pval <= 0.05)\",\n     xlab=\"mean of normalized counts\",\n     ylab=\"Log2 Fold Change\")\n# Getting the significant points and plotting them again so they're a different color\ntmp.sig <- deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ]\npoints(tmp.sig$baseMean, tmp.sig$log2FoldChange, pch=20, cex=0.45, col=\"red\")\n# 2 FC lines\nabline(h=c(-1,1), col=\"blue\")\n```\n```{r}\nwrite.table(tmp.sig, \"../output/DEGlist.tab\", row.names = T)\n```"
   },
   {
     "objectID": "index.html",
@@ -228,7 +228,7 @@
     "href": "lectures/02-rna-seq.html",
     "title": "RNAs-seq",
     "section": "",
-    "text": "Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects\nFitting Multifactorial Models of Differential Expression"
+    "text": "Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects\nFitting Multifactorial Models of Differential Expression\nTextbook- Retrieving Bioinformatics Data 109-124"
   },
   {
     "objectID": "lectures/02-rna-seq.html#quality-control",

@@ -17,6 +17,8 @@ format:
 
 -   [Fitting Multifactorial Models of Differential Expression](https://marineomics.github.io/FUN_01_DGE_comparison_v2.html)
 
+-   Textbook- Retrieving Bioinformatics Data 109-124
+
 # Objectives
 
 Learn how to take raw RNA sequence data and perform differential gene expression analysis.
