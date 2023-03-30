@@ -11,6 +11,10 @@ format:
     code-overflow: wrap
 ---
 
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/nzV_ZOmFZ_H7drlYp-9aCHO1qDF4grWBmIH8dqzUof6wpQrJ00hCiPWROHkQ1eOT.7ouiMERR9vLYC6K7)
+
 For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.
 
 ::: callout-important
@@ -37,15 +41,14 @@ NCBI Blast Software is at
 It is best to decide on central location on computer where software will be downloaded.
 :::
 
-https://github.com/RobertsLab/code/blob/master/09-blast.ipynb
 
-``` {.bash .code-overflow-wrap}
+```{{bash}}
 cd /Applications/bioinfo/
 curl -O https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.13.0+-x64-macosx.tar.gz
 tar -xf ncbi-blast-2.13.0+-x64-macosx.tar.gz
 ```
 
-``` bash
+```{{bash}}
 ls /Applications/bioinfo/
 ```
 
@@ -59,7 +62,7 @@ see <https://www.uniprot.org/downloads>
 
 https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 
-``` bash
+```{{bash}}
 cd ../data
 curl -O https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 mv uniprot_sprot.fasta.gz uniprot_sprot_r2023_01.fasta.gz
@@ -67,7 +70,7 @@ gunzip -k uniprot_sprot_r2023_01.fasta.gz
 ls ../data
 ```
 
-``` bash
+```{{bash}}
 /Applications/bioinfo/ncbi-blast-2.13.0+/bin/makeblastdb \
 -in ../data/uniprot_sprot_r2023_01.fasta \
 -dbtype prot \
@@ -76,7 +79,7 @@ ls ../data
 
 # Get the query sequence
 
-``` bash
+```{{bash}}
 curl https://eagle.fish.washington.edu/cnidarian/Ab_4denovo_CLC6_a.fa \
 -k \
 > ../data/Ab_4denovo_CLC6_a.fa
@@ -90,7 +93,7 @@ grep -c ">" ../data/Ab_4denovo_CLC6_a.fa
 
 # Run Blast
 
-``` bash
+```{{bash}}
 /Applications/bioinfo/ncbi-blast-2.13.0+/bin/blastx \
 -query ../data/Ab_4denovo_CLC6_a.fa \
 -db ../blastdb/uniprot_sprot_r2023_01 \
@@ -120,7 +123,9 @@ https://www.uniprot.org/uniprotkb
 knitr::include_graphics("../img/uniprot-api.png")
 ```
 
-    https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29
+```
+https://rest.uniprot.org/uniprotkb/stream?compressed=true&fields=accession%2Creviewed%2Cid%2Cprotein_name%2Cgene_names%2Corganism_name%2Clength%2Cgo_f%2Cgo%2Cgo_p%2Cgo_c%2Cgo_id%2Ccc_interaction%2Cec%2Cxref_reactome%2Cxref_unipathway%2Cxref_interpro&format=tsv&query=%28%2A%29%20AND%20%28reviewed%3Atrue%29
+```
 
 ``` {{bash}}
 curl -O "Accept: text/plain; format=tsv" "https://rest.uniprot.org/uniprotkb/search?query=reviewed:true+AND+organism_id:9606"
@@ -153,7 +158,7 @@ head -2 ../data/uniprot_table_r2023_01.tab
 wc -l ../data/uniprot_table_r2023_01.tab
 ```
 
-```{r}
+```{{r}}
 library(tidyverse)
 library("kableExtra")
 ```
@@ -183,14 +188,14 @@ head(
 
 ```
 
-```{r}
+```{{r}}
 left_join(bltabl, spgo,  by = c("V3" = "Entry")) %>%
   select(V1, V3, V13, Protein.names, Organism, Gene.Ontology..biological.process., Gene.Ontology.IDs) %>% mutate(V1 = str_replace_all(V1, 
             pattern = "solid0078_20110412_FRAG_BC_WHITE_WHITE_F3_QV_SE_trimmed", replacement = "Ab")) %>%
   write_delim("../output/blast_annot_go.tab", delim = '\t')
 ```
 
-```{r}
+```{{r}}
 annot_tab <- read.csv("../output/blast_annot_go.tab", sep = '\t', header = TRUE)
 ```
 
