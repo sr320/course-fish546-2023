@@ -11,21 +11,21 @@ format:
     code-overflow: wrap
 ---
 
-| Date      | Questions                      | Topic                                                | Assignment                                             | Project Status  |
-|--------------|--------------|----------------|--------------|--------------|
-| last week |                                | [Preparing for class](lectures/00-before.qmd)        | [bash](assignments/00-bash.qmd)                        |                 |
-| mar 27    | [week 01](questions/week01.md) | [Getting Started](lectures/01-start-up.qmd)          | [NCBI Blast](assignments/01-blast.qmd)                 | Establish Repos |
-| apr 03    | [week 02](questions/week02.md) | [RNA-seq](lectures/02-rna-seq.qmd) + Ariana Huffmyer | [Differential Gene Expression](assignments/02-DGE.qmd) |                 |
-| apr 10    | week 03                        | R Fundamentals                                       |                                                        |                 |
-| apr 17    | week 04                        | Functional Enrichment                                |                                                        |                 |
-| apr 24    | week 05                        | Genetic Variation                                    |                                                        | Slides          |
-| may 01    | week 06                        | Microbiome                                           |                                                        |                 |
-| may 08    | week 07                        | DNA methylation + Matt George                        |                                                        |                 |
-| may 15    | week 08                        | Genomic Ranges                                       |                                                        |                 |
-| may 22    | week 09                        |                                                      |                                                        |                 |
-| may 29    | week 10                        | Presentations                                        |                                                        | Compendium      |
-|           |                                |                                                      |                                                        |                 |
+| Date      | Questions                       | Topic                                                | Assignment                                             | Project Status  |
+|---------------|---------------|---------------|---------------|---------------|
+| last week |                                 | [Preparing for class](lectures/00-before.qmd)        | [bash](assignments/00-bash.qmd)                        |                 |
+| mar 27    | [week 01](questions/week01.md)  | [Getting Started](lectures/01-start-up.qmd)          | [NCBI Blast](assignments/01-blast.qmd)                 | Establish Repos |
+| apr 03    | [week 02](questions/week02.qmd) | [RNA-seq](lectures/02-rna-seq.qmd) + Ariana Huffmyer | [Differential Gene Expression](assignments/02-DGE.qmd) |                 |
+| apr 10    | week 03                         | R Fundamentals                                       |                                                        |                 |
+| apr 17    | week 04                         | Functional Enrichment                                |                                                        |                 |
+| apr 24    | week 05                         | Genetic Variation                                    |                                                        | Slides          |
+| may 01    | week 06                         | Microbiome                                           |                                                        |                 |
+| may 08    | week 07                         | DNA methylation + Matt George                        |                                                        |                 |
+| may 15    | week 08                         | Genomic Ranges                                       |                                                        |                 |
+| may 22    | week 09                         |                                                      |                                                        |                 |
+| may 29    | week 10                         | Presentations                                        |                                                        | Compendium      |
+|           |                                 |                                                      |                                                        |                 |
 
----
+------------------------------------------------------------------------
 
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/sr320/course-FISH546-2023">
+<img src="https://img.shields.io/github/commit-activity/w/sr320/course-FISH546-2023" alt="GitHub commit activity"/>

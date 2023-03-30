@@ -16,7 +16,7 @@ For the first task you will take an unknown multi-fasta file and annotate it usi
 ::: callout-important
 ## Assignment
 
-Annotate a provided fasta file with GO slim terms. Your code should be fully reproducible.
+Annotate a provided fasta file with GO terms. Your code should be fully reproducible.
 :::
 
 In your code directory create a file.
