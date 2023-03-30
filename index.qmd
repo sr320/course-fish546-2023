@@ -105,6 +105,11 @@ This will completed in your course repo in a logical location. Use numeric prefi
 
 This will be assessed as a measure of progress from week to week. A primary means of assessment will be your response to issues, as well as accomplishment of self-assigned goals. In addition it will be expected that you use best principles as covered in the course.
 
+### Late Policy
+
+Assignments turned in late will include a 20% decrease in points. Assignments will not be accepted following 5 days past due date/time.
+
+
 ## Useful Resources
 
 -   [MarineOmics Portal](https://marineomics.github.io) - website with genomic tutorials.
