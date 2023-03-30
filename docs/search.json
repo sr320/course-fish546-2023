@@ -1,9 +1,275 @@
 [
   {
+    "objectID": "gerg.html",
+    "href": "gerg.html",
+    "title": "Genomic Ecology Reading Group",
+    "section": "",
+    "text": "This is a page with content not linked…"
+  },
+  {
+    "objectID": "assignments/01-blast.html",
+    "href": "assignments/01-blast.html",
+    "title": "NCBI Blast",
+    "section": "",
+    "text": "For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.\n\n\n\n\n\n\nAssignment\n\n\n\nAnnotate a provided fasta file with GO terms. Your code should be fully reproducible.\n\n\nIn your code directory create a file.\n01-blast.Rmd\n\n\n\n\n\n\nTip\n\n\n\nRmarkdown is a good option as you can use markdown, add pictures and more!"
+  },
+  {
+    "objectID": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
+    "href": "assignments/01-blast.html#joining-blast-table-with-annotation-table",
+    "title": "NCBI Blast",
+    "section": "Joining blast table with annotation table",
+    "text": "Joining blast table with annotation table\nAt this point we have a blast output table and annotation table both with a Uniprot accession number. Thus we can join the two tables and be able to get more functional information about thet genes.\n```{bash}\nhead -2 ../output/Ab_4-uniprot_blastx.tab\nwc -l ../output/Ab_4-uniprot_blastx.tab\n```\n```{bash}\ntr '|' '\\t' < ../output/Ab_4-uniprot_blastx.tab | head -2\n```\n```{bash}\ntr '|' '\\t' < ../output/Ab_4-uniprot_blastx.tab \\\n> ../output/Ab_4-uniprot_blastx_sep.tab\n```\n```{bash}\nhead -2 ../data/uniprot_table_r2023_01.tab\nwc -l ../data/uniprot_table_r2023_01.tab\n```\n\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.1     ✔ purrr   1.0.1\n✔ tibble  3.1.8     ✔ dplyr   1.1.0\n✔ tidyr   1.3.0     ✔ stringr 1.5.0\n✔ readr   2.1.4     ✔ forcats 1.0.0\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(\"kableExtra\")\n\n\nAttaching package: 'kableExtra'\n\nThe following object is masked from 'package:dplyr':\n\n    group_rows\n\n\n\nbltabl <- read.csv(\"../output/Ab_4-uniprot_blastx_sep.tab\", sep = '\\t', header = FALSE)\n\n\nspgo <- read.csv(\"../data/uniprot_table_r2023_01.tab\", sep = '\\t', header = TRUE)\n\n\nstr(spgo)\n\n'data.frame':   569213 obs. of  17 variables:\n $ Entry                             : chr  \"A0A023I7E1\" \"A0A024B7W1\" \"A0A024SC78\" \"A0A024SH76\" ...\n $ Reviewed                          : chr  \"reviewed\" \"reviewed\" \"reviewed\" \"reviewed\" ...\n $ Entry.Name                        : chr  \"ENG1_RHIMI\" \"POLG_ZIKVF\" \"CUTI1_HYPJR\" \"GUX2_HYPJR\" ...\n $ Protein.names                     : chr  \"Glucan endo-1,3-beta-D-glucosidase 1 (Endo-1,3-beta-glucanase 1) (EC 3.2.1.39) (Laminarinase) (RmLam81A)\" \"Genome polyprotein [Cleaved into: Capsid protein C (Capsid protein) (Core protein); Protein prM (Precursor memb\"| __truncated__ \"Cutinase (EC 3.1.1.74)\" \"Exoglucanase 2 (EC 3.2.1.91) (1,4-beta-cellobiohydrolase) (Cellobiohydrolase 6A) (Cel6A) (Exocellobiohydrolase \"| __truncated__ ...\n $ Gene.Names                        : chr  \"ENG1 LAM81A\" \"\" \"M419DRAFT_76732\" \"cbh2 M419DRAFT_122470\" ...\n $ Organism                          : chr  \"Rhizomucor miehei\" \"Zika virus (isolate ZIKV/Human/French Polynesia/10087PF/2013) (ZIKV)\" \"Hypocrea jecorina (strain ATCC 56765 / BCRC 32924 / NRRL 11460 / Rut C-30) (Trichoderma reesei)\" \"Hypocrea jecorina (strain ATCC 56765 / BCRC 32924 / NRRL 11460 / Rut C-30) (Trichoderma reesei)\" ...\n $ Length                            : int  796 3423 248 471 478 693 333 742 2442 455 ...\n $ Gene.Ontology..molecular.function.: chr  \"glucan endo-1,3-beta-D-glucosidase activity [GO:0042973]; glucan endo-1,3-beta-glucanase activity, C-3 substitu\"| __truncated__ \"4 iron, 4 sulfur cluster binding [GO:0051539]; ATP binding [GO:0005524]; ATP hydrolysis activity [GO:0016887]; \"| __truncated__ \"cutinase activity [GO:0050525]\" \"cellulose 1,4-beta-cellobiosidase activity [GO:0016162]; cellulose binding [GO:0030248]\" ...\n $ Gene.Ontology..GO.                : chr  \"extracellular region [GO:0005576]; glucan endo-1,3-beta-D-glucosidase activity [GO:0042973]; glucan endo-1,3-be\"| __truncated__ \"extracellular region [GO:0005576]; host cell endoplasmic reticulum membrane [GO:0044167]; host cell nucleus [GO\"| __truncated__ \"extracellular region [GO:0005576]; cutinase activity [GO:0050525]\" \"extracellular region [GO:0005576]; cellulose 1,4-beta-cellobiosidase activity [GO:0016162]; cellulose binding [\"| __truncated__ ...\n $ Gene.Ontology..biological.process.: chr  \"cell wall organization [GO:0071555]; polysaccharide catabolic process [GO:0000272]\" \"clathrin-dependent endocytosis of virus by host cell [GO:0075512]; fusion of virus membrane with host endosome \"| __truncated__ \"\" \"cellulose catabolic process [GO:0030245]\" ...\n $ Gene.Ontology..cellular.component.: chr  \"extracellular region [GO:0005576]\" \"extracellular region [GO:0005576]; host cell endoplasmic reticulum membrane [GO:0044167]; host cell nucleus [GO\"| __truncated__ \"extracellular region [GO:0005576]\" \"extracellular region [GO:0005576]\" ...\n $ Gene.Ontology.IDs                 : chr  \"GO:0000272; GO:0005576; GO:0042973; GO:0052861; GO:0052862; GO:0071555\" \"GO:0003724; GO:0003725; GO:0003968; GO:0004252; GO:0004482; GO:0004483; GO:0005198; GO:0005524; GO:0005525; GO:\"| __truncated__ \"GO:0005576; GO:0050525\" \"GO:0005576; GO:0016162; GO:0030245; GO:0030248\" ...\n $ Interacts.with                    : chr  \"\" \"\" \"\" \"\" ...\n $ EC.number                         : chr  \"3.2.1.39\" \"2.1.1.56; 2.1.1.57; 2.7.7.48; 3.4.21.91; 3.6.1.15; 3.6.4.13\" \"3.1.1.74\" \"3.2.1.91\" ...\n $ Reactome                          : chr  \"\" \"\" \"\" \"\" ...\n $ UniPathway                        : chr  \"\" \"\" \"\" \"\" ...\n $ InterPro                          : chr  \"IPR005200;IPR040720;IPR040451;\" \"IPR011492;IPR043502;IPR000069;IPR038302;IPR013755;IPR001122;IPR037172;IPR027287;IPR026470;IPR038345;IPR001157;I\"| __truncated__ \"IPR029058;IPR000675;IPR043580;IPR043579;IPR011150;\" \"IPR016288;IPR036434;IPR035971;IPR000254;IPR001524;\" ...\n\n\n\nkbl(\nhead(\n  left_join(bltabl, spgo,  by = c(\"V3\" = \"Entry\")) %>%\n  select(V1, V3, V13, Protein.names, Organism, Gene.Ontology..biological.process., Gene.Ontology.IDs) %>% mutate(V1 = str_replace_all(V1, \n            pattern = \"solid0078_20110412_FRAG_BC_WHITE_WHITE_F3_QV_SE_trimmed\", replacement = \"Ab\"))\n)\n) %>%\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\", \"condensed\", \"responsive\"))\n\n\n\n \n  \n    V1 \n    V3 \n    V13 \n    Protein.names \n    Organism \n    Gene.Ontology..biological.process. \n    Gene.Ontology.IDs \n  \n \n\n  \n    Ab_contig_3 \n    O42248 \n    0 \n    Guanine nucleotide-binding protein subunit beta-2-like 1 (Receptor of activated protein kinase C) (RACK) \n    Danio rerio (Zebrafish) (Brachydanio rerio) \n    angiogenesis [GO:0001525]; convergent extension involved in gastrulation [GO:0060027]; negative regulation of Wnt signaling pathway [GO:0030178]; positive regulation of gastrulation [GO:2000543]; positive regulation of protein phosphorylation [GO:0001934]; regulation of cell division [GO:0051302]; regulation of establishment of cell polarity [GO:2000114]; regulation of protein localization [GO:0032880]; rescue of stalled ribosome [GO:0072344] \n    GO:0001525; GO:0001934; GO:0005080; GO:0005634; GO:0005737; GO:0005829; GO:0005840; GO:0030178; GO:0032880; GO:0043022; GO:0045182; GO:0051302; GO:0060027; GO:0072344; GO:1990904; GO:2000114; GO:2000543 \n  \n  \n    Ab_contig_5 \n    Q08013 \n    0 \n    Translocon-associated protein subunit gamma (TRAP-gamma) (Signal sequence receptor subunit gamma) (SSR-gamma) \n    Rattus norvegicus (Rat) \n    SRP-dependent cotranslational protein targeting to membrane [GO:0006614] \n    GO:0005783; GO:0005784; GO:0006614 \n  \n  \n    Ab_contig_6 \n    P12234 \n    0 \n    Phosphate carrier protein, mitochondrial (Phosphate transport protein) (PTP) (Solute carrier family 25 member 3) \n    Bos taurus (Bovine) \n    mitochondrial phosphate ion transmembrane transport [GO:1990547]; phosphate ion transmembrane transport [GO:0035435] \n    GO:0005315; GO:0005739; GO:0005743; GO:0015293; GO:0035435; GO:0044877; GO:1990547 \n  \n  \n    Ab_contig_9 \n    Q41629 \n    0 \n    ADP,ATP carrier protein 1, mitochondrial (ADP/ATP translocase 1) (Adenine nucleotide translocator 1) (ANT 1) \n    Triticum aestivum (Wheat) \n    mitochondrial ADP transmembrane transport [GO:0140021]; mitochondrial ATP transmembrane transport [GO:1990544] \n    GO:0005471; GO:0005743; GO:0140021; GO:1990544 \n  \n  \n    Ab_contig_13 \n    Q32NG4 \n    0 \n    Glutamine amidotransferase-like class 1 domain-containing protein 1 (Parkinson disease 7 domain-containing protein 1) \n    Xenopus laevis (African clawed frog) \n     \n    GO:0005576 \n  \n  \n    Ab_contig_23 \n    Q9GNE2 \n    0 \n    60S ribosomal protein L23 (AeRpL17A) (L17A) \n    Aedes aegypti (Yellowfever mosquito) (Culex aegypti) \n    translation [GO:0006412] \n    GO:0003735; GO:0005840; GO:0006412; GO:1990904 \n  \n\n\n\n\n\n```{r}\nleft_join(bltabl, spgo,  by = c(\"V3\" = \"Entry\")) %>%\n  select(V1, V3, V13, Protein.names, Organism, Gene.Ontology..biological.process., Gene.Ontology.IDs) %>% mutate(V1 = str_replace_all(V1, \n            pattern = \"solid0078_20110412_FRAG_BC_WHITE_WHITE_F3_QV_SE_trimmed\", replacement = \"Ab\")) %>%\n  write_delim(\"../output/blast_annot_go.tab\", delim = '\\t')\n```\n```{r}\nannot_tab <- read.csv(\"../output/blast_annot_go.tab\", sep = '\\t', header = TRUE)\n```"
+  },
+  {
+    "objectID": "assignments/00-bash.html",
+    "href": "assignments/00-bash.html",
+    "title": "bash",
+    "section": "",
+    "text": "Warning\n\n\n\nFor this self directed tutorial you will need to download data-shell.zip and navigate to using a terminal. This could be “Terminal” within Rstudio, or a stand alone application.\nThe part of the operating system responsible for managing files and directories is called the file system. It organizes our data into files, which hold information, and directories (also called “folders”), which hold files or other directories.\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories. To start exploring them, let’s open a shell window:\nThe dollar sign is a prompt, which shows us that the shell is waiting for input; your shell may show something more elaborate.\nType the command whoami, then press the Enter key (sometimes marked Return) to send the command to the shell. The command’s output is the ID of the current user, i.e., it shows us who the shell thinks we are:\nMore specifically, when we type whoami the shell:\nNext, let’s find out where we are by running a command called pwd (which stands for “print working directory”). At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in unless we explicitly specify something else. Here, the computer’s response is /home/jovyan\nTo understand what a “home directory” is, let’s have a look at how the file system as a whole is organized. At the top is the root directory that holds everything else. We refer to it using a slash character / on its own; this is the leading slash in /home/jovyan."
+  },
+  {
+    "objectID": "assignments/00-bash.html#ls",
+    "href": "assignments/00-bash.html#ls",
+    "title": "bash",
+    "section": "ls",
+    "text": "ls\nLet’s see what’s in this directory by running ls, which stands for “listing”:\nls\ncreatures  molecules           pizza.cfg\ndata       north-pacific-gyre  solar.pdf\nDesktop    notes.txt           writing\n\nls prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns. We can make its output more comprehensible by using the flag -F, which tells ls to add a trailing / to the names of directories:\nls -F\ncreatures/  molecules/           pizza.cfg\ndata/       north-pacific-gyre/  solar.pdf\nDesktop/    notes.txt            writing/\nHere, we can see that data-shell contains seven sub-directories. The names that don’t have trailing slashes, like notes.txt, pizza.cfg, and solar.pdf, are plain old files. And note that there is a space between ls and -F: without it, the shell thinks we’re trying to run a command called ls-F, which doesn’t exist."
+  },
+  {
+    "objectID": "assignments/00-bash.html#relative-path",
+    "href": "assignments/00-bash.html#relative-path",
+    "title": "bash",
+    "section": "relative path",
+    "text": "relative path\nNow let’s take a look at what’s in data-shell directory by running ls -F data, i.e., the command ls with the arguments -F and data. The second argument — the one without a leading dash — tells ls that we want a listing of something other than our current working directory:\n ls -F data\namino-acids.txt  animal-counts/  animals.txt  elements/  morse.txt  pdb/  planets.txt  salmon.txt  sunspot.txt\nThe output shows us that there are four text files and two sub-sub-directories. Organizing things hierarchically in this way helps us keep track of our work: it’s possible to put hundreds of files in our home directory, just as it’s possible to pile hundreds of printed papers on our desk, but it’s a self-defeating strategy.\nNotice, by the way that we spelled the directory name data. It doesn’t have a trailing slash: that’s added to directory names by ls when we use the -F flag to help us tell things apart. And it doesn’t begin with a slash because it’s a relative path, i.e., it tells ls how to find something from where we are, rather than from the root of the file system."
+  },
+  {
+    "objectID": "assignments/00-bash.html#absolute-path",
+    "href": "assignments/00-bash.html#absolute-path",
+    "title": "bash",
+    "section": "absolute path",
+    "text": "absolute path\nIf we run ls -F /data (with a leading slash) we get a different answer, because /data is an absolute path:\nls -F /data\nNote you will get an “No file” warning here. This is because we this directory does not exist.\nThe leading / tells the computer to follow the path from the root of the filesystem, so it always refers to exactly one directory, no matter where we are when we run the command.\nIf we wanted to use the **absolute path* to list out the contents of this directory we could used\nls -F /home/jovyan/data-shell/data/\nNote this would work no matter what our pwd is."
+  },
+  {
+    "objectID": "assignments/00-bash.html#nelles-pipeline-organizing-files",
+    "href": "assignments/00-bash.html#nelles-pipeline-organizing-files",
+    "title": "bash",
+    "section": "Nelle’s Pipeline: Organizing Files",
+    "text": "Nelle’s Pipeline: Organizing Files\nKnowing just this much about files and directories, Nelle is ready to organize the files that the protein assay machine will create. First, she creates a directory called north-pacific-gyre (to remind herself where the data came from). Inside that, she creates a directory called 2012-07-03, which is the date she started processing the samples. She used to use names like conference-paper and revised-results, but she found them hard to understand after a couple of years. (The final straw was when she found herself creating a directory called revised-revised-results-3.)\n\nNelle names her directories “year-month-day”, with leading zeroes for months and days, because the shell displays file and directory names in alphabetical order. If she used month names, December would come before July; if she didn’t use leading zeroes, November (‘11’) would come before July (‘7’).\n\nEach of her physical samples is labelled according to her lab’s convention with a unique ten-character ID, such as “NENE01729A”. This is what she used in her collection log to record the location, time, depth, and other characteristics of the sample, so she decides to use it as part of each data file’s name. Since the assay machine’s output is plain text, she will call her files NENE01729A.txt, NENE01812A.txt, and so on. All 1520 files will go into the same directory.\nIf she is in her home directory, Nelle can see what files she has using the command:\nls north-pacific-gyre/2012-07-03/\nThis is a lot to type, but she can let the shell do most of the work. If she types:\nls nor\nand then presses tab, the shell automatically completes the directory name for her:\nls north-pacific-gyre/\nIf she presses tab again, Bash will add 2012-07-03/ to the command, since it’s the only possible completion. Pressing tab again does nothing, since there are 1520 possibilities; pressing tab twice brings up a list of all the files, and so on. This is called tab completion, and we will see it in many other tools as we go on."
+  },
+  {
+    "objectID": "assignments/00-bash.html#key-points",
+    "href": "assignments/00-bash.html#key-points",
+    "title": "bash",
+    "section": "Key Points",
+    "text": "Key Points\n\nThe file system is responsible for managing information on the disk.\nInformation is stored in files, which are stored in directories (folders).\nDirectories can also store other directories, which forms a directory tree.\n/ on its own is the root directory of the whole filesystem.\nA relative path specifies a location starting from the current location.\nAn absolute path specifies a location from the root of the filesystem.\nDirectory names in a path are separated with / on Unix, but \\ on Windows.\n.. means “the directory above the current one”; . on its own means “the current directory”.\nMost files’ names are something.extension. The extension isn’t required, and doesn’t guarantee anything, but is normally used to indicate the type of data in the file.\nMost commands take options (flags) which begin with a -."
+  },
+  {
+    "objectID": "assignments/00-bash.html#word-count",
+    "href": "assignments/00-bash.html#word-count",
+    "title": "bash",
+    "section": "word count",
+    "text": "word count\nLet’s go into that directory with cd and run the command wc *.pdb. wc is the “word count” command: it counts the number of lines, words, and characters in files. The * in *.pdb matches zero or more characters, so the shell turns *.pdb into a complete list of .pdb files:\ncd molecules\n$ wc *.pdb\n\n  20  156 1158 cubane.pdb\n  12   84  622 ethane.pdb\n   9   57  422 methane.pdb\n  30  246 1828 octane.pdb\n  21  165 1226 pentane.pdb\n  15  111  825 propane.pdb\n 107  819 6081 total\n\nWildcards\n* is a wildcard. It matches zero or more characters, so *.pdb matches ethane.pdb, propane.pdb, and so on. On the other hand, p*.pdb only matches pentane.pdb and propane.pdb, because the ‘p’ at the front only matches itself.\n? is also a wildcard, but it only matches a single character. This means that p?.pdb matches pi.pdb or p5.pdb, but not propane.pdb. We can use any number of wildcards at a time: for example, p*.p?* matches anything that starts with a ‘p’ and ends with ‘.’, ‘p’, and at least one more character (since the ‘?’ has to match one character, and the final * can match any number of characters). Thus, p*.p?* would match preferred.practice, and even p.pi (since the first * can match no characters at all), but not quality.practice (doesn’t start with ‘p’) or preferred.p (there isn’t at least one character after the ‘.p’).\nWhen the shell sees a wildcard, it expands the wildcard to create a list of matching filenames before running the command that was asked for. This means that commands like wc and ls never see the wildcard characters, just what those wildcards matched. This is another example of orthogonal design.\nIf we run wc -l instead of just wc, the output shows only the number of lines per file:\nwc -l *.pdb\n  20  cubane.pdb\n  12  ethane.pdb\n   9  methane.pdb\n  30  octane.pdb\n  21  pentane.pdb\n  15  propane.pdb\n 107  total\nWe can also use -w to get only the number of words, or -c to get only the number of characters."
+  },
+  {
+    "objectID": "assignments/00-bash.html#redirect",
+    "href": "assignments/00-bash.html#redirect",
+    "title": "bash",
+    "section": "redirect",
+    "text": "redirect\nWhich of these files is shortest? It’s an easy question to answer when there are only six files, but what if there were 6000? Our first step toward a solution is to run the command:\nwc -l *.pdb > lengths\nThe > tells the shell to redirect the command’s output to a file instead of printing it to the screen. The shell will create the file if it doesn’t exist, or overwrite the contents of that file if it does. (This is why there is no screen output: everything that wc would have printed has gone into the file lengths instead.) ls lengths confirms that the file exists:\nls lengths\nlengths"
+  },
+  {
+    "objectID": "assignments/00-bash.html#cat",
+    "href": "assignments/00-bash.html#cat",
+    "title": "bash",
+    "section": "cat",
+    "text": "cat\nWe can now send the content of lengths to the screen using cat lengths. cat stands for “concatenate”: it prints the contents of files one after another. There’s only one file in this case, so cat just shows us what it contains:\ncat lengths\n  20  cubane.pdb\n  12  ethane.pdb\n   9  methane.pdb\n  30  octane.pdb\n  21  pentane.pdb\n  15  propane.pdb\n 107  total"
+  },
+  {
+    "objectID": "assignments/00-bash.html#sort",
+    "href": "assignments/00-bash.html#sort",
+    "title": "bash",
+    "section": "sort",
+    "text": "sort\nNow let’s use the sort command to sort its contents. We will also use the -n flag to specify that the sort is numerical instead of alphabetical. This does not change the file; instead, it sends the sorted result to the screen:\nsort -n lengths\n  9  methane.pdb\n 12  ethane.pdb\n 15  propane.pdb\n 20  cubane.pdb\n 21  pentane.pdb\n 30  octane.pdb\n107  total"
+  },
+  {
+    "objectID": "assignments/00-bash.html#head",
+    "href": "assignments/00-bash.html#head",
+    "title": "bash",
+    "section": "head",
+    "text": "head\nWe can put the sorted list of lines in another temporary file called sorted-lengths by putting > sorted-lengths after the command, just as we used > lengths to put the output of wc into lengths. Once we’ve done that, we can run another command called head to get the first few lines in sorted-lengths:\nsort -n lengths > sorted-lengths\nhead -1 sorted-lengths\n  9  methane.pdb\nUsing the parameter -1 with head tells it that we only want the first line of the file; -20 would get the first 20, and so on. Since sorted-lengths contains the lengths of our files ordered from least to greatest, the output of head must be the file with the fewest lines."
+  },
+  {
+    "objectID": "assignments/00-bash.html#pipe",
+    "href": "assignments/00-bash.html#pipe",
+    "title": "bash",
+    "section": "pipe",
+    "text": "pipe\nIf you think this is confusing, you’re in good company: even once you understand what wc, sort, and head do, all those intermediate files make it hard to follow what’s going on. We can make it easier to understand by running sort and head together:\nsort -n lengths | head -1\n  9  methane.pdb\nThe vertical bar between the two commands is called a pipe. It tells the shell that we want to use the output of the command on the left as the input to the command on the right. The computer might create a temporary file if it needs to, or copy data from one program to the other in memory, or something else entirely; we don’t have to know or care.\nWe can use another pipe to send the output of wc directly to sort, which then sends its output to head:\nwc -l *.pdb | sort -n | head -1\n  9  methane.pdb\n\nHere’s what actually happens behind the scenes when we create a pipe. When a computer runs a program—any program—it creates a process in memory to hold the program’s software and its current state. Every process has an input channel called standard input. (By this point, you may be surprised that the name is so memorable, but don’t worry: most Unix programmers call it “stdin”. Every process also has a default output channel called standard output] (or “stdout”)\n\n\nThe shell is actually just another program. Under normal circumstances, whatever we type on the keyboard is sent to the shell on its standard input, and whatever it produces on standard output is displayed on our screen. When we tell the shell to run a program, it creates a new process and temporarily sends whatever we type on our keyboard to that process’s standard input, and whatever the process sends to standard output to the screen.\nHere’s what happens when we run wc -l *.pdb > lengths. The shell starts by telling the computer to create a new process to run the wc program. Since we’ve provided some filenames as parameters, wc reads from them instead of from standard input. And since we’ve used > to redirect output to a file, the shell connects the process’s standard output to that file.\nIf we run wc -l *.pdb | sort -n instead, the shell creates two processes (one for each process in the pipe) so that wc and sort run simultaneously. The standard output of wc is fed directly to the standard input of sort; since there’s no redirection with >, sort’s output goes to the screen. And if we run wc -l *.pdb | sort -n | head -1, we get three processes with data flowing from the files, through wc to sort, and from sort through head to the screen.\nThis simple idea is why Unix has been so successful. Instead of creating enormous programs that try to do many different things, Unix programmers focus on creating lots of simple tools that each do one job well, and that work well with each other. This programming model is called pipes and filters. We’ve already seen pipes; a filter is a program like wc or sort that transforms a stream of input into a stream of output. Almost all of the standard Unix tools can work this way: unless told to do otherwise, they read from standard input, do something with what they’ve read, and write to standard output.\nThe key is that any program that reads lines of text from standard input and writes lines of text to standard output can be combined with every other program that behaves this way as well. You can and should write your programs this way so that you and other people can put those programs into pipes to multiply their power.\n\n\nRedirecting Input\nAs well as using > to redirect a program’s output, we can use < to redirect its input, i.e., to read from a file instead of from standard input. For example, instead of writing wc ammonia.pdb, we could write wc < ammonia.pdb. In the first case, wc gets a command line parameter telling it what file to open. In the second, wc doesn’t have any command line parameters, so it reads from standard input, but we have told the shell to send the contents of ammonia.pdb to wc’s standard input."
+  },
+  {
+    "objectID": "assignments/02-DGE.html",
+    "href": "assignments/02-DGE.html",
+    "title": "Differential Gene Expression",
+    "section": "",
+    "text": "For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a “treatment”, which generally speaking could be anything from environment, disease, developmental stage, tissue, species…\nAs apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment."
+  },
+  {
+    "objectID": "assignments/02-DGE.html#data",
+    "href": "assignments/02-DGE.html#data",
+    "title": "Differential Gene Expression",
+    "section": "Data",
+    "text": "Data\n\n\n\nSample\nSampleID\n\n\nD-control\nD54\n\n\nD-control\nD55\n\n\nD-control\nD56\n\n\nD-control\nD57\n\n\nD-control\nD58\n\n\nD-control\nD59\n\n\nD-control\nM45\n\n\nD-control\nM46\n\n\nD-control\nM48\n\n\nD-control\nM49\n\n\nD-control\nM89\n\n\nD-control\nM90\n\n\nD-desiccation\nN48\n\n\nD-desiccation\nN49\n\n\nD-desiccation\nN50\n\n\nD-desiccation\nN51\n\n\nD-desiccation\nN52\n\n\nD-desiccation\nN53\n\n\nD-desiccation\nN54\n\n\nD-desiccation\nN55\n\n\nD-desiccation\nN56\n\n\nD-desiccation\nN57\n\n\nD-desiccation\nN58\n\n\nD-desiccation\nN59\n\n\n\nwget --recursive --no-parent --no-directories \\\n--accept '[DMN]*001.fastq.gz' \\\nhttps://owl.fish.washington.edu/nightingales/C_gigas/"
+  },
+  {
+    "objectID": "assignments/02-DGE.html#downloading-reference",
+    "href": "assignments/02-DGE.html#downloading-reference",
+    "title": "Differential Gene Expression",
+    "section": "Downloading reference",
+    "text": "Downloading reference\nhttps://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna\n```{bash}\ncd ../data\ncurl -O \n```\n\n\n\n\n\n\nNote\n\n\n\nCreating index can take some time\n\n\n```{bash}\n/home/shared/kallisto/kallisto \\\nindex -i \\\n../data/cgigas_roslin_rna.index \\\n../data/rna.fna\n```"
+  },
+  {
+    "objectID": "assignments/02-DGE.html#downloading-sequence-reads",
+    "href": "assignments/02-DGE.html#downloading-sequence-reads",
+    "title": "Differential Gene Expression",
+    "section": "Downloading sequence reads",
+    "text": "Downloading sequence reads\nwget --recursive --no-parent --no-directories \\\n--accept '[DMN]*001.fastq.gz' \\\nhttps://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/\nhttps://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/\n```{bash}\nfind ../data/*fastq.gz \\\n| xargs basename -s _L001_R1_001.fastq.gz | xargs -I{} /home/shared/kallisto/kallisto \\\nquant -i ../data/cgigas_roslin_rna.index \\\n-o ../output/kallisto_01/{} \\\n-t 40 \\\n--single -l 100 -s 10 ../data/{}_L001_R1_001.fastq.gz\n```\n```{bash}\nperl /home/shared/trinityrnaseq-v2.12.0/util/abundance_estimates_to_matrix.pl \\\n--est_method kallisto \\\n    --gene_trans_map none \\\n    --out_prefix ../output/kallisto_01 \\\n    --name_sample_by_basedir \\\n    ../output/kallisto_01/control/D54_S145/abundance.tsv \\\n    ../output/kallisto_01/control/D56_S136/abundance.tsv \\\n    ../output/kallisto_01/control/D58_S144/abundance.tsv \\\n    ../output/kallisto_01/control/M45_S140/abundance.tsv \\\n    ../output/kallisto_01/control/M48_S137/abundance.tsv \\\n    ../output/kallisto_01/control/M89_S138/abundance.tsv \\\n    ../output/kallisto_01/control/D55_S146/abundance.tsv \\\n    ../output/kallisto_01/control/D57_S143/abundance.tsv \\\n    ../output/kallisto_01/control/D59_S142/abundance.tsv \\\n    ../output/kallisto_01/control/M46_S141/abundance.tsv \\\n    ../output/kallisto_01/control/M49_S139/abundance.tsv \\\n    ../output/kallisto_01/control/M90_S147/abundance.tsv \\\n    ../output/kallisto_01/dessication/N48_S194/abundance.tsv \\\n    ../output/kallisto_01/dessication/N50_S187/abundance.tsv \\\n    ../output/kallisto_01/dessication/N52_S184/abundance.tsv \\\n    ../output/kallisto_01/dessication/N54_S193/abundance.tsv \\\n    ../output/kallisto_01/dessication/N56_S192/abundance.tsv \\\n    ../output/kallisto_01/dessication/N58_S195/abundance.tsv \\\n    ../output/kallisto_01/dessication/N49_S185/abundance.tsv \\\n    ../output/kallisto_01/dessication/N51_S186/abundance.tsv \\\n    ../output/kallisto_01/dessication/N53_S188/abundance.tsv \\\n    ../output/kallisto_01/dessication/N55_S190/abundance.tsv \\\n    ../output/kallisto_01/dessication/N57_S191/abundance.tsv \\\n    ../output/kallisto_01/dessication/N59_S189/abundance.tsv\n```"
+  },
+  {
+    "objectID": "assignments/02-DGE.html#get-degs-based-on-infection",
+    "href": "assignments/02-DGE.html#get-degs-based-on-infection",
+    "title": "Differential Gene Expression",
+    "section": "Get DEGs based on infection",
+    "text": "Get DEGs based on infection\n```{r}\ndeseq2.colData <- data.frame(condition=factor(c(rep(\"control\", 12), rep(\"desicatted\", 12))), \n                             type=factor(rep(\"single-read\", 24)))\nrownames(deseq2.colData) <- colnames(data)\ndeseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,\n                                     colData = deseq2.colData, \n                                     design = ~ condition)\n```\n```{r}\ndeseq2.dds <- DESeq(deseq2.dds)\ndeseq2.res <- results(deseq2.dds)\ndeseq2.res <- deseq2.res[order(rownames(deseq2.res)), ]\n```\n```{r}\nhead(deseq2.res)\n```\n```{r}\n# Count number of hits with adjusted p-value less then 0.05\ndim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])\n```\n```{r}\ntmp <- deseq2.res\n# The main plot\nplot(tmp$baseMean, tmp$log2FoldChange, pch=20, cex=0.45, ylim=c(-3, 3), log=\"x\", col=\"darkgray\",\n     main=\"DEG Dessication  (pval <= 0.05)\",\n     xlab=\"mean of normalized counts\",\n     ylab=\"Log2 Fold Change\")\n# Getting the significant points and plotting them again so they're a different color\ntmp.sig <- deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ]\npoints(tmp.sig$baseMean, tmp.sig$log2FoldChange, pch=20, cex=0.45, col=\"red\")\n# 2 FC lines\nabline(h=c(-1,1), col=\"blue\")\n```\n```{r}\nwrite.table(tmp.sig, \"../output/DEGlist.tab\", row.names = T)\n\n```"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "",
+    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\n\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\n\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
+  },
+  {
+    "objectID": "index.html#format",
+    "href": "index.html#format",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Format",
+    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.\n\n\n\n\n\n\nImportant\n\n\n\nIt is expected that you come to class, or to queries, having already reviewed material provided so we can spend time together addressing questions and troubleshooting technical issues."
+  },
+  {
+    "objectID": "index.html#platforms",
+    "href": "index.html#platforms",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Platforms",
+    "text": "Platforms\nJupyterHub1 Instance: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a\nCourse2 GitHub Organization: https://github.com/course-fish546-2023\nRaven: http://raven.fish.washington.edu:8787"
+  },
+  {
+    "objectID": "index.html#class-announcements",
+    "href": "index.html#class-announcements",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Class Announcements",
+    "text": "Class Announcements\n\nsee GitHub issues"
+  },
+  {
+    "objectID": "index.html#repo-list",
+    "href": "index.html#repo-list",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Repo List",
+    "text": "Repo List\n\n\n\nName or UserID\ncoursework repo\nproject repo\n\n\n\n\nZachary\n\n\n\n\nOlivia\n\n\n\n\nSusan\n\n\n\n\nWilliam\n\n\n\n\nChris\nchris-coursework\n\n\n\nHaila\nhaila-coursework\n\n\n\nCourtney\ncourtney-coursework\n\n\n\nSarah\nsarahtanja-coursework\n\n\n\nCeleste\nceleste-coursework\n\n\n\nJordan\nJordan-coursework\n\n\n\nSarah\n\n\n\n\nBrian"
+  },
+  {
+    "objectID": "index.html#textbook",
+    "href": "index.html#textbook",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Textbook",
+    "text": "Textbook\nBioinformatics Data Skills:\nReproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O’Reilly Media Final Release Date: July 2015 Pages: 538\n\nThe Supplementary Material Repository for Bioinformatics Data Skills\n\n@uw"
+  },
+  {
+    "objectID": "index.html#grading",
+    "href": "index.html#grading",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Grading",
+    "text": "Grading\nEach week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week’s reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the “Topic” each week before class (and before answering the question set.\n\n\n\n\n\n\n\n\nAssignments\nGrade percentage\ncomment\n\n\n\n\nWeekly Question Set\n25%\ndue Tuesday at 3:00pm\n\n\nWeekly Class Assignment\n35%\ndue Friday at 5:00pm\n\n\nWeekly Research Project Progress\n20%\nassessed Friday at 5:00pm\n\n\nProject Presentation\n10%\nWeek 5: slidedeck\n\n\nProject Completion\n10%\nWeek 10: compendium"
+  },
+  {
+    "objectID": "index.html#submitting-assignments",
+    "href": "index.html#submitting-assignments",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Submitting Assignments",
+    "text": "Submitting Assignments\n\nWeekly Question Set\nEach week there will be a markdown file linked in the schedule with a set of questions. You will add this to your course repo in a homework directory using the same filename. The only difference is you will include your answer to your questions.\n\n\nWeekly Class Assignment\nThis will completed in your course repo in a logical location. Use numeric prefix for file and directory names. The only thing you will need to be sure of is that all of your commits are pushed by Friday at 5:00pm.\n\n\nWeekly Research Project Progress\nThis will be assessed as a measure of progress from week to week. A primary means of assessment will be your response to issues, as well as accomplishment of self-assigned goals. In addition it will be expected that you use best principles as covered in the course."
+  },
+  {
+    "objectID": "index.html#useful-resources",
+    "href": "index.html#useful-resources",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials.\nsandbox.bio - Interactive bioinformatics tutorials\nAquamine - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species\nHappy git with R - Happy Git provides opinionated instructions on how to:\n\nInstall Git and get it working smoothly with GitHub, in the shell and in the RStudio IDE.\nDevelop a few key workflows that cover your most common tasks.\nIntegrate Git and GitHub into your daily work with R and R Markdown."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "lectures/00-before.html",
+    "href": "lectures/00-before.html",
+    "title": "Course Preparation",
+    "section": "",
+    "text": "This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed."
+  },
+  {
+    "objectID": "lectures/00-before.html#software",
+    "href": "lectures/00-before.html#software",
+    "title": "Course Preparation",
+    "section": "Software",
+    "text": "Software\nPlease have Rstudio and Git installed. We will use other software but will install as part of class."
+  },
+  {
     "objectID": "lectures/01-start-up.html",
     "href": "lectures/01-start-up.html",
     "title": "Getting Started",
     "section": "",
     "text": "Screen Recording\n\n\n\n\n\n\n\nText Reading\nHow to Learn Bioinformatics 1-18;\nSetting Up and Managing a Bioinformatics Project 21-35;\n\n\n\nObjectives\n\n\nSetting up for Success!\nAs part of this class you will be learning fundamental skills in working with genomic data. In addition you will be carrying out an independent project throughout the quarter. Generally Tuesday will be learning a skillset and Thursday will be working on your independent project.\nEach student will have two GitHub repositories, one where you complete “classwork” and as one devoted to your project. Both need to be in the organization course-fish546-2023.\nThe name of these repos:\npreferredname-classwork and\npreferredname-projectdescriptor\n\n\n\n\n\n\nImportant\n\n\n\nMake sure you have you local repo clone in logical location (eg ~/Documents/GitHub) and that you do not move, nor place in Dropbox or similar syncing directory.\n\n\nBe sure to comply with guidelines\n\nFile StructureDataCode\n\n\n\nGood file structure\n\nAll project files in one main folder\nSubfolders (data, code, output)\n\nMain folder is R project\n\nSelf-contained project\nUse relative instead of absolute paths\n\nGood folder & file names\n\nDescriptive but not too long\nNo spaces\nConsistent format\n\n\n\n\n\nRaw data\n\nIn separate folder from cleaned data\nNever change!\nEach file should have metadata\n\n\n\n\n\nScripts with code\n\nRelative file paths to read in and create files\nLots of comments\nOrder: libraries, data, user-created functions, everything else\nGood variable & column names\n\n\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nMax GitHub file size is 100MB\n\n\nThere will be times when files are two big to include in repositories (or even you laptop). There will also be times when you have to run code outside of a GitHub repository. You will need to determine a way to effectively document this in your repository.\n\n\nComputers\nTo no surprise you will need to have some type of computer to do your analysis. This might seem trivial, but is not. In some instances you might you multiple machines. Generally speaking there are two primary consideration- RAM and CPUs (ie memory and power). Memory comes into play in running programs need to temporary store information like transcriptome assembly. Power is beneficial from programs that can use mulitple CPUs. For example if hardware has 48 cores, it could run a program faster than one with 4 cores. Note there are a lot of nuances here but it is good to have this vocabulary. Some of the work takes a long time (even on big machines) - meaning hours to weeks, thus hardware access needs consideration.\nSome of the options you have are\n- your personal laptop (borrowed laptop) - duration limited?\n- JupyterHub Instance - UW cloud machine, duration limited,\n- Roberts Lab Raven Rstudio server - cloud machine\n- Hyak Supercomputer - powerful - advanced interface\nFor simply typing (something that is also important) you can do this with almost anything with a keyboard. Note that GitHub will be the platform that allows you to move across machines.\nMost of the Assignments are designed to run on lightweigt hardware, and we might want to try experience different platforms to see what works best for you. It is important to keep in mind that if you using muliptle machines there is the possibility of causing git conflicts.\nOrganization and thought is important, particulary when it comes to this.\n\n\nWorking in the command-line\nHaving already reviewed the prep material and completed the bash tutorial you are now ready to get to coding.\nFor the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.\nIn your code directory create a file.\n01-blast.Rmd\n\n\n\n\n\n\nTip\n\n\n\nRmarkdown is a good option as you can use markdown, add pictures and more!"
+  },
+  {
+    "objectID": "lectures/02-rna-seq.html",
+    "href": "lectures/02-rna-seq.html",
+    "title": "RNAs-seq",
+    "section": "",
+    "text": "Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects\nFitting Multifactorial Models of Differential Expression"
+  },
+  {
+    "objectID": "lectures/02-rna-seq.html#quality-control",
+    "href": "lectures/02-rna-seq.html#quality-control",
+    "title": "RNAs-seq",
+    "section": "Quality Control",
+    "text": "Quality Control\nThe first step in analyzing RNA-seq data is to perform quality control checks on the raw fastq files. This step is crucial to ensure that the data is of high quality and can be accurately quantified. One popular tool for quality control is FastQC, which generates various quality metrics such as per-base sequence quality, adapter contamination, and GC content.\nTo perform quality control using FastQC, run the following command:\nfastqc input.fastq\nThis will generate a HTML report that can be viewed in a web browser.\n\nAnother popular quality control program is fastp. Here is a very nice tutorial on using fastp"
+  },
+  {
+    "objectID": "lectures/02-rna-seq.html#marineomics-rna-seq-panel-discussion",
+    "href": "lectures/02-rna-seq.html#marineomics-rna-seq-panel-discussion",
+    "title": "RNAs-seq",
+    "section": "MarineOmics RNA-seq Panel Discussion",
+    "text": "MarineOmics RNA-seq Panel Discussion"
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Bioinformatics - FISH 546",
+    "section": "",
+    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\n\n\n\napr 10\nweek 03\nR Fundamentals\n\n\n\n\napr 17\nweek 04\nFunctional Enrichment\n\n\n\n\napr 24\nweek 05\nGenetic Variation\n\nSlides\n\n\nmay 01\nweek 06\nMicrobiome\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
+  },
+  {
+    "objectID": "questions/week01.html",
+    "href": "questions/week01.html",
+    "title": "Bioinformatics - FISH 546",
+    "section": "",
+    "text": "What is your prior experience in this discipline?\nWhat do you hope to get out of this class?\nThis class is strongly rooted in an independent project related to genomic analyses. What specific project do you have in mind? If you do not have any data or preference, data can be provided / aquired. If you do not have a specfic project, what approach would you like to master as part of this class?\nWhat are two things you found most useful from the reading?"
+  },
+  {
+    "objectID": "questions/week02.html",
+    "href": "questions/week02.html",
+    "title": "Week 02 Questions",
+    "section": "",
+    "text": "You can simply copy and paste this markdown text\n## Week 02 Question Set\n\na)  **What do you feel was the most impressive thing you did in class last week was?**\n\nb)  **What is your weekly goal for making progress on your project? What is the next step?**\n\nc)  **There were two readings this week, meant for two different audiences. Which reading did you get the most out of and why? Do you have any questions regarding the Journal of Shellfish Research paper?**\n\nd)  **What is your favorite thing about markdown and why?**"
   }
 ]

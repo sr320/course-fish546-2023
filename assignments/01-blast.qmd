@@ -158,7 +158,7 @@ head -2 ../data/uniprot_table_r2023_01.tab
 wc -l ../data/uniprot_table_r2023_01.tab
 ```
 
-```{{r}}
+```{r}
 library(tidyverse)
 library("kableExtra")
 ```
