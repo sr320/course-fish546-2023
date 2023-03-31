@@ -47,24 +47,24 @@ Raven: <http://raven.fish.washington.edu:8787>
 
 ## Repo List
 
-| Name or UserID | coursework repo                                                                                                                                     | project repo |
-|---------------|------------------------------------------|---------------|
-| Zachary        |                                                                                                                                                     |              |
-| Olivia         |                                                                                                                                                     |              |
-| Susan          | [susan-coursework](https://github.com/course-fish546-2023/susan-coursework)                                                                         |              |
-| William        |                                                                                                                                                     |              |
-| Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework)                                                                         |              |
-| Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework)                                                                         |              |
-| Courtney       | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)                                                                   |              |
-| Sarah          | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework)                                                               |              |
-| Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework)                                                                     |              |
-| Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework)                                                                       |              |
-| Sarah          | [sarahyerrace-coursework](https://github.com/course-fish546-2023/sarahyerrace-coursework)                                                           |              |
-| Steven         |                                                                                                                                                     |              |
-|                | !\[GitHub last commit (by committer)\](https://img.shields.io/github/last-commit/course-fish546-2023/steven-coursework?display_timestamp=committer) |              |
-|                |                                                                                                                                                     |              |
-|                |                                                                                                                                                     |              |
-|                |                                                                                                                                                     |              |
+| Name or UserID | coursework repo                                                                                                                                                                                                                 | project repo |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
+| Zachary        |                                                                                                                                                                                                                                 |              |
+| Olivia         |                                                                                                                                                                                                                                 |              |
+| Susan          | [susan-coursework](https://github.com/course-fish546-2023/susan-coursework)                                                                                                                                                     |              |
+| William        |                                                                                                                                                                                                                                 |              |
+| Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework)                                                                                                                                                     |              |
+| Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework)                                                                                                                                                     |              |
+| Courtney       | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)                                                                                                                                               |              |
+| Sarah          | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework)                                                                                                                                           |              |
+| Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework)                                                                                                                                                 |              |
+| Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework)                                                                                                                                                   |              |
+| Sarah          | [sarahyerrace-coursework](https://github.com/course-fish546-2023/sarahyerrace-coursework)                                                                                                                                       |              |
+| Steven         | [steven-coursework](https://github.com/course-fish546-2023/steven-coursework) ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/course-fish546-2023/steven-coursework?display_timestamp=committer) |              |
+|                |                                                                                                                                                                                                                                 |              |
+|                |                                                                                                                                                                                                                                 |              |
+|                |                                                                                                                                                                                                                                 |              |
+|                |                                                                                                                                                                                                                                 |              |
 
 ------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ Reproducible and Robust Research with Open Source Tools By Vince Buffalo Publish
 Each week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week's reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the ["Topic" each week](schedule.qmd) before class (and before answering the question set.
 
 | *Assignments*                    | Grade percentage | *comment*                 |
-|-----------------------------|-------------------|------------------------|
+|----------------------------------|------------------|---------------------------|
 | Weekly Question Set              | 25%              | due Tuesday at 3:00pm     |
 | Weekly Class Assignment          | 35%              | due Friday at 5:00pm      |
 | Weekly Research Project Progress | 20%              | assessed Friday at 5:00pm |
