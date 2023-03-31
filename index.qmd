@@ -47,23 +47,23 @@ Raven: <http://raven.fish.washington.edu:8787>
 
 ## Repo List
 
-| Name or UserID | coursework repo                                                                       | project repo |
-|----------------|---------------------------------------------------------------------------------------|--------------|
-| Zachary        |                                                                                       |              |
-| Olivia         |                                                                                       |              |
-| Susan          |                                                                                       |              |
-| William        |                                                                                       |              |
-| Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework)           |              |
-| Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework)           |              |
-| Courtney       | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)     |              |
-| Sarah          | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework) |              |
-| Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework)       |              |
-| Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework)         |              |
-| Sarah          |                                                                                       |              |
-| Brian          |                                                                                       |              |
-|                |                                                                                       |              |
-|                |                                                                                       |              |
-|                |                                                                                       |              |
+| Name or UserID | coursework repo                                                                           | project repo |
+|-------------|----------------------------------------------|-------------|
+| Zachary        |                                                                                           |              |
+| Olivia         |                                                                                           |              |
+| Susan          | [susan-coursework](https://github.com/course-fish546-2023/susan-coursework)               |              |
+| William        |                                                                                           |              |
+| Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework)               |              |
+| Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework)               |              |
+| Courtney       | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)         |              |
+| Sarah          | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework)     |              |
+| Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework)           |              |
+| Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework)             |              |
+| Sarah          | [sarahyerrace-coursework](https://github.com/course-fish546-2023/sarahyerrace-coursework) |              |
+| Brian          |                                                                                           |              |
+|                |                                                                                           |              |
+|                |                                                                                           |              |
+|                |                                                                                           |              |
 
 ------------------------------------------------------------------------
 
@@ -108,7 +108,6 @@ This will be assessed as a measure of progress from week to week. A primary mean
 ### Late Policy
 
 Assignments turned in late will include a 20% decrease in points. Assignments will not be accepted following 5 days past due date/time.
-
 
 ## Useful Resources
 
