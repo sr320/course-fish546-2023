@@ -13,6 +13,12 @@ format:
 
 For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a "treatment", which generally speaking could be anything from environment, disease, developmental stage, tissue, species...
 
+::: callout-important
+## Assignment
+
+Generate a plot and table of differentially expressed genes.
+:::
+
 As apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.
 
 ## Data
@@ -60,7 +66,7 @@ If you are loaded up with kallisto and ready to go you can skip the next few ste
 # Installing kallisto
 
 ::: callout-note
-## Just for reference if using raven for assignment (recommended).
+## Just for reference as will be using raven for assignment (recommended).
 :::
 
 Navigate through to a terminal and create directory in your home directory named `programs`
