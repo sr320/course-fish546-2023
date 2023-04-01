@@ -110,7 +110,7 @@ This will be assessed as a measure of progress from week to week. A primary mean
 
 ### Late Policy
 
-Assignments turned in late will include a 20% decrease in points. Assignments will not be accepted following 5 days past due date/time.
+Assignments turned in late will include a 40% decrease in points. Assignments will not be accepted following 5 days past due date/time.
 
 ## Useful Resources
 
