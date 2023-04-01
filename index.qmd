@@ -47,24 +47,24 @@ Raven: <http://raven.fish.washington.edu:8787>
 
 ## Repo List
 
-| Name or UserID | coursework repo                                                                                                                                                                                                  | project repo |
-|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
-| Zachary        |                                                                                                                                                                                                                  |              |
-| Olivia         |                                                                                                                                                                                                                  |              |
-| Susan          | [susan-coursework](https://github.com/course-fish546-2023/susan-coursework)                                                                                                                                      |              |
-| William        |                                                                                                                                                                                                                  |              |
-| Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework)                                                                                                                                      |              |
-| Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework)                                                                                                                                      |              |
-| Courtney       | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework)                                                                                                                                |              |
-| Sarah          | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework)                                                                                                                            |              |
-| Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework)                                                                                                                                  |              |
-| Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework)                                                                                                                                    |              |
-| Sarah          | [sarahyerrace-coursework](https://github.com/course-fish546-2023/sarahyerrace-coursework)                                                                                                                        |              |
-| Steven         | [steven-coursework](https://github.com/course-fish546-2023/steven-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/steven-coursework?style=flat-square) |              |
-|                |                                                                                                                                                                                                                  |              |
-|                |                                                                                                                                                                                                                  |              |
-|                |                                                                                                                                                                                                                  |              |
-|                |                                                                                                                                                                                                                  |              |
+| Name or UserID | coursework repo                                                                                                                                                                                                                    | project repo |
+|-------------------|----------------------------------|-------------------|
+| Zachary        |                                                                                                                                                                                                                                    |              |
+| Olivia         |                                                                                                                                                                                                                                    |              |
+| Susan          | [susan-coursework](https://github.com/course-fish546-2023/susan-coursework)                                                                                                                                                        |              |
+| William        |                                                                                                                                                                                                                                    |              |
+| Chris          | [chris-coursework](https://github.com/course-fish546-2023/chris-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/chris-coursework?style=flat-square)                      |              |
+| Haila          | [haila-coursework](https://github.com/course-fish546-2023/haila-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/haila-coursework?style=flat-square)                      |              |
+| Courtney       | [courtney-coursework](https://github.com/course-fish546-2023/courtney-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/courtney-coursework?style=flat-square)             |              |
+| Sarah          | [sarahtanja-coursework](https://github.com/course-fish546-2023/sarahtanja-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/sarahtanja-coursework?style=flat-square)       |              |
+| Celeste        | [celeste-coursework](https://github.com/course-fish546-2023/celeste-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/celeste-coursework?style=flat-square)                |              |
+| Jordan         | [Jordan-coursework](https://github.com/course-fish546-2023/Jordan-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/Jordan-coursework?style=flat-square)                   |              |
+| Sarah          | [sarahyerrace-coursework](https://github.com/course-fish546-2023/sarahyerrace-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/sarahyerrace-coursework?style=flat-square) |              |
+| Steven         | [steven-coursework](https://github.com/course-fish546-2023/steven-coursework) ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/course-fish546-2023/steven-coursework?style=flat-square)                   |              |
+|                |                                                                                                                                                                                                                                    |              |
+|                |                                                                                                                                                                                                                                    |              |
+|                |                                                                                                                                                                                                                                    |              |
+|                |                                                                                                                                                                                                                                    |              |
 
 ------------------------------------------------------------------------
 
@@ -84,8 +84,10 @@ Reproducible and Robust Research with Open Source Tools By Vince Buffalo Publish
 
 Each week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week's reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the ["Topic" each week](schedule.qmd) before class (and before answering the question set.
 
+Current Grades can be accessed at <https://canvas.uw.edu/courses/1634025>
+
 | *Assignments*                    | Grade percentage | *comment*                 |
-|----------------------------------|------------------|---------------------------|
+|-----------------------------|-------------------|------------------------|
 | Weekly Question Set              | 25%              | due Tuesday at 3:00pm     |
 | Weekly Class Assignment          | 35%              | due Friday at 5:00pm      |
 | Weekly Research Project Progress | 20%              | assessed Friday at 5:00pm |
