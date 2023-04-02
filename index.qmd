@@ -48,7 +48,7 @@ Raven: <http://raven.fish.washington.edu:8787>
 ## Repo List
 
 | Name or UserID | coursework repo                                                                                                                                                                                                                    | project repo |
-|-------------------|----------------------------------|-------------------|
+|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
 | Zachary        |                                                                                                                                                                                                                                    |              |
 | Olivia         |                                                                                                                                                                                                                                    |              |
 | Susan          | [susan-coursework](https://github.com/course-fish546-2023/susan-coursework)                                                                                                                                                        |              |
@@ -87,7 +87,7 @@ Each week there will be an assignment, you will need to made progress on your in
 Current Grades can be accessed at <https://canvas.uw.edu/courses/1634025>
 
 | *Assignments*                    | Grade percentage | *comment*                 |
-|-----------------------------|-------------------|------------------------|
+|----------------------------------|------------------|---------------------------|
 | Weekly Question Set              | 25%              | due Tuesday at 3:00pm     |
 | Weekly Class Assignment          | 35%              | due Friday at 5:00pm      |
 | Weekly Research Project Progress | 20%              | assessed Friday at 5:00pm |
