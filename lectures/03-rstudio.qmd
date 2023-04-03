@@ -1,0 +1,42 @@
+---
+title: "Rstudio Fundamentals"
+subtitle: "Putting the fun in Rstudio"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Reading
+
+-   [Producing Reports With knitr](https://datacarpentry.org/genomics-r-intro/07-knitr-markdown/index.html)
+
+-   [Fitting Multifactorial Models of Differential Expression](https://marineomics.github.io/FUN_01_DGE_comparison_v2.html)
+
+-   Textbook- Retrieving Bioinformatics Data 109-124
+
+# Objectives
+
+Learn how to take raw RNA sequence data and perform differential gene expression analysis.
+
+# Introduction
+
+
+## Overview
+
+RStudio is a popular Integrated Development Environment (IDE) used by data scientists and statisticians around the world. It provides a powerful and flexible platform for data analysis, data visualization, and data manipulation. RStudio is an open-source software that is free to use, and it is compatible with Windows, Mac, and Linux operating systems.
+
+## Benefits of Using RStudio
+
+One of the key benefits of using RStudio is its ability to handle large and complex data sets. RStudio provides users with a range of powerful tools and packages that make it easy to analyze, manipulate, and visualize data. It has an intuitive user interface that allows users to write and execute R code quickly and efficiently.
+
+Another advantage of using RStudio is its integration with other popular data science tools and platforms. For example, RStudio can be easily integrated with Github, allowing users to collaborate on projects with other team members. It also has built-in support for Markdown, making it easy to create high-quality reports and presentations.
+
+In addition to its powerful features, RStudio has a large and supportive community of users and developers. This community provides users with access to a wealth of resources, including documentation, tutorials, and sample code. There are also many third-party packages available for RStudio that extend its functionality and provide additional tools for data analysis and visualization.
+
+
+
