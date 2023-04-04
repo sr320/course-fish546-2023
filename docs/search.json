@@ -123,7 +123,7 @@
     "href": "assignments/02-DGE.html#downloading-reference",
     "title": "Differential Gene Expression",
     "section": "Downloading reference",
-    "text": "Downloading reference\nhttps://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna\n```{bash}\ncd ../data\ncurl -O \n```\n\n\n\n\n\n\nNote\n\n\n\nCreating index can take some time\n\n\n```{bash}\n/home/shared/kallisto/kallisto \\\nindex -i \\\n../data/cgigas_roslin_rna.index \\\n../data/rna.fna\n```"
+    "text": "Downloading reference\n```{bash}\ncd ../data\ncurl -O https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna\n```\n\n\n\n\n\n\nNote\n\n\n\nCreating index can take some time\n\n\n```{bash}\n/home/shared/kallisto/kallisto \\\nindex -i \\\n../data/cgigas_roslin_rna.index \\\n../data/rna.fna\n```"
   },
   {
     "objectID": "assignments/02-DGE.html#downloading-sequence-reads",

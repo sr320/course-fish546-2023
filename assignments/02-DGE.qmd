@@ -61,8 +61,6 @@ https://owl.fish.washington.edu/nightingales/C_gigas/
 
 For this assignment we will be using [kallisto](https://pachterlab.github.io/kallisto/) (bash), DESeq2 (r).
 
-If you are loaded up with kallisto and ready to go you can skip the next few steps as I will demonstrate how to install kallisto on JupyterHub.
-
 # Installing kallisto
 
 ::: callout-note
@@ -156,11 +154,9 @@ In appropriate Rmarkdown
 
 ## Downloading reference
 
-https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna
-
 ``` {{bash}}
 cd ../data
-curl -O 
+curl -O https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna
 ```
 
 ::: callout-note
