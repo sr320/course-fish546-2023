@@ -27,6 +27,8 @@ Learn how to take raw RNA sequence data and perform differential gene expression
 
 RNA sequencing (RNA-seq) is a powerful technology used to analyze gene expression levels across different conditions or tissues. The raw data generated from RNA-seq experiments is typically stored in fastq files, which contain millions of short sequencing reads that need to be preprocessed before performing differential gene expression analysis. In this tutorial, we will use Kallisto, a fast and accurate transcript quantification tool, to analyze RNA-seq data and identify differentially expressed genes.
 
+On Thursday [Dr. Ariana Huffmyer](https://linktr.ee/ashuffmyer) will provide a lecture on on RNA-seq that will provide both important experimental considerations but should also stimulated ideas on what some folks will be doing for their research project. Those lectures slides are available [here](https://d.pr/f/DqBJht)
+
 # Sequence file format
 
 One common sequence product is a large amount of "short-reads". This often refers to single-end or paired-end reads with a link of \~ 150bp. When data comes off of a sequencer it is often in FASTQ format. This file format contains both sequence and quality informaiton.
