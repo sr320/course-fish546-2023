@@ -188,7 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#running-deseq2" id="toc-running-deseq2" class="nav-link" data-scroll-target="#running-deseq2">Running DESeq2</a>
   <ul class="collapse">
   <li><a href="#read-in-count-matrix" id="toc-read-in-count-matrix" class="nav-link" data-scroll-target="#read-in-count-matrix">Read in count matrix</a></li>
-  <li><a href="#get-degs-based-on-infection" id="toc-get-degs-based-on-infection" class="nav-link" data-scroll-target="#get-degs-based-on-infection">Get DEGs based on infection</a></li>
+  <li><a href="#get-degs-based-on-desication" id="toc-get-degs-based-on-desication" class="nav-link" data-scroll-target="#get-degs-based-on-desication">Get DEGs based on Desication</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -543,10 +543,10 @@ Note
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(countmatrix)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="get-degs-based-on-infection" class="level2">
-<h2 class="anchored" data-anchor-id="get-degs-based-on-infection">Get DEGs based on infection</h2>
+<section id="get-degs-based-on-desication" class="level2">
+<h2 class="anchored" data-anchor-id="get-degs-based-on-desication">Get DEGs based on Desication</h2>
 <div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>deseq2.colData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">condition=</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"control"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"desicatted"</span>, <span class="dv">12</span>))), </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>deseq2.colData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">condition=</span><span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"control"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"desicated"</span>, <span class="dv">12</span>))), </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type=</span><span class="fu">factor</span>(<span class="fu">rep</span>(<span class="st">"single-read"</span>, <span class="dv">24</span>)))</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(deseq2.colData) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(data)</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>deseq2.dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">countData =</span> countmatrix,</span>
@@ -1146,10 +1146,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-256"><a href="#cb21-256" aria-hidden="true" tabindex="-1"></a><span class="in">str(countmatrix)</span></span>
 <span id="cb21-257"><a href="#cb21-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-258"><a href="#cb21-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-259"><a href="#cb21-259" aria-hidden="true" tabindex="-1"></a><span class="fu">## Get DEGs based on infection</span></span>
+<span id="cb21-259"><a href="#cb21-259" aria-hidden="true" tabindex="-1"></a><span class="fu">## Get DEGs based on Desication</span></span>
 <span id="cb21-260"><a href="#cb21-260" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-261"><a href="#cb21-261" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{r}}</span></span>
-<span id="cb21-262"><a href="#cb21-262" aria-hidden="true" tabindex="-1"></a><span class="in">deseq2.colData &lt;- data.frame(condition=factor(c(rep("control", 12), rep("desicatted", 12))), </span></span>
+<span id="cb21-262"><a href="#cb21-262" aria-hidden="true" tabindex="-1"></a><span class="in">deseq2.colData &lt;- data.frame(condition=factor(c(rep("control", 12), rep("desicated", 12))), </span></span>
 <span id="cb21-263"><a href="#cb21-263" aria-hidden="true" tabindex="-1"></a><span class="in">                             type=factor(rep("single-read", 24)))</span></span>
 <span id="cb21-264"><a href="#cb21-264" aria-hidden="true" tabindex="-1"></a><span class="in">rownames(deseq2.colData) &lt;- colnames(data)</span></span>
 <span id="cb21-265"><a href="#cb21-265" aria-hidden="true" tabindex="-1"></a><span class="in">deseq2.dds &lt;- DESeqDataSetFromMatrix(countData = countmatrix,</span></span>

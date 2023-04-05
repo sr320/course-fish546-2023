@@ -299,5 +299,12 @@
     "title": "Week 02 Questions",
     "section": "",
     "text": "You can simply copy and paste this markdown text\n## Week 02 Question Set\n\na)  **What do you feel was the most impressive thing you did in class last week was?**\n\nb)  **What is your weekly goal for making progress on your project? What is the next step?**\n\nc)  **There were two readings this week not from the textbook, meant for two different audiences. Which reading did you get the most out of and why? Do you have any questions regarding the Journal of Shellfish Research paper?**\n\nd)  **What is your favorite thing about markdown and why?**\n\n\ne) **What is the differnce between `curl` and `wget`? When would you used one over the other?"
+  },
+  {
+    "objectID": "assignments/02-DGE.html#get-degs-based-on-desication",
+    "href": "assignments/02-DGE.html#get-degs-based-on-desication",
+    "title": "Differential Gene Expression",
+    "section": "Get DEGs based on Desication",
+    "text": "Get DEGs based on Desication\n```{r}\ndeseq2.colData <- data.frame(condition=factor(c(rep(\"control\", 12), rep(\"desicated\", 12))), \n                             type=factor(rep(\"single-read\", 24)))\nrownames(deseq2.colData) <- colnames(data)\ndeseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,\n                                     colData = deseq2.colData, \n                                     design = ~ condition)\n```\n```{r}\ndeseq2.dds <- DESeq(deseq2.dds)\ndeseq2.res <- results(deseq2.dds)\ndeseq2.res <- deseq2.res[order(rownames(deseq2.res)), ]\n```\n```{r}\nhead(deseq2.res)\n```\n```{r}\n# Count number of hits with adjusted p-value less then 0.05\ndim(deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ])\n```\n```{r}\ntmp <- deseq2.res\n# The main plot\nplot(tmp$baseMean, tmp$log2FoldChange, pch=20, cex=0.45, ylim=c(-3, 3), log=\"x\", col=\"darkgray\",\n     main=\"DEG Dessication  (pval <= 0.05)\",\n     xlab=\"mean of normalized counts\",\n     ylab=\"Log2 Fold Change\")\n# Getting the significant points and plotting them again so they're a different color\ntmp.sig <- deseq2.res[!is.na(deseq2.res$padj) & deseq2.res$padj <= 0.05, ]\npoints(tmp.sig$baseMean, tmp.sig$log2FoldChange, pch=20, cex=0.45, col=\"red\")\n# 2 FC lines\nabline(h=c(-1,1), col=\"blue\")\n```\n```{r}\nwrite.table(tmp.sig, \"../output/DEGlist.tab\", row.names = T)\n```"
   }
 ]

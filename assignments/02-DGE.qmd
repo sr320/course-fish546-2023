@@ -256,10 +256,10 @@ countmatrix <- round(countmatrix, 0)
 str(countmatrix)
 ```
 
-## Get DEGs based on infection
+## Get DEGs based on Desication
 
 ``` {{r}}
-deseq2.colData <- data.frame(condition=factor(c(rep("control", 12), rep("desicatted", 12))), 
+deseq2.colData <- data.frame(condition=factor(c(rep("control", 12), rep("desicated", 12))), 
                              type=factor(rep("single-read", 24)))
 rownames(deseq2.colData) <- colnames(data)
 deseq2.dds <- DESeqDataSetFromMatrix(countData = countmatrix,
