@@ -109,7 +109,7 @@
     "href": "assignments/02-DGE.html",
     "title": "Differential Gene Expression",
     "section": "",
-    "text": "Note\n\n\n\nSee screen recording [here](https://sr320.github.io/course-fish546-2023/lectures/02-rna-seq.html) for some context though note below code is now revised.\nFor this assignment you will be taking RNA-seq reads off the sequencer, and determining what genes are expressed higher in treatment group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a “treatment”, which generally speaking could be anything from environment, disease, developmental stage, tissue, species…\nAs opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment."
+    "text": "Note\n\n\n\nSee screen recording here for some context though note below code is now revised.\nFor this assignment you will be taking RNA-seq reads off the sequencer, and determining what genes are expressed higher in treatment group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a “treatment”, which generally speaking could be anything from environment, disease, developmental stage, tissue, species…\nAs opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment."
   },
   {
     "objectID": "assignments/02-DGE.html#data",
