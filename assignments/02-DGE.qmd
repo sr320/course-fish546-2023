@@ -144,6 +144,10 @@ This might also work - `git reset --mixed HEAD~1`
 
 kallisto is already installed on raven (`/home/shared/kallisto/kallisto`).
 
+::: callout-important
+When accessing raven off-campus you have to use [Husky OnNet](https://itconnect.uw.edu/tools-services-support/networks-connectivity/husky-onnet/)
+:::
+
 ## Downloading reference
 
 ``` {{bash}}
@@ -229,13 +233,12 @@ library(data.table)
 
 Might need to install first eg
 
-```{{r}}
+``` {{r}}
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
 BiocManager::install("DESeq2")
 ```
-
 
 ### Read in count matrix
 
