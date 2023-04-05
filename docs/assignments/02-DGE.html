@@ -174,8 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
-  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link active" data-scroll-target="#software">Software</a></li>
   <li><a href="#installing-kallisto" id="toc-installing-kallisto" class="nav-link" data-scroll-target="#installing-kallisto">Installing kallisto</a></li>
   <li><a href="#running-kallisto" id="toc-running-kallisto" class="nav-link" data-scroll-target="#running-kallisto">Running kallisto</a>
   <ul class="collapse">
@@ -239,113 +238,6 @@ Assignment
 </div>
 </div>
 <p>As opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.</p>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td>Sample</td>
-<td>SampleID</td>
-</tr>
-<tr class="even">
-<td>D-control</td>
-<td>D54</td>
-</tr>
-<tr class="odd">
-<td>D-control</td>
-<td>D55</td>
-</tr>
-<tr class="even">
-<td>D-control</td>
-<td>D56</td>
-</tr>
-<tr class="odd">
-<td>D-control</td>
-<td>D57</td>
-</tr>
-<tr class="even">
-<td>D-control</td>
-<td>D58</td>
-</tr>
-<tr class="odd">
-<td>D-control</td>
-<td>D59</td>
-</tr>
-<tr class="even">
-<td>D-control</td>
-<td>M45</td>
-</tr>
-<tr class="odd">
-<td>D-control</td>
-<td>M46</td>
-</tr>
-<tr class="even">
-<td>D-control</td>
-<td>M48</td>
-</tr>
-<tr class="odd">
-<td>D-control</td>
-<td>M49</td>
-</tr>
-<tr class="even">
-<td>D-control</td>
-<td>M89</td>
-</tr>
-<tr class="odd">
-<td>D-control</td>
-<td>M90</td>
-</tr>
-<tr class="even">
-<td>D-desiccation</td>
-<td>N48</td>
-</tr>
-<tr class="odd">
-<td>D-desiccation</td>
-<td>N49</td>
-</tr>
-<tr class="even">
-<td>D-desiccation</td>
-<td>N50</td>
-</tr>
-<tr class="odd">
-<td>D-desiccation</td>
-<td>N51</td>
-</tr>
-<tr class="even">
-<td>D-desiccation</td>
-<td>N52</td>
-</tr>
-<tr class="odd">
-<td>D-desiccation</td>
-<td>N53</td>
-</tr>
-<tr class="even">
-<td>D-desiccation</td>
-<td>N54</td>
-</tr>
-<tr class="odd">
-<td>D-desiccation</td>
-<td>N55</td>
-</tr>
-<tr class="even">
-<td>D-desiccation</td>
-<td>N56</td>
-</tr>
-<tr class="odd">
-<td>D-desiccation</td>
-<td>N57</td>
-</tr>
-<tr class="even">
-<td>D-desiccation</td>
-<td>N58</td>
-</tr>
-<tr class="odd">
-<td>D-desiccation</td>
-<td>N59</td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="software" class="level1">
 <h1>Software</h1>
 <p>For this assignment we will be using <a href="https://pachterlab.github.io/kallisto/">kallisto</a> (bash), DESeq2 (r).</p>
@@ -470,6 +362,110 @@ Note
 <section id="downloading-sequence-reads" class="level2">
 <h2 class="anchored" data-anchor-id="downloading-sequence-reads">Downloading sequence reads</h2>
 <p>Sequence reads are on a public server at https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Sample</td>
+<td>SampleID</td>
+</tr>
+<tr class="even">
+<td>D-control</td>
+<td>D54</td>
+</tr>
+<tr class="odd">
+<td>D-control</td>
+<td>D55</td>
+</tr>
+<tr class="even">
+<td>D-control</td>
+<td>D56</td>
+</tr>
+<tr class="odd">
+<td>D-control</td>
+<td>D57</td>
+</tr>
+<tr class="even">
+<td>D-control</td>
+<td>D58</td>
+</tr>
+<tr class="odd">
+<td>D-control</td>
+<td>D59</td>
+</tr>
+<tr class="even">
+<td>D-control</td>
+<td>M45</td>
+</tr>
+<tr class="odd">
+<td>D-control</td>
+<td>M46</td>
+</tr>
+<tr class="even">
+<td>D-control</td>
+<td>M48</td>
+</tr>
+<tr class="odd">
+<td>D-control</td>
+<td>M49</td>
+</tr>
+<tr class="even">
+<td>D-control</td>
+<td>M89</td>
+</tr>
+<tr class="odd">
+<td>D-control</td>
+<td>M90</td>
+</tr>
+<tr class="even">
+<td>D-desiccation</td>
+<td>N48</td>
+</tr>
+<tr class="odd">
+<td>D-desiccation</td>
+<td>N49</td>
+</tr>
+<tr class="even">
+<td>D-desiccation</td>
+<td>N50</td>
+</tr>
+<tr class="odd">
+<td>D-desiccation</td>
+<td>N51</td>
+</tr>
+<tr class="even">
+<td>D-desiccation</td>
+<td>N52</td>
+</tr>
+<tr class="odd">
+<td>D-desiccation</td>
+<td>N53</td>
+</tr>
+<tr class="even">
+<td>D-desiccation</td>
+<td>N54</td>
+</tr>
+<tr class="odd">
+<td>D-desiccation</td>
+<td>N55</td>
+</tr>
+<tr class="even">
+<td>D-desiccation</td>
+<td>N56</td>
+</tr>
+<tr class="odd">
+<td>D-desiccation</td>
+<td>N57</td>
+</tr>
+<tr class="even">
+<td>D-desiccation</td>
+<td>N58</td>
+</tr>
+<tr class="odd">
+<td>D-desiccation</td>
+<td>N59</td>
+</tr>
+</tbody>
+</table>
 <p>This code uses recursive feature of <code>wget</code> (see this weeks’ reading) to get all 24 files. Additionally as with <code>curl</code> above we are ignoring the fact there is not security certificate with <code>--no-check-certificate</code></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../data </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--recursive</span> <span class="at">--no-parent</span> <span class="at">--no-directories</span> <span class="dt">\</span></span>
@@ -965,154 +961,154 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>As opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.</span>
 <span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data</span></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>|               |          |</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>|---------------|----------|</span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>| Sample        | SampleID |</span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>| D-control     | D54      |</span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>| D-control     | D55      |</span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>| D-control     | D56      |</span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>| D-control     | D57      |</span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>| D-control     | D58      |</span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>| D-control     | D59      |</span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>| D-control     | M45      |</span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>| D-control     | M46      |</span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>| D-control     | M48      |</span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>| D-control     | M49      |</span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>| D-control     | M89      |</span>
-<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>| D-control     | M90      |</span>
-<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N48      |</span>
-<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N49      |</span>
-<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N50      |</span>
-<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N51      |</span>
-<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N52      |</span>
-<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N53      |</span>
-<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N54      |</span>
-<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N55      |</span>
-<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N56      |</span>
-<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N57      |</span>
-<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N58      |</span>
-<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N59      |</span>
-<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a><span class="fu"># Software</span></span>
-<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>For this assignment we will be using <span class="co">[</span><span class="ot">kallisto</span><span class="co">](https://pachterlab.github.io/kallisto/)</span> (bash), DESeq2 (r).</span>
-<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installing kallisto</span></span>
-<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just for reference as will be using raven for assignment (recommended).</span></span>
-<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>Navigate through to a terminal and create directory in your home directory named <span class="in">`programs`</span></span>
-<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> pwd</span>
-<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/jovyan</span></span>
-<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> mkdir programs</span>
-<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a>Grab (<span class="in">`wget`</span>) the program from site listed above.</span>
-<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> cd programs/</span>
-<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> wget https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v0.46.1.tar.gz</span>
-<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="fu"># Software</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>For this assignment we will be using <span class="co">[</span><span class="ot">kallisto</span><span class="co">](https://pachterlab.github.io/kallisto/)</span> (bash), DESeq2 (r).</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installing kallisto</span></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just for reference as will be using raven for assignment (recommended).</span></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>Navigate through to a terminal and create directory in your home directory named <span class="in">`programs`</span></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> pwd</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/jovyan</span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> mkdir programs</span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>Grab (<span class="in">`wget`</span>) the program from site listed above.</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~$</span> cd programs/</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> wget https://github.com/pachterlab/kallisto/releases/download/v0.46.1/kallisto_linux-v0.46.1.tar.gz</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>Uncompress the file.</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> cd kallisto</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ls</span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span>  license.txt  README.md  test</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ./kallisto </span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span> 0.46.1</span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> [arguments] ..</span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a><span class="ex">Where</span> <span class="op">&lt;</span>CMD<span class="op">&gt;</span> can be one of:</span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>    <span class="ex">index</span>         Builds a kallisto index </span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>    <span class="ex">quant</span>         Runs the quantification algorithm </span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>    <span class="ex">bus</span>           Generate BUS files for single-cell data </span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pseudo</span>        Runs the pseudoalignment step </span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a>    <span class="ex">merge</span>         Merges several batch runs </span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>    <span class="ex">h5dump</span>        Converts HDF5-formatted results to plaintext</span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>    <span class="ex">inspect</span>       Inspects and gives information about an index</span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>    <span class="ex">version</span>       Prints version information</span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a>    <span class="ex">cite</span>          Prints citation information</span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> without arguments prints usage information for <span class="op">&lt;</span>CMD<span class="op">&gt;</span></span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## GitHub file size limit</span></span>
 <span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>Uncompress the file.</span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>Commit early and often but <span class="in">`ignore`</span> files that are larger that 100 MB (or you will likely lose everything since prior commit).</span>
 <span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs$</span> cd kallisto</span>
-<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ls</span>
-<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span>  license.txt  README.md  test</span>
-<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a><span class="ex">jovyan@jupyter-sr320:~/programs/kallisto$</span> ./kallisto </span>
-<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a><span class="ex">kallisto</span> 0.46.1</span>
-<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> [arguments] ..</span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a>You can use Git's built-in hooks to automatically ignore files larger than 100 MB. Here are the steps to follow:</span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>Create a new file in the <span class="in">`.git/hooks/`</span> directory of your repository called <span class="in">`pre-commit`</span>.</span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a>Add the following code to the <span class="in">`pre-commit`</span> file:</span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a><span class="ex">Where</span> <span class="op">&lt;</span>CMD<span class="op">&gt;</span> can be one of:</span>
-<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>    <span class="ex">index</span>         Builds a kallisto index </span>
-<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a>    <span class="ex">quant</span>         Runs the quantification algorithm </span>
-<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a>    <span class="ex">bus</span>           Generate BUS files for single-cell data </span>
-<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a>    <span class="ex">pseudo</span>        Runs the pseudoalignment step </span>
-<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a>    <span class="ex">merge</span>         Merges several batch runs </span>
-<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>    <span class="ex">h5dump</span>        Converts HDF5-formatted results to plaintext</span>
-<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a>    <span class="ex">inspect</span>       Inspects and gives information about an index</span>
-<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a>    <span class="ex">version</span>       Prints version information</span>
-<span id="cb21-104"><a href="#cb21-104" aria-hidden="true" tabindex="-1"></a>    <span class="ex">cite</span>          Prints citation information</span>
-<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a><span class="ex">Running</span> kallisto <span class="op">&lt;</span>CMD<span class="op">&gt;</span> without arguments prints usage information for <span class="op">&lt;</span>CMD<span class="op">&gt;</span></span>
+<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum file size (in bytes)</span></span>
+<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a><span class="va">max_file_size</span><span class="op">=</span>104857600</span>
+<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all files larger than max_file_size and add them to the .gitignore file</span></span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-size</span> +<span class="va">$max_file_sizec</span> <span class="at">-exec</span> echo <span class="st">"{}"</span> <span class="op">&gt;&gt;</span> .gitignore <span class="dt">\;</span></span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>This code sets the max_file_size variable to 100 MB and then uses the find command to locate all files in the repository that are larger than the specified max_file_size. The exec option of the find command appends the name of each file that matches the criteria to the .gitignore file.</span>
+<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a>Save the pre-commit file and make it executable by running the following command:</span>
+<span id="cb21-104"><a href="#cb21-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x .git/hooks/pre-commit</span>
 <span id="cb21-107"><a href="#cb21-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-108"><a href="#cb21-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
-<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## GitHub file size limit</span></span>
-<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a>Commit early and often but <span class="in">`ignore`</span> files that are larger that 100 MB (or you will likely lose everything since prior commit).</span>
+<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a>With these changes, whenever you run a git commit command, Git will first execute the pre-commit hook, which will automatically add any files larger than 100 MB to the .gitignore file. This will prevent Git from tracking these files in the repository going forward.</span>
+<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a>This might also work - <span class="in">`git reset --mixed HEAD~1`</span></span>
+<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb21-113"><a href="#cb21-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a>You can use Git's built-in hooks to automatically ignore files larger than 100 MB. Here are the steps to follow:</span>
+<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a><span class="fu"># Running kallisto</span></span>
 <span id="cb21-115"><a href="#cb21-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-116"><a href="#cb21-116" aria-hidden="true" tabindex="-1"></a>Create a new file in the <span class="in">`.git/hooks/`</span> directory of your repository called <span class="in">`pre-commit`</span>.</span>
+<span id="cb21-116"><a href="#cb21-116" aria-hidden="true" tabindex="-1"></a>kallisto is already installed on raven (<span class="in">`/home/shared/kallisto/kallisto`</span>).</span>
 <span id="cb21-117"><a href="#cb21-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a>Add the following code to the <span class="in">`pre-commit`</span> file:</span>
-<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum file size (in bytes)</span></span>
-<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a><span class="va">max_file_size</span><span class="op">=</span>104857600</span>
+<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a>When accessing raven off-campus you have to use <span class="co">[</span><span class="ot">Husky OnNet</span><span class="co">](https://itconnect.uw.edu/tools-services-support/networks-connectivity/husky-onnet/)</span></span>
+<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## Downloading reference</span></span>
+<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a>This code grabs the Pacific oyster fasta file of genes and does so ignoring the fact that *gannet* does not have a security certificate to authenticate (<span class="in">`--insecure`</span>). This is usually not recommended however we know the server.</span>
 <span id="cb21-125"><a href="#cb21-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all files larger than max_file_size and add them to the .gitignore file</span></span>
-<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-size</span> +<span class="va">$max_file_sizec</span> <span class="at">-exec</span> echo <span class="st">"{}"</span> <span class="op">&gt;&gt;</span> .gitignore <span class="dt">\;</span></span>
-<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-130"><a href="#cb21-130" aria-hidden="true" tabindex="-1"></a>This code sets the max_file_size variable to 100 MB and then uses the find command to locate all files in the repository that are larger than the specified max_file_size. The exec option of the find command appends the name of each file that matches the criteria to the .gitignore file.</span>
-<span id="cb21-131"><a href="#cb21-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-132"><a href="#cb21-132" aria-hidden="true" tabindex="-1"></a>Save the pre-commit file and make it executable by running the following command:</span>
-<span id="cb21-133"><a href="#cb21-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-134"><a href="#cb21-134" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb21-135"><a href="#cb21-135" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x .git/hooks/pre-commit</span>
-<span id="cb21-136"><a href="#cb21-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-137"><a href="#cb21-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-138"><a href="#cb21-138" aria-hidden="true" tabindex="-1"></a>With these changes, whenever you run a git commit command, Git will first execute the pre-commit hook, which will automatically add any files larger than 100 MB to the .gitignore file. This will prevent Git from tracking these files in the repository going forward.</span>
-<span id="cb21-139"><a href="#cb21-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-140"><a href="#cb21-140" aria-hidden="true" tabindex="-1"></a>This might also work - <span class="in">`git reset --mixed HEAD~1`</span></span>
-<span id="cb21-141"><a href="#cb21-141" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-142"><a href="#cb21-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-143"><a href="#cb21-143" aria-hidden="true" tabindex="-1"></a><span class="fu"># Running kallisto</span></span>
-<span id="cb21-144"><a href="#cb21-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-145"><a href="#cb21-145" aria-hidden="true" tabindex="-1"></a>kallisto is already installed on raven (<span class="in">`/home/shared/kallisto/kallisto`</span>).</span>
-<span id="cb21-146"><a href="#cb21-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-147"><a href="#cb21-147" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
-<span id="cb21-148"><a href="#cb21-148" aria-hidden="true" tabindex="-1"></a>When accessing raven off-campus you have to use <span class="co">[</span><span class="ot">Husky OnNet</span><span class="co">](https://itconnect.uw.edu/tools-services-support/networks-connectivity/husky-onnet/)</span></span>
-<span id="cb21-149"><a href="#cb21-149" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## Downloading reference</span></span>
-<span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a>This code grabs the Pacific oyster fasta file of genes and does so ignoring the fact that *gannet* does not have a security certificate to authenticate (<span class="in">`--insecure`</span>). This is usually not recommended however we know the server.</span>
-<span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
-<span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a><span class="in">cd ../data</span></span>
-<span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a><span class="in">curl --insecure -O https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna</span></span>
-<span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-159"><a href="#cb21-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-160"><a href="#cb21-160" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-161"><a href="#cb21-161" aria-hidden="true" tabindex="-1"></a>Creating index can take some time</span>
-<span id="cb21-162"><a href="#cb21-162" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-163"><a href="#cb21-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-164"><a href="#cb21-164" aria-hidden="true" tabindex="-1"></a>This code is indexing the file <span class="in">`rna.fna`</span> while also renaming it as <span class="in">`cgigas_roslin_rna.index`</span>.</span>
-<span id="cb21-165"><a href="#cb21-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-166"><a href="#cb21-166" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
-<span id="cb21-167"><a href="#cb21-167" aria-hidden="true" tabindex="-1"></a><span class="in">/home/shared/kallisto/kallisto \</span></span>
-<span id="cb21-168"><a href="#cb21-168" aria-hidden="true" tabindex="-1"></a><span class="in">index -i \</span></span>
-<span id="cb21-169"><a href="#cb21-169" aria-hidden="true" tabindex="-1"></a><span class="in">../data/cgigas_roslin_rna.index \</span></span>
-<span id="cb21-170"><a href="#cb21-170" aria-hidden="true" tabindex="-1"></a><span class="in">../data/rna.fna</span></span>
-<span id="cb21-171"><a href="#cb21-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-172"><a href="#cb21-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-173"><a href="#cb21-173" aria-hidden="true" tabindex="-1"></a><span class="fu">## Downloading sequence reads</span></span>
-<span id="cb21-174"><a href="#cb21-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-175"><a href="#cb21-175" aria-hidden="true" tabindex="-1"></a>Sequence reads are on a public server at https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/</span>
+<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
+<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a><span class="in">cd ../data</span></span>
+<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a><span class="in">curl --insecure -O https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna</span></span>
+<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-130"><a href="#cb21-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-131"><a href="#cb21-131" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-132"><a href="#cb21-132" aria-hidden="true" tabindex="-1"></a>Creating index can take some time</span>
+<span id="cb21-133"><a href="#cb21-133" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-134"><a href="#cb21-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-135"><a href="#cb21-135" aria-hidden="true" tabindex="-1"></a>This code is indexing the file <span class="in">`rna.fna`</span> while also renaming it as <span class="in">`cgigas_roslin_rna.index`</span>.</span>
+<span id="cb21-136"><a href="#cb21-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-137"><a href="#cb21-137" aria-hidden="true" tabindex="-1"></a><span class="in">``` {{bash}}</span></span>
+<span id="cb21-138"><a href="#cb21-138" aria-hidden="true" tabindex="-1"></a><span class="in">/home/shared/kallisto/kallisto \</span></span>
+<span id="cb21-139"><a href="#cb21-139" aria-hidden="true" tabindex="-1"></a><span class="in">index -i \</span></span>
+<span id="cb21-140"><a href="#cb21-140" aria-hidden="true" tabindex="-1"></a><span class="in">../data/cgigas_roslin_rna.index \</span></span>
+<span id="cb21-141"><a href="#cb21-141" aria-hidden="true" tabindex="-1"></a><span class="in">../data/rna.fna</span></span>
+<span id="cb21-142"><a href="#cb21-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-143"><a href="#cb21-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-144"><a href="#cb21-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## Downloading sequence reads</span></span>
+<span id="cb21-145"><a href="#cb21-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-146"><a href="#cb21-146" aria-hidden="true" tabindex="-1"></a>Sequence reads are on a public server at https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/</span>
+<span id="cb21-147"><a href="#cb21-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-148"><a href="#cb21-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-149"><a href="#cb21-149" aria-hidden="true" tabindex="-1"></a>|               |          |</span>
+<span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a>|---------------|----------|</span>
+<span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a>| Sample        | SampleID |</span>
+<span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a>| D-control     | D54      |</span>
+<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a>| D-control     | D55      |</span>
+<span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a>| D-control     | D56      |</span>
+<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a>| D-control     | D57      |</span>
+<span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a>| D-control     | D58      |</span>
+<span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a>| D-control     | D59      |</span>
+<span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a>| D-control     | M45      |</span>
+<span id="cb21-159"><a href="#cb21-159" aria-hidden="true" tabindex="-1"></a>| D-control     | M46      |</span>
+<span id="cb21-160"><a href="#cb21-160" aria-hidden="true" tabindex="-1"></a>| D-control     | M48      |</span>
+<span id="cb21-161"><a href="#cb21-161" aria-hidden="true" tabindex="-1"></a>| D-control     | M49      |</span>
+<span id="cb21-162"><a href="#cb21-162" aria-hidden="true" tabindex="-1"></a>| D-control     | M89      |</span>
+<span id="cb21-163"><a href="#cb21-163" aria-hidden="true" tabindex="-1"></a>| D-control     | M90      |</span>
+<span id="cb21-164"><a href="#cb21-164" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N48      |</span>
+<span id="cb21-165"><a href="#cb21-165" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N49      |</span>
+<span id="cb21-166"><a href="#cb21-166" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N50      |</span>
+<span id="cb21-167"><a href="#cb21-167" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N51      |</span>
+<span id="cb21-168"><a href="#cb21-168" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N52      |</span>
+<span id="cb21-169"><a href="#cb21-169" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N53      |</span>
+<span id="cb21-170"><a href="#cb21-170" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N54      |</span>
+<span id="cb21-171"><a href="#cb21-171" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N55      |</span>
+<span id="cb21-172"><a href="#cb21-172" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N56      |</span>
+<span id="cb21-173"><a href="#cb21-173" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N57      |</span>
+<span id="cb21-174"><a href="#cb21-174" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N58      |</span>
+<span id="cb21-175"><a href="#cb21-175" aria-hidden="true" tabindex="-1"></a>| D-desiccation | N59      |</span>
 <span id="cb21-176"><a href="#cb21-176" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-177"><a href="#cb21-177" aria-hidden="true" tabindex="-1"></a>This code uses recursive feature of <span class="in">`wget`</span> (see this weeks' reading) to get all 24 files. Additionally as with <span class="in">`curl`</span> above we are ignoring the fact there is not security certificate with <span class="in">`--no-check-certificate`</span></span>
 <span id="cb21-178"><a href="#cb21-178" aria-hidden="true" tabindex="-1"></a></span>

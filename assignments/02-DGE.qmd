@@ -25,35 +25,6 @@ Generate a plot and table of differentially expressed genes.
 
 As opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.
 
-## Data
-
-|               |          |
-|---------------|----------|
-| Sample        | SampleID |
-| D-control     | D54      |
-| D-control     | D55      |
-| D-control     | D56      |
-| D-control     | D57      |
-| D-control     | D58      |
-| D-control     | D59      |
-| D-control     | M45      |
-| D-control     | M46      |
-| D-control     | M48      |
-| D-control     | M49      |
-| D-control     | M89      |
-| D-control     | M90      |
-| D-desiccation | N48      |
-| D-desiccation | N49      |
-| D-desiccation | N50      |
-| D-desiccation | N51      |
-| D-desiccation | N52      |
-| D-desiccation | N53      |
-| D-desiccation | N54      |
-| D-desiccation | N55      |
-| D-desiccation | N56      |
-| D-desiccation | N57      |
-| D-desiccation | N58      |
-| D-desiccation | N59      |
 
 # Software
 
@@ -173,6 +144,35 @@ index -i \
 ## Downloading sequence reads
 
 Sequence reads are on a public server at https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/
+
+
+|               |          |
+|---------------|----------|
+| Sample        | SampleID |
+| D-control     | D54      |
+| D-control     | D55      |
+| D-control     | D56      |
+| D-control     | D57      |
+| D-control     | D58      |
+| D-control     | D59      |
+| D-control     | M45      |
+| D-control     | M46      |
+| D-control     | M48      |
+| D-control     | M49      |
+| D-control     | M89      |
+| D-control     | M90      |
+| D-desiccation | N48      |
+| D-desiccation | N49      |
+| D-desiccation | N50      |
+| D-desiccation | N51      |
+| D-desiccation | N52      |
+| D-desiccation | N53      |
+| D-desiccation | N54      |
+| D-desiccation | N55      |
+| D-desiccation | N56      |
+| D-desiccation | N57      |
+| D-desiccation | N58      |
+| D-desiccation | N59      |
 
 This code uses recursive feature of `wget` (see this weeks' reading) to get all 24 files. Additionally as with `curl` above we are ignoring the fact there is not security certificate with `--no-check-certificate`
 
