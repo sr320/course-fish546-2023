@@ -225,7 +225,7 @@ library(data.table)
 
 Might need to install first eg
 
-```{r}
+```{{r}}
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
