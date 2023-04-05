@@ -11,11 +11,12 @@ format:
     code-overflow: wrap
 ---
 
-# Screen Recording
+::: callout-note
+See screen recording \[here\](https://sr320.github.io/course-fish546-2023/lectures/02-rna-seq.html)
+for some context though note below code is now revised.
+:::
 
-[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/MbwrPzv3zXkuyUU_e5iwmSpbmtJ18SQqNZbCZ0bNhq8s2_me3T7p48q6hlhvAc9s.dT2_RLZWtSwhbe8Y)
-
-For this assignment you will be taking RNA-seq reads off the sequencer, and determing what genes are expressed higher in treament group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a "treatment", which generally speaking could be anything from environment, disease, developmental stage, tissue, species...
+For this assignment you will be taking RNA-seq reads off the sequencer, and determining what genes are expressed higher in treatment group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a "treatment", which generally speaking could be anything from environment, disease, developmental stage, tissue, species...
 
 ::: callout-important
 ## Assignment

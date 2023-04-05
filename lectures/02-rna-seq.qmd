@@ -11,6 +11,10 @@ format:
     code-overflow: wrap
 ---
 
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/MbwrPzv3zXkuyUU_e5iwmSpbmtJ18SQqNZbCZ0bNhq8s2_me3T7p48q6hlhvAc9s.dT2_RLZWtSwhbe8Y)
+
 # Reading
 
 -   [Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects](https://d.pr/f/ngmWkw)
