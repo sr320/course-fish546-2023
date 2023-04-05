@@ -19,7 +19,7 @@ For this assignment you will be taking RNA-seq reads off the sequencer, and dete
 Generate a plot and table of differentially expressed genes.
 :::
 
-As apposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.
+As opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.
 
 ## Data
 
@@ -50,12 +50,6 @@ As apposed to last week these files will be a little larger and compute effort w
 | D-desiccation | N57      |
 | D-desiccation | N58      |
 | D-desiccation | N59      |
-
-``` bash
-wget --recursive --no-parent --no-directories \
---accept '[DMN]*001.fastq.gz' \
-https://owl.fish.washington.edu/nightingales/C_gigas/
-```
 
 # Software
 
@@ -108,10 +102,6 @@ Where <CMD> can be one of:
 Running kallisto <CMD> without arguments prints usage information for <CMD>
 ```
 
-# Running kallisto
-
-kallisto is already installed on raven (`/home/shared/kallisto/kallisto`).
-
 ::: callout-warning
 ## GitHub file size limit
 
@@ -146,17 +136,15 @@ With these changes, whenever you run a git commit command, Git will first execut
 This might also work - `git reset --mixed HEAD~1`
 :::
 
-In appropriate Rmarkdown
+# Running kallisto
 
-``` {{bash}}
-/home/shared/kallisto/kallisto
-```
+kallisto is already installed on raven (`/home/shared/kallisto/kallisto`).
 
 ## Downloading reference
 
 ``` {{bash}}
 cd ../data
-curl -O https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna
+curl --insecure -O https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/rna.fna
 ```
 
 ::: callout-note
@@ -173,7 +161,9 @@ index -i \
 ## Downloading sequence reads
 
 ``` bash
+cd ../data 
 wget --recursive --no-parent --no-directories \
+--no-check-certificate \
 --accept '[DMN]*001.fastq.gz' \
 https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/
 ```
@@ -232,6 +222,16 @@ library(pheatmap)
 library(RColorBrewer)
 library(data.table)
 ```
+
+Might need to install first eg
+
+```{r}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("DESeq2")
+```
+
 
 ### Read in count matrix
 
