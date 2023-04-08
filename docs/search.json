@@ -231,25 +231,18 @@
     "text": "R Markdown\nData Visualization"
   },
   {
-    "objectID": "lectures/03-rstudio.html#overview",
-    "href": "lectures/03-rstudio.html#overview",
+    "objectID": "lectures/03-rstudio.html#adding-tables",
+    "href": "lectures/03-rstudio.html#adding-tables",
     "title": "Rstudio Fundamentals",
-    "section": "Overview",
-    "text": "Overview"
+    "section": "Adding tables:",
+    "text": "Adding tables:\n\nMarkdown syntax: You can create a simple table using pipes | and hyphens -. Here’s an example:\n\n| Column1 | Column2 | Column3 |\n|---------|---------|---------|\n| A       | B       | C       |\n| X       | Y       | Z       |\nThis will create a table with two rows and three columns.\n\nR code: You can create more complex tables using R packages like kable from the knitr package, or gt and flextable. Here’s an example using kable:\n\n```{r}\nlibrary(knitr)\n\ndata <- data.frame(\n  Column1 = c(\"A\", \"X\"),\n  Column2 = c(\"B\", \"Y\"),\n  Column3 = c(\"C\", \"Z\")\n)\n\nkable(data, caption = \"An example table\")\n```\nThis will generate a table with the specified data and caption."
   },
   {
-    "objectID": "lectures/03-rstudio.html#benefits-of-using-rstudio",
-    "href": "lectures/03-rstudio.html#benefits-of-using-rstudio",
+    "objectID": "lectures/03-rstudio.html#adding-images",
+    "href": "lectures/03-rstudio.html#adding-images",
     "title": "Rstudio Fundamentals",
-    "section": "Benefits of Using RStudio",
-    "text": "Benefits of Using RStudio\nOne of the key benefits of using RStudio is its ability to handle large and complex data sets. RStudio provides users with a range of powerful tools and packages that make it easy to analyze, manipulate, and visualize data. It has an intuitive user interface that allows users to write and execute R code quickly and efficiently.\nAnother advantage of using RStudio is its integration with other popular data science tools and platforms. For example, RStudio can be easily integrated with Github, allowing users to collaborate on projects with other team members. It also has built-in support for Markdown, making it easy to create high-quality reports and presentations.\nIn addition to its powerful features, RStudio has a large and supportive community of users and developers. This community provides users with access to a wealth of resources, including documentation, tutorials, and sample code. There are also many third-party packages available for RStudio that extend its functionality and provide additional tools for data analysis and visualization."
-  },
-  {
-    "objectID": "lectures/03-rstudio.html#shiny-apps",
-    "href": "lectures/03-rstudio.html#shiny-apps",
-    "title": "Rstudio Fundamentals",
-    "section": "Shiny Apps",
-    "text": "Shiny Apps\nRStudio also provides a framework for building interactive web applications called Shiny apps. Shiny apps are built using R code and can be easily deployed on the web. They allow users to interact with data and visualizations in real-time, making it easy to explore and analyze complex data sets. Shiny apps are ideal for building dashboards, interactive reports, and other data-driven applications."
+    "section": "Adding images:",
+    "text": "Adding images:\n\nMarkdown syntax: You can insert an image using the following syntax: ![alt text](path/to/image \"Optional title\"). Here’s an example:\n\n![Example image](path/to/image.jpg \"Optional title\")\nMake sure to replace path/to/image.jpg with the actual file path or URL of the image.\n\nR code: You can also add images using R code, especially if you’re generating images with R plots. Here’s two examples:\n\n```{r}\nplot(cars, main = \"An example plot\", xlab = \"Speed\", ylab = \"Distance\")\n```\n```{r schemat, echo = FALSE, out.width = “70%”, fig.align = “center”}\nknitr::include_graphics(“img/ncbi.png”)\nnote the latter requires ``` to close out. The benefit of the this code as opposed to Mardown (above) is that you the ability to change size and align"
   },
   {
     "objectID": "lectures/02-rna-seq.html#quality-control",

@@ -25,7 +25,6 @@ Generate a plot and table of differentially expressed genes.
 
 As opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment.
 
-
 # Software
 
 For this assignment we will be using [kallisto](https://pachterlab.github.io/kallisto/) (bash), DESeq2 (r).
@@ -144,7 +143,6 @@ index -i \
 ## Downloading sequence reads
 
 Sequence reads are on a public server at https://gannet.fish.washington.edu/seashell/bu-github/nb-2023/Cgigas/data/nopp/
-
 
 |               |          |
 |---------------|----------|
