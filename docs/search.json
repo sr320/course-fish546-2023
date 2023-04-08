@@ -112,13 +112,6 @@
     "text": "Note\n\n\n\nSee screen recording here for some context though note below code is now revised.\nFor this assignment you will be taking RNA-seq reads off the sequencer, and determining what genes are expressed higher in treatment group A compared to treatments group B. Why would someone want to do this? This can tell you something about the physiological response to a “treatment”, which generally speaking could be anything from environment, disease, developmental stage, tissue, species…\nAs opposed to last week these files will be a little larger and compute effort will increase. It is good to pause here and decide what platform(s) you might want to use for this assignment."
   },
   {
-    "objectID": "assignments/02-DGE.html#data",
-    "href": "assignments/02-DGE.html#data",
-    "title": "Differential Gene Expression",
-    "section": "Data",
-    "text": "Data\n\n\n\nSample\nSampleID\n\n\nD-control\nD54\n\n\nD-control\nD55\n\n\nD-control\nD56\n\n\nD-control\nD57\n\n\nD-control\nD58\n\n\nD-control\nD59\n\n\nD-control\nM45\n\n\nD-control\nM46\n\n\nD-control\nM48\n\n\nD-control\nM49\n\n\nD-control\nM89\n\n\nD-control\nM90\n\n\nD-desiccation\nN48\n\n\nD-desiccation\nN49\n\n\nD-desiccation\nN50\n\n\nD-desiccation\nN51\n\n\nD-desiccation\nN52\n\n\nD-desiccation\nN53\n\n\nD-desiccation\nN54\n\n\nD-desiccation\nN55\n\n\nD-desiccation\nN56\n\n\nD-desiccation\nN57\n\n\nD-desiccation\nN58\n\n\nD-desiccation\nN59"
-  },
-  {
     "objectID": "assignments/02-DGE.html#downloading-reference",
     "href": "assignments/02-DGE.html#downloading-reference",
     "title": "Differential Gene Expression",
@@ -144,7 +137,7 @@
     "href": "index.html",
     "title": "Bioinformatics for Environmental Sciences",
     "section": "",
-    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\n\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nOffice Hours: Sign up via Google Calendar here.\n\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
+    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\n\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nOffice Hours: Sign up via Google Calendar here.\n\n\n\n\n\n\nNote\n\n\n\nCalendar openings vary regularly - if you need a timeframe that is not available please let me know.\n\n\n\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
   },
   {
     "objectID": "index.html#format",
@@ -277,7 +270,7 @@
     "href": "schedule.html",
     "title": "Bioinformatics - FISH 546",
     "section": "",
-    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\nExplore data, QC, add hashes\n\n\napr 10\nweek 03\nR Fundamentals\n\n\n\n\napr 17\nweek 04\nTaxa ID\n\n\n\n\napr 24\nweek 05\n\n\nSlides\n\n\nmay 01\nweek 06\nGenetic Variation\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
+    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\nExplore data, QC, add hashes\n\n\napr 10\nweek 03\nRStudio Fundamentals\n\n\n\n\napr 17\nweek 04\nTaxa ID\n\n\n\n\napr 24\nweek 05\n\n\nSlides\n\n\nmay 01\nweek 06\nGenetic Variation\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\n\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
   },
   {
     "objectID": "questions/week01.html",
@@ -285,6 +278,13 @@
     "title": "Bioinformatics - FISH 546",
     "section": "",
     "text": "What is your prior experience in this discipline?\nWhat do you hope to get out of this class?\nThis class is strongly rooted in an independent project related to genomic analyses. What specific project do you have in mind? If you do not have any data or preference, data can be provided / aquired. If you do not have a specfic project, what approach would you like to master as part of this class?\nWhat are two things you found most useful from the reading?"
+  },
+  {
+    "objectID": "questions/week03.html",
+    "href": "questions/week03.html",
+    "title": "Week 03 Questions",
+    "section": "",
+    "text": "An R Markdown file is plain text file that contains what 3 important types of content?\nWhat is a chunk and how do you add them? of the many chunk options which one do you think you will use the most and why? How is inline code different than code chunks?\nWhat’s gone wrong with this code? Why are the points not blue?\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = \"blue\"))\n\n\n\nplot\n\n\n\nOf the many things we have done in class the past two weeks, what is one aspect you would like to revisit and spend more time on?"
   },
   {
     "objectID": "questions/week02.html",

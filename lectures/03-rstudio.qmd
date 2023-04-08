@@ -23,13 +23,7 @@ Consider what what what done in weeks one and two and generate a eye-catching vi
 
 # Introduction
 
-
-
-
-
 ## Overview
-
-
 
 ## Benefits of Using RStudio
 
@@ -42,7 +36,3 @@ In addition to its powerful features, RStudio has a large and supportive communi
 ## Shiny Apps
 
 RStudio also provides a framework for building interactive web applications called Shiny apps. Shiny apps are built using R code and can be easily deployed on the web. They allow users to interact with data and visualizations in real-time, making it easy to explore and analyze complex data sets. Shiny apps are ideal for building dashboards, interactive reports, and other data-driven applications.
-
-
-
-
