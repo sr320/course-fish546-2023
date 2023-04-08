@@ -242,7 +242,7 @@
     "href": "lectures/03-rstudio.html#adding-images",
     "title": "Rstudio Fundamentals",
     "section": "Adding images:",
-    "text": "Adding images:\n\nMarkdown syntax: You can insert an image using the following syntax: ![alt text](path/to/image \"Optional title\"). Here’s an example:\n\n![Example image](path/to/image.jpg \"Optional title\")\nMake sure to replace path/to/image.jpg with the actual file path or URL of the image.\n\nR code: You can also add images using R code, especially if you’re generating images with R plots. Here’s two examples:\n\n```{r}\nplot(cars, main = \"An example plot\", xlab = \"Speed\", ylab = \"Distance\")\n```\n```{r schemat, echo = FALSE, out.width = “70%”, fig.align = “center”}\nknitr::include_graphics(“img/ncbi.png”)\nnote the latter requires ``` to close out. The benefit of the this code as opposed to Mardown (above) is that you the ability to change size and align"
+    "text": "Adding images:\n\nMarkdown syntax: You can insert an image using the following syntax: ![alt text](path/to/image \"Optional title\"). Here’s an example:\n\n![Example image](path/to/image.jpg \"Optional title\")\nMake sure to replace path/to/image.jpg with the actual file path or URL of the image.\n\nR code: You can also add images using R code, especially if you’re generating images with R plots. Here’s two examples:\n\n```{r}\nplot(cars, main = \"An example plot\", xlab = \"Speed\", ylab = \"Distance\")\n```\n```{r schemat, echo = FALSE, out.width = “70%”, fig.align = “center”}\nknitr::include_graphics(“img/ncbi.png”)\n```\nThe benefit of the this code as opposed to Mardown (above) is that you the ability to change size and align"
   },
   {
     "objectID": "lectures/02-rna-seq.html#quality-control",

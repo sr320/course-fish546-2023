@@ -9,6 +9,7 @@ format:
     code-copy: true
     highlight-style: github
     code-overflow: wrap
+    code-link: true
 ---
 
 # Screen Recording
