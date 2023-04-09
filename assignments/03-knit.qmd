@@ -27,8 +27,7 @@ For the past two weeks you got the job done. Now lets not only learn how you go 
 
 1.  Write your RMarkdown content: An RMarkdown file consists of three main parts: YAML header, Markdown text, and R code chunks. Use Markdown for formatting text, and R code chunks to insert code and results.
 
-       
-```{.yaml filename="yaml"}
+``` {.yaml filename="yaml"}
 ---
 title: "Your Report Title"
 author: "Your Name"
@@ -43,12 +42,15 @@ output:
 ---
 ```
 
+This example uses the "readable" theme and includes a table of contents, numbered sections, and code folding options.
 
-  This example uses the "readable" theme and includes a table of contents, numbered sections, and code folding options.
+Other themes include: "default", "cerulean", "journal", "flatly", "darkly", "readable", "spacelab", "united", "cosmo", "lumen", "paper", "sandstone", "simplex", "yeti".
+
+Code highlights argument must be one of `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, `haddock`, `breezedark`, `textmate`, `arrow`, or `rstudio` or a file with extension `.theme`.
 
 -   Markdown text: Use Markdown syntax for text formatting (headings, lists, links, etc.).
 
-```.markdown
+``` markdown
 ## Introduction
 
 This is a sample report created using RMarkdown. You can add *italic*, **bold**, or [links](https://example.com).
@@ -59,7 +61,7 @@ This is a sample report created using RMarkdown. You can add *italic*, **bold**,
 
 -   R code chunks: Insert R code and its output in your report using R code chunks.
 
-````
+````         
 ```{{r setup, include=FALSE}}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
@@ -71,30 +73,40 @@ ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point() + theme_minimal()
 ```
 ````
 
+2.  Customize the appearance: Use CSS, HTML widgets, or additional R packages to further enhance the visual appeal of your report.
 
-2.  Customize the appearance:
-    Use CSS, HTML widgets, or additional R packages to further enhance the visual appeal of your report.
+-   Custom CSS: Create a separate CSS file and link it in the YAML header.
 
-- Custom CSS: Create a separate CSS file and link it in the YAML header.
+-   HTML widgets: Use packages like **`leaflet`** for maps, **`DT`** for tables, or **`plotly`** for interactive plots.
 
-- HTML widgets: Use packages like **`leaflet`** for maps, **`DT`** for tables, or **`plotly`** for interactive plots.
+-   Additional R packages: Use packages like **`kableExtra`** for formatting tables, **`flexdashboard`** for dashboard layouts, or **`formattable`** for conditional formatting.
 
-- Additional R packages: Use packages like **`kableExtra`** for formatting tables, **`flexdashboard`** for dashboard layouts, or **`formattable`** for conditional formatting.
-
-
-3.  Render the report: In RStudio, click the "Knit" button to generate the HTML output. 
+3.  Render the report: In RStudio, click the "Knit" button to generate the HTML output.
 
 4.  Share the report: Host the generated HTML file on a web server, or use services like GitHub Pages or RStudio Connect to share your report with others.
 
 By combining RMarkdown with the right formatting, customizations, and packages, you can create visually appealing, web-accessible reports that effectively communicate your insights and analyses.
 
-# Practical Aspects 
+# Practical Aspects
 
-I would recommend copying prior Rmd files and renaming them with the prefix 03.1, 03.2, etc depending on how many separate pages make sense for you. 
+I would recommend copying prior Rmd files and renaming them with the prefix 03.1, 03.2, etc depending on how many separate pages make sense for you.
 
 The specific things I will be looking for this week include
-1. Addressing prior comments
-2. Explaining what code is doing
-3. Making output more easily understandable
-4. Adding unique visual features
-5. Generation of html report.
+
+1\. Addressing prior comments
+
+2\. Explaining what code is doing
+
+3\. Making output more easily understandable
+
+4\. Adding unique visual features
+
+5\. Generation of html report.
+
+::: callout-note
+You would want to only run (eval=TRUE) simple tasks in the knit, which is different than running chunk in Rmd.
+:::
+
+::: callout-caution
+Be careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.
+:::
