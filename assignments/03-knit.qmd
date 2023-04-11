@@ -110,3 +110,15 @@ You would want to only run (eval=TRUE) simple tasks in the knit, which is differ
 ::: callout-caution
 Be careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.
 :::
+
+# Inspiration 
+
+3.1 Blast <https://rpubs.com/sr320/1026094>
+
+3.2 RNA-seq <https://rpubs.com/sr320/1026190>
+
+whereas code is
+
+-   <https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.1-blast.Rmd>
+
+-   <https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.2-dge.Rmd>

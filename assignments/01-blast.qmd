@@ -62,11 +62,17 @@ see <https://www.uniprot.org/downloads>
 https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 
 ``` {{bash}}
+# change directory to data
 cd ../data
+# download the file from the url
 curl -O https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+# rename the file
 mv uniprot_sprot.fasta.gz uniprot_sprot_r2023_01.fasta.gz
+# unzip the file
 gunzip -k uniprot_sprot_r2023_01.fasta.gz
+# list the files in the data directory
 ls ../data
+
 ```
 
 ``` {{bash}}
@@ -148,8 +154,11 @@ tr '|' '\t' < ../output/Ab_4-uniprot_blastx.tab | head -2
 ```
 
 ``` {{bash}}
+# replace the "|" with "\t" in the file "Ab_4-uniprot_blastx.tab"
+# and save the output to the file "Ab_4-uniprot_blastx_sep.tab"
 tr '|' '\t' < ../output/Ab_4-uniprot_blastx.tab \
 > ../output/Ab_4-uniprot_blastx_sep.tab
+
 ```
 
 ``` {{bash}}
