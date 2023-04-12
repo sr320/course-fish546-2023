@@ -11,6 +11,10 @@ format:
     code-overflow: wrap
 ---
 
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/yiOiI-lqgqBuEYI_kuym1VdtjFB_GXHqODPGZUbwSyxSCouYgctbhETxfiwzLfnE.6VNTpaI_tuPGGN91)
+
 # Reading
 
 -   [R Markdown](https://r4ds.had.co.nz/r-markdown.html)
@@ -85,7 +89,7 @@ Benefits of using the **`cache`** option:
 
 Here's an example of using the **`cache`** option in an R Markdown code chunk:
 
-````
+````         
 ```{{r expensive-operation, cache=TRUE}}
 # Simulate a time-consuming operation
 Sys.sleep(10)

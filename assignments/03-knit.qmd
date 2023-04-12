@@ -111,7 +111,7 @@ You would want to only run (eval=TRUE) simple tasks in the knit, which is differ
 Be careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.
 :::
 
-# Inspiration 
+# Inspiration
 
 3.1 Blast <https://rpubs.com/sr320/1026094>
 
