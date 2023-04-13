@@ -13,7 +13,7 @@ format:
 
 # Screen Recording
 
-[![](/img/zoom.png){fig-align="right"}](vvv)
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/J6Z0VOP2ggta7Ax4W9O__zgxQC65JXbk3X951KMMkzOT2RfpDfexF6rrSio_sJW3.VXOyXf5ixtm-C90Z)
 
 ::: callout-important
 ## Assignment
