@@ -1,0 +1,13 @@
+name: shiny
+title:
+username:
+account: sr320
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8710311
+bundleId: 7026015
+url: https://sr320.shinyapps.io/shiny/
+when: 1680136693.6604
+lastSyncTime: 1680136693.66041
+asMultiple: FALSE
+asStatic: FALSE

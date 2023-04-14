@@ -1,0 +1,205 @@
+---
+title: "RNAs-seq"
+subtitle: "Counting on expression"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+    code-link: true
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/MbwrPzv3zXkuyUU_e5iwmSpbmtJ18SQqNZbCZ0bNhq8s2_me3T7p48q6hlhvAc9s.dT2_RLZWtSwhbe8Y)
+
+# Reading
+
+-   [Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects](https://d.pr/f/ngmWkw)
+
+-   [Fitting Multifactorial Models of Differential Expression](https://marineomics.github.io/FUN_01_DGE_comparison_v2.html)
+
+-   Textbook- Retrieving Bioinformatics Data 109-124
+
+# Objectives
+
+Learn how to take raw RNA sequence data and perform differential gene expression analysis.
+
+# Introduction
+
+RNA sequencing (RNA-seq) is a powerful technology used to analyze gene expression levels across different conditions or tissues. The raw data generated from RNA-seq experiments is typically stored in fastq files, which contain millions of short sequencing reads that need to be preprocessed before performing differential gene expression analysis. In this tutorial, we will use Kallisto, a fast and accurate transcript quantification tool, to analyze RNA-seq data and identify differentially expressed genes.
+
+On Thursday [Dr. Ariana Huffmyer](https://linktr.ee/ashuffmyer) will provide a lecture on on RNA-seq that will provide both important experimental considerations but should also stimulated ideas on what some folks will be doing for their research project. Those lectures slides are available [here](https://d.pr/f/DqBJht)
+
+# Sequence file format
+
+One common sequence product is a large amount of "short-reads". This often refers to single-end or paired-end reads with a link of \~ 150bp. When data comes off of a sequencer it is often in FASTQ format. This file format contains both sequence and quality informaiton.
+
+A FASTQ file has four line-separated fields per sequence:
+
+-   Field 1 begins with a '\@' character and is followed by a sequence identifier and an optional description (like a FASTA title line).
+-   Field 2 is the raw sequence letters.
+-   Field 3 begins with a '+' character and is optionally followed by the same sequence identifier (and any description) again.
+-   Field 4 encodes the quality values for the sequence in Field 2, and must contain the same number of symbols as letters in the sequence.
+
+https://en.wikipedia.org/wiki/FASTQ_format
+
+See also page 341 of the textbook.
+
+## Quality Control
+
+The first step in analyzing RNA-seq data is to perform quality control checks on the raw fastq files. This step is crucial to ensure that the data is of high quality and can be accurately quantified. One popular tool for quality control is FastQC, which generates various quality metrics such as per-base sequence quality, adapter contamination, and GC content.
+
+To perform quality control using FastQC, run the following command:
+
+``` bash
+fastqc input.fastq
+```
+
+This will generate a HTML report that can be viewed in a web browser.
+
+{{< video https://youtu.be/5LYnq84Pjzk width="400" height="300">}}
+
+Another popular quality control program is `fastp`. [Here](https://sandbox.bio/tutorials?id=fastp-intro) is a very nice tutorial on using `fastp`
+
+# Transcript Quantification (Pseudo - alignment)
+
+After quality control, the next step is to quantify the transcript expression levels using Kallisto. Kallisto uses a pseudoalignment approach, which is much faster than traditional alignment-based methods and does not require a reference genome. Kallisto generates transcript-level abundance estimates that can be used for differential expression analysis.
+
+To quantify the transcript expression levels using Kallisto, run the following command:
+
+``` bash
+kallisto quant -i index_file -o output_folder input.fastq
+```
+
+Replace index_file with the path to the Kallisto index file for the reference transcriptome, and replace output_folder with the name of the output folder.
+
+::: callout-note
+## Case Study
+
+<https://github.com/RobertsLab/paper-tanner-crab/blob/master/notebooks/kallisto-4libraries.ipynb>
+:::
+
+# Transcript Quantification (Alignment)
+
+[HiSat2](https://daehwankimlab.github.io/hisat2/manual/)
+
+Benefits to using [`HISAT2`](https://daehwankimlab.github.io/hisat2/) for alignments:
+
+-   Fast.
+
+-   Can detect exon/intron junctions (i.e. alternative isoform splice sites).
+
+For RNA-Seq, [`HISAT2`](https://daehwankimlab.github.io/hisat2/) alignments are frequently followed up using [`StringTie`](https://ccb.jhu.edu/software/stringtie/) for transcript assembly and quantitation of splice variants.
+
+General usage:
+
+1.  Build a [`HISAT2`](https://daehwankimlab.github.io/hisat2/) reference sequence index:
+
+    ``` bash
+    # Create Hisat2 exons tab file
+    "${programs_array[hisat2_exons]}" \
+    "${transcripts_gtf}" \
+    > "${exons}"
+
+    # Create Hisat2 splice sites tab file
+    "${programs_array[hisat2_splice_sites]}" \
+    "${transcripts_gtf}" \
+    > "${splice_sites}"
+
+    # Build Hisat2 reference index using splice sites and exons
+    "${programs_array[hisat2_build]}" \
+    "${genome_fasta}" \
+    "${genome_index_name}" \
+    --exon "${exons}" \
+    --ss "${splice_sites}" \
+    -p "${threads}" \
+    2> hisat2-build_stats.txt
+    ```
+
+2.  Perform alignment(s):
+
+    ``` bash
+    # Hisat2 alignments
+    "${programs_array[hisat2]}" \
+    -x "${genome_index_name}" \
+    -1 "${fastq_list_R1}" \
+    -2 "${fastq_list_R2}" \
+    -S "${sample_name}".sam \
+    --threads "${threads}" \
+    2> "${sample_name}"-hisat2_stats.txt
+
+    # Sort SAM files, convert to BAM, and index
+    ${programs_array[samtools_view]} \
+    -@ "${threads}" \
+    -Su "${sample_name}".sam \
+    | ${programs_array[samtools_sort]} - \
+    -@ "${threads}" \
+    -o "${sample_name}".sorted.bam
+    ${programs_array[samtools_index]} "${sample_name}".sorted.bam
+
+
+    # Delete unneccessary index files
+    rm "${genome_index_name}"*.ht2
+
+    # Delete unneeded SAM files
+    rm ./*.sam
+    ```
+
+See links in the "use cases" section below for full-fledged scripts and advanced usage (e.g. assigning read groups to alignment files (SAM) for improved downstream handling/accessiblity).
+
+::: callout-note
+## Case Studies
+
+-   [RNAseq Alignments - P.generosa Alignments and Alternative Transcript Identification Using Hisat2 and StringTie on Mox](https://robertslab.github.io/sams-notebook/2022/09/14/RNAseq-Alignments-P.generosa-Alignments-and-Alternative-Transcript-Identification-Using-Hisat2-and-StringTie-on-Mox.html)
+
+-   [Splice Site Identification - S.namaycush Liver Parasitized and Non-Parasitized SRA RNAseq Using Hisat2-Stingtie with Genome GCF_016432855.1](https://robertslab.github.io/sams-notebook/2022/08/10/Splice-Site-Identification-S.namaycush-Liver-Parasitized-and-Non-Parasitized-SRA-RNAseq-Using-Hisat2-Stingtie-with-Genome-GCF_016432855.1.html)
+:::
+
+# Differential Expression Analysis (Kallisto)
+
+A final step is to perform differential expression analysis using Sleuth, which is a tool for analyzing Kallisto output files. Sleuth performs hypothesis testing using a statistical model based on the negative binomial distribution and generates various output files, including a table of differentially expressed genes.
+
+To perform differential expression analysis using Sleuth, run the following commands:
+
+``` r
+library(sleuth)
+so <- sleuth_prep("output_folder", ~ condition)
+so <- sleuth_fit(so)
+so <- sleuth_lrt(so, "condition_treatment vs condition_control")
+results <- sleuth_results(so, "condition_treatment vs condition_control")
+write.table(results, "results_table.txt", sep="\t")
+```
+
+Replace condition with the name of the column in the sample information file that contains the condition labels, and replace condition_treatment and condition_control with the names of the conditions to be compared.
+
+This will perform differential expression analysis and generate a table of differentially expressed genes in the file results_table.txt.
+
+# Differential Expression Analysis (Hisat)
+
+You'll need to quantify gene expression levels from the BAM files generated by Hisat. This can be done using a tool such as featureCounts or HTSeq, which counts the number of reads that overlap with each gene in the reference genome.
+
+To account for differences in sequencing depth and other technical factors, it's important to normalize the gene expression counts before conducting differential gene expression analysis. This can be done using a tool such as DESeq2, which normalizes the data using the median-of-ratios method.
+
+Now you're ready to conduct differential gene expression analysis! This involves comparing the gene expression levels between two or more experimental groups to identify genes that are differentially expressed. You can do this using a tool such as DESeq2 or edgeR, which use statistical models to identify differentially expressed genes based on the normalized gene expression counts.
+
+# DESeq2
+
+User Guides - [Analyzing RNA-seq data with DESeq2](http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
+
+::: callout-note
+## Case Studies
+
+-   <https://github.com/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/02-Adult-data-analysis-QuantSeq2020.Rmd> - draft code analyzing QuantSeq data from Olympia oyster gill tissue by two factors (population, pCO2 treatment). See [2020-QuantSeq-Processing_Raw-to-Counts.ipynb](https://github.com/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/2020-QuantSeq-Processing_Raw-to-Counts.ipynb) and [01-Importing-data-QuantSeq2020.Rmd](https://github.com/laurahspencer/O.lurida_QuantSeq-2020/blob/master/notebooks/01-Importing-data-QuantSeq2020.Rmd) for steps prior to DeSeq2. Author: Laura Spencer ![GitHub last commit](https://img.shields.io/github/last-commit/laurahspencer/O.lurida_QuantSeq-2020)
+
+-   <https://github.com/RobertsLab/paper-tanner-crab/blob/master/scripts/DESeq.Rmd> ![GitHub last commit](https://img.shields.io/github/last-commit/RobertsLab/paper-tanner-crab)
+:::
+
+# Supplemental Info
+
+## MarineOmics RNA-seq Panel Discussion
+
+{{< video https://youtu.be/-gQ59m2cck0 >}}

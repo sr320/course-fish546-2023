@@ -1,0 +1,124 @@
+---
+title: "Knitting Reports"
+subtitle: "more time in R"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/J6Z0VOP2ggta7Ax4W9O__zgxQC65JXbk3X951KMMkzOT2RfpDfexF6rrSio_sJW3.VXOyXf5ixtm-C90Z)
+
+::: callout-important
+## Assignment
+
+TLDR: Take what you did in week 1 & 2 and improve upon the code such that results have profound meaning, code is explained, and a pretty report is produced.
+:::
+
+# Next Levelling
+
+For the past two weeks you got the job done. Now lets not only learn how you go it done, but improve on the output and spend more time to create an html report. To create an attractive web-accessible report using RMarkdown, here are some steps to consider a strive for.
+
+1.  Write your RMarkdown content: An RMarkdown file consists of three main parts: YAML header, Markdown text, and R code chunks. Use Markdown for formatting text, and R code chunks to insert code and results.
+
+``` {.yaml filename="yaml"}
+---
+title: "Your Report Title"
+author: "Your Name"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output: 
+  html_document:
+    theme: readable
+    toc: true
+    toc_float: true
+    number_sections: true
+    code_folding: show
+---
+```
+
+This example uses the "readable" theme and includes a table of contents, numbered sections, and code folding options.
+
+Other themes include: "default", "cerulean", "journal", "flatly", "darkly", "readable", "spacelab", "united", "cosmo", "lumen", "paper", "sandstone", "simplex", "yeti".
+
+Code highlights argument must be one of `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, `haddock`, `breezedark`, `textmate`, `arrow`, or `rstudio` or a file with extension `.theme`.
+
+-   Markdown text: Use Markdown syntax for text formatting (headings, lists, links, etc.).
+
+``` markdown
+## Introduction
+
+This is a sample report created using RMarkdown. You can add *italic*, **bold**, or [links](https://example.com).
+
+- Bullet point 1
+- Bullet point 2
+```
+
+-   R code chunks: Insert R code and its output in your report using R code chunks.
+
+````         
+```{{r setup, include=FALSE}}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{{r example-plot}}
+library(ggplot2)
+data(mtcars)
+ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point() + theme_minimal()
+```
+````
+
+2.  Customize the appearance: Use CSS, HTML widgets, or additional R packages to further enhance the visual appeal of your report.
+
+-   Custom CSS: Create a separate CSS file and link it in the YAML header.
+
+-   HTML widgets: Use packages like **`leaflet`** for maps, **`DT`** for tables, or **`plotly`** for interactive plots.
+
+-   Additional R packages: Use packages like **`kableExtra`** for formatting tables, **`flexdashboard`** for dashboard layouts, or **`formattable`** for conditional formatting.
+
+3.  Render the report: In RStudio, click the "Knit" button to generate the HTML output.
+
+4.  Share the report: Host the generated HTML file on a web server, or use services like GitHub Pages or RStudio Connect to share your report with others.
+
+By combining RMarkdown with the right formatting, customizations, and packages, you can create visually appealing, web-accessible reports that effectively communicate your insights and analyses.
+
+# Practical Aspects
+
+I would recommend copying prior Rmd files and renaming them with the prefix 03.1, 03.2, etc depending on how many separate pages make sense for you.
+
+The specific things I will be looking for this week include
+
+1\. Addressing prior comments
+
+2\. Explaining what code is doing
+
+3\. Making output more easily understandable
+
+4\. Adding unique visual features
+
+5\. Generation of html report.
+
+::: callout-note
+You would want to only run (eval=TRUE) simple tasks in the knit, which is different than running chunk in Rmd.
+:::
+
+::: callout-caution
+Be careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.
+:::
+
+# Inspiration
+
+3.1 Blast <https://rpubs.com/sr320/1026094>
+
+3.2 RNA-seq <https://rpubs.com/sr320/1026190>
+
+whereas code is
+
+-   <https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.1-blast.Rmd>
+
+-   <https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.2-dge.Rmd>

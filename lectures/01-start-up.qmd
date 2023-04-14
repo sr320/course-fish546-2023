@@ -1,0 +1,121 @@
+---
+title: "Getting Started"
+subtitle: "Blasting off!"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/N8nPCgwTT7V1ZxQ1F1tJtz8D-_Ce-E4xtHeS-wrAXdqSM3fCXzvMQxTwVyHAdM_j.PkNBfbMLCUfofADE)
+
+# Text Reading
+
+How to Learn Bioinformatics 1-18;\
+Setting Up and Managing a Bioinformatics Project 21-35;\
+
+# Objectives
+
+# Setting up for Success!
+
+As part of this class you will be learning fundamental skills in working with genomic data. In addition you will be carrying out an independent project throughout the quarter. Generally Tuesday will be learning a skillset and Thursday will be working on your independent project.
+
+Each student will have two GitHub repositories, one where you complete "classwork" and as one devoted to your project. Both need to be in the organization `course-fish546-2023`.
+
+The name of these repos:\
+preferredname-*classwork* and\
+preferredname-projectdescriptor
+
+::: callout-important
+Make sure you have you local repo clone in logical location (eg \~/Documents/GitHub) and that you do not move, nor place in Dropbox or similar syncing directory.
+:::
+
+Be sure to comply with guidelines
+
+::: panel-tabset
+## File Structure
+
+-   Good file structure
+
+    -   All project files in one main folder
+
+    -   Subfolders (data, code, output)
+
+-   Main folder is R project
+
+    -   Self-contained project
+
+    -   Use relative instead of absolute paths
+
+-   Good folder & file names
+
+    -   Descriptive but not too long
+
+    -   No spaces
+
+    -   Consistent format
+
+## Data
+
+-   Raw data
+
+    -   In separate folder from cleaned data
+
+    -   Never change!
+
+    -   Each file should have metadata
+
+## Code
+
+-   Scripts with code
+
+    -   Relative file paths to read in and create files
+
+    -   Lots of comments
+
+    -   Order: libraries, data, user-created functions, everything else
+
+    -   Good variable & column names
+:::
+
+::: callout-warning
+Max GitHub file size is 100MB
+:::
+
+There will be times when files are two big to include in repositories (or even you laptop). There will also be times when you have to run code outside of a GitHub repository. You will need to determine a way to effectively document this in your repository.
+
+# Computers
+
+To no surprise you will need to have some type of computer to do your analysis. This might seem trivial, but is not. In some instances you might you multiple machines. Generally speaking there are two primary consideration- RAM and CPUs (ie memory and power). Memory comes into play in running programs need to temporary store information like transcriptome assembly. Power is beneficial from programs that can use mulitple CPUs. For example if hardware has 48 cores, it could run a program faster than one with 4 cores. Note there are a lot of nuances here but it is good to have this vocabulary. Some of the work takes a long time (even on big machines) - meaning hours to weeks, thus hardware access needs consideration.
+
+Some of the options you have are\
+- your personal laptop (borrowed laptop) - duration limited?\
+- JupyterHub Instance - UW cloud machine, duration limited,\
+- Roberts Lab Raven Rstudio server - cloud machine\
+- Hyak Supercomputer - powerful - advanced interface
+
+For simply typing (something that is also important) you can do this with almost anything with a keyboard. Note that GitHub will be the platform that allows you to move across machines.
+
+Most of the `Assignments` are designed to run on lightweigt hardware, and we might want to try experience different platforms to see what works best for you. It is important to keep in mind that if you using muliptle machines there is the possibility of causing git conflicts.
+
+Organization and thought is important, particulary when it comes to this.
+
+# Working in the command-line
+
+Having already reviewed the prep material and completed the [bash tutorial](https://sr320.github.io/course-fish546-2023/assignments/00-bash.html) you are now ready to get to coding.
+
+For the first task you will take an unknown multi-fasta file and annotate it using blast. You are welcome to do this in terminal, Rstudio, or jupyter. My recommendation, and how I will demonstrate is using Rmarkdown. Once you have have your project structured, we will download software, databases, a fasta file and run the code.
+
+In your code directory create a file.
+
+`01-blast.Rmd`
+
+::: callout-tip
+Rmarkdown is a good option as you can use markdown, add pictures and more!
+:::
