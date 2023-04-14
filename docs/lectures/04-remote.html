@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -118,6 +118,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#hyak" id="toc-hyak" class="nav-link" data-scroll-target="#hyak">Hyak</a></li>
   <li><a href="#bash-and-remote-computing" id="toc-bash-and-remote-computing" class="nav-link" data-scroll-target="#bash-and-remote-computing">Bash and remote computing</a></li>
   <li><a href="#job-scheduler" id="toc-job-scheduler" class="nav-link" data-scroll-target="#job-scheduler">Job Scheduler</a></li>
+  <li><a href="#miscellany" id="toc-miscellany" class="nav-link" data-scroll-target="#miscellany">Miscellany</a>
+  <ul class="collapse">
+  <li><a href="#reciprocal-blast" id="toc-reciprocal-blast" class="nav-link" data-scroll-target="#reciprocal-blast">Reciprocal BLAST</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +208,6 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong><code>scp</code></strong>: The <strong><code>scp</code></strong> command (Secure Copy) enables you to transfer files securely between your local machine and a remote machine, or between two remote machines. Usage: <strong><code>scp source destination</code></strong>, where source and destination can be either local or remote paths, such as <strong><code>username@remote_host:/path/to/file</code></strong>.</p></li>
 <li><p><strong><code>rsync</code></strong>: The <strong><code>rsync</code></strong> command is a versatile tool for synchronizing files and directories between local and remote machines. It optimizes data transfer by only transferring the differences between source and destination files. Usage: <strong><code>rsync options source destination</code></strong>, where source and destination can be either local or remote paths.</p></li>
 <li><p><strong><code>top</code></strong> or <strong><code>htop</code></strong>: The <strong><code>top</code></strong> command provides a real-time, dynamic view of the processes running on a system, including remote machines. It displays information about CPU usage, memory usage, and other system metrics. The <strong><code>htop</code></strong> command is an enhanced version of <strong><code>top</code></strong>, providing a more user-friendly interface with additional features. To use it on a remote machine, simply run <strong><code>ssh username@remote_host top</code></strong> or <strong><code>ssh username@remote_host htop</code></strong>.</p></li>
-<li><p><strong><code>tmux</code></strong> or <strong><code>screen</code></strong>: Both <strong><code>tmux</code></strong> and <strong><code>screen</code></strong> are terminal multiplexers, allowing you to run multiple terminal sessions within a single terminal window. They are especially useful in remote computing scenarios, as they enable you to keep processes running even after disconnecting from the remote machine. You can later reattach to the sessions and continue working. To start a new session, run <strong><code>tmux</code></strong> or <strong><code>screen</code></strong> on the remote machine. To reattach to a session after disconnecting, use <strong><code>tmux attach</code></strong> or <strong><code>screen -r</code></strong>.</p></li>
 </ol>
 <p>These commands, among others, are essential for efficiently working with remote computing resources and managing your workflow when connected to remote machines.</p>
 </section>
@@ -213,10 +216,22 @@ ul.task-list li input[type="checkbox"] {
 <p>A job scheduler, also known as a workload manager or batch scheduler, is a software tool that manages and allocates computational resources within a high-performance computing (HPC) cluster or multi-user computing environment. It is responsible for accepting, prioritizing, and assigning computational jobs submitted by users to the available resources, ensuring efficient utilization and fair distribution of resources among users.</p>
 <p>Slurm (Simple Linux Utility for Resource Management) is an open-source, highly-scalable, and widely-used job scheduler designed for Linux-based HPC clusters. It facilitates the management of computational workloads by handling job submission, scheduling, dispatching, and monitoring tasks. Slurm is fault-tolerant, supporting the efficient execution of jobs across thousands of compute nodes.</p>
 <p>SEE YOUTUBE</p>
-<p><br>
-</p>
+</section>
+<section id="miscellany" class="level1">
+<h1>Miscellany</h1>
+<section id="reciprocal-blast" class="level2">
+<h2 class="anchored" data-anchor-id="reciprocal-blast">Reciprocal BLAST</h2>
+<p>A reciprocal BLAST (Basic Local Alignment Search Tool) analysis is a technique used to identify homologous genes or proteins between two species by performing a BLAST search in both directions. In other words, it involves searching for similarities between a query sequence from species A against a database of sequences from species B, and then searching for similarities between a query sequence from species B against a database of sequences from species A. This approach helps confirm orthology, which is useful in comparative genomics and evolutionary studies.</p>
+<p>Three insightful visualizations of reciprocal BLAST analysis results could be:</p>
+<ol type="1">
+<li><p>Circos Plot: A Circos plot is a circular layout that can display relationships between genomic sequences. In the context of reciprocal BLAST analysis, a Circos plot can effectively illustrate orthologous relationships between two species by connecting homologous genes or proteins with lines or curves. The strength of the connection (e.g., based on similarity scores or e-values) can be represented by the width or color of the lines, providing a comprehensive overview of the conservation between the two genomes.</p></li>
+<li><p>Heatmap: A heatmap is a graphical representation of data where values are represented by colors. In a reciprocal BLAST analysis, a heatmap can be used to visualize the similarity scores or e-values between pairs of orthologous genes or proteins. The rows and columns of the heatmap would represent genes or proteins from species A and species B, respectively, with the color intensity representing the strength of the orthologous relationship. This allows for easy identification of strongly conserved regions or potential functional similarities between the two species.</p></li>
+<li><p>Scatter Plot with Dot Matrix: A scatter plot with dot matrix can visualize the distribution of reciprocal best hits (RBH) based on similarity scores or e-values. The x-axis would represent the scores or e-values for species A against species B, and the y-axis would represent the scores or e-values for species B against species A. Each dot on the plot would represent a pair of orthologs, with its position determined by the score or e-value in both directions. This visualization allows users to identify potential outliers, observe the overall correlation between the two species, and assess the quality of the reciprocal BLAST analysis results.<br>
+</p></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
