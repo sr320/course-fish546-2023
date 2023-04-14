@@ -1,0 +1,100 @@
+---
+title: "Remote Computing"
+subtitle: "Getting things you need"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](cccccc)
+
+# Reading
+
+-   Textbook: Working with Remote Machines.p 57-64
+
+-   Lab Handbook - [Mox Guide](https://robertslab.github.io/resources/mox_Adding-a-User/) (including all subpages under Mox Guide)
+
+# Objectives
+
+Gain confidence and skill set to access remote computers from the command-line.
+
+# Remote Machine Access
+
+The ability to remotely access computing resources is highly valuable for graduate courses, as it enables students and researchers to access powerful computational facilities and collaborate effectively from anywhere. This remote access enhances learning experiences, promotes research progress, and optimizes resource utilization.
+
+Key benefits include:
+
+1.  Access to powerful computing resources: Remote access allows students and researchers to work with high-performance computing (HPC) clusters, specialized software, and large-scale data storage without needing to invest in expensive personal hardware.
+
+2.  Flexible learning and research: Remote access provides students the freedom to work from any location with internet connectivity, enabling them to fit their studies around personal commitments and schedules.
+
+3.  Collaboration and resource sharing: Remote access facilitates collaboration between researchers from different institutions, allowing them to share data, code, and other resources seamlessly.
+
+4.  Cost-effectiveness: By centralizing computational resources, institutions can reduce costs associated with maintaining multiple systems and software licenses.
+
+5.  Enhanced security: Remote computing resources often have robust security measures in place, ensuring that sensitive data and intellectual property are protected.
+
+------------------------------------------------------------------------
+
+Example of SSH to log into a remote machine:
+
+Secure Shell (SSH) is a widely used protocol for secure remote access to computers. To log into a remote machine using SSH, follow these steps:
+
+1.  Open a terminal or command prompt on your local machine.
+
+2.  Type the following command, replacing 'username' with your remote account username and 'remote_host' with the remote machine's address (e.g., IP address or domain name): **`ssh username@remote_host`**
+
+3.  Press Enter. You may be prompted to accept the remote host's key fingerprint if this is your first time connecting.
+
+4.  Enter your password when prompted. After successful authentication, you will be connected to the remote machine and can begin executing commands.\
+
+# Hyak
+
+The Hyak computing system at the University of Washington (UW) is a high-performance computing (HPC) cluster designed to support the research and computational needs of UW students, faculty, and staff. Hyak provides advanced computing capabilities to facilitate complex scientific and engineering simulations, data analysis, and other computationally-intensive tasks.
+
+Key features of the Hyak computing system include:
+
+1.  Scalability: Hyak is designed to be a highly scalable system, accommodating a wide range of workloads, from small-scale computations to large-scale parallel processing jobs.
+
+2.  Parallel processing capabilities: The system is equipped with multiple interconnected compute nodes, each with multiple CPU cores and GPUs, enabling efficient parallel computing for tasks that can be distributed across multiple processors.
+
+3.  High-speed storage: Hyak offers high-speed storage options, including parallel file systems and high-performance storage tiers, to support data-intensive workloads.
+
+4.  High-speed interconnects: The system employs low-latency, high-bandwidth interconnects between compute nodes to ensure efficient data transfer and communication during parallel processing tasks.
+
+5.  User-friendly environment: Hyak offers a familiar Linux-based environment, supporting various programming languages, libraries, and tools commonly used in scientific research.
+
+6.  Resource allocation and management: Hyak uses a job scheduler (e.g., Slurm) to manage resource allocation and user access, ensuring fair usage and optimal utilization of computing resources.
+
+# Bash and remote computing
+
+When working with remote computing, several Bash commands can be particularly useful for managing files, navigating directories, and monitoring system resources. Here are five of the most useful Bash commands:
+
+1.  **`ssh`**: The **`ssh`** command (Secure Shell) is crucial for establishing secure remote connections to other computers. It allows you to log in and execute commands on remote machines. Usage: **`ssh username@remote_host`**
+
+2.  **`scp`**: The **`scp`** command (Secure Copy) enables you to transfer files securely between your local machine and a remote machine, or between two remote machines. Usage: **`scp source destination`**, where source and destination can be either local or remote paths, such as **`username@remote_host:/path/to/file`**.
+
+3.  **`rsync`**: The **`rsync`** command is a versatile tool for synchronizing files and directories between local and remote machines. It optimizes data transfer by only transferring the differences between source and destination files. Usage: **`rsync options source destination`**, where source and destination can be either local or remote paths.
+
+4.  **`top`** or **`htop`**: The **`top`** command provides a real-time, dynamic view of the processes running on a system, including remote machines. It displays information about CPU usage, memory usage, and other system metrics. The **`htop`** command is an enhanced version of **`top`**, providing a more user-friendly interface with additional features. To use it on a remote machine, simply run **`ssh username@remote_host top`** or **`ssh username@remote_host htop`**.
+
+5.  **`tmux`** or **`screen`**: Both **`tmux`** and **`screen`** are terminal multiplexers, allowing you to run multiple terminal sessions within a single terminal window. They are especially useful in remote computing scenarios, as they enable you to keep processes running even after disconnecting from the remote machine. You can later reattach to the sessions and continue working. To start a new session, run **`tmux`** or **`screen`** on the remote machine. To reattach to a session after disconnecting, use **`tmux attach`** or **`screen -r`**.
+
+These commands, among others, are essential for efficiently working with remote computing resources and managing your workflow when connected to remote machines.
+
+# Job Scheduler
+
+A job scheduler, also known as a workload manager or batch scheduler, is a software tool that manages and allocates computational resources within a high-performance computing (HPC) cluster or multi-user computing environment. It is responsible for accepting, prioritizing, and assigning computational jobs submitted by users to the available resources, ensuring efficient utilization and fair distribution of resources among users.
+
+Slurm (Simple Linux Utility for Resource Management) is an open-source, highly-scalable, and widely-used job scheduler designed for Linux-based HPC clusters. It facilitates the management of computational workloads by handling job submission, scheduling, dispatching, and monitoring tasks. Slurm is fault-tolerant, supporting the efficient execution of jobs across thousands of compute nodes.
+
+SEE YOUTUBE
+
+\
