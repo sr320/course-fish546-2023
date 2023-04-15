@@ -1,6 +1,6 @@
 ---
 title: "Hyak"
-subtitle: "In need mor that just raven"
+subtitle: "In need more that just raven"
 
 format:
   html:
@@ -18,7 +18,7 @@ format:
 ::: callout-important
 ## Assignment
 
-TLDR: log into hyak, run a simple command, and transfer the the output using `rsync`
+TLDR: log into hyak, run a job, and transfer the the output using `rsync`
 :::
 
 # Setup
@@ -49,7 +49,7 @@ For two factor authentication, you can either sign up for Duo [here](https://id
 
 Example:
 
-```         
+```{.bash}         
 D-69-91-141-150:~ Sean$ ssh seanb80@mox.hyak.uw.edu
 Password:
 Enter passcode or select one of the following options:
@@ -76,89 +76,71 @@ Last login: Thu Jun  8 14:59:10 2017 from d-173-250-161-130.dhcp4.washington.edu
 
 # Running a job
 
-In this tutorial, we will guide you through the process of running a simple job on a High-Performance Computing (HPC) cluster using the SLURM workload manager. We will assume that you have a basic understanding of Linux command-line and that you have access to an HPC cluster with SLURM installed.
+Once logged into mox, navigate to `/gscratch/scrubbed/your-username`. If the dir is not there you shoud create. For every job you submit I recommend working within a directory. Usually I name these in a data format, but we can just `mkdir assign_04`. 
 
-Step 1: Create a simple code file
-First, you need to create a simple code file that you want to run on the HPC cluster. Let's use a Python script for this example. Create a file named **`hello_world.py`** with the following content:
+To run a job you need to generate a shell script. Create a shell script in your code directory named 04-job.sh with contents such as. 
 
-```         
-pythonCopy code
-```
-
-`print("Hello, World!")`
-
-Step 2: Write a SLURM script
-Now, create a SLURM script that will be used to submit your job to the HPC cluster. Create a file named **`slurm_job.sh`** with the following content:
-
-```         
-bashCopy code
-```
-
-`#!/bin/bash
-
-#SBATCH --job-name=hello_world
-#SBATCH --output=hello_world_output.txt
-#SBATCH --error=hello_world_error.txt
-#SBATCH --time=00:01:00
-#SBATCH --partition=your_partition_name
+```{.bash}
+#!/bin/bash
+## Job Name
+#SBATCH --job-name=assign4
+## Allocation Definition
+#SBATCH --account=srlab
+#SBATCH --partition=srlab
+## Resources
+## Nodes
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=1G
+## Walltime (days-hours:minutes:seconds format)
+#SBATCH --time=01-08:00:00
+## Memory per node
+#SBATCH --mem=100G
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=your_email@example.com
+#SBATCH --mail-user=sr320@uw.edu
+## Specify the working directory for this job
+#SBATCH --chdir=/gscratch/scrubbed/sr320/assign_04
 
-module load python/3.x.x
-python hello_world.py`
+#run a python script you wrote!
+module load intel-python3_2017
 
-Replace **`your_partition_name`** with the name of the partition you want to use on your HPC cluster, and **`your_email@example.com`** with your email address to receive job notifications. The **`module load`** line should be adjusted to match the Python module available on your cluster.
+python 04-hello.py
 
-Step 3: Transfer your files to the HPC cluster
-Use **`scp`**, **`rsync`**, or any other preferred method to transfer both the **`hello_world.py`** and **`slurm_job.sh`** files to your home directory on the HPC cluster.
+# run blastx just to get manual
+/gscratch/srlab/programs/ncbi-blast-2.10.1+/bin/blastx -help
 
-Step 4: Submit your job
-Once the files are on the HPC cluster, submit your job by running the following command:
+#a few bash commands
+pwd 
 
-```         
-Copy code
+whoami
+
+echo "yah! I ddi it!!!!!!!!!!"
+
+#this writes out  tofile
+echo "yah! I ddi it!!!!!!!!!!" > text.file
 ```
 
-`sbatch slurm_job.sh`
+You will also want to write some python code :)
 
-You will receive a job ID after the successful submission of your job. You can monitor the progress of your job using the **`squeue`** command:
+Create a Python Script in the same directory name 04-hello.py with the contents:
 
-```         
-Copy code
+```{.python}
+print("Hello, World!")
 ```
 
-`squeue -u your_username`
+Now we want to move these two files to mox into the assign_04 directory. To to this you will need to type something to the effect of the following in the terminal
 
-Step 5: Retrieve the results
-Once the job is completed, you can find the output of your job in the **`hello_world_output.txt`** file. You can view the content of this file using the **`cat`** command:
-
-```         
-bashCopy code
+```{.bash}
+rsync -avz assignments/code/04-* sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04
 ```
 
-`cat hello_world_output.txt`
+Then on mox, inside the `assign_04` directory you will type"
 
-This should display "Hello, World!" in your terminal.
+`sbatch 04-job-sh` to schedule the job.
 
-If there were any errors, they would be stored in the **`hello_world_error.txt`** file. You can view this file in the same way:
+Once done you should have a couple of new files in the directory. 
 
-```         
-bashCopy code
+You will want to check them to see if everything worked and then move the output back to your repo...
+
+```{.bash}
+rsync -avz sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04/ .
 ```
 
-`cat hello_world_error.txt`
-
-Step 6: Clean up
-After you have successfully retrieved your output, you can remove the job files from the HPC cluster if you no longer need them. Use the **`rm`** command to delete the files:
-
-```         
-bashCopy code
-```
-
-`rm hello_world.py slurm_job.sh hello_world_output.txt hello_world_error.txt`
-
-That's it! You have successfully run a simple job on an HPC cluster using SLURM.
