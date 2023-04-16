@@ -111,10 +111,21 @@ Three insightful visualizations of reciprocal BLAST analysis results could be:
 
 ## Saving my PAT
 
+- see <https://happygitwithr.com/https-pat.html?q=password#store-pat>
+
+```
+install.packages("gitcreds")
+```
+
+
+```
+gitcreds::gitcreds_set()
+```
+
 
 
 ## Chat GPT in Rstudio
 
-Video of recent lab meeting https://washington.zoom.us/rec/share/IVeKgydiIcAOoKVQRj5iG9w2Qu09MgHmvFfc0GiGQLsvoTXUnnUEa4mrS-OclBs.blleXMCwlIFi9aZG
+Video of [recent lab meeting](https://washington.zoom.us/rec/share/IVeKgydiIcAOoKVQRj5iG9w2Qu09MgHmvFfc0GiGQLsvoTXUnnUEa4mrS-OclBs.blleXMCwlIFi9aZG) 
 
 

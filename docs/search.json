@@ -242,14 +242,14 @@
     "href": "lectures/04-remote.html#saving-my-pat",
     "title": "Remote Computing",
     "section": "Saving my PAT",
-    "text": "Saving my PAT"
+    "text": "Saving my PAT\n\nsee https://happygitwithr.com/https-pat.html?q=password#store-pat\n\ninstall.packages(\"gitcreds\")\ngitcreds::gitcreds_set()"
   },
   {
     "objectID": "lectures/04-remote.html#chat-gpt-in-rstudio",
     "href": "lectures/04-remote.html#chat-gpt-in-rstudio",
     "title": "Remote Computing",
     "section": "Chat GPT in Rstudio",
-    "text": "Chat GPT in Rstudio\nVideo of recent lab meeting https://washington.zoom.us/rec/share/IVeKgydiIcAOoKVQRj5iG9w2Qu09MgHmvFfc0GiGQLsvoTXUnnUEa4mrS-OclBs.blleXMCwlIFi9aZG"
+    "text": "Chat GPT in Rstudio\nVideo of recent lab meeting"
   },
   {
     "objectID": "lectures/02-rna-seq.html#quality-control",
