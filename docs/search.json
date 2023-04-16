@@ -140,6 +140,48 @@
     "text": "Screen Recording\n\n\n\n\n\n\n\n\n\n\n\nAssignment\n\n\n\nTLDR: log into hyak, run a job, and transfer the the output using rsync\n\n\n\n\nSetup\n\nGo to https://uwnetid.washington.edu/manage/\nClick the “Computing Services” link on the left\nClick the “Hyak Server” and “Lolo Server” check boxes in the “Inactive Services” section.\nClick the “Subscribe >” button at the bottom of the page.\nRead the notice and click the “Finish” button.\n\nFor two factor authentication, you can either sign up for Duo here and use your smart phone or request a security token here. Duo is much easier.\n\n\nLogging in\n\nOpen your favorite terminal\nType ssh <YourUWNetID>@mox.hyak.uw.edu (replace <YourUWNetID> with your own UW Net ID)\nInput your UWNetID password\nIf you’re signed up for 2-factor authentication via Duo, open your smart phone and approve the connection.\nYou’re logged in to a Login node for Hyak!\n\nExample:\nD-69-91-141-150:~ Sean$ ssh seanb80@mox.hyak.uw.edu\nPassword:\nEnter passcode or select one of the following options:\n\n 1. Duo Push to iOS (XXX-XXX-1239)\n 2. Phone call to iOS (XXX-XXX-1239)\n\nDuo passcode or option [1-2]: 1\nLast login: Thu Jun  8 14:59:10 2017 from d-173-250-161-130.dhcp4.washington.edu\n\n     ** NOTICE **\n     Users need to do all their interactive work, including compiling and\n     building software, on the compute nodes (n####) and NOT on the\n     head/login node (hyak.washington.edu). The login nodes are for\n     interacting with the scheduler and transferring data to and from the\n     system.\n\n     Please visit the Hyak User Wiki for more details\n     http://wiki.hyak.uw.edu\n\n\n[seanb80@mox2 ~]$\n\n\nRunning a job\nOnce logged into mox, navigate to /gscratch/scrubbed/your-username. If the dir is not there you shoud create. For every job you submit I recommend working within a directory. Usually I name these in a data format, but we can just mkdir assign_04.\nTo run a job you need to generate a shell script. Create a shell script in your code directory named 04-job.sh with contents such as.\n#!/bin/bash\n## Job Name\n#SBATCH --job-name=assign4\n## Allocation Definition\n#SBATCH --account=srlab\n#SBATCH --partition=srlab\n## Resources\n## Nodes\n#SBATCH --nodes=1\n## Walltime (days-hours:minutes:seconds format)\n#SBATCH --time=01-08:00:00\n## Memory per node\n#SBATCH --mem=100G\n#SBATCH --mail-type=ALL\n#SBATCH --mail-user=sr320@uw.edu\n## Specify the working directory for this job\n#SBATCH --chdir=/gscratch/scrubbed/sr320/assign_04\n\n#run a python script you wrote!\nmodule load intel-python3_2017\n\npython 04-hello.py\n\n# run blastx just to get manual\n/gscratch/srlab/programs/ncbi-blast-2.10.1+/bin/blastx -help\n\n#a few bash commands\npwd \n\nwhoami\n\necho \"yah! I ddi it!!!!!!!!!!\"\n\n#this writes out  tofile\necho \"yah! I ddi it!!!!!!!!!!\" > text.file\nYou will also want to write some python code :)\nCreate a Python Script in the same directory name 04-hello.py with the contents:\nprint(\"Hello, World!\")\nNow we want to move these two files to mox into the assign_04 directory. To to this you will need to type something to the effect of the following in the terminal\nrsync -avz assignments/code/04-* sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04\nThen on mox, inside the assign_04 directory you will type”\nsbatch 04-job-sh to schedule the job.\nOnce done you should have a couple of new files in the directory.\nYou will want to check them to see if everything worked and then move the output back to your repo…\nrsync -avz sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04/ ."
   },
   {
+    "objectID": "assignments/06-rnaseq-snp.html",
+    "href": "assignments/06-rnaseq-snp.html",
+    "title": "Hyak",
+    "section": "",
+    "text": "Assignment\n\n\n\nTLDR: log into hyak, run a job, and transfer the the output using rsync"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
+    "href": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
+    "title": "Hyak",
+    "section": "Step 1: Quality control with FastQC",
+    "text": "Step 1: Quality control with FastQC\nDownload and install FastQC from https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and run it on your sample FASTQ file:\nfastqc sample.fastq\nExamine the generated report to assess the quality of your reads."
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
+    "href": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
+    "title": "Hyak",
+    "section": "Step 2: Read trimming with Trimmomatic",
+    "text": "Step 2: Read trimming with Trimmomatic\nDownload and install Trimmomatic from http://www.usadellab.org/cms/?page=trimmomatic. Trim low-quality bases and adapter sequences from your sample file:\njava -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
+    "href": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
+    "title": "Hyak",
+    "section": "Step 3: Align reads with HISAT2",
+    "text": "Step 3: Align reads with HISAT2\nBuild an index for your reference genome (you only need to do this once):\nhisat2-build reference_genome.fa reference_genome_index\nAlign your trimmed reads to the reference genome:\nhisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
+    "href": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
+    "title": "Hyak",
+    "section": "Step 4: Process alignments with SAMtools",
+    "text": "Step 4: Process alignments with SAMtools\nDownload and install SAMtools from http://www.htslib.org/. Convert the SAM file to BAM format, sort, and index the alignments:\nsamtools view -bS sample.sam > sample.bam\nsamtools sort sample.bam -o sample_sorted.bam\nsamtools index sample_sorted.bam"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
+    "href": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
+    "title": "Hyak",
+    "section": "Step 5: SNP calling with GATK",
+    "text": "Step 5: SNP calling with GATK\nDownload and install GATK from https://gatk.broadinstitute.org/hc/en-us. Create a reference genome index and call SNPs using HaplotypeCaller:\ngatk CreateSequenceDictionary -R reference_genome.fa\nsamtools faidx reference_genome.fa\ngatk --java-options \"-Xmx4G\" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Bioinformatics for Environmental Sciences",
@@ -208,6 +250,20 @@
     "title": "Course Preparation",
     "section": "",
     "text": "This course is designed for graduate students with core computational competence and an appropriate data set for analyses to be performed during the course. Before class starts (and add codes are distributed) the following tasks need to be completed.\n\nSubmit your github ID using this form.\nEstablish account on Roberts Lab (srlab) hyak account\nRead: Introducing the Shell\nRead: Navigating Files and Directories\nComplete this bash tutorial\nRead: Organize your data and code\nLearn (remember) proper project (repo) structure.\n\n\nFile StructureDataCode\n\n\n\nGood file structure\n\nAll project files in one main folder\nSubfolders (data, code, output)\n\nMain folder is R project\n\nSelf-contained project\nUse relative instead of absolute paths\n\nGood folder & file names\n\nDescriptive but not too long\nNo spaces\nConsistent format\n\n\n\n\n\nRaw data\n\nIn separate folder from cleaned data\nNever change!\nEach file should have metadata\n\n\n\n\n\nScripts with code\n\nRelative file paths to read in and create files\nLots of comments\nOrder: libraries, data, user-created functions, everything else\nGood variable & column names"
+  },
+  {
+    "objectID": "lectures/05-knit-slides.html#creating-a-presentation-in-quarto",
+    "href": "lectures/05-knit-slides.html#creating-a-presentation-in-quarto",
+    "title": "Knitting up some slides",
+    "section": "Creating a Presentation in Quarto",
+    "text": "Creating a Presentation in Quarto\nFollow these simple steps to create a presentation using Quarto:\n\nCreate a new Quarto presentation file: Create a new file with the extension .qmd (e.g., presentation.qmd). This file will contain your presentation content and code chunks.\nAdd YAML metadata: At the top of your .qmd file, include a YAML metadata block to specify the output format and other options. For a presentation, use the following:\n\n---\ntitle: \"Your Presentation Title\"\nformat: beamer\noutput:\n  beamer_presentation:\n    theme: metropolis\n    slide_level: 2\n---\n\nWrite your presentation: Use standard Markdown syntax for formatting your text and headings. To create a new slide, use a level-2 heading (e.g., ## Slide Title). You can include R, Python, or Julia code chunks using the following syntax:\n\n\n```{r}\n# Your R code here\n```\n\n```{python}\n# Your Python code here\n```\n\n```{julia}\n# Your Julia code here\n```"
+  },
+  {
+    "objectID": "lectures/06-snps.html",
+    "href": "lectures/06-snps.html",
+    "title": "Genetic Variation",
+    "section": "",
+    "text": "Screen Recording\n\n\n\n\n\n\n\nReading\n\nR Markdown: The Definitive Guide - Chapter 4\nQuarto\nQuarto Presenations\n\n\n\nObjectives\nConsider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.\n\n\nSNPs in RNA-seq data\nFinding SNPs (Single Nucleotide Polymorphisms) in RNA-seq data is an essential step in understanding genetic variation and its effects on gene expression. Here is a summary of the process:\n\nQuality control and preprocessing: Start by assessing the quality of your raw RNA-seq reads using tools like FastQC. Trim low-quality bases and adapter sequences using software like Trimmomatic or Cutadapt to ensure accurate downstream analysis.\nAlignment: Align the cleaned RNA-seq reads to a reference genome using a spliced aligner like STAR, HISAT2, or TopHat2. These tools can handle the intron-exon structure of RNA-seq data and provide accurate alignments.\nSort and index alignments: Use SAMtools or Picard to convert the alignment output (SAM) to a binary format (BAM), sort, and index the aligned reads for efficient data processing.\nVariant calling: Employ a variant caller such as GATK’s HaplotypeCaller, SAMtools mpileup, or FreeBayes to identify SNPs and other genetic variants in your RNA-seq data. These tools use statistical models to call SNPs based on the differences observed between aligned reads and the reference genome.\nFiltering: Apply quality filters to remove low-confidence variant calls. Use tools like GATK’s VariantFiltration or BCFtools filter to set quality thresholds based on parameters like depth, quality score, strand bias, and mapping quality.\nAnnotation: Annotate the filtered SNPs using software like ANNOVAR, SnpEff, or VEP to gain insights into their potential functional effects on genes, transcripts, and proteins.\nDownstream analysis: Investigate the potential impact of SNPs on gene expression, alternative splicing, or allele-specific expression using tools like DESeq2, edgeR, or Cufflinks.\n\nRemember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis."
   },
   {
     "objectID": "lectures/01-start-up.html",

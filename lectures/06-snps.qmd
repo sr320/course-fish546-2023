@@ -1,0 +1,48 @@
+---
+title: "Genetic Variation"
+subtitle: "Oh boy"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](hxxxxxx)
+
+# Reading
+
+-   [R Markdown: The Definitive Guide - Chapter 4](https://bookdown.org/yihui/rmarkdown/presentations.html)
+
+-   Quarto
+
+-   [Quarto Presenations](https://quarto.org/docs/presentations/)
+
+# Objectives
+
+Consider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.
+
+# SNPs in RNA-seq data
+
+Finding SNPs (Single Nucleotide Polymorphisms) in RNA-seq data is an essential step in understanding genetic variation and its effects on gene expression. Here is a summary of the process:
+
+1.  Quality control and preprocessing: Start by assessing the quality of your raw RNA-seq reads using tools like FastQC. Trim low-quality bases and adapter sequences using software like Trimmomatic or Cutadapt to ensure accurate downstream analysis.
+
+2.  Alignment: Align the cleaned RNA-seq reads to a reference genome using a spliced aligner like STAR, HISAT2, or TopHat2. These tools can handle the intron-exon structure of RNA-seq data and provide accurate alignments.
+
+3.  Sort and index alignments: Use SAMtools or Picard to convert the alignment output (SAM) to a binary format (BAM), sort, and index the aligned reads for efficient data processing.
+
+4.  Variant calling: Employ a variant caller such as GATK's HaplotypeCaller, SAMtools mpileup, or FreeBayes to identify SNPs and other genetic variants in your RNA-seq data. These tools use statistical models to call SNPs based on the differences observed between aligned reads and the reference genome.
+
+5.  Filtering: Apply quality filters to remove low-confidence variant calls. Use tools like GATK's VariantFiltration or BCFtools filter to set quality thresholds based on parameters like depth, quality score, strand bias, and mapping quality.
+
+6.  Annotation: Annotate the filtered SNPs using software like ANNOVAR, SnpEff, or VEP to gain insights into their potential functional effects on genes, transcripts, and proteins.
+
+7.  Downstream analysis: Investigate the potential impact of SNPs on gene expression, alternative splicing, or allele-specific expression using tools like DESeq2, edgeR, or Cufflinks.
+
+Remember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis.

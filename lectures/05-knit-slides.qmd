@@ -1,0 +1,122 @@
+---
+title: "Knitting up some slides"
+subtitle: "Oh boy"
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](hxxxxxx)
+
+# Reading
+
+-   [R Markdown: The Definitive Guide - Chapter 4](https://bookdown.org/yihui/rmarkdown/presentations.html)
+
+-   Quarto
+
+-   [Quarto Presenations](https://quarto.org/docs/presentations/)
+
+# Objectives
+
+Consider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.
+
+# 
+
+# Making Presentations in R using Knitr
+
+What is Knitr?
+
+Knitr is an R package created by Yihui Xie that allows you to integrate R code into various document formats, such as R Markdown, LaTeX, or HTML. With knitr, you can create dynamic, reproducible documents, reports, and presentations that automatically update whenever your data or analysis changes. This is achieved by embedding R code chunks within your document, which are then executed and displayed as part of the final output.
+
+Advantages of using Knitr for presentations:
+
+1.  Reproducibility: By combining your code, data, and narrative in a single document, knitr makes it easy to reproduce and share your work with others. This promotes transparency and facilitates collaboration among team members.
+
+2.  Automation: Knitr automatically updates your document's content when your data or analysis changes, saving you time and ensuring that your presentation stays up-to-date.
+
+3.  Flexibility: With support for multiple output formats, you can create a wide range of documents, from simple reports to interactive web applications, all with a consistent look and feel.
+
+4.  Customization: Knitr allows you to customize the appearance and behavior of your presentation, giving you full control over how your content is displayed.
+
+5.  Interactivity: By integrating with R packages like Shiny, knitr enables you to create interactive presentations that allow users to explore your data and analysis in real-time.
+
+Getting started with Knitr
+
+To start using knitr for your presentations, follow these steps:
+
+1.  Install knitr: In your R console, run **`install.packages("knitr")`** to install the knitr package.
+
+2.  Create an R Markdown file: In RStudio, go to File \> New File \> R Markdown, and choose the "Presentation" format. This will create a new R Markdown file with a template for a basic presentation.
+
+3.  Edit your presentation: Add your content and R code chunks to the R Markdown file. You can use standard Markdown syntax for formatting, and add R code chunks with three backticks and {r}.
+
+4.  Render your presentation: To generate the final presentation, click the "Knit" button in RStudio. This will execute your R code, render the Markdown, and produce an output file in your chosen format (e.g., HTML, PDF, or Word).
+
+5.  Share your presentation: Share the output file with others, or publish it online using platforms like RPubs or GitHub Pages.
+
+Conclusion
+
+Knitr is a powerful tool for creating dynamic, reproducible presentations in R. By combining your code, data, and narrative in a single document, you can automate your reporting process, collaborate more effectively with your team, and create professional-looking presentations that are easy to update and share. Start using knitr today to enhance your data analysis and presentation skills.
+
+# Quarto
+
+Quarto is an open-source scientific and technical publishing system built on top of Pandoc, a universal document converter. It was created by the same team behind R Markdown, and it is designed for creating high-quality documents, reports, and books that can be output in various formats like HTML, PDF, Word, EPUB, and more. Quarto is designed to work with multiple programming languages, including R, Python, and Julia.
+
+Some of the key features of Quarto include:
+
+1.  Multi-language support: Quarto allows you to use R, Python, and Julia code chunks in the same document, making it suitable for data analysis projects that involve multiple programming languages.
+
+2.  Advanced formatting options: With support for Pandoc's powerful Markdown extensions, Quarto provides advanced formatting options for tables, figures, citations, and cross-references.
+
+3.  Customizable appearance: Quarto supports custom themes and templates, giving you full control over the appearance of your documents.
+
+4.  Integration with Jupyter: Quarto can convert Jupyter Notebooks into high-quality documents, enabling you to work with familiar tools while benefiting from Quarto's advanced publishing features.
+
+5.  Extensibility: Quarto is built on top of Pandoc, making it compatible with a wide range of document formats and allowing you to extend its functionality with custom filters and plugins.
+
+## Creating a Presentation in Quarto
+
+Follow these simple steps to create a presentation using Quarto:
+
+1.  Create a new Quarto presentation file: Create a new file with the extension **`.qmd`** (e.g., **`presentation.qmd`**). This file will contain your presentation content and code chunks.
+
+2.  Add YAML metadata: At the top of your **`.qmd`** file, include a YAML metadata block to specify the output format and other options. For a presentation, use the following:
+
+```{.yaml}
+---
+title: "Your Presentation Title"
+format: beamer
+output:
+  beamer_presentation:
+    theme: metropolis
+    slide_level: 2
+---
+
+```
+
+4.  Write your presentation: Use standard Markdown syntax for formatting your text and headings. To create a new slide, use a level-2 heading (e.g., **`## Slide Title`**). You can include R, Python, or Julia code chunks using the following syntax:
+
+````
+
+```{{r}}
+# Your R code here
+```
+
+```{{python}}
+# Your Python code here
+```
+
+```{{julia}}
+# Your Julia code here
+```
+
+````
+
+# Miscellany
