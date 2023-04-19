@@ -41,9 +41,8 @@ In this tutorial, we'll use a small sample FASTQ file to identify SNPs from RNA-
 
 Download and install FastQC from [**https://www.bioinformatics.babraham.ac.uk/projects/fastqc/**](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and run it on your sample FASTQ file:
 
-```{.bash}
+``` bash
 fastqc sample.fastq
-
 ```
 
 Examine the generated report to assess the quality of your reads.
@@ -52,45 +51,40 @@ Examine the generated report to assess the quality of your reads.
 
 Download and install Trimmomatic from [**http://www.usadellab.org/cms/?page=trimmomatic**](http://www.usadellab.org/cms/?page=trimmomatic). Trim low-quality bases and adapter sequences from your sample file:
 
-```{.ruby}
+``` ruby
 java -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
-
 ```
 
 ## **Step 3: Align reads with HISAT2**
 
 Build an index for your reference genome (you only need to do this once):
 
-```{.bash}
+``` bash
 hisat2-build reference_genome.fa reference_genome_index
-
 ```
 
 Align your trimmed reads to the reference genome:
 
-```{.bash}
+``` bash
 hisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam
-
 ```
 
 ## **Step 4: Process alignments with SAMtools**
 
 Download and install SAMtools from [**http://www.htslib.org/**](http://www.htslib.org/). Convert the SAM file to BAM format, sort, and index the alignments:
 
-```{.bash}
+``` bash
 samtools view -bS sample.sam > sample.bam
 samtools sort sample.bam -o sample_sorted.bam
 samtools index sample_sorted.bam
-
 ```
 
 ## **Step 5: SNP calling with GATK**
 
 Download and install GATK from [**https://gatk.broadinstitute.org/hc/en-us**](https://gatk.broadinstitute.org/hc/en-us). Create a reference genome index and call SNPs using HaplotypeCaller:
 
-```{.bash}
+``` bash
 gatk CreateSequenceDictionary -R reference_genome.fa
 samtools faidx reference_genome.fa
 gatk --java-options "-Xmx4G" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf
-
 ```

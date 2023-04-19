@@ -620,59 +620,53 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>Download and install FastQC from <span class="co">[</span><span class="ot">**https://www.bioinformatics.babraham.ac.uk/projects/fastqc/**</span><span class="co">](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)</span> and run it on your sample FASTQ file:</span>
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{.bash}</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
 <span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> sample.fastq</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>Examine the generated report to assess the quality of your reads.</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 2: Read trimming with Trimmomatic**</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>Download and install Trimmomatic from <span class="co">[</span><span class="ot">**http://www.usadellab.org/cms/?page=trimmomatic**</span><span class="co">](http://www.usadellab.org/cms/?page=trimmomatic)</span>. Trim low-quality bases and adapter sequences from your sample file:</span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{.ruby}</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>java <span class="sc">-</span>jar trimmomatic<span class="dv">-0</span>.<span class="fl">39.</span>jar SE <span class="sc">-</span>phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP<span class="sc">:</span>TruSeq3<span class="sc">-</span>SE.fa<span class="sc">:</span><span class="dv">2</span><span class="sc">:</span><span class="dv">30</span><span class="sc">:</span><span class="dv">10</span> LEADING<span class="sc">:</span><span class="dv">3</span> TRAILING<span class="sc">:</span><span class="dv">3</span> SLIDINGWINDOW<span class="sc">:</span><span class="dv">4</span><span class="sc">:</span><span class="dv">15</span> MINLEN<span class="sc">:</span><span class="dv">36</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>Examine the generated report to assess the quality of your reads.</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 2: Read trimming with Trimmomatic**</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>Download and install Trimmomatic from <span class="co">[</span><span class="ot">**http://www.usadellab.org/cms/?page=trimmomatic**</span><span class="co">](http://www.usadellab.org/cms/?page=trimmomatic)</span>. Trim low-quality bases and adapter sequences from your sample file:</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="in">``` ruby</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>java <span class="sc">-</span>jar trimmomatic<span class="dv">-0</span>.<span class="fl">39.</span>jar SE <span class="sc">-</span>phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP<span class="sc">:</span>TruSeq3<span class="sc">-</span>SE.fa<span class="sc">:</span><span class="dv">2</span><span class="sc">:</span><span class="dv">30</span><span class="sc">:</span><span class="dv">10</span> LEADING<span class="sc">:</span><span class="dv">3</span> TRAILING<span class="sc">:</span><span class="dv">3</span> SLIDINGWINDOW<span class="sc">:</span><span class="dv">4</span><span class="sc">:</span><span class="dv">15</span> MINLEN<span class="sc">:</span><span class="dv">36</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 3: Align reads with HISAT2**</span></span>
 <span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 3: Align reads with HISAT2**</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>Build an index for your reference genome (you only need to do this once):</span>
 <span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>Build an index for your reference genome (you only need to do this once):</span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{.bash}</span></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="ex">hisat2-build</span> reference_genome.fa reference_genome_index</span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>Align your trimmed reads to the reference genome:</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{.bash}</span></span>
-<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="ex">hisat2</span> <span class="at">-x</span> reference_genome_index <span class="at">-U</span> sample_trimmed.fastq <span class="at">-S</span> sample.sam</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="ex">hisat2-build</span> reference_genome.fa reference_genome_index</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>Align your trimmed reads to the reference genome:</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="ex">hisat2</span> <span class="at">-x</span> reference_genome_index <span class="at">-U</span> sample_trimmed.fastq <span class="at">-S</span> sample.sam</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 4: Process alignments with SAMtools**</span></span>
 <span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>Download and install SAMtools from <span class="co">[</span><span class="ot">**http://www.htslib.org/**</span><span class="co">](http://www.htslib.org/)</span>. Convert the SAM file to BAM format, sort, and index the alignments:</span>
 <span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 4: Process alignments with SAMtools**</span></span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>Download and install SAMtools from <span class="co">[</span><span class="ot">**http://www.htslib.org/**</span><span class="co">](http://www.htslib.org/)</span>. Convert the SAM file to BAM format, sort, and index the alignments:</span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{.bash}</span></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-bS</span> sample.sam <span class="op">&gt;</span> sample.bam</span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort sample.bam <span class="at">-o</span> sample_sorted.bam</span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index sample_sorted.bam</span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 5: SNP calling with GATK**</span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>Download and install GATK from <span class="co">[</span><span class="ot">**https://gatk.broadinstitute.org/hc/en-us**</span><span class="co">](https://gatk.broadinstitute.org/hc/en-us)</span>. Create a reference genome index and call SNPs using HaplotypeCaller:</span>
-<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{.bash}</span></span>
-<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> CreateSequenceDictionary <span class="at">-R</span> reference_genome.fa</span>
-<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> faidx reference_genome.fa</span>
-<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> <span class="at">--java-options</span> <span class="st">"-Xmx4G"</span> HaplotypeCaller <span class="at">-R</span> reference_genome.fa <span class="at">-I</span> sample_sorted.bam <span class="at">-O</span> sample_raw_variants.vcf</span>
-<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-bS</span> sample.sam <span class="op">&gt;</span> sample.bam</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort sample.bam <span class="at">-o</span> sample_sorted.bam</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index sample_sorted.bam</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Step 5: SNP calling with GATK**</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>Download and install GATK from <span class="co">[</span><span class="ot">**https://gatk.broadinstitute.org/hc/en-us**</span><span class="co">](https://gatk.broadinstitute.org/hc/en-us)</span>. Create a reference genome index and call SNPs using HaplotypeCaller:</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> CreateSequenceDictionary <span class="at">-R</span> reference_genome.fa</span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> faidx reference_genome.fa</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> <span class="at">--java-options</span> <span class="st">"-Xmx4G"</span> HaplotypeCaller <span class="at">-R</span> reference_genome.fa <span class="at">-I</span> sample_sorted.bam <span class="at">-O</span> sample_raw_variants.vcf</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

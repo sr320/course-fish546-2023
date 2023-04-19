@@ -13,7 +13,7 @@ format:
 
 # Screen Recording
 
-[![](/img/zoom.png){fig-align="right"}](cccccc)
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/HwRp8KfLZ9mX2TOk2bNsiCYWvWiQJwSJOPHhG4tIztoGq5YlHB71pYlsC9O1bWBw.mejKzK3Q0BR-6Zu-)
 
 # Reading
 
@@ -85,7 +85,6 @@ When working with remote computing, several Bash commands can be particularly us
 
 4.  **`top`** or **`htop`**: The **`top`** command provides a real-time, dynamic view of the processes running on a system, including remote machines. It displays information about CPU usage, memory usage, and other system metrics. The **`htop`** command is an enhanced version of **`top`**, providing a more user-friendly interface with additional features. To use it on a remote machine, simply run **`ssh username@remote_host top`** or **`ssh username@remote_host htop`**.
 
-
 These commands, among others, are essential for efficiently working with remote computing resources and managing your workflow when connected to remote machines.
 
 # Job Scheduler
@@ -94,10 +93,10 @@ A job scheduler, also known as a workload manager or batch scheduler, is a softw
 
 Slurm (Simple Linux Utility for Resource Management) is an open-source, highly-scalable, and widely-used job scheduler designed for Linux-based HPC clusters. It facilitates the management of computational workloads by handling job submission, scheduling, dispatching, and monitoring tasks. Slurm is fault-tolerant, supporting the efficient execution of jobs across thousands of compute nodes.
 
-
 # Miscellany
 
-## Reciprocal BLAST 
+## Reciprocal BLAST
+
 A reciprocal BLAST (Basic Local Alignment Search Tool) analysis is a technique used to identify homologous genes or proteins between two species by performing a BLAST search in both directions. In other words, it involves searching for similarities between a query sequence from species A against a database of sequences from species B, and then searching for similarities between a query sequence from species B against a database of sequences from species A. This approach helps confirm orthology, which is useful in comparative genomics and evolutionary studies.
 
 Three insightful visualizations of reciprocal BLAST analysis results could be:
@@ -108,24 +107,18 @@ Three insightful visualizations of reciprocal BLAST analysis results could be:
 
 3.  Scatter Plot with Dot Matrix: A scatter plot with dot matrix can visualize the distribution of reciprocal best hits (RBH) based on similarity scores or e-values. The x-axis would represent the scores or e-values for species A against species B, and the y-axis would represent the scores or e-values for species B against species A. Each dot on the plot would represent a pair of orthologs, with its position determined by the score or e-value in both directions. This visualization allows users to identify potential outliers, observe the overall correlation between the two species, and assess the quality of the reciprocal BLAST analysis results.
 
-
 ## Saving my PAT
 
-- see <https://happygitwithr.com/https-pat.html?q=password#store-pat>
+-   see <https://happygitwithr.com/https-pat.html?q=password#store-pat>
 
-```
+```         
 install.packages("gitcreds")
 ```
 
-
-```
+```         
 gitcreds::gitcreds_set()
 ```
 
-
-
 ## Chat GPT in Rstudio
 
-Video of [recent lab meeting](https://washington.zoom.us/rec/share/IVeKgydiIcAOoKVQRj5iG9w2Qu09MgHmvFfc0GiGQLsvoTXUnnUEa4mrS-OclBs.blleXMCwlIFi9aZG) 
-
-
+Video of [recent lab meeting](https://washington.zoom.us/rec/share/IVeKgydiIcAOoKVQRj5iG9w2Qu09MgHmvFfc0GiGQLsvoTXUnnUEa4mrS-OclBs.blleXMCwlIFi9aZG)
