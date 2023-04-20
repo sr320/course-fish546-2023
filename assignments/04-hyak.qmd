@@ -13,7 +13,7 @@ format:
 
 # Screen Recording
 
-[![](/img/zoom.png){fig-align="right"}](xxxxxxxxxxxx)
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/13ucJGRxtOYIW-1fHYAcxYdHiLtvyOOELxRf_f4S1Z1JhlcGflmoHo7lGUFEoKPK.JApMBrRCKtvpCHlX)
 
 ::: callout-important
 ## Assignment
@@ -49,7 +49,7 @@ For two factor authentication, you can either sign up for Duo [here](https://id
 
 Example:
 
-```{.bash}         
+``` bash
 D-69-91-141-150:~ Sean$ ssh seanb80@mox.hyak.uw.edu
 Password:
 Enter passcode or select one of the following options:
@@ -76,11 +76,11 @@ Last login: Thu Jun  8 14:59:10 2017 from d-173-250-161-130.dhcp4.washington.edu
 
 # Running a job
 
-Once logged into mox, navigate to `/gscratch/scrubbed/your-username`. If the dir is not there you shoud create. For every job you submit I recommend working within a directory. Usually I name these in a data format, but we can just `mkdir assign_04`. 
+Once logged into mox, navigate to `/gscratch/scrubbed/your-username`. If the dir is not there you shoud create. For every job you submit I recommend working within a directory. Usually I name these in a data format, but we can just `mkdir assign_04`.
 
-To run a job you need to generate a shell script. Create a shell script in your code directory named 04-job.sh with contents such as. 
+To run a job you need to generate a shell script. Create a shell script in your code directory named 04-job.sh with contents such as.
 
-```{.bash}
+``` bash
 #!/bin/bash
 ## Job Name
 #SBATCH --job-name=assign4
@@ -122,13 +122,13 @@ You will also want to write some python code :)
 
 Create a Python Script in the same directory name 04-hello.py with the contents:
 
-```{.python}
+``` python
 print("Hello, World!")
 ```
 
 Now we want to move these two files to mox into the assign_04 directory. To to this you will need to type something to the effect of the following in the terminal
 
-```{.bash}
+``` bash
 rsync -avz assignments/code/04-* sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04
 ```
 
@@ -136,11 +136,10 @@ Then on mox, inside the `assign_04` directory you will type"
 
 `sbatch 04-job-sh` to schedule the job.
 
-Once done you should have a couple of new files in the directory. 
+Once done you should have a couple of new files in the directory.
 
 You will want to check them to see if everything worked and then move the output back to your repo...
 
-```{.bash}
+``` bash
 rsync -avz sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04/ .
 ```
-
