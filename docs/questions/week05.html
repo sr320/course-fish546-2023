@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bioinformatics - FISH 546 - Knitting Reports</title>
+<title>Bioinformatics - FISH 546 - Week 04 Questions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -170,24 +170,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#screen-recording" id="toc-screen-recording" class="nav-link active" data-scroll-target="#screen-recording">Screen Recording</a></li>
-  <li><a href="#next-levelling" id="toc-next-levelling" class="nav-link" data-scroll-target="#next-levelling">Next Levelling</a></li>
-  <li><a href="#practical-aspects" id="toc-practical-aspects" class="nav-link" data-scroll-target="#practical-aspects">Practical Aspects</a></li>
-  <li><a href="#inspiration" id="toc-inspiration" class="nav-link" data-scroll-target="#inspiration">Inspiration</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Knitting Reports</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">more time in R</p>
+<div class="quarto-title-block"><div><h1 class="title">Week 04 Questions</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -202,138 +192,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="screen-recording" class="level1">
-<h1>Screen Recording</h1>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><a href="https://washington.zoom.us/rec/share/J6Z0VOP2ggta7Ax4W9O__zgxQC65JXbk3X951KMMkzOT2RfpDfexF6rrSio_sJW3.VXOyXf5ixtm-C90Z"><img src="../img/zoom.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Assignment
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TLDR: Take what you did in week 1 &amp; 2 and improve upon the code such that results have profound meaning, code is explained, and a pretty report is produced.</p>
-</div>
-</div>
-</section>
-<section id="next-levelling" class="level1">
-<h1>Next Levelling</h1>
-<p>For the past two weeks you got the job done. Now lets not only learn how you go it done, but improve on the output and spend more time to create an html report. To create an attractive web-accessible report using RMarkdown, here are some steps to consider a strive for.</p>
-<ol type="1">
-<li>Write your RMarkdown content: An RMarkdown file consists of three main parts: YAML header, Markdown text, and R code chunks. Use Markdown for formatting text, and R code chunks to insert code and results.</li>
+<ol type="a">
+<li><p><strong>What is Quarto?</strong></p></li>
+<li><p><strong>How do you make columns using Revealjs in Quarto Presentations?</strong></p></li>
+<li><p><strong>How would you change the appearance of slides using Revealjs in Quarto Presentations?</strong></p></li>
+<li><p><strong>What has been the biggest constraint working on your own research project in the past week?</strong></p></li>
 </ol>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>yaml</strong></pre>
-</div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Report Title"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"April 23, 2023"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> readable</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code_folding</span><span class="kw">:</span><span class="at"> show</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This example uses the “readable” theme and includes a table of contents, numbered sections, and code folding options.</p>
-<p>Other themes include: “default”, “cerulean”, “journal”, “flatly”, “darkly”, “readable”, “spacelab”, “united”, “cosmo”, “lumen”, “paper”, “sandstone”, “simplex”, “yeti”.</p>
-<p>Code highlights argument must be one of <code>default</code>, <code>tango</code>, <code>pygments</code>, <code>kate</code>, <code>monochrome</code>, <code>espresso</code>, <code>zenburn</code>, <code>haddock</code>, <code>breezedark</code>, <code>textmate</code>, <code>arrow</code>, or <code>rstudio</code> or a file with extension <code>.theme</code>.</p>
-<ul>
-<li>Markdown text: Use Markdown syntax for text formatting (headings, lists, links, etc.).</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>This is a sample report created using RMarkdown. You can add *italic*, **bold**, or <span class="co">[</span><span class="ot">links</span><span class="co">](https://example.com)</span>.</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bullet point 1</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bullet point 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>R code chunks: Insert R code and its output in your report using R code chunks.</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r example-plot}</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="1">
-<li>Customize the appearance: Use CSS, HTML widgets, or additional R packages to further enhance the visual appeal of your report.</li>
-</ol>
-<ul>
-<li><p>Custom CSS: Create a separate CSS file and link it in the YAML header.</p></li>
-<li><p>HTML widgets: Use packages like <strong><code>leaflet</code></strong> for maps, <strong><code>DT</code></strong> for tables, or <strong><code>plotly</code></strong> for interactive plots.</p></li>
-<li><p>Additional R packages: Use packages like <strong><code>kableExtra</code></strong> for formatting tables, <strong><code>flexdashboard</code></strong> for dashboard layouts, or <strong><code>formattable</code></strong> for conditional formatting.</p></li>
-</ul>
-<ol start="3" type="1">
-<li><p>Render the report: In RStudio, click the “Knit” button to generate the HTML output.</p></li>
-<li><p>Share the report: Host the generated HTML file on a web server, or use services like GitHub Pages or RStudio Connect to share your report with others.</p></li>
-</ol>
-<p>By combining RMarkdown with the right formatting, customizations, and packages, you can create visually appealing, web-accessible reports that effectively communicate your insights and analyses.</p>
-</section>
-<section id="practical-aspects" class="level1">
-<h1>Practical Aspects</h1>
-<p>I would recommend copying prior Rmd files and renaming them with the prefix 03.1, 03.2, etc depending on how many separate pages make sense for you.</p>
-<p>The specific things I will be looking for this week include</p>
-<p>1. Addressing prior comments</p>
-<p>2. Explaining what code is doing</p>
-<p>3. Making output more easily understandable</p>
-<p>4. Adding unique visual features</p>
-<p>5. Generation of html report.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You would want to only run (eval=TRUE) simple tasks in the knit, which is different than running chunk in Rmd.</p>
-</div>
-</div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Danger
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Be careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.</p>
-</div>
-</div>
-</section>
-<section id="inspiration" class="level1">
-<h1>Inspiration</h1>
-<p>3.1 Blast&nbsp;<a href="https://rpubs.com/sr320/1026094" class="uri">https://rpubs.com/sr320/1026094</a></p>
-<p>3.2 RNA-seq&nbsp;<a href="https://rpubs.com/sr320/1026190" class="uri">https://rpubs.com/sr320/1026190</a></p>
-<p>whereas code is</p>
-<ul>
-<li><p><a href="https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.1-blast.Rmd" class="uri">https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.1-blast.Rmd</a></p></li>
-<li><p><a href="https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.2-dge.Rmd" class="uri">https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.2-dge.Rmd</a></p></li>
-</ul>
 
 
 <!-- -->
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -635,130 +503,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<pre class="markdown" data-shortcodes="false"><code>---
-title: "Knitting Reports"
-subtitle: "more time in R"
-
-format:
-  html:
-    code-fold: false
-    code-tools: true
-    code-copy: true
-    highlight-style: github
-    code-overflow: wrap
----
-
-# Screen Recording
-
-[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/J6Z0VOP2ggta7Ax4W9O__zgxQC65JXbk3X951KMMkzOT2RfpDfexF6rrSio_sJW3.VXOyXf5ixtm-C90Z)
-
-::: callout-important
-## Assignment
-
-TLDR: Take what you did in week 1 &amp; 2 and improve upon the code such that results have profound meaning, code is explained, and a pretty report is produced.
-:::
-
-# Next Levelling
-
-For the past two weeks you got the job done. Now lets not only learn how you go it done, but improve on the output and spend more time to create an html report. To create an attractive web-accessible report using RMarkdown, here are some steps to consider a strive for.
-
-1.  Write your RMarkdown content: An RMarkdown file consists of three main parts: YAML header, Markdown text, and R code chunks. Use Markdown for formatting text, and R code chunks to insert code and results.
-
-``` {.yaml filename="yaml"}
----
-title: "Your Report Title"
-author: "Your Name"
-date: "`r format(Sys.Date(), '%B %d, %Y')`"
-output: 
-  html_document:
-    theme: readable
-    toc: true
-    toc_float: true
-    number_sections: true
-    code_folding: show
----
-```
-
-This example uses the "readable" theme and includes a table of contents, numbered sections, and code folding options.
-
-Other themes include: "default", "cerulean", "journal", "flatly", "darkly", "readable", "spacelab", "united", "cosmo", "lumen", "paper", "sandstone", "simplex", "yeti".
-
-Code highlights argument must be one of `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, `haddock`, `breezedark`, `textmate`, `arrow`, or `rstudio` or a file with extension `.theme`.
-
--   Markdown text: Use Markdown syntax for text formatting (headings, lists, links, etc.).
-
-``` markdown
-## Introduction
-
-This is a sample report created using RMarkdown. You can add *italic*, **bold**, or [links](https://example.com).
-
-- Bullet point 1
-- Bullet point 2
-```
-
--   R code chunks: Insert R code and its output in your report using R code chunks.
-
-````         
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-```
-
-```{r example-plot}
-library(ggplot2)
-data(mtcars)
-ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point() + theme_minimal()
-```
-````
-
-2.  Customize the appearance: Use CSS, HTML widgets, or additional R packages to further enhance the visual appeal of your report.
-
--   Custom CSS: Create a separate CSS file and link it in the YAML header.
-
--   HTML widgets: Use packages like **`leaflet`** for maps, **`DT`** for tables, or **`plotly`** for interactive plots.
-
--   Additional R packages: Use packages like **`kableExtra`** for formatting tables, **`flexdashboard`** for dashboard layouts, or **`formattable`** for conditional formatting.
-
-3.  Render the report: In RStudio, click the "Knit" button to generate the HTML output.
-
-4.  Share the report: Host the generated HTML file on a web server, or use services like GitHub Pages or RStudio Connect to share your report with others.
-
-By combining RMarkdown with the right formatting, customizations, and packages, you can create visually appealing, web-accessible reports that effectively communicate your insights and analyses.
-
-# Practical Aspects
-
-I would recommend copying prior Rmd files and renaming them with the prefix 03.1, 03.2, etc depending on how many separate pages make sense for you.
-
-The specific things I will be looking for this week include
-
-1\. Addressing prior comments
-
-2\. Explaining what code is doing
-
-3\. Making output more easily understandable
-
-4\. Adding unique visual features
-
-5\. Generation of html report.
-
-::: callout-note
-You would want to only run (eval=TRUE) simple tasks in the knit, which is different than running chunk in Rmd.
-:::
-
-::: callout-caution
-Be careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.
-:::
-
-# Inspiration
-
-3.1 Blast&nbsp;&lt;https://rpubs.com/sr320/1026094&gt;
-
-3.2 RNA-seq&nbsp;&lt;https://rpubs.com/sr320/1026190&gt;
-
-whereas code is
-
--   &lt;https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.1-blast.Rmd&gt;
-
--   &lt;https://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.2-dge.Rmd&gt;</code></pre>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Week 04 Questions"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>a)  **What is Quarto?**</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>b)  **How do you make columns using Revealjs in Quarto Presentations?**</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>c)  **How would you change the appearance of slides using Revealjs in Quarto Presentations?**</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>d)  **What has been the biggest constraint working on your own research project in the past week?**</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

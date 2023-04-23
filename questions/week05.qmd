@@ -1,0 +1,19 @@
+---
+title: "Week 04 Questions"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+a)  **What is Quarto?**
+
+b)  **How do you make columns using Revealjs in Quarto Presentations?**
+
+c)  **How would you change the appearance of slides using Revealjs in Quarto Presentations?**
+
+d)  **What has been the biggest constraint working on your own research project in the past week?**

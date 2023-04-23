@@ -177,13 +177,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#screen-recording" id="toc-screen-recording" class="nav-link active" data-scroll-target="#screen-recording">Screen Recording</a></li>
   <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#making-presentations-in-r-using-knitr" id="toc-making-presentations-in-r-using-knitr" class="nav-link" data-scroll-target="#making-presentations-in-r-using-knitr">Making Presentations in R using Knitr</a></li>
   <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a>
   <ul class="collapse">
   <li><a href="#creating-a-presentation-in-quarto" id="toc-creating-a-presentation-in-quarto" class="nav-link" data-scroll-target="#creating-a-presentation-in-quarto">Creating a Presentation in Quarto</a></li>
   </ul></li>
-  <li><a href="#miscellany" id="toc-miscellany" class="nav-link" data-scroll-target="#miscellany">Miscellany</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
     </div>
@@ -220,16 +219,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Reading</h1>
 <ul>
 <li><p><a href="https://bookdown.org/yihui/rmarkdown/presentations.html">R Markdown: The Definitive Guide - Chapter 4</a></p></li>
-<li><p>Quarto</p></li>
-<li><p><a href="https://quarto.org/docs/presentations/">Quarto Presenations</a></p></li>
+<li><p><a href="https://quarto.org/docs/presentations/revealjs/">Quarto Presenations</a></p></li>
 </ul>
 </section>
 <section id="objectives" class="level1">
 <h1>Objectives</h1>
-<p>Consider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.</p>
-</section>
-<section id="section" class="level1">
-<h1></h1>
+<p>Learn how to leverage feature in RStudio for Presentations</p>
 </section>
 <section id="making-presentations-in-r-using-knitr" class="level1">
 <h1>Making Presentations in R using Knitr</h1>
@@ -257,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="quarto" class="level1">
 <h1>Quarto</h1>
-<p>Quarto is an open-source scientific and technical publishing system built on top of Pandoc, a universal document converter. It was created by the same team behind R Markdown, and it is designed for creating high-quality documents, reports, and books that can be output in various formats like HTML, PDF, Word, EPUB, and more. Quarto is designed to work with multiple programming languages, including R, Python, and Julia.</p>
+<p>Quarto is a new open-source scientific and technical publishing system built on top of Pandoc, a universal document converter. It was created by the same team behind R Markdown, and it is designed for creating high-quality documents, reports, and books that can be output in various formats like HTML, PDF, Word, EPUB, and more. Quarto is designed to work with multiple programming languages, including R, Python, and Julia.</p>
 <p>Some of the key features of Quarto include:</p>
 <ol type="1">
 <li><p>Multi-language support: Quarto allows you to use R, Python, and Julia code chunks in the same document, making it suitable for data analysis projects that involve multiple programming languages.</p></li>
@@ -268,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <section id="creating-a-presentation-in-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="creating-a-presentation-in-quarto">Creating a Presentation in Quarto</h2>
-<p>Follow these simple steps to create a presentation using Quarto:</p>
+<p>Follow these steps to create a presentation using Quarto:</p>
 <ol type="1">
 <li><p>Create a new Quarto presentation file: Create a new file with the extension <strong><code>.qmd</code></strong> (e.g., <strong><code>presentation.qmd</code></strong>). This file will contain your presentation content and code chunks.</p></li>
 <li><p>Add YAML metadata: At the top of your <strong><code>.qmd</code></strong> file, include a YAML metadata block to specify the output format and other options. For a presentation, use the following:</p></li>
@@ -291,15 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Python code here</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{julia}</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Julia code here</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="miscellany" class="level1">
-<h1>Miscellany</h1>
+<section id="section" class="level1">
+<h1></h1>
 
 
 </section>

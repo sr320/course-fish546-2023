@@ -19,15 +19,11 @@ format:
 
 -   [R Markdown: The Definitive Guide - Chapter 4](https://bookdown.org/yihui/rmarkdown/presentations.html)
 
--   Quarto
-
--   [Quarto Presenations](https://quarto.org/docs/presentations/)
+-   [Quarto Presenations](https://quarto.org/docs/presentations/revealjs/)
 
 # Objectives
 
-Consider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.
-
-# 
+Learn how to leverage feature in RStudio for Presentations
 
 # Making Presentations in R using Knitr
 
@@ -67,7 +63,7 @@ Knitr is a powerful tool for creating dynamic, reproducible presentations in R. 
 
 # Quarto
 
-Quarto is an open-source scientific and technical publishing system built on top of Pandoc, a universal document converter. It was created by the same team behind R Markdown, and it is designed for creating high-quality documents, reports, and books that can be output in various formats like HTML, PDF, Word, EPUB, and more. Quarto is designed to work with multiple programming languages, including R, Python, and Julia.
+Quarto is a new open-source scientific and technical publishing system built on top of Pandoc, a universal document converter. It was created by the same team behind R Markdown, and it is designed for creating high-quality documents, reports, and books that can be output in various formats like HTML, PDF, Word, EPUB, and more. Quarto is designed to work with multiple programming languages, including R, Python, and Julia.
 
 Some of the key features of Quarto include:
 
@@ -83,13 +79,13 @@ Some of the key features of Quarto include:
 
 ## Creating a Presentation in Quarto
 
-Follow these simple steps to create a presentation using Quarto:
+Follow these steps to create a presentation using Quarto:
 
 1.  Create a new Quarto presentation file: Create a new file with the extension **`.qmd`** (e.g., **`presentation.qmd`**). This file will contain your presentation content and code chunks.
 
 2.  Add YAML metadata: At the top of your **`.qmd`** file, include a YAML metadata block to specify the output format and other options. For a presentation, use the following:
 
-```{.yaml}
+``` yaml
 ---
 title: "Your Presentation Title"
 format: beamer
@@ -98,12 +94,11 @@ output:
     theme: metropolis
     slide_level: 2
 ---
-
 ```
 
 4.  Write your presentation: Use standard Markdown syntax for formatting your text and headings. To create a new slide, use a level-2 heading (e.g., **`## Slide Title`**). You can include R, Python, or Julia code chunks using the following syntax:
 
-````
+````         
 
 ```{{r}}
 # Your R code here
@@ -112,11 +107,6 @@ output:
 ```{{python}}
 # Your Python code here
 ```
-
-```{{julia}}
-# Your Julia code here
-```
-
 ````
 
-# Miscellany
+# 

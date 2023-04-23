@@ -1,0 +1,52 @@
+---
+title: "Project slidedeck"
+subtitle: "Show and tell"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](httpX)
+
+::: callout-important
+## Assignment
+
+TLDR: Create and publish a presentation in Quarto on you research project
+:::
+
+## Creating Slides
+
+1.  Start by going to New File \> Quarto Presentation. (Leave render type as default)
+
+2.  Create Slides using `##` (Heading 2) to title new slide.
+
+::: callout-tip
+You can use same code and principles that you used for knitting a report in week three. Including the set-up chunk. Chunk options work the same way.
+:::
+
+3.  Publish slides using Rpubs and provide link in readme.
+
+## Rubric
+
+For this assignment you will want to develop slides that
+
+1.  Clearly demonstrate your project goal
+2.  Methods taken
+3.  Preliminary Results
+4.  Outline of next steps for next 4 weeks
+
+## Minimum Required components
+
+1.  Show core code
+2.  Show parts of initial data (could be first few lines etc)
+3.  Include a table
+4.  Include image
+5.  Include plot generated from code
+6.  Highlight specific lines of code in code block
