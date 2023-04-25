@@ -11,20 +11,20 @@ format:
     code-overflow: wrap
 ---
 
-| Date      | Questions                       | Topic                                                  | Assignment                                             | Project Status                                         |
-|-----------|---------------------------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| last week |                                 | [Preparing for class](lectures/00-before.qmd)          | [bash](assignments/00-bash.qmd)                        |                                                        |
-| mar 27    | [week 01](questions/week01.md)  | [Getting Started](lectures/01-start-up.qmd)            | [NCBI Blast](assignments/01-blast.qmd)                 | Establish Repos                                        |
-| apr 03    | [week 02](questions/week02.qmd) | [RNA-seq](lectures/02-rna-seq.qmd) + Ariana Huffmyer   | [Differential Gene Expression](assignments/02-DGE.qmd) | Explore data, QC, add hashes                           |
-| apr 10    | [week 03](questions/week03.qmd) | [RStudio:knitr/ Fundamentals](lectures/03-rstudio.qmd) | [Explain and knit](assignments/03-knit.qmd)            | ID endpoint in Readme. Start workflow.                 |
-| apr 17    | [week 04](questions/week04.qmd) | [Remote Computing](lectures/04-remote.qmd)             | [Hyak](assignments/04-hyak.qmd)                        | Complete sliced workflow (-\>endpoint)                 |
-| apr 24    | [week 05](questions/week05.qmd) | [Quatro](lectures/05-knit-slides.qmd)                  | [Publishing Slides](assignments/05-slidedeck.qmd)      | Readme describes results (links), has plan for 4 weeks |
-| may 01    | week 06                         | Genetic Variation                                      |                                                        |                                                        |
-| may 08    | week 07                         | DNA methylation + Matt George                          |                                                        |                                                        |
-| may 15    | week 08                         | Genomic Ranges                                         |                                                        |                                                        |
-| may 22    | week 09                         | Project focus                                          |                                                        |                                                        |
-| may 29    | week 10                         | Presentations                                          |                                                        | Compendium                                             |
-|           |                                 |                                                        |                                                        |                                                        |
+| Date      | Questions                       | Topic                                                  | Assignment                                             | Project Status                                                   |
+|---------------|---------------|---------------|---------------|---------------|
+| last week |                                 | [Preparing for class](lectures/00-before.qmd)          | [bash](assignments/00-bash.qmd)                        |                                                                  |
+| mar 27    | [week 01](questions/week01.md)  | [Getting Started](lectures/01-start-up.qmd)            | [NCBI Blast](assignments/01-blast.qmd)                 | Establish Repos                                                  |
+| apr 03    | [week 02](questions/week02.qmd) | [RNA-seq](lectures/02-rna-seq.qmd) + Ariana Huffmyer   | [Differential Gene Expression](assignments/02-DGE.qmd) | Explore data, QC, add hashes                                     |
+| apr 10    | [week 03](questions/week03.qmd) | [RStudio:knitr/ Fundamentals](lectures/03-rstudio.qmd) | [Explain and knit](assignments/03-knit.qmd)            | ID endpoint in Readme. Start workflow.                           |
+| apr 17    | [week 04](questions/week04.qmd) | [Remote Computing](lectures/04-remote.qmd)             | [Hyak](assignments/04-hyak.qmd)                        | Complete sliced workflow (-\>endpoint)                           |
+| apr 24    | [week 05](questions/week05.qmd) | [Quatro](lectures/05-knit-slides.qmd)                  | [Publishing Slides](assignments/05-slidedeck.qmd)      | Readme w/ results (links), has plan for 4 weeks, issues resolved |
+| may 01    | week 06                         | Genetic Variation                                      |                                                        |                                                                  |
+| may 08    | week 07                         | DNA methylation + Matt George                          |                                                        |                                                                  |
+| may 15    | week 08                         | Genomic Ranges                                         |                                                        |                                                                  |
+| may 22    | week 09                         | Project focus                                          |                                                        |                                                                  |
+| may 29    | week 10                         | Presentations                                          |                                                        | Compendium                                                       |
+|           |                                 |                                                        |                                                        |                                                                  |
 
 ------------------------------------------------------------------------
 
