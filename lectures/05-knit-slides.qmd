@@ -109,4 +109,9 @@ output:
 ```
 ````
 
-# 
+# Miscellany
+
+Visit Week 01 Text Reading
+
+How to Learn Bioinformatics 1-18;
+Setting Up and Managing a Bioinformatics Project 21-35;
