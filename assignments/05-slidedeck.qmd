@@ -18,14 +18,16 @@ format:
 ::: callout-important
 ## Assignment
 
-TLDR: Create and publish a presentation in Quarto on you research project
+TLDR: Create and publish a presentation in Quarto on you research project.
 :::
 
 ## Creating Slides
 
 1.  Start by going to New File \> Quarto Presentation. (Leave render type as default)
 
-2.  Create Slides using `##` (Heading 2) to title new slide.
+2.  **Save file in research repo, in the code directory, with the prefix 05.**
+
+3.  Create Slides using `##` (Heading 2) to title new slide.
 
 ::: callout-tip
 You can use same code and principles that you used for knitting a report in week three. Including the set-up chunk. Chunk options work the same way.
