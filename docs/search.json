@@ -1,54 +1,5 @@
 [
   {
-    "objectID": "assignments/06-rnaseq-snp.html",
-    "href": "assignments/06-rnaseq-snp.html",
-    "title": "Alignment Data",
-    "section": "",
-    "text": "Assignment\n\n\n\nCreate and inspect and alignment files."
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#download-alignment-data-and-visualise",
-    "href": "assignments/06-rnaseq-snp.html#download-alignment-data-and-visualise",
-    "title": "Alignment Data",
-    "section": "Download alignment data and visualise",
-    "text": "Download alignment data and visualise\ncd ../data\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam.bai\ncd ../data\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa.fai"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
-    "href": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
-    "title": "Alignment Data",
-    "section": "Step 1: Quality control with FastQC",
-    "text": "Step 1: Quality control with FastQC\nDownload and install FastQC from https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and run it on your sample FASTQ file:\nfastqc sample.fastq\nExamine the generated report to assess the quality of your reads."
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
-    "href": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
-    "title": "Alignment Data",
-    "section": "Step 2: Read trimming with Trimmomatic",
-    "text": "Step 2: Read trimming with Trimmomatic\nDownload and install Trimmomatic from http://www.usadellab.org/cms/?page=trimmomatic. Trim low-quality bases and adapter sequences from your sample file:\njava -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
-    "href": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
-    "title": "Alignment Data",
-    "section": "Step 3: Align reads with HISAT2",
-    "text": "Step 3: Align reads with HISAT2\nBuild an index for your reference genome (you only need to do this once):\nhisat2-build reference_genome.fa reference_genome_index\nAlign your trimmed reads to the reference genome:\nhisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
-    "href": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
-    "title": "Alignment Data",
-    "section": "Step 4: Process alignments with SAMtools",
-    "text": "Step 4: Process alignments with SAMtools\nDownload and install SAMtools from http://www.htslib.org/. Convert the SAM file to BAM format, sort, and index the alignments:\nsamtools view -bS sample.sam > sample.bam\nsamtools sort sample.bam -o sample_sorted.bam\nsamtools index sample_sorted.bam"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
-    "href": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
-    "title": "Alignment Data",
-    "section": "Step 5: SNP calling with GATK",
-    "text": "Step 5: SNP calling with GATK\nDownload and install GATK from https://gatk.broadinstitute.org/hc/en-us. Create a reference genome index and call SNPs using HaplotypeCaller:\ngatk CreateSequenceDictionary -R reference_genome.fa\nsamtools faidx reference_genome.fa\ngatk --java-options \"-Xmx4G\" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf"
-  },
-  {
     "objectID": "assignments/01-blast.html",
     "href": "assignments/01-blast.html",
     "title": "NCBI Blast",
@@ -158,7 +109,7 @@
     "href": "assignments/03-knit.html",
     "title": "Knitting Reports",
     "section": "",
-    "text": "Screen Recording\n\n\n\n\n\n\n\n\n\n\n\nAssignment\n\n\n\nTLDR: Take what you did in week 1 & 2 and improve upon the code such that results have profound meaning, code is explained, and a pretty report is produced.\n\n\n\n\nNext Levelling\nFor the past two weeks you got the job done. Now lets not only learn how you go it done, but improve on the output and spend more time to create an html report. To create an attractive web-accessible report using RMarkdown, here are some steps to consider a strive for.\n\nWrite your RMarkdown content: An RMarkdown file consists of three main parts: YAML header, Markdown text, and R code chunks. Use Markdown for formatting text, and R code chunks to insert code and results.\n\n\n\nyaml\n\n---\ntitle: \"Your Report Title\"\nauthor: \"Your Name\"\ndate: \"April 27, 2023\"\noutput: \n  html_document:\n    theme: readable\n    toc: true\n    toc_float: true\n    number_sections: true\n    code_folding: show\n---\n\nThis example uses the “readable” theme and includes a table of contents, numbered sections, and code folding options.\nOther themes include: “default”, “cerulean”, “journal”, “flatly”, “darkly”, “readable”, “spacelab”, “united”, “cosmo”, “lumen”, “paper”, “sandstone”, “simplex”, “yeti”.\nCode highlights argument must be one of default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate, arrow, or rstudio or a file with extension .theme.\n\nMarkdown text: Use Markdown syntax for text formatting (headings, lists, links, etc.).\n\n## Introduction\n\nThis is a sample report created using RMarkdown. You can add *italic*, **bold**, or [links](https://example.com).\n\n- Bullet point 1\n- Bullet point 2\n\nR code chunks: Insert R code and its output in your report using R code chunks.\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)\n```\n\n```{r example-plot}\nlibrary(ggplot2)\ndata(mtcars)\nggplot(mtcars, aes(x = wt, y = mpg)) + geom_point() + theme_minimal()\n```\n\nCustomize the appearance: Use CSS, HTML widgets, or additional R packages to further enhance the visual appeal of your report.\n\n\nCustom CSS: Create a separate CSS file and link it in the YAML header.\nHTML widgets: Use packages like leaflet for maps, DT for tables, or plotly for interactive plots.\nAdditional R packages: Use packages like kableExtra for formatting tables, flexdashboard for dashboard layouts, or formattable for conditional formatting.\n\n\nRender the report: In RStudio, click the “Knit” button to generate the HTML output.\nShare the report: Host the generated HTML file on a web server, or use services like GitHub Pages or RStudio Connect to share your report with others.\n\nBy combining RMarkdown with the right formatting, customizations, and packages, you can create visually appealing, web-accessible reports that effectively communicate your insights and analyses.\n\n\nPractical Aspects\nI would recommend copying prior Rmd files and renaming them with the prefix 03.1, 03.2, etc depending on how many separate pages make sense for you.\nThe specific things I will be looking for this week include\n1. Addressing prior comments\n2. Explaining what code is doing\n3. Making output more easily understandable\n4. Adding unique visual features\n5. Generation of html report.\n\n\n\n\n\n\nNote\n\n\n\nYou would want to only run (eval=TRUE) simple tasks in the knit, which is different than running chunk in Rmd.\n\n\n\n\n\n\n\n\nDanger\n\n\n\nBe careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.\n\n\n\n\nInspiration\n3.1 Blast https://rpubs.com/sr320/1026094\n3.2 RNA-seq https://rpubs.com/sr320/1026190\nwhereas code is\n\nhttps://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.1-blast.Rmd\nhttps://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.2-dge.Rmd"
+    "text": "Screen Recording\n\n\n\n\n\n\n\n\n\n\n\nAssignment\n\n\n\nTLDR: Take what you did in week 1 & 2 and improve upon the code such that results have profound meaning, code is explained, and a pretty report is produced.\n\n\n\n\nNext Levelling\nFor the past two weeks you got the job done. Now lets not only learn how you go it done, but improve on the output and spend more time to create an html report. To create an attractive web-accessible report using RMarkdown, here are some steps to consider a strive for.\n\nWrite your RMarkdown content: An RMarkdown file consists of three main parts: YAML header, Markdown text, and R code chunks. Use Markdown for formatting text, and R code chunks to insert code and results.\n\n\n\nyaml\n\n---\ntitle: \"Your Report Title\"\nauthor: \"Your Name\"\ndate: \"April 30, 2023\"\noutput: \n  html_document:\n    theme: readable\n    toc: true\n    toc_float: true\n    number_sections: true\n    code_folding: show\n---\n\nThis example uses the “readable” theme and includes a table of contents, numbered sections, and code folding options.\nOther themes include: “default”, “cerulean”, “journal”, “flatly”, “darkly”, “readable”, “spacelab”, “united”, “cosmo”, “lumen”, “paper”, “sandstone”, “simplex”, “yeti”.\nCode highlights argument must be one of default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate, arrow, or rstudio or a file with extension .theme.\n\nMarkdown text: Use Markdown syntax for text formatting (headings, lists, links, etc.).\n\n## Introduction\n\nThis is a sample report created using RMarkdown. You can add *italic*, **bold**, or [links](https://example.com).\n\n- Bullet point 1\n- Bullet point 2\n\nR code chunks: Insert R code and its output in your report using R code chunks.\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)\n```\n\n```{r example-plot}\nlibrary(ggplot2)\ndata(mtcars)\nggplot(mtcars, aes(x = wt, y = mpg)) + geom_point() + theme_minimal()\n```\n\nCustomize the appearance: Use CSS, HTML widgets, or additional R packages to further enhance the visual appeal of your report.\n\n\nCustom CSS: Create a separate CSS file and link it in the YAML header.\nHTML widgets: Use packages like leaflet for maps, DT for tables, or plotly for interactive plots.\nAdditional R packages: Use packages like kableExtra for formatting tables, flexdashboard for dashboard layouts, or formattable for conditional formatting.\n\n\nRender the report: In RStudio, click the “Knit” button to generate the HTML output.\nShare the report: Host the generated HTML file on a web server, or use services like GitHub Pages or RStudio Connect to share your report with others.\n\nBy combining RMarkdown with the right formatting, customizations, and packages, you can create visually appealing, web-accessible reports that effectively communicate your insights and analyses.\n\n\nPractical Aspects\nI would recommend copying prior Rmd files and renaming them with the prefix 03.1, 03.2, etc depending on how many separate pages make sense for you.\nThe specific things I will be looking for this week include\n1. Addressing prior comments\n2. Explaining what code is doing\n3. Making output more easily understandable\n4. Adding unique visual features\n5. Generation of html report.\n\n\n\n\n\n\nNote\n\n\n\nYou would want to only run (eval=TRUE) simple tasks in the knit, which is different than running chunk in Rmd.\n\n\n\n\n\n\n\n\nDanger\n\n\n\nBe careful about committing files, particularly those that are a result of cache. It is likely best to ignore those.\n\n\n\n\nInspiration\n3.1 Blast https://rpubs.com/sr320/1026094\n3.2 RNA-seq https://rpubs.com/sr320/1026190\nwhereas code is\n\nhttps://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.1-blast.Rmd\nhttps://github.com/course-fish546-2023/steven-coursework/blob/main/assignments/code/3.2-dge.Rmd"
   },
   {
     "objectID": "assignments/02-DGE.html",
@@ -194,6 +145,125 @@
     "title": "Hyak",
     "section": "",
     "text": "Screen Recording\n\n\n\n\n\n\n\n\n\n\n\nAssignment\n\n\n\nTLDR: log into hyak, run a job, and transfer the the output using rsync\n\n\n\n\nSetup\n\nGo to https://uwnetid.washington.edu/manage/\nClick the “Computing Services” link on the left\nClick the “Hyak Server” and “Lolo Server” check boxes in the “Inactive Services” section.\nClick the “Subscribe >” button at the bottom of the page.\nRead the notice and click the “Finish” button.\n\nFor two factor authentication, you can either sign up for Duo here and use your smart phone or request a security token here. Duo is much easier.\n\n\nLogging in\n\nOpen your favorite terminal\nType ssh <YourUWNetID>@mox.hyak.uw.edu (replace <YourUWNetID> with your own UW Net ID)\nInput your UWNetID password\nIf you’re signed up for 2-factor authentication via Duo, open your smart phone and approve the connection.\nYou’re logged in to a Login node for Hyak!\n\nExample:\nD-69-91-141-150:~ Sean$ ssh seanb80@mox.hyak.uw.edu\nPassword:\nEnter passcode or select one of the following options:\n\n 1. Duo Push to iOS (XXX-XXX-1239)\n 2. Phone call to iOS (XXX-XXX-1239)\n\nDuo passcode or option [1-2]: 1\nLast login: Thu Jun  8 14:59:10 2017 from d-173-250-161-130.dhcp4.washington.edu\n\n     ** NOTICE **\n     Users need to do all their interactive work, including compiling and\n     building software, on the compute nodes (n####) and NOT on the\n     head/login node (hyak.washington.edu). The login nodes are for\n     interacting with the scheduler and transferring data to and from the\n     system.\n\n     Please visit the Hyak User Wiki for more details\n     http://wiki.hyak.uw.edu\n\n\n[seanb80@mox2 ~]$\n\n\nRunning a job\nOnce logged into mox, navigate to /gscratch/scrubbed/your-username. If the dir is not there you shoud create. For every job you submit I recommend working within a directory. Usually I name these in a data format, but we can just mkdir assign_04.\nTo run a job you need to generate a shell script. Create a shell script in your code directory named 04-job.sh with contents such as.\n#!/bin/bash\n## Job Name\n#SBATCH --job-name=assign4\n## Allocation Definition\n#SBATCH --account=srlab\n#SBATCH --partition=srlab\n## Resources\n## Nodes\n#SBATCH --nodes=1\n## Walltime (days-hours:minutes:seconds format)\n#SBATCH --time=01-08:00:00\n## Memory per node\n#SBATCH --mem=100G\n#SBATCH --mail-type=ALL\n#SBATCH --mail-user=sr320@uw.edu\n## Specify the working directory for this job\n#SBATCH --chdir=/gscratch/scrubbed/sr320/assign_04\n\n#run a python script you wrote!\nmodule load intel-python3_2017\n\npython 04-hello.py\n\n# run blastx just to get manual\n/gscratch/srlab/programs/ncbi-blast-2.10.1+/bin/blastx -help\n\n#a few bash commands\npwd \n\nwhoami\n\necho \"yah! I ddi it!!!!!!!!!!\"\n\n#this writes out  tofile\necho \"yah! I ddi it!!!!!!!!!!\" > text.file\nYou will also want to write some python code :)\nCreate a Python Script in the same directory name 04-hello.py with the contents:\nprint(\"Hello, World!\")\nNow we want to move these two files to mox into the assign_04 directory. To to this you will need to type something to the effect of the following in the terminal\nrsync -avz assignments/code/04-* sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04\nThen on mox, inside the assign_04 directory you will type”\nsbatch 04-job-sh to schedule the job.\nOnce done you should have a couple of new files in the directory.\nYou will want to check them to see if everything worked and then move the output back to your repo…\nrsync -avz sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04/ ."
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html",
+    "href": "assignments/06-rnaseq-snp.html",
+    "title": "Alignment Data",
+    "section": "",
+    "text": "Assignment\n\n\n\nCreate and inspect and alignment files."
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#download-alignment-data",
+    "href": "assignments/06-rnaseq-snp.html#download-alignment-data",
+    "title": "Alignment Data",
+    "section": "Download alignment data",
+    "text": "Download alignment data\n\n\n\n\n\n\nDanger\n\n\n\nReminder - these are big files, be sure to ignore on commit.\n\n\n```{r, engine='bash'}         \ncd ../data\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam.bai\n```\n\n```{r, engine='bash'}         \ncd ../data\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa.fai\n```"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#visualize-with-tview",
+    "href": "assignments/06-rnaseq-snp.html#visualize-with-tview",
+    "title": "Alignment Data",
+    "section": "Visualize with tview",
+    "text": "Visualize with tview\n\n\n\n\n\n\nImportant\n\n\n\nRun the following in Terminal as is interactive\n\n\n/home/shared/samtools-1.12/samtools tview \\\n../data/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam \\\n../data/GCF_002022765.2_C_virginica-3.0_genomic.fa"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#capture-image",
+    "href": "assignments/06-rnaseq-snp.html#capture-image",
+    "title": "Alignment Data",
+    "section": "Capture Image",
+    "text": "Capture Image\nTake a screen shot of the tview display and place in your notebook."
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
+    "href": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
+    "title": "Alignment Data",
+    "section": "Step 1: Quality control with FastQC",
+    "text": "Step 1: Quality control with FastQC\nDownload and install FastQC from https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and run it on your sample FASTQ file:\nfastqc sample.fastq\nExamine the generated report to assess the quality of your reads."
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
+    "href": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
+    "title": "Alignment Data",
+    "section": "Step 2: Read trimming with Trimmomatic",
+    "text": "Step 2: Read trimming with Trimmomatic\nDownload and install Trimmomatic from http://www.usadellab.org/cms/?page=trimmomatic. Trim low-quality bases and adapter sequences from your sample file:\njava -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
+    "href": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
+    "title": "Alignment Data",
+    "section": "Step 3: Align reads with HISAT2",
+    "text": "Step 3: Align reads with HISAT2\nBuild an index for your reference genome (you only need to do this once):\nhisat2-build reference_genome.fa reference_genome_index\nAlign your trimmed reads to the reference genome:\nhisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
+    "href": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
+    "title": "Alignment Data",
+    "section": "Step 4: Process alignments with SAMtools",
+    "text": "Step 4: Process alignments with SAMtools\nDownload and install SAMtools from http://www.htslib.org/. Convert the SAM file to BAM format, sort, and index the alignments:\nsamtools view -bS sample.sam > sample.bam\nsamtools sort sample.bam -o sample_sorted.bam\nsamtools index sample_sorted.bam"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
+    "href": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
+    "title": "Alignment Data",
+    "section": "Step 5: SNP calling with GATK",
+    "text": "Step 5: SNP calling with GATK\nDownload and install GATK from https://gatk.broadinstitute.org/hc/en-us. Create a reference genome index and call SNPs using HaplotypeCaller:\ngatk CreateSequenceDictionary -R reference_genome.fa\nsamtools faidx reference_genome.fa\ngatk --java-options \"-Xmx4G\" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "",
+    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\n\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nOffice Hours: Sign up via Google Calendar here.\n\n\n\n\n\n\nNote\n\n\n\nCalendar openings vary regularly - if you need a timeframe that is not available please let me know.\n\n\n\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
+  },
+  {
+    "objectID": "index.html#format",
+    "href": "index.html#format",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Format",
+    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.\n\n\n\n\n\n\nImportant\n\n\n\nIt is expected that you come to class, or to queries, having already reviewed material provided so we can spend time together addressing questions and troubleshooting technical issues."
+  },
+  {
+    "objectID": "index.html#platforms",
+    "href": "index.html#platforms",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Platforms",
+    "text": "Platforms\nJupyterHub1 Instance: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a\nCourse2 GitHub Organization: https://github.com/course-fish546-2023\nRaven: http://raven.fish.washington.edu:8787"
+  },
+  {
+    "objectID": "index.html#class-announcements",
+    "href": "index.html#class-announcements",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Class Announcements",
+    "text": "Class Announcements\n\nsee GitHub issues"
+  },
+  {
+    "objectID": "index.html#textbook",
+    "href": "index.html#textbook",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Textbook",
+    "text": "Textbook\nBioinformatics Data Skills:\nReproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O’Reilly Media Final Release Date: July 2015 Pages: 538\n\nThe Supplementary Material Repository for Bioinformatics Data Skills\n\n@uw"
+  },
+  {
+    "objectID": "index.html#grading",
+    "href": "index.html#grading",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Grading",
+    "text": "Grading\nEach week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week’s reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the “Topic” each week before class (and before answering the question set.\nCurrent Grades can be accessed at https://canvas.uw.edu/courses/1634025\n\n\n\n\n\n\n\n\nAssignments\nGrade percentage\ncomment\n\n\n\n\nWeekly Question Set\n25%\ndue Tuesday at 3:00pm\n\n\nWeekly Class Assignment\n35%\ndue Friday at 5:00pm\n\n\nWeekly Research Project Progress\n20%\nassessed Friday at 5:00pm\n\n\nProject Presentation\n10%\nWeek 5: slidedeck\n\n\nProject Completion\n10%\nWeek 10: compendium"
+  },
+  {
+    "objectID": "index.html#submitting-assignments",
+    "href": "index.html#submitting-assignments",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Submitting Assignments",
+    "text": "Submitting Assignments\n\nWeekly Question Set\nEach week there will be a markdown file linked in the schedule with a set of questions. You will add this to your course repo in a homework directory using the same filename. The only difference is you will include your answer to your questions.\n\n\nWeekly Class Assignment\nThis will completed in your course repo in a logical location. Use numeric prefix for file and directory names. The only thing you will need to be sure of is that all of your commits are pushed by Friday at 5:00pm.\n\n\nWeekly Research Project Progress\nThis will be assessed as a measure of progress from week to week. A primary means of assessment will be your response to issues, as well as accomplishment of self-assigned goals. In addition it will be expected that you use best principles as covered in the course.\n\n\nLate Policy\nAssignments turned in late will include a 40% decrease in points. Assignments will not be accepted following 5 days past due date/time."
+  },
+  {
+    "objectID": "index.html#useful-resources",
+    "href": "index.html#useful-resources",
+    "title": "Bioinformatics for Environmental Sciences",
+    "section": "Useful Resources",
+    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials.\nsandbox.bio - Interactive bioinformatics tutorials\nAquamine - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species\nHappy git with R - Happy Git provides opinionated instructions on how to:\n\nInstall Git and get it working smoothly with GitHub, in the shell and in the RStudio IDE.\nDevelop a few key workflows that cover your most common tasks.\nIntegrate Git and GitHub into your daily work with R and R Markdown."
   },
   {
     "objectID": "about.html",
@@ -284,7 +354,7 @@
     "href": "schedule.html",
     "title": "Bioinformatics - FISH 546",
     "section": "",
-    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\nExplore data, QC, add hashes\n\n\napr 10\nweek 03\nRStudio:knitr/ Fundamentals\nExplain and knit\nID endpoint in Readme. Start workflow.\n\n\napr 17\nweek 04\nRemote Computing\nHyak\nComplete sliced workflow (->endpoint)\n\n\napr 24\nweek 05\nQuatro\nPublishing Slides\nReadme w/ results (links), has plan for 4 weeks, issues resolved\n\n\nmay 01\nweek 06\nGenetic Variation\ntest\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\nProject focus\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
+    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\nExplore data, QC, add hashes\n\n\napr 10\nweek 03\nRStudio:knitr/ Fundamentals\nExplain and knit\nID endpoint in Readme. Start workflow.\n\n\napr 17\nweek 04\nRemote Computing\nHyak\nComplete sliced workflow (->endpoint)\n\n\napr 24\nweek 05\nQuatro\nPublishing Slides\nReadme w/ results (links), has plan for 4 weeks, issues resolved\n\n\nmay 01\nweek 06\nAlignment Data\nVariants and Visualize\nA weeks’ progress\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\nProject focus\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
   },
   {
     "objectID": "questions/week01.html",

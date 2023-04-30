@@ -23,26 +23,45 @@ Create and inspect and alignment files.
 
 # Task 1
 
-## Download alignment data and visualise
+## Download alignment data
 
-```
+::: callout-caution
+Reminder - these are big files, be sure to ignore on commit.
+:::
+
+````         
+```{{r, engine='bash'}}         
 cd ../data
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam.bai
 ```
 
-
-```
+```{{r, engine='bash'}}         
 cd ../data
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa.fai
 ```
+````
 
+## Visualize with tview
 
+::: callout-important
+Run the following in Terminal as is interactive
+:::
 
+``` bash
+/home/shared/samtools-1.12/samtools tview \
+../data/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam \
+../data/GCF_002022765.2_C_virginica-3.0_genomic.fa
+```
 
+## Capture Image
 
+Take a screen shot of the `tview` display and place in your notebook.
 
+# Task II
+
+Aligning WGS data and visualizing in IGV
 
 # SNP Discovery
 
