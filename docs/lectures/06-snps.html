@@ -181,8 +181,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#sambam" id="toc-sambam" class="nav-link" data-scroll-target="#sambam">SAM/BAM</a></li>
   <li><a href="#samtools" id="toc-samtools" class="nav-link" data-scroll-target="#samtools">Samtools</a></li>
   <li><a href="#different-means-to-get-sambam-files" id="toc-different-means-to-get-sambam-files" class="nav-link" data-scroll-target="#different-means-to-get-sambam-files">Different Means to get SAM/BAM files</a></li>
-  <li><a href="#snps-in-rna-seq-data" id="toc-snps-in-rna-seq-data" class="nav-link" data-scroll-target="#snps-in-rna-seq-data">SNPs in RNA-seq data</a></li>
   <li><a href="#show-and-tell" id="toc-show-and-tell" class="nav-link" data-scroll-target="#show-and-tell">Show and Tell</a></li>
+  <li><a href="#miscellany" id="toc-miscellany" class="nav-link" data-scroll-target="#miscellany">Miscellany</a>
+  <ul class="collapse">
+  <li><a href="#snps-in-rna-seq-data" id="toc-snps-in-rna-seq-data" class="nav-link" data-scroll-target="#snps-in-rna-seq-data">SNPs in RNA-seq data</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul>
 </nav>
     </div>
@@ -223,6 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="objectives" class="level1">
 <h1>Objectives</h1>
 <p>Better understand alignment files, how to visualize them, and how to get SNP information from them.</p>
+<p>TLDR: <a href="https://rpubs.com/sr320/1035758" class="uri">https://rpubs.com/sr320/1035758</a></p>
 </section>
 <section id="background" class="level1">
 <h1>Background</h1>
@@ -268,7 +273,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr>
 <p>This text discusses the pileup format, a plain-text format used to summarize reads’ bases at each chromosome position by stacking aligned reads. The pileup format helps identify variants and determine individual genotypes. The samtools mpileup subcommand creates pileups from BAM files and is the first step in samtools-based variant calling pipelines.</p>
 <p>The output is saved in a Variant Call Format (VCF) file, which has three parts: a metadata header, a header line with mandatory fields and sample names, and data lines containing information for a variant at a particular position and all individuals’ genotypes.</p>
-<p>``</p>
 </section>
 <section id="different-means-to-get-sambam-files" class="level1">
 <h1>Different Means to get SAM/BAM files</h1>
@@ -279,8 +283,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>---</p>
 </section>
-<section id="snps-in-rna-seq-data" class="level1">
-<h1>SNPs in RNA-seq data</h1>
+<section id="show-and-tell" class="level1">
+<h1>Show and Tell</h1>
+<p><a href="https://rpubs.com/sr320/1035758" class="uri">https://rpubs.com/sr320/1035758</a></p>
+</section>
+<section id="miscellany" class="level1">
+<h1>Miscellany</h1>
+<section id="snps-in-rna-seq-data" class="level2">
+<h2 class="anchored" data-anchor-id="snps-in-rna-seq-data">SNPs in RNA-seq data</h2>
 <p>Finding SNPs (Single Nucleotide Polymorphisms) in RNA-seq data is an essential step in understanding genetic variation and its effects on gene expression. Here is a summary of the process:</p>
 <ol type="1">
 <li><p>Quality control and preprocessing: Start by assessing the quality of your raw RNA-seq reads using tools like FastQC. Trim low-quality bases and adapter sequences using software like Trimmomatic or Cutadapt to ensure accurate downstream analysis.</p></li>
@@ -293,9 +303,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Remember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis.</p>
 </section>
-<section id="show-and-tell" class="level1">
-<h1>Show and Tell</h1>
-<p><a href="https://rpubs.com/sr320/1035758" class="uri">https://rpubs.com/sr320/1035758</a></p>
+</section>
+<section id="section" class="level1">
+<h1></h1>
 
 
 </section>
