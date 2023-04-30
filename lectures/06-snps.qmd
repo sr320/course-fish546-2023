@@ -35,40 +35,39 @@ The SAM/BAM format, is commonly used for storing sequencing reads mapped to a re
 
 SAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) are two file formats used to store aligned sequencing data. Both formats are designed to store read alignments from high-throughput sequencing experiments to a reference genome. However, they have some key differences:
 
-1	Representation:
+**1 Representation:**
 
-	•	SAM: SAM is a human-readable, plain text format. It consists of a header section with metadata about the reference genome and alignment, followed by a tab-delimited alignment section containing individual aligned reads and their mapping information.
+• SAM: SAM is a human-readable, plain text format. It consists of a header section with metadata about the reference genome and alignment, followed by a tab-delimited alignment section containing individual aligned reads and their mapping information.
 
-	•	BAM: BAM is the binary equivalent of the SAM format, meaning it stores the same information as a SAM file but in a compressed binary form. This compression makes BAM files more storage-efficient and faster to process than SAM files.
+• BAM: BAM is the binary equivalent of the SAM format, meaning it stores the same information as a SAM file but in a compressed binary form. This compression makes BAM files more storage-efficient and faster to process than SAM files.
 
-2	File size:
+**2 File size:**
 
-	•	SAM: Due to its plain text nature, SAM files are generally larger than their BAM counterparts.
+• SAM: Due to its plain text nature, SAM files are generally larger than their BAM counterparts.
 
-	•	BAM: The binary, compressed format of BAM files results in smaller file sizes compared to SAM files, making them more suitable for large-scale sequencing projects.
+• BAM: The binary, compressed format of BAM files results in smaller file sizes compared to SAM files, making them more suitable for large-scale sequencing projects.
 
-3	Readability:
+**3 Readability:**
 
-	•	SAM: Since SAM is a plain text format, it can be easily read and edited using standard text editors or processed with command-line tools.
+• SAM: Since SAM is a plain text format, it can be easily read and edited using standard text editors or processed with command-line tools.
 
-	•	BAM: As a binary format, BAM files are not human-readable and require specialized software tools for reading, editing, and processing.
+• BAM: As a binary format, BAM files are not human-readable and require specialized software tools for reading, editing, and processing.
 
-4	Processing speed:
+**4 Processing speed:**
 
-	•	SAM: Processing SAM files can be slower because of their larger size and plain text format.
+• SAM: Processing SAM files can be slower because of their larger size and plain text format.
 
-	•	BAM: BAM files enable faster processing due to their binary, compressed nature.
+• BAM: BAM files enable faster processing due to their binary, compressed nature.
 
 In summary, SAM is a human-readable, plain text format, while BAM is a compressed binary format. BAM files offer advantages in terms of file size and processing speed, whereas SAM files are more easily read and edited using basic text editing tools. The choice between the two formats depends on the specific requirements of the sequencing project and the tools being used for analysis.
 
-SAM file example:
+**SAM file example:**
 
-```{.bash}
+``` bash
 @SQ     SN:ref  LN:45
 @PG     ID:bwa  PN:bwa  CL:bwa mem ref.fa reads.fq
 read1   0       ref     7       60      8M      *       0       0       ATGCACTG  *       NM:i:0  MD:Z:8
 read2   0       ref     7       60      8M      *       0       0       ATGCACTA  *       NM:i:1  MD:Z:7A0
-
 
 ```
 
@@ -94,27 +93,23 @@ Here are the 5 most commonly used subcommands in Samtools:
 
 In addition to these, Samtools offers many other subcommands to perform tasks such as alignment statistics, read group manipulation, and variant calling. The software package is widely used due to its versatility, efficiency, and compatibility with various sequencing platforms and analysis tools.
 
-
----
+------------------------------------------------------------------------
 
 This text discusses the pileup format, a plain-text format used to summarize reads' bases at each chromosome position by stacking aligned reads. The pileup format helps identify variants and determine individual genotypes. The samtools mpileup subcommand creates pileups from BAM files and is the first step in samtools-based variant calling pipelines.
 
 The output is saved in a Variant Call Format (VCF) file, which has three parts: a metadata header, a header line with mandatory fields and sample names, and data lines containing information for a variant at a particular position and all individuals' genotypes.
 
-
-
-
 \`\`
 
 # Different Means to get SAM/BAM files
 
-- Whole Genome Sequencing - Reduced Represenation (DNA; traditional)
+-   Whole Genome Sequencing - Reduced Represenation (DNA; traditional)
 
-- RNA-seq (RNA)
+-   RNA-seq (RNA)
 
-- DNA Methylation specific alignment (DNA)
+-   DNA Methylation specific alignment (DNA)
 
-
+\-\--
 
 # SNPs in RNA-seq data
 
@@ -136,7 +131,6 @@ Finding SNPs (Single Nucleotide Polymorphisms) in RNA-seq data is an essential s
 
 Remember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis.
 
-
 # Show and Tell
 
-https://rpubs.com/sr320/1035758
+<https://rpubs.com/sr320/1035758>

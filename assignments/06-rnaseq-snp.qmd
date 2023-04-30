@@ -18,7 +18,7 @@ format:
 ::: callout-important
 ## Assignment
 
-Create and inspect and alignment files.
+Create and inspect and alignment files. Including visualizing and capturing "outside" graphics.
 :::
 
 # Task 1

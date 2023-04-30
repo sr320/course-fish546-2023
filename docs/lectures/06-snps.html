@@ -232,29 +232,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>SAM/BAM</h1>
 <p>The SAM/BAM format, is commonly used for storing sequencing reads mapped to a reference. A large portion of bioinformatics involves manipulating alignment files and extracting useful information from them. The SAM/BAM formats are space-efficient complex file formats because alignment files are massive. Learning to work with these formats is important because it develops essential skills such as following format specifications, manipulating binary files, and working with APIs that are widely applicable beyond these specific formats.</p>
 <p>SAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) are two file formats used to store aligned sequencing data. Both formats are designed to store read alignments from high-throughput sequencing experiments to a reference genome. However, they have some key differences:</p>
-<p>1 Representation:</p>
-<pre><code>•   SAM: SAM is a human-readable, plain text format. It consists of a header section with metadata about the reference genome and alignment, followed by a tab-delimited alignment section containing individual aligned reads and their mapping information.
-
-•   BAM: BAM is the binary equivalent of the SAM format, meaning it stores the same information as a SAM file but in a compressed binary form. This compression makes BAM files more storage-efficient and faster to process than SAM files.</code></pre>
-<p>2 File size:</p>
-<pre><code>•   SAM: Due to its plain text nature, SAM files are generally larger than their BAM counterparts.
-
-•   BAM: The binary, compressed format of BAM files results in smaller file sizes compared to SAM files, making them more suitable for large-scale sequencing projects.</code></pre>
-<p>3 Readability:</p>
-<pre><code>•   SAM: Since SAM is a plain text format, it can be easily read and edited using standard text editors or processed with command-line tools.
-
-•   BAM: As a binary format, BAM files are not human-readable and require specialized software tools for reading, editing, and processing.</code></pre>
-<p>4 Processing speed:</p>
-<pre><code>•   SAM: Processing SAM files can be slower because of their larger size and plain text format.
-
-•   BAM: BAM files enable faster processing due to their binary, compressed nature.</code></pre>
+<p><strong>1 Representation:</strong></p>
+<p>• SAM: SAM is a human-readable, plain text format. It consists of a header section with metadata about the reference genome and alignment, followed by a tab-delimited alignment section containing individual aligned reads and their mapping information.</p>
+<p>• BAM: BAM is the binary equivalent of the SAM format, meaning it stores the same information as a SAM file but in a compressed binary form. This compression makes BAM files more storage-efficient and faster to process than SAM files.</p>
+<p><strong>2 File size:</strong></p>
+<p>• SAM: Due to its plain text nature, SAM files are generally larger than their BAM counterparts.</p>
+<p>• BAM: The binary, compressed format of BAM files results in smaller file sizes compared to SAM files, making them more suitable for large-scale sequencing projects.</p>
+<p><strong>3 Readability:</strong></p>
+<p>• SAM: Since SAM is a plain text format, it can be easily read and edited using standard text editors or processed with command-line tools.</p>
+<p>• BAM: As a binary format, BAM files are not human-readable and require specialized software tools for reading, editing, and processing.</p>
+<p><strong>4 Processing speed:</strong></p>
+<p>• SAM: Processing SAM files can be slower because of their larger size and plain text format.</p>
+<p>• BAM: BAM files enable faster processing due to their binary, compressed nature.</p>
 <p>In summary, SAM is a human-readable, plain text format, while BAM is a compressed binary format. BAM files offer advantages in terms of file size and processing speed, whereas SAM files are more easily read and edited using basic text editing tools. The choice between the two formats depends on the specific requirements of the sequencing project and the tools being used for analysis.</p>
-<p>SAM file example:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@SQ</span>     SN:ref  LN:45</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">@PG</span>     ID:bwa  PN:bwa  CL:bwa mem ref.fa reads.fq</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">read1</span>   0       ref     7       60      8M      <span class="pp">*</span>       0       0       ATGCACTG  <span class="pp">*</span>       NM:i:0  MD:Z:8</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">read2</span>   0       ref     7       60      8M      <span class="pp">*</span>       0       0       ATGCACTA  <span class="pp">*</span>       NM:i:1  MD:Z:7A0</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>SAM file example:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@SQ</span>     SN:ref  LN:45</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">@PG</span>     ID:bwa  PN:bwa  CL:bwa mem ref.fa reads.fq</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">read1</span>   0       ref     7       60      8M      <span class="pp">*</span>       0       0       ATGCACTG  <span class="pp">*</span>       NM:i:0  MD:Z:8</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">read2</span>   0       ref     7       60      8M      <span class="pp">*</span>       0       0       ATGCACTA  <span class="pp">*</span>       NM:i:1  MD:Z:7A0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The first two lines are the header section, containing metadata about the reference genome and the program used to generate the alignment. The following lines represent individual aligned reads in a tab-separated format.</p>
 <p>---</p>
 </section>
@@ -282,6 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>RNA-seq (RNA)</p></li>
 <li><p>DNA Methylation specific alignment (DNA)</p></li>
 </ul>
+<p>---</p>
 </section>
 <section id="snps-in-rna-seq-data" class="level1">
 <h1>SNPs in RNA-seq data</h1>
@@ -299,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="show-and-tell" class="level1">
 <h1>Show and Tell</h1>
-<p>https://rpubs.com/sr320/1035758</p>
+<p><a href="https://rpubs.com/sr320/1035758" class="uri">https://rpubs.com/sr320/1035758</a></p>
 
 
 </section>
