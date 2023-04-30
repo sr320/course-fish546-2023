@@ -1,5 +1,5 @@
 ---
-title: "Genetic Variation"
+title: "Alignment Data and Genetic Variation"
 subtitle: "Oh boy"
 
 format:
@@ -17,15 +17,104 @@ format:
 
 # Reading
 
--   [R Markdown: The Definitive Guide - Chapter 4](https://bookdown.org/yihui/rmarkdown/presentations.html)
+Textbook:
 
--   Quarto
-
--   [Quarto Presenations](https://quarto.org/docs/presentations/)
+Working with Alignment Data pg 355-394
 
 # Objectives
 
-Consider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.
+Better understand alignment files, how to visualize them, and how to get SNP information from them.
+
+# Background
+
+Over the past quarter, we have explored various ways of comparing genes or genetic sequences. If you think about it in a broad sense, what we have done is look at letter comparisons, such as with BLAST performing a homology search, and look at genes that are expressed differentially. You could say that this is a good way to consider variance. Many of you in your projects are doing this in different ways, using annotations and/or BLAST. This week, we will consider a different way of looking at the relatedness of genetic information: single nucleotide polymorphisms (SNPs). SNPs are used to describe population variation or phylogenetic relationships. A first step in this is aligning sequence reads to look for variation.
+
+# SAM/BAM
+
+The SAM/BAM format, is commonly used for storing sequencing reads mapped to a reference. A large portion of bioinformatics involves manipulating alignment files and extracting useful information from them. The SAM/BAM formats are space-efficient complex file formats because alignment files are massive. Learning to work with these formats is important because it develops essential skills such as following format specifications, manipulating binary files, and working with APIs that are widely applicable beyond these specific formats.
+
+SAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) are two file formats used to store aligned sequencing data. Both formats are designed to store read alignments from high-throughput sequencing experiments to a reference genome. However, they have some key differences:
+
+1	Representation:
+
+	•	SAM: SAM is a human-readable, plain text format. It consists of a header section with metadata about the reference genome and alignment, followed by a tab-delimited alignment section containing individual aligned reads and their mapping information.
+
+	•	BAM: BAM is the binary equivalent of the SAM format, meaning it stores the same information as a SAM file but in a compressed binary form. This compression makes BAM files more storage-efficient and faster to process than SAM files.
+
+2	File size:
+
+	•	SAM: Due to its plain text nature, SAM files are generally larger than their BAM counterparts.
+
+	•	BAM: The binary, compressed format of BAM files results in smaller file sizes compared to SAM files, making them more suitable for large-scale sequencing projects.
+
+3	Readability:
+
+	•	SAM: Since SAM is a plain text format, it can be easily read and edited using standard text editors or processed with command-line tools.
+
+	•	BAM: As a binary format, BAM files are not human-readable and require specialized software tools for reading, editing, and processing.
+
+4	Processing speed:
+
+	•	SAM: Processing SAM files can be slower because of their larger size and plain text format.
+
+	•	BAM: BAM files enable faster processing due to their binary, compressed nature.
+
+In summary, SAM is a human-readable, plain text format, while BAM is a compressed binary format. BAM files offer advantages in terms of file size and processing speed, whereas SAM files are more easily read and edited using basic text editing tools. The choice between the two formats depends on the specific requirements of the sequencing project and the tools being used for analysis.
+
+SAM file example:
+
+```{.bash}
+@SQ     SN:ref  LN:45
+@PG     ID:bwa  PN:bwa  CL:bwa mem ref.fa reads.fq
+read1   0       ref     7       60      8M      *       0       0       ATGCACTG  *       NM:i:0  MD:Z:8
+read2   0       ref     7       60      8M      *       0       0       ATGCACTA  *       NM:i:1  MD:Z:7A0
+
+
+```
+
+The first two lines are the header section, containing metadata about the reference genome and the program used to generate the alignment. The following lines represent individual aligned reads in a tab-separated format.
+
+\-\--
+
+# Samtools
+
+Samtools is a software package designed for manipulating and analyzing high-throughput sequencing data, specifically SAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) files. It is widely used in the field of genomics and bioinformatics for processing and managing next-generation sequencing data.
+
+Here are the 5 most commonly used subcommands in Samtools:
+
+1.  **`samtools view`**: This subcommand is used to convert between SAM and BAM file formats, filter alignments, and extract specific reads or regions from the input files. It can also output only alignments with specific flags, such as mapped or unmapped reads.
+
+2.  **`samtools sort`**: This subcommand sorts alignments by their chromosomal coordinates. Sorting is essential for many downstream analyses, as it enables faster access to specific regions of interest and ensures compatibility with other tools.
+
+3.  **`samtools index`**: This subcommand creates an index file for a sorted BAM file. Indexing allows for efficient random access to specific regions in the BAM file, which is crucial for tools that perform region-based analyses.
+
+4.  **`samtools merge`**: This subcommand is used to merge multiple sorted BAM files into a single BAM file. This is useful when combining data from different sequencing runs or multiple lanes of a sequencing machine.
+
+5.  **`samtools mpileup`**: This subcommand generates a summary of the base calls at each position in the reference genome, considering all the aligned reads. The output can be used for variant calling, consensus sequence generation, or assessing sequencing depth at specific genomic positions.
+
+In addition to these, Samtools offers many other subcommands to perform tasks such as alignment statistics, read group manipulation, and variant calling. The software package is widely used due to its versatility, efficiency, and compatibility with various sequencing platforms and analysis tools.
+
+
+---
+
+This text discusses the pileup format, a plain-text format used to summarize reads' bases at each chromosome position by stacking aligned reads. The pileup format helps identify variants and determine individual genotypes. The samtools mpileup subcommand creates pileups from BAM files and is the first step in samtools-based variant calling pipelines.
+
+The output is saved in a Variant Call Format (VCF) file, which has three parts: a metadata header, a header line with mandatory fields and sample names, and data lines containing information for a variant at a particular position and all individuals' genotypes.
+
+
+
+
+\`\`
+
+# Different Means to get SAM/BAM files
+
+- Whole Genome Sequencing - Reduced Represenation (DNA; traditional)
+
+- RNA-seq (RNA)
+
+- DNA Methylation specific alignment (DNA)
+
+
 
 # SNPs in RNA-seq data
 
@@ -46,3 +135,8 @@ Finding SNPs (Single Nucleotide Polymorphisms) in RNA-seq data is an essential s
 7.  Downstream analysis: Investigate the potential impact of SNPs on gene expression, alternative splicing, or allele-specific expression using tools like DESeq2, edgeR, or Cufflinks.
 
 Remember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis.
+
+
+# Show and Tell
+
+https://rpubs.com/sr320/1035758

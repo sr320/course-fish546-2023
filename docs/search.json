@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "assignments/06-rnaseq-snp.html",
+    "href": "assignments/06-rnaseq-snp.html",
+    "title": "Alignment Data",
+    "section": "",
+    "text": "Assignment\n\n\n\nCreate and inspect and alignment files."
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#download-alignment-data-and-visualise",
+    "href": "assignments/06-rnaseq-snp.html#download-alignment-data-and-visualise",
+    "title": "Alignment Data",
+    "section": "Download alignment data and visualise",
+    "text": "Download alignment data and visualise\ncd ../data\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam.bai\ncd ../data\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa\ncurl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa.fai"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
+    "href": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
+    "title": "Alignment Data",
+    "section": "Step 1: Quality control with FastQC",
+    "text": "Step 1: Quality control with FastQC\nDownload and install FastQC from https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and run it on your sample FASTQ file:\nfastqc sample.fastq\nExamine the generated report to assess the quality of your reads."
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
+    "href": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
+    "title": "Alignment Data",
+    "section": "Step 2: Read trimming with Trimmomatic",
+    "text": "Step 2: Read trimming with Trimmomatic\nDownload and install Trimmomatic from http://www.usadellab.org/cms/?page=trimmomatic. Trim low-quality bases and adapter sequences from your sample file:\njava -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
+    "href": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
+    "title": "Alignment Data",
+    "section": "Step 3: Align reads with HISAT2",
+    "text": "Step 3: Align reads with HISAT2\nBuild an index for your reference genome (you only need to do this once):\nhisat2-build reference_genome.fa reference_genome_index\nAlign your trimmed reads to the reference genome:\nhisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
+    "href": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
+    "title": "Alignment Data",
+    "section": "Step 4: Process alignments with SAMtools",
+    "text": "Step 4: Process alignments with SAMtools\nDownload and install SAMtools from http://www.htslib.org/. Convert the SAM file to BAM format, sort, and index the alignments:\nsamtools view -bS sample.sam > sample.bam\nsamtools sort sample.bam -o sample_sorted.bam\nsamtools index sample_sorted.bam"
+  },
+  {
+    "objectID": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
+    "href": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
+    "title": "Alignment Data",
+    "section": "Step 5: SNP calling with GATK",
+    "text": "Step 5: SNP calling with GATK\nDownload and install GATK from https://gatk.broadinstitute.org/hc/en-us. Create a reference genome index and call SNPs using HaplotypeCaller:\ngatk CreateSequenceDictionary -R reference_genome.fa\nsamtools faidx reference_genome.fa\ngatk --java-options \"-Xmx4G\" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf"
+  },
+  {
     "objectID": "assignments/01-blast.html",
     "href": "assignments/01-blast.html",
     "title": "NCBI Blast",
@@ -147,104 +196,6 @@
     "text": "Screen Recording\n\n\n\n\n\n\n\n\n\n\n\nAssignment\n\n\n\nTLDR: log into hyak, run a job, and transfer the the output using rsync\n\n\n\n\nSetup\n\nGo to https://uwnetid.washington.edu/manage/\nClick the “Computing Services” link on the left\nClick the “Hyak Server” and “Lolo Server” check boxes in the “Inactive Services” section.\nClick the “Subscribe >” button at the bottom of the page.\nRead the notice and click the “Finish” button.\n\nFor two factor authentication, you can either sign up for Duo here and use your smart phone or request a security token here. Duo is much easier.\n\n\nLogging in\n\nOpen your favorite terminal\nType ssh <YourUWNetID>@mox.hyak.uw.edu (replace <YourUWNetID> with your own UW Net ID)\nInput your UWNetID password\nIf you’re signed up for 2-factor authentication via Duo, open your smart phone and approve the connection.\nYou’re logged in to a Login node for Hyak!\n\nExample:\nD-69-91-141-150:~ Sean$ ssh seanb80@mox.hyak.uw.edu\nPassword:\nEnter passcode or select one of the following options:\n\n 1. Duo Push to iOS (XXX-XXX-1239)\n 2. Phone call to iOS (XXX-XXX-1239)\n\nDuo passcode or option [1-2]: 1\nLast login: Thu Jun  8 14:59:10 2017 from d-173-250-161-130.dhcp4.washington.edu\n\n     ** NOTICE **\n     Users need to do all their interactive work, including compiling and\n     building software, on the compute nodes (n####) and NOT on the\n     head/login node (hyak.washington.edu). The login nodes are for\n     interacting with the scheduler and transferring data to and from the\n     system.\n\n     Please visit the Hyak User Wiki for more details\n     http://wiki.hyak.uw.edu\n\n\n[seanb80@mox2 ~]$\n\n\nRunning a job\nOnce logged into mox, navigate to /gscratch/scrubbed/your-username. If the dir is not there you shoud create. For every job you submit I recommend working within a directory. Usually I name these in a data format, but we can just mkdir assign_04.\nTo run a job you need to generate a shell script. Create a shell script in your code directory named 04-job.sh with contents such as.\n#!/bin/bash\n## Job Name\n#SBATCH --job-name=assign4\n## Allocation Definition\n#SBATCH --account=srlab\n#SBATCH --partition=srlab\n## Resources\n## Nodes\n#SBATCH --nodes=1\n## Walltime (days-hours:minutes:seconds format)\n#SBATCH --time=01-08:00:00\n## Memory per node\n#SBATCH --mem=100G\n#SBATCH --mail-type=ALL\n#SBATCH --mail-user=sr320@uw.edu\n## Specify the working directory for this job\n#SBATCH --chdir=/gscratch/scrubbed/sr320/assign_04\n\n#run a python script you wrote!\nmodule load intel-python3_2017\n\npython 04-hello.py\n\n# run blastx just to get manual\n/gscratch/srlab/programs/ncbi-blast-2.10.1+/bin/blastx -help\n\n#a few bash commands\npwd \n\nwhoami\n\necho \"yah! I ddi it!!!!!!!!!!\"\n\n#this writes out  tofile\necho \"yah! I ddi it!!!!!!!!!!\" > text.file\nYou will also want to write some python code :)\nCreate a Python Script in the same directory name 04-hello.py with the contents:\nprint(\"Hello, World!\")\nNow we want to move these two files to mox into the assign_04 directory. To to this you will need to type something to the effect of the following in the terminal\nrsync -avz assignments/code/04-* sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04\nThen on mox, inside the assign_04 directory you will type”\nsbatch 04-job-sh to schedule the job.\nOnce done you should have a couple of new files in the directory.\nYou will want to check them to see if everything worked and then move the output back to your repo…\nrsync -avz sr320@mox.hyak.uw.edu:/gscratch/scrubbed/sr320/assign_04/ ."
   },
   {
-    "objectID": "assignments/06-rnaseq-snp.html",
-    "href": "assignments/06-rnaseq-snp.html",
-    "title": "Hyak",
-    "section": "",
-    "text": "Assignment\n\n\n\nTLDR: log into hyak, run a job, and transfer the the output using rsync"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
-    "href": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
-    "title": "Hyak",
-    "section": "Step 1: Quality control with FastQC",
-    "text": "Step 1: Quality control with FastQC\nDownload and install FastQC from https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and run it on your sample FASTQ file:\nfastqc sample.fastq\nExamine the generated report to assess the quality of your reads."
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
-    "href": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
-    "title": "Hyak",
-    "section": "Step 2: Read trimming with Trimmomatic",
-    "text": "Step 2: Read trimming with Trimmomatic\nDownload and install Trimmomatic from http://www.usadellab.org/cms/?page=trimmomatic. Trim low-quality bases and adapter sequences from your sample file:\njava -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
-    "href": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
-    "title": "Hyak",
-    "section": "Step 3: Align reads with HISAT2",
-    "text": "Step 3: Align reads with HISAT2\nBuild an index for your reference genome (you only need to do this once):\nhisat2-build reference_genome.fa reference_genome_index\nAlign your trimmed reads to the reference genome:\nhisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
-    "href": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
-    "title": "Hyak",
-    "section": "Step 4: Process alignments with SAMtools",
-    "text": "Step 4: Process alignments with SAMtools\nDownload and install SAMtools from http://www.htslib.org/. Convert the SAM file to BAM format, sort, and index the alignments:\nsamtools view -bS sample.sam > sample.bam\nsamtools sort sample.bam -o sample_sorted.bam\nsamtools index sample_sorted.bam"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
-    "href": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
-    "title": "Hyak",
-    "section": "Step 5: SNP calling with GATK",
-    "text": "Step 5: SNP calling with GATK\nDownload and install GATK from https://gatk.broadinstitute.org/hc/en-us. Create a reference genome index and call SNPs using HaplotypeCaller:\ngatk CreateSequenceDictionary -R reference_genome.fa\nsamtools faidx reference_genome.fa\ngatk --java-options \"-Xmx4G\" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "",
-    "text": "This course will teach core computing skills as well as project specific approaches. Each student will be developing and completing a research project targeting journal article submission by the end of the Quarter. There will be an emphasis on developing habits that increase automation which in turn will facilitate reproducibility. The primary course platform will be centered around GitHub, with each student creating their own repositories.\n\nT 3:00-4:20\nTh 9:30-11:20\nLocation FSH 203\nOffice Hours: Sign up via Google Calendar here.\n\n\n\n\n\n\nNote\n\n\n\nCalendar openings vary regularly - if you need a timeframe that is not available please let me know.\n\n\n\nWhile you likely have perceptions of glamour in considering this course, a majority of time you spend in this discipline will be 1) moving files around, 2) web searching for code, and 3) installing software (in that order)."
-  },
-  {
-    "objectID": "index.html#format",
-    "href": "index.html#format",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "Format",
-    "text": "Format\nThis class is driven in part by students needs and will be somewhat flexible in content. It is very practical in nature and problem driven. On Tuesdays (after you complete your question set I will go over concepts, best practices necessary to complete the week’s assignment. This will also be a time where we provide solution to individual research project issues that are of general interest. Thursday will primarily be working sessions, a combination of the weeks coursework and making progress on your own research effort.\n\n\n\n\n\n\nImportant\n\n\n\nIt is expected that you come to class, or to queries, having already reviewed material provided so we can spend time together addressing questions and troubleshooting technical issues."
-  },
-  {
-    "objectID": "index.html#platforms",
-    "href": "index.html#platforms",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "Platforms",
-    "text": "Platforms\nJupyterHub1 Instance: https://jupyter.rttl.uw.edu/2023-spring-fish-546-a\nCourse2 GitHub Organization: https://github.com/course-fish546-2023\nRaven: http://raven.fish.washington.edu:8787"
-  },
-  {
-    "objectID": "index.html#class-announcements",
-    "href": "index.html#class-announcements",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "Class Announcements",
-    "text": "Class Announcements\n\nsee GitHub issues"
-  },
-  {
-    "objectID": "index.html#textbook",
-    "href": "index.html#textbook",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "Textbook",
-    "text": "Textbook\nBioinformatics Data Skills:\nReproducible and Robust Research with Open Source Tools By Vince Buffalo Publisher: O’Reilly Media Final Release Date: July 2015 Pages: 538\n\nThe Supplementary Material Repository for Bioinformatics Data Skills\n\n@uw"
-  },
-  {
-    "objectID": "index.html#grading",
-    "href": "index.html#grading",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "Grading",
-    "text": "Grading\nEach week there will be an assignment, you will need to made progress on your individual project, and complete a question set. You will give two presentations (Week 5; slides & Week 10 compendium). Question sets are based on a week’s reading and material and is due by 3:00pm on Tuesday. Thus you will need to review the “Topic” each week before class (and before answering the question set.\nCurrent Grades can be accessed at https://canvas.uw.edu/courses/1634025\n\n\n\n\n\n\n\n\nAssignments\nGrade percentage\ncomment\n\n\n\n\nWeekly Question Set\n25%\ndue Tuesday at 3:00pm\n\n\nWeekly Class Assignment\n35%\ndue Friday at 5:00pm\n\n\nWeekly Research Project Progress\n20%\nassessed Friday at 5:00pm\n\n\nProject Presentation\n10%\nWeek 5: slidedeck\n\n\nProject Completion\n10%\nWeek 10: compendium"
-  },
-  {
-    "objectID": "index.html#submitting-assignments",
-    "href": "index.html#submitting-assignments",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "Submitting Assignments",
-    "text": "Submitting Assignments\n\nWeekly Question Set\nEach week there will be a markdown file linked in the schedule with a set of questions. You will add this to your course repo in a homework directory using the same filename. The only difference is you will include your answer to your questions.\n\n\nWeekly Class Assignment\nThis will completed in your course repo in a logical location. Use numeric prefix for file and directory names. The only thing you will need to be sure of is that all of your commits are pushed by Friday at 5:00pm.\n\n\nWeekly Research Project Progress\nThis will be assessed as a measure of progress from week to week. A primary means of assessment will be your response to issues, as well as accomplishment of self-assigned goals. In addition it will be expected that you use best principles as covered in the course.\n\n\nLate Policy\nAssignments turned in late will include a 40% decrease in points. Assignments will not be accepted following 5 days past due date/time."
-  },
-  {
-    "objectID": "index.html#useful-resources",
-    "href": "index.html#useful-resources",
-    "title": "Bioinformatics for Environmental Sciences",
-    "section": "Useful Resources",
-    "text": "Useful Resources\n\nMarineOmics Portal - website with genomic tutorials.\nsandbox.bio - Interactive bioinformatics tutorials\nAquamine - data mining system that integrates genome assemblies and gene annotation data for aquatic eumetazoan species\nHappy git with R - Happy Git provides opinionated instructions on how to:\n\nInstall Git and get it working smoothly with GitHub, in the shell and in the RStudio IDE.\nDevelop a few key workflows that cover your most common tasks.\nIntegrate Git and GitHub into your daily work with R and R Markdown."
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -268,9 +219,9 @@
   {
     "objectID": "lectures/06-snps.html",
     "href": "lectures/06-snps.html",
-    "title": "Genetic Variation",
+    "title": "Alignment Data and Genetic Variation",
     "section": "",
-    "text": "Screen Recording\n\n\n\n\n\n\n\nReading\n\nR Markdown: The Definitive Guide - Chapter 4\nQuarto\nQuarto Presenations\n\n\n\nObjectives\nConsider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.\n\n\nSNPs in RNA-seq data\nFinding SNPs (Single Nucleotide Polymorphisms) in RNA-seq data is an essential step in understanding genetic variation and its effects on gene expression. Here is a summary of the process:\n\nQuality control and preprocessing: Start by assessing the quality of your raw RNA-seq reads using tools like FastQC. Trim low-quality bases and adapter sequences using software like Trimmomatic or Cutadapt to ensure accurate downstream analysis.\nAlignment: Align the cleaned RNA-seq reads to a reference genome using a spliced aligner like STAR, HISAT2, or TopHat2. These tools can handle the intron-exon structure of RNA-seq data and provide accurate alignments.\nSort and index alignments: Use SAMtools or Picard to convert the alignment output (SAM) to a binary format (BAM), sort, and index the aligned reads for efficient data processing.\nVariant calling: Employ a variant caller such as GATK’s HaplotypeCaller, SAMtools mpileup, or FreeBayes to identify SNPs and other genetic variants in your RNA-seq data. These tools use statistical models to call SNPs based on the differences observed between aligned reads and the reference genome.\nFiltering: Apply quality filters to remove low-confidence variant calls. Use tools like GATK’s VariantFiltration or BCFtools filter to set quality thresholds based on parameters like depth, quality score, strand bias, and mapping quality.\nAnnotation: Annotate the filtered SNPs using software like ANNOVAR, SnpEff, or VEP to gain insights into their potential functional effects on genes, transcripts, and proteins.\nDownstream analysis: Investigate the potential impact of SNPs on gene expression, alternative splicing, or allele-specific expression using tools like DESeq2, edgeR, or Cufflinks.\n\nRemember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis."
+    "text": "Screen Recording\n\n\n\n\n\n\n\nReading\nTextbook:\nWorking with Alignment Data pg 355-394\n\n\nObjectives\nBetter understand alignment files, how to visualize them, and how to get SNP information from them.\n\n\nBackground\nOver the past quarter, we have explored various ways of comparing genes or genetic sequences. If you think about it in a broad sense, what we have done is look at letter comparisons, such as with BLAST performing a homology search, and look at genes that are expressed differentially. You could say that this is a good way to consider variance. Many of you in your projects are doing this in different ways, using annotations and/or BLAST. This week, we will consider a different way of looking at the relatedness of genetic information: single nucleotide polymorphisms (SNPs). SNPs are used to describe population variation or phylogenetic relationships. A first step in this is aligning sequence reads to look for variation.\n\n\nSAM/BAM\nThe SAM/BAM format, is commonly used for storing sequencing reads mapped to a reference. A large portion of bioinformatics involves manipulating alignment files and extracting useful information from them. The SAM/BAM formats are space-efficient complex file formats because alignment files are massive. Learning to work with these formats is important because it develops essential skills such as following format specifications, manipulating binary files, and working with APIs that are widely applicable beyond these specific formats.\nSAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) are two file formats used to store aligned sequencing data. Both formats are designed to store read alignments from high-throughput sequencing experiments to a reference genome. However, they have some key differences:\n1 Representation:\n•   SAM: SAM is a human-readable, plain text format. It consists of a header section with metadata about the reference genome and alignment, followed by a tab-delimited alignment section containing individual aligned reads and their mapping information.\n\n•   BAM: BAM is the binary equivalent of the SAM format, meaning it stores the same information as a SAM file but in a compressed binary form. This compression makes BAM files more storage-efficient and faster to process than SAM files.\n2 File size:\n•   SAM: Due to its plain text nature, SAM files are generally larger than their BAM counterparts.\n\n•   BAM: The binary, compressed format of BAM files results in smaller file sizes compared to SAM files, making them more suitable for large-scale sequencing projects.\n3 Readability:\n•   SAM: Since SAM is a plain text format, it can be easily read and edited using standard text editors or processed with command-line tools.\n\n•   BAM: As a binary format, BAM files are not human-readable and require specialized software tools for reading, editing, and processing.\n4 Processing speed:\n•   SAM: Processing SAM files can be slower because of their larger size and plain text format.\n\n•   BAM: BAM files enable faster processing due to their binary, compressed nature.\nIn summary, SAM is a human-readable, plain text format, while BAM is a compressed binary format. BAM files offer advantages in terms of file size and processing speed, whereas SAM files are more easily read and edited using basic text editing tools. The choice between the two formats depends on the specific requirements of the sequencing project and the tools being used for analysis.\nSAM file example:\n@SQ     SN:ref  LN:45\n@PG     ID:bwa  PN:bwa  CL:bwa mem ref.fa reads.fq\nread1   0       ref     7       60      8M      *       0       0       ATGCACTG  *       NM:i:0  MD:Z:8\nread2   0       ref     7       60      8M      *       0       0       ATGCACTA  *       NM:i:1  MD:Z:7A0\n\nThe first two lines are the header section, containing metadata about the reference genome and the program used to generate the alignment. The following lines represent individual aligned reads in a tab-separated format.\n---\n\n\nSamtools\nSamtools is a software package designed for manipulating and analyzing high-throughput sequencing data, specifically SAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) files. It is widely used in the field of genomics and bioinformatics for processing and managing next-generation sequencing data.\nHere are the 5 most commonly used subcommands in Samtools:\n\nsamtools view: This subcommand is used to convert between SAM and BAM file formats, filter alignments, and extract specific reads or regions from the input files. It can also output only alignments with specific flags, such as mapped or unmapped reads.\nsamtools sort: This subcommand sorts alignments by their chromosomal coordinates. Sorting is essential for many downstream analyses, as it enables faster access to specific regions of interest and ensures compatibility with other tools.\nsamtools index: This subcommand creates an index file for a sorted BAM file. Indexing allows for efficient random access to specific regions in the BAM file, which is crucial for tools that perform region-based analyses.\nsamtools merge: This subcommand is used to merge multiple sorted BAM files into a single BAM file. This is useful when combining data from different sequencing runs or multiple lanes of a sequencing machine.\nsamtools mpileup: This subcommand generates a summary of the base calls at each position in the reference genome, considering all the aligned reads. The output can be used for variant calling, consensus sequence generation, or assessing sequencing depth at specific genomic positions.\n\nIn addition to these, Samtools offers many other subcommands to perform tasks such as alignment statistics, read group manipulation, and variant calling. The software package is widely used due to its versatility, efficiency, and compatibility with various sequencing platforms and analysis tools.\n\nThis text discusses the pileup format, a plain-text format used to summarize reads’ bases at each chromosome position by stacking aligned reads. The pileup format helps identify variants and determine individual genotypes. The samtools mpileup subcommand creates pileups from BAM files and is the first step in samtools-based variant calling pipelines.\nThe output is saved in a Variant Call Format (VCF) file, which has three parts: a metadata header, a header line with mandatory fields and sample names, and data lines containing information for a variant at a particular position and all individuals’ genotypes.\n``\n\n\nDifferent Means to get SAM/BAM files\n\nWhole Genome Sequencing - Reduced Represenation (DNA; traditional)\nRNA-seq (RNA)\nDNA Methylation specific alignment (DNA)\n\n\n\nSNPs in RNA-seq data\nFinding SNPs (Single Nucleotide Polymorphisms) in RNA-seq data is an essential step in understanding genetic variation and its effects on gene expression. Here is a summary of the process:\n\nQuality control and preprocessing: Start by assessing the quality of your raw RNA-seq reads using tools like FastQC. Trim low-quality bases and adapter sequences using software like Trimmomatic or Cutadapt to ensure accurate downstream analysis.\nAlignment: Align the cleaned RNA-seq reads to a reference genome using a spliced aligner like STAR, HISAT2, or TopHat2. These tools can handle the intron-exon structure of RNA-seq data and provide accurate alignments.\nSort and index alignments: Use SAMtools or Picard to convert the alignment output (SAM) to a binary format (BAM), sort, and index the aligned reads for efficient data processing.\nVariant calling: Employ a variant caller such as GATK’s HaplotypeCaller, SAMtools mpileup, or FreeBayes to identify SNPs and other genetic variants in your RNA-seq data. These tools use statistical models to call SNPs based on the differences observed between aligned reads and the reference genome.\nFiltering: Apply quality filters to remove low-confidence variant calls. Use tools like GATK’s VariantFiltration or BCFtools filter to set quality thresholds based on parameters like depth, quality score, strand bias, and mapping quality.\nAnnotation: Annotate the filtered SNPs using software like ANNOVAR, SnpEff, or VEP to gain insights into their potential functional effects on genes, transcripts, and proteins.\nDownstream analysis: Investigate the potential impact of SNPs on gene expression, alternative splicing, or allele-specific expression using tools like DESeq2, edgeR, or Cufflinks.\n\nRemember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis.\n\n\nShow and Tell\nhttps://rpubs.com/sr320/1035758"
   },
   {
     "objectID": "lectures/01-start-up.html",
@@ -333,7 +284,7 @@
     "href": "schedule.html",
     "title": "Bioinformatics - FISH 546",
     "section": "",
-    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\nExplore data, QC, add hashes\n\n\napr 10\nweek 03\nRStudio:knitr/ Fundamentals\nExplain and knit\nID endpoint in Readme. Start workflow.\n\n\napr 17\nweek 04\nRemote Computing\nHyak\nComplete sliced workflow (->endpoint)\n\n\napr 24\nweek 05\nQuatro\nPublishing Slides\nReadme w/ results (links), has plan for 4 weeks, issues resolved\n\n\nmay 01\nweek 06\nGenetic Variation\n\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\nProject focus\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
+    "text": "Date\nQuestions\nTopic\nAssignment\nProject Status\n\n\n\n\nlast week\n\nPreparing for class\nbash\n\n\n\nmar 27\nweek 01\nGetting Started\nNCBI Blast\nEstablish Repos\n\n\napr 03\nweek 02\nRNA-seq + Ariana Huffmyer\nDifferential Gene Expression\nExplore data, QC, add hashes\n\n\napr 10\nweek 03\nRStudio:knitr/ Fundamentals\nExplain and knit\nID endpoint in Readme. Start workflow.\n\n\napr 17\nweek 04\nRemote Computing\nHyak\nComplete sliced workflow (->endpoint)\n\n\napr 24\nweek 05\nQuatro\nPublishing Slides\nReadme w/ results (links), has plan for 4 weeks, issues resolved\n\n\nmay 01\nweek 06\nGenetic Variation\ntest\n\n\n\nmay 08\nweek 07\nDNA methylation + Matt George\n\n\n\n\nmay 15\nweek 08\nGenomic Ranges\n\n\n\n\nmay 22\nweek 09\nProject focus\n\n\n\n\nmay 29\nweek 10\nPresentations\n\nCompendium"
   },
   {
     "objectID": "questions/week01.html",
@@ -341,6 +292,13 @@
     "title": "Bioinformatics - FISH 546",
     "section": "",
     "text": "What is your prior experience in this discipline?\nWhat do you hope to get out of this class?\nThis class is strongly rooted in an independent project related to genomic analyses. What specific project do you have in mind? If you do not have any data or preference, data can be provided / aquired. If you do not have a specfic project, what approach would you like to master as part of this class?\nWhat are two things you found most useful from the reading?"
+  },
+  {
+    "objectID": "questions/week06.html",
+    "href": "questions/week06.html",
+    "title": "Week 06 Questions",
+    "section": "",
+    "text": "What are SAM/BAM files? What is the difference between to the two?\nsamtools is a popular program for working with alignment data. What are three common tasks that this software is used for?\nWhy might you want to visualize alignment data and what are two program that can be used for this?\nDescribe what VCF file is?"
   },
   {
     "objectID": "questions/week05.html",

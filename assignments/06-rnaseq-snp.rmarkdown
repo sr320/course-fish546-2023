@@ -11,6 +11,11 @@ format:
     code-overflow: wrap
 ---
 
+
+
+
+
+
 # Screen Recording
 
 [![](/img/zoom.png){fig-align="right"}](xxxxxxxxxxxx)
@@ -25,23 +30,21 @@ Create and inspect and alignment files.
 
 ## Download alignment data and visualise
 
-```
+````
+```{{r, engine='bash'}}
 cd ../data
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam.bai
 ```
 
 
-```
+```{r, engine='bash'}
 cd ../data
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/data/Cvirg-genome/GCF_002022765.2_C_virginica-3.0_genomic.fa.fai
 ```
 
-
-
-
-
+````
 
 
 # SNP Discovery
@@ -111,3 +114,8 @@ gatk CreateSequenceDictionary -R reference_genome.fa
 samtools faidx reference_genome.fa
 gatk --java-options "-Xmx4G" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf
 ```
+
+
+
+
+

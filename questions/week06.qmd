@@ -1,0 +1,19 @@
+---
+title: "Week 06 Questions"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+a)  **What are SAM/BAM files? What is the difference between to the two?**
+
+b)  **`samtools`** is a popular program for working with alignment data. What are three common tasks that this software is used for?
+
+c)  **Why might you want to visualize alignment data and what are two program that can be used for this?**
+
+d)  **Describe what VCF file is?**

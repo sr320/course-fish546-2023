@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bioinformatics - FISH 546 - Genetic Variation</title>
+<title>Bioinformatics - FISH 546 - Alignment Data and Genetic Variation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -114,7 +177,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#screen-recording" id="toc-screen-recording" class="nav-link active" data-scroll-target="#screen-recording">Screen Recording</a></li>
   <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#sambam" id="toc-sambam" class="nav-link" data-scroll-target="#sambam">SAM/BAM</a></li>
+  <li><a href="#samtools" id="toc-samtools" class="nav-link" data-scroll-target="#samtools">Samtools</a></li>
+  <li><a href="#different-means-to-get-sambam-files" id="toc-different-means-to-get-sambam-files" class="nav-link" data-scroll-target="#different-means-to-get-sambam-files">Different Means to get SAM/BAM files</a></li>
   <li><a href="#snps-in-rna-seq-data" id="toc-snps-in-rna-seq-data" class="nav-link" data-scroll-target="#snps-in-rna-seq-data">SNPs in RNA-seq data</a></li>
+  <li><a href="#show-and-tell" id="toc-show-and-tell" class="nav-link" data-scroll-target="#show-and-tell">Show and Tell</a></li>
   </ul>
 </nav>
     </div>
@@ -123,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Genetic Variation</h1>
+<h1 class="title">Alignment Data and Genetic Variation</h1>
 <p class="subtitle lead">Oh boy</p>
 </div>
 
@@ -149,15 +217,71 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="reading" class="level1">
 <h1>Reading</h1>
-<ul>
-<li><p><a href="https://bookdown.org/yihui/rmarkdown/presentations.html">R Markdown: The Definitive Guide - Chapter 4</a></p></li>
-<li><p>Quarto</p></li>
-<li><p><a href="https://quarto.org/docs/presentations/">Quarto Presenations</a></p></li>
-</ul>
+<p>Textbook:</p>
+<p>Working with Alignment Data pg 355-394</p>
 </section>
 <section id="objectives" class="level1">
 <h1>Objectives</h1>
-<p>Consider what what what done in weeks one and two and generate a eye-catching visual report with novel and informative visualizations.</p>
+<p>Better understand alignment files, how to visualize them, and how to get SNP information from them.</p>
+</section>
+<section id="background" class="level1">
+<h1>Background</h1>
+<p>Over the past quarter, we have explored various ways of comparing genes or genetic sequences. If you think about it in a broad sense, what we have done is look at letter comparisons, such as with BLAST performing a homology search, and look at genes that are expressed differentially. You could say that this is a good way to consider variance. Many of you in your projects are doing this in different ways, using annotations and/or BLAST. This week, we will consider a different way of looking at the relatedness of genetic information: single nucleotide polymorphisms (SNPs). SNPs are used to describe population variation or phylogenetic relationships. A first step in this is aligning sequence reads to look for variation.</p>
+</section>
+<section id="sambam" class="level1">
+<h1>SAM/BAM</h1>
+<p>The SAM/BAM format, is commonly used for storing sequencing reads mapped to a reference. A large portion of bioinformatics involves manipulating alignment files and extracting useful information from them. The SAM/BAM formats are space-efficient complex file formats because alignment files are massive. Learning to work with these formats is important because it develops essential skills such as following format specifications, manipulating binary files, and working with APIs that are widely applicable beyond these specific formats.</p>
+<p>SAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) are two file formats used to store aligned sequencing data. Both formats are designed to store read alignments from high-throughput sequencing experiments to a reference genome. However, they have some key differences:</p>
+<p>1 Representation:</p>
+<pre><code>•   SAM: SAM is a human-readable, plain text format. It consists of a header section with metadata about the reference genome and alignment, followed by a tab-delimited alignment section containing individual aligned reads and their mapping information.
+
+•   BAM: BAM is the binary equivalent of the SAM format, meaning it stores the same information as a SAM file but in a compressed binary form. This compression makes BAM files more storage-efficient and faster to process than SAM files.</code></pre>
+<p>2 File size:</p>
+<pre><code>•   SAM: Due to its plain text nature, SAM files are generally larger than their BAM counterparts.
+
+•   BAM: The binary, compressed format of BAM files results in smaller file sizes compared to SAM files, making them more suitable for large-scale sequencing projects.</code></pre>
+<p>3 Readability:</p>
+<pre><code>•   SAM: Since SAM is a plain text format, it can be easily read and edited using standard text editors or processed with command-line tools.
+
+•   BAM: As a binary format, BAM files are not human-readable and require specialized software tools for reading, editing, and processing.</code></pre>
+<p>4 Processing speed:</p>
+<pre><code>•   SAM: Processing SAM files can be slower because of their larger size and plain text format.
+
+•   BAM: BAM files enable faster processing due to their binary, compressed nature.</code></pre>
+<p>In summary, SAM is a human-readable, plain text format, while BAM is a compressed binary format. BAM files offer advantages in terms of file size and processing speed, whereas SAM files are more easily read and edited using basic text editing tools. The choice between the two formats depends on the specific requirements of the sequencing project and the tools being used for analysis.</p>
+<p>SAM file example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@SQ</span>     SN:ref  LN:45</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">@PG</span>     ID:bwa  PN:bwa  CL:bwa mem ref.fa reads.fq</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">read1</span>   0       ref     7       60      8M      <span class="pp">*</span>       0       0       ATGCACTG  <span class="pp">*</span>       NM:i:0  MD:Z:8</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">read2</span>   0       ref     7       60      8M      <span class="pp">*</span>       0       0       ATGCACTA  <span class="pp">*</span>       NM:i:1  MD:Z:7A0</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The first two lines are the header section, containing metadata about the reference genome and the program used to generate the alignment. The following lines represent individual aligned reads in a tab-separated format.</p>
+<p>---</p>
+</section>
+<section id="samtools" class="level1">
+<h1>Samtools</h1>
+<p>Samtools is a software package designed for manipulating and analyzing high-throughput sequencing data, specifically SAM (Sequence Alignment/Map) and BAM (Binary Alignment/Map) files. It is widely used in the field of genomics and bioinformatics for processing and managing next-generation sequencing data.</p>
+<p>Here are the 5 most commonly used subcommands in Samtools:</p>
+<ol type="1">
+<li><p><strong><code>samtools view</code></strong>: This subcommand is used to convert between SAM and BAM file formats, filter alignments, and extract specific reads or regions from the input files. It can also output only alignments with specific flags, such as mapped or unmapped reads.</p></li>
+<li><p><strong><code>samtools sort</code></strong>: This subcommand sorts alignments by their chromosomal coordinates. Sorting is essential for many downstream analyses, as it enables faster access to specific regions of interest and ensures compatibility with other tools.</p></li>
+<li><p><strong><code>samtools index</code></strong>: This subcommand creates an index file for a sorted BAM file. Indexing allows for efficient random access to specific regions in the BAM file, which is crucial for tools that perform region-based analyses.</p></li>
+<li><p><strong><code>samtools merge</code></strong>: This subcommand is used to merge multiple sorted BAM files into a single BAM file. This is useful when combining data from different sequencing runs or multiple lanes of a sequencing machine.</p></li>
+<li><p><strong><code>samtools mpileup</code></strong>: This subcommand generates a summary of the base calls at each position in the reference genome, considering all the aligned reads. The output can be used for variant calling, consensus sequence generation, or assessing sequencing depth at specific genomic positions.</p></li>
+</ol>
+<p>In addition to these, Samtools offers many other subcommands to perform tasks such as alignment statistics, read group manipulation, and variant calling. The software package is widely used due to its versatility, efficiency, and compatibility with various sequencing platforms and analysis tools.</p>
+<hr>
+<p>This text discusses the pileup format, a plain-text format used to summarize reads’ bases at each chromosome position by stacking aligned reads. The pileup format helps identify variants and determine individual genotypes. The samtools mpileup subcommand creates pileups from BAM files and is the first step in samtools-based variant calling pipelines.</p>
+<p>The output is saved in a Variant Call Format (VCF) file, which has three parts: a metadata header, a header line with mandatory fields and sample names, and data lines containing information for a variant at a particular position and all individuals’ genotypes.</p>
+<p>``</p>
+</section>
+<section id="different-means-to-get-sambam-files" class="level1">
+<h1>Different Means to get SAM/BAM files</h1>
+<ul>
+<li><p>Whole Genome Sequencing - Reduced Represenation (DNA; traditional)</p></li>
+<li><p>RNA-seq (RNA)</p></li>
+<li><p>DNA Methylation specific alignment (DNA)</p></li>
+</ul>
 </section>
 <section id="snps-in-rna-seq-data" class="level1">
 <h1>SNPs in RNA-seq data</h1>
@@ -172,6 +296,10 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Downstream analysis: Investigate the potential impact of SNPs on gene expression, alternative splicing, or allele-specific expression using tools like DESeq2, edgeR, or Cufflinks.</p></li>
 </ol>
 <p>Remember that this is only a general summary and specific steps might vary depending on the organism, reference genome, and experimental conditions. Always consult the documentation of the chosen tools and follow best practices for RNA-seq data analysis.</p>
+</section>
+<section id="show-and-tell" class="level1">
+<h1>Show and Tell</h1>
+<p>https://rpubs.com/sr320/1035758</p>
 
 
 </section>
