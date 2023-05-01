@@ -23,6 +23,8 @@ Create and inspect and alignment files. Including visualizing and capturing "out
 
 # Task 1
 
+Looking Alignment Files
+
 ## Download alignment data
 
 ::: callout-caution
@@ -63,70 +65,99 @@ Take a screen shot of the `tview` display and place in your notebook.
 
 Aligning WGS data and visualizing in IGV
 
-# SNP Discovery
+````         
 
-In this tutorial, we'll use a small sample FASTQ file to identify SNPs from RNA-seq data. We'll use the following tools for this analysis:
-
-1.  FastQC for quality control
-
-2.  Trimmomatic for read trimming
-
-3.  HISAT2 for read alignment
-
-4.  SAMtools for processing alignments
-
-5.  GATK for SNP calling
-
-6.  SnpEff for SNP annotation
-
-## **Step 1: Quality control with FastQC**
-
-Download and install FastQC from [**https://www.bioinformatics.babraham.ac.uk/projects/fastqc/**](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and run it on your sample FASTQ file:
-
-``` bash
-fastqc sample.fastq
+```{{r, engine='bash'}}
+cd ../data
+curl -O https://owl.fish.washington.edu/nightingales/C_gigas/F143n08_R2_001.fastq.gz
+curl -O https://owl.fish.washington.edu/nightingales/C_gigas/F143n08_R1_001.fastq.gz
 ```
 
-Examine the generated report to assess the quality of your reads.
+```{{r, engine='bash'}}
+cd ../data
+curl -O https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa
+curl -O https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa.fai
+curl -O https://gannet.fish.washington.edu/panopea/Cg-roslin/GCF_902806645.1_cgigas_uk_roslin_v1_genomic-mito.gtf
+```
+````
 
-## **Step 2: Read trimming with Trimmomatic**
+## Alignment
 
-Download and install Trimmomatic from [**http://www.usadellab.org/cms/?page=trimmomatic**](http://www.usadellab.org/cms/?page=trimmomatic). Trim low-quality bases and adapter sequences from your sample file:
+````         
+```{{r, engine='bash'}}
+/home/shared/hisat2-2.2.1/hisat2 \
+-x ../output/cgigas_uk_roslin_v1_genomic-mito.index \
+-p 4 \
+-1 ../data/F143n08_R1_001.fastq.gz \
+-2 ../data/F143n08_R2_001.fastq.gz \
+-S ../output/F143_cgigas.sam
+```
+````
 
-``` ruby
-java -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+Take a look
+
+````         
+```{{r, engine='bash'}}
+tail -1 ../output/F143_cgigas.sam
+```
+````
+
+````         
+
+```{{r, engine='bash'}}
+# Convert SAM to BAM, using 4 additional threads
+/home/shared/samtools-1.12/samtools view -@ 4 -bS \
+../output/F143_cgigas.sam > ../output/F143_cgigas.bam
 ```
 
-## **Step 3: Align reads with HISAT2**
+```{{r, engine='bash'}}
+# Sort the BAM file, using 4 additional threads
+/home/shared/samtools-1.12/samtools sort -@ 4 \
+../output/F143_cgigas.bam -o ../output/F143_cgigas_sorted.bam
 
-Build an index for your reference genome (you only need to do this once):
+# Index the sorted BAM file (multi-threading is not applicable to this operation)
+/home/shared/samtools-1.12/samtools index \
+../output/F143_cgigas_sorted.bam
+```
+````
 
-``` bash
-hisat2-build reference_genome.fa reference_genome_index
+## mpileup
+
+::: callout-note
+## Now bcftools is recommended for mpileup instead of samtools (which was described in textbook)
+:::
+
+````
+
+
+```{{r, engine='bash'}}
+/home/shared/bcftools-1.14/bcftools mpileup --threads 4 --no-BAQ \
+--fasta-ref ../data/cgigas_uk_roslin_v1_genomic-mito.fa \
+../output/F143_cgigas_sorted.bam > ../output/F143_mpileup_output.txt
 ```
 
-Align your trimmed reads to the reference genome:
-
-``` bash
-hisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam
+```{{r, engine='bash'}}
+tail ../output/F143_mpileup_output.txt
 ```
 
-## **Step 4: Process alignments with SAMtools**
-
-Download and install SAMtools from [**http://www.htslib.org/**](http://www.htslib.org/). Convert the SAM file to BAM format, sort, and index the alignments:
-
-``` bash
-samtools view -bS sample.sam > sample.bam
-samtools sort sample.bam -o sample_sorted.bam
-samtools index sample_sorted.bam
+```{{r, engine='bash'}}
+cat ../output/F143_mpileup_output.txt \
+| /home/shared/bcftools-1.14/bcftools call -mv -Oz \
+> ../output/F143_mpile.vcf.gz
 ```
 
-## **Step 5: SNP calling with GATK**
 
-Download and install GATK from [**https://gatk.broadinstitute.org/hc/en-us**](https://gatk.broadinstitute.org/hc/en-us). Create a reference genome index and call SNPs using HaplotypeCaller:
+```{{r, engine='bash'}}
+zgrep "^##" -v ../output/F143_mpile.vcf.gz | \
+awk 'BEGIN{OFS="\t"} {split($8, a, ";"); print $1,$2,$4,$5,$6,a[1],$9,$10}' | head
 
-``` bash
-gatk CreateSequenceDictionary -R reference_genome.fa
-samtools faidx reference_genome.fa
-gatk --java-options "-Xmx4G" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf
 ```
+
+
+```{{r, engine='bash'}}
+/home/shared/bcftools-1.14/bcftools call \
+-v -c ../output/F143_mpile.vcf.gz \
+> ../output/F143_mpile_calls.vcf
+```
+
+````

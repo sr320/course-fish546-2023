@@ -27,6 +27,12 @@ Better understand alignment files, how to visualize them, and how to get SNP inf
 
 TLDR: <https://rpubs.com/sr320/1035758>
 
+Desktop Software to download:
+
+-   https://jbrowse.org/jb2/download/
+
+-   https://software.broadinstitute.org/software/igv/download
+
 # Background
 
 Over the past quarter, we have explored various ways of comparing genes or genetic sequences. If you think about it in a broad sense, what we have done is look at letter comparisons, such as with BLAST performing a homology search, and look at genes that are expressed differentially. You could say that this is a good way to consider variance. Many of you in your projects are doing this in different ways, using annotations and/or BLAST. This week, we will consider a different way of looking at the relatedness of genetic information: single nucleotide polymorphisms (SNPs). SNPs are used to describe population variation or phylogenetic relationships. A first step in this is aligning sequence reads to look for variation.

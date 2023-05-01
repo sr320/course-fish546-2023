@@ -175,39 +175,18 @@
     "text": "Capture Image\nTake a screen shot of the tview display and place in your notebook."
   },
   {
-    "objectID": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
-    "href": "assignments/06-rnaseq-snp.html#step-1-quality-control-with-fastqc",
+    "objectID": "assignments/06-rnaseq-snp.html#alignment",
+    "href": "assignments/06-rnaseq-snp.html#alignment",
     "title": "Alignment Data",
-    "section": "Step 1: Quality control with FastQC",
-    "text": "Step 1: Quality control with FastQC\nDownload and install FastQC from https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and run it on your sample FASTQ file:\nfastqc sample.fastq\nExamine the generated report to assess the quality of your reads."
+    "section": "Alignment",
+    "text": "Alignment\n```{r, engine='bash'}\n/home/shared/hisat2-2.2.1/hisat2 \\\n-x ../output/cgigas_uk_roslin_v1_genomic-mito.index \\\n-p 4 \\\n-1 ../data/F143n08_R1_001.fastq.gz \\\n-2 ../data/F143n08_R2_001.fastq.gz \\\n-S ../output/F143_cgigas.sam\n```\nTake a look\n```{r, engine='bash'}\ntail -1 ../output/F143_cgigas.sam\n```\n\n```{r, engine='bash'}\n# Convert SAM to BAM, using 4 additional threads\n/home/shared/samtools-1.12/samtools view -@ 4 -bS \\\n../output/F143_cgigas.sam > ../output/F143_cgigas.bam\n```\n\n```{r, engine='bash'}\n# Sort the BAM file, using 4 additional threads\n/home/shared/samtools-1.12/samtools sort -@ 4 \\\n../output/F143_cgigas.bam -o ../output/F143_cgigas_sorted.bam\n\n# Index the sorted BAM file (multi-threading is not applicable to this operation)\n/home/shared/samtools-1.12/samtools index \\\n../output/F143_cgigas_sorted.bam\n```"
   },
   {
-    "objectID": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
-    "href": "assignments/06-rnaseq-snp.html#step-2-read-trimming-with-trimmomatic",
+    "objectID": "assignments/06-rnaseq-snp.html#mpileup",
+    "href": "assignments/06-rnaseq-snp.html#mpileup",
     "title": "Alignment Data",
-    "section": "Step 2: Read trimming with Trimmomatic",
-    "text": "Step 2: Read trimming with Trimmomatic\nDownload and install Trimmomatic from http://www.usadellab.org/cms/?page=trimmomatic. Trim low-quality bases and adapter sequences from your sample file:\njava -jar trimmomatic-0.39.jar SE -phred33 sample.fastq sample_trimmed.fastq ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
-    "href": "assignments/06-rnaseq-snp.html#step-3-align-reads-with-hisat2",
-    "title": "Alignment Data",
-    "section": "Step 3: Align reads with HISAT2",
-    "text": "Step 3: Align reads with HISAT2\nBuild an index for your reference genome (you only need to do this once):\nhisat2-build reference_genome.fa reference_genome_index\nAlign your trimmed reads to the reference genome:\nhisat2 -x reference_genome_index -U sample_trimmed.fastq -S sample.sam"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
-    "href": "assignments/06-rnaseq-snp.html#step-4-process-alignments-with-samtools",
-    "title": "Alignment Data",
-    "section": "Step 4: Process alignments with SAMtools",
-    "text": "Step 4: Process alignments with SAMtools\nDownload and install SAMtools from http://www.htslib.org/. Convert the SAM file to BAM format, sort, and index the alignments:\nsamtools view -bS sample.sam > sample.bam\nsamtools sort sample.bam -o sample_sorted.bam\nsamtools index sample_sorted.bam"
-  },
-  {
-    "objectID": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
-    "href": "assignments/06-rnaseq-snp.html#step-5-snp-calling-with-gatk",
-    "title": "Alignment Data",
-    "section": "Step 5: SNP calling with GATK",
-    "text": "Step 5: SNP calling with GATK\nDownload and install GATK from https://gatk.broadinstitute.org/hc/en-us. Create a reference genome index and call SNPs using HaplotypeCaller:\ngatk CreateSequenceDictionary -R reference_genome.fa\nsamtools faidx reference_genome.fa\ngatk --java-options \"-Xmx4G\" HaplotypeCaller -R reference_genome.fa -I sample_sorted.bam -O sample_raw_variants.vcf"
+    "section": "mpileup",
+    "text": "mpileup\n\n\n\n\n\n\nNow bcftools is recommended for mpileup instead of samtools (which was described in textbook)\n\n\n\n\n\n\n\n\n```{r, engine='bash'}\n/home/shared/bcftools-1.14/bcftools mpileup --threads 4 --no-BAQ \\\n--fasta-ref ../data/cgigas_uk_roslin_v1_genomic-mito.fa \\\n../output/F143_cgigas_sorted.bam > ../output/F143_mpileup_output.txt\n```\n\n```{r, engine='bash'}\ntail ../output/F143_mpileup_output.txt\n```\n\n```{r, engine='bash'}\ncat ../output/F143_mpileup_output.txt \\\n| /home/shared/bcftools-1.14/bcftools call -mv -Oz \\\n> ../output/F143_mpile.vcf.gz\n```\n\n\n```{r, engine='bash'}\nzgrep \"^##\" -v ../output/F143_mpile.vcf.gz | \\\nawk 'BEGIN{OFS=\"\\t\"} {split($8, a, \";\"); print $1,$2,$4,$5,$6,a[1],$9,$10}' | head\n\n```\n\n\n```{r, engine='bash'}\n/home/shared/bcftools-1.14/bcftools call \\\n-v -c ../output/F143_mpile.vcf.gz \\\n> ../output/F143_mpile_calls.vcf\n```"
   },
   {
     "objectID": "index.html",
