@@ -23,7 +23,7 @@ Create and inspect and alignment files. Including visualizing and capturing "out
 
 # Task 1
 
-Looking Alignment Files
+Looking at Alignment Files
 
 ## Download alignment data
 
@@ -127,7 +127,7 @@ tail -1 ../output/F143_cgigas.sam
 ## Now bcftools is recommended for mpileup instead of samtools (which was described in textbook)
 :::
 
-````
+````         
 
 
 ```{{r, engine='bash'}}
@@ -159,11 +159,14 @@ awk 'BEGIN{OFS="\t"} {split($8, a, ";"); print $1,$2,$4,$5,$6,a[1],$9,$10}' | he
 -v -c ../output/F143_mpile.vcf.gz \
 > ../output/F143_mpile_calls.vcf
 ```
-
 ````
 
-## Visualize these data in IGV and get a few cool snapshots.
+## Visualize
+
+these data in IGV and get a few cool snapshots.
 
 Minimally show bam file, and at least 2 genome feature files.
 
-Useful link: https://robertslab.github.io/resources/Genomic-Resources/#crassostrea-gigas-cgigas_uk_roslin_v1
+Bonus for annotating screenshots.
+
+Useful link: <https://robertslab.github.io/resources/Genomic-Resources/#crassostrea-gigas-cgigas_uk_roslin_v1>
