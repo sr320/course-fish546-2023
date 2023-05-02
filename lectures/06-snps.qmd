@@ -115,11 +115,7 @@ The output is saved in a Variant Call Format (VCF) file, which has three parts: 
 
 -   DNA Methylation specific alignment (DNA)
 
-\-\--
-
-# Show and Tell
-
-<https://rpubs.com/sr320/1035758>
+------------------------------------------------------------------------
 
 # Miscellany
 
