@@ -76,7 +76,6 @@ In summary, SAM is a human-readable, plain text format, while BAM is a compresse
 @PG     ID:bwa  PN:bwa  CL:bwa mem ref.fa reads.fq
 read1   0       ref     7       60      8M      *       0       0       ATGCACTG  *       NM:i:0  MD:Z:8
 read2   0       ref     7       60      8M      *       0       0       ATGCACTA  *       NM:i:1  MD:Z:7A0
-
 ```
 
 The first two lines are the header section, containing metadata about the reference genome and the program used to generate the alignment. The following lines represent individual aligned reads in a tab-separated format.
