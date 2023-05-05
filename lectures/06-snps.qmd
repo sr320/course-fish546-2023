@@ -13,7 +13,7 @@ format:
 
 # Screen Recording
 
-[![](/img/zoom.png){fig-align="right"}](hxxxxxx)
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/U0F0-YmBjwJyA-7GKQwi3Ilai3aU5bLcxSPseOVhYhH0Xq-8n7HiQvbYoHXy-Cn8.0Sjt_Lx8bzW4sJL8)
 
 # Reading
 
