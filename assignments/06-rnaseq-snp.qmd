@@ -160,6 +160,8 @@ awk 'BEGIN{OFS="\t"} {split($8, a, ";"); print $1,$2,$4,$5,$6,a[1],$9,$10}' | he
 ```
 
 
+The code below might not work. That is fine. The VCF in the above chunk can be used for visualization in IGV.
+
 ```{{r, engine='bash'}}
 /home/shared/bcftools-1.14/bcftools call \
 -v -c ../output/F143_mpile.vcf.gz \
