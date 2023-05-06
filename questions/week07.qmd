@@ -16,4 +16,6 @@ b)  **Re-reading this week's reading, what are 2 things that resonate with you n
 
 c)  **What is epigenetics and how could it relate to your own research project?**
 
-d)  **Describe what GFF file is?**
+d)  **Describe what a GFF file is?**
+
+e)  **What are two ways describing CG motifs could have value?**
