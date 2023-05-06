@@ -1,0 +1,66 @@
+---
+title: "Epigenetics"
+subtitle: more than genetics
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/U0F0-YmBjwJyA-)
+
+# Reading
+
+Re Read: [Opportunities in Functional Genomics: A Primer on Lab and Computational Aspects](https://d.pr/f/ngmWkw)
+
+# Objectives
+
+Understand epigenetic variation and how to measure.
+
+# Epigenetics
+
+Epigenetics is an emerging field of genetics that studies the heritable changes in gene expression without changes in the underlying DNA sequence. It involves alterations in the DNA packaging structure, modifications in specific chemical groups, and the influence of environmental factors, such as diet, stress, or toxins. Understanding epigenetic mechanisms is crucial in various biological processes, including aging, development, and disease progression, as it sheds light on how genes are regulated and interact with the environment.
+
+There are several ways to assess epigenetic variation that can contribute to comprehending the underlying molecular mechanisms. Here are five common techniques:
+
+1.  DNA methylation analysis: This technique involves examining the methylation status of cytosine residues on DNA molecules. Methylation can silence gene expression, dictate chromatin structure, and alter DNA stability, leading to disease onset. Thus, detecting and quantifying DNA methylation levels in specific regions provides insights into epigenetic regulation.
+
+2.  Chromatin immunoprecipitation (ChIP): This technique allows the identification of proteins interacting with DNA, such as transcription factors, co-regulators, or histones. By detecting the binding patterns on specific regions of the genome, ChIP helps to unravel the epigenetic mechanisms dictating gene expression.
+
+3.  Histone modification analysis: Histones are proteins that pack DNA into nucleosomes, and their post-translational modifications, such as acetylation or methylation, can affect the chromatin structure and accessibility to transcription factors. By assessing the histone modifications on specific regions, researchers can understand how epigenetic marks influence gene expression.
+
+4.  Next-generation sequencing (NGS): NGS platforms allow the analysis of DNA methylation, histone modifications, and DNA-protein interactions simultaneously, in a cost-effective and high-throughput manner. NGS can reveal epigenetic patterns that are undetectable by traditional approaches.
+
+5.  Bisulfite sequencing: It is a technique that converts unmethylated cytosines to uracil and leaves the methylated cytosines as cytosines. By sequencing the bisulfite-treated DNA, researchers can identify the exact positions of methylation in the genome.
+
+## DNA methylation - Software
+
+Several software tools are available for characterizing DNA methylation, including:
+
+1.  Bismark: This software aligns bisulfite-treated sequencing reads and generates methylation reports and visualization tools.
+
+2.  MethylKit: It is a user-friendly package to perform DNA methylation analysis using NGS data, including differential methylation analysis, clustering, and annotation.
+
+3.  Methpipe: It provides a suite of programs to preprocess bisulfite sequencing data, call differentially methylated regions, and perform enrichment analysis.
+
+4.  RnBeads: This software offers a comprehensive and modular analysis of DNA methylation data, including normalization, quality control, visualization, and integration with other molecular features.
+
+In summary, epigenetics is a fascinating field that has revolutionized our understanding of gene regulation and the impact of the environment on health and disease. By utilizing various techniques and software tools, bioinformaticians can explore epigenetic mechanisms in an integrative and comprehensive manner.
+
+### Visualization
+
+There are several software packages available for visualizing DNA methylation variation. Three popular ones are:
+
+1.  IGV (Integrative Genomics Viewer): IGV is a high-performance, easy-to-use, interactive software tool for visualizing and exploring genomic data. It allows users to view various types of data, including DNA methylation, gene expression, and sequence alignments. IGV supports a wide range of file formats, making it a versatile option for researchers. You can find more information at [**https://software.broadinstitute.org/software/igv/**](https://software.broadinstitute.org/software/igv/).
+
+2.  Methylation plotter: Methylation plotter is a user-friendly web tool that creates graphical representations of DNA methylation data. It allows users to upload data in a variety of formats and customize the visualization to display various methylation contexts, such as CpG islands, gene promoters, or gene bodies. You can access Methylation plotter at [**https://bioinfo2.ugr.es/methylation_plotter/**](https://bioinfo2.ugr.es/methylation_plotter/).
+
+3.  SeqMonk: SeqMonk is an open-source, interactive, and highly customizable software for the visualization and analysis of large genomic datasets, including DNA methylation data. It can handle data from various high-throughput sequencing platforms and provides numerous analysis options to help users explore and understand their data. You can find more information about SeqMonk and download the software at [**https://www.bioinformatics.babraham.ac.uk/projects/seqmonk/**](https://www.bioinformatics.babraham.ac.uk/projects/seqmonk/).
+
+These software packages cater to different user needs and offer various features for visualizing and analyzing DNA methylation data. The choice of software largely depends on the specific requirements of your project and your level of expertise with genomic data analysis tools.
