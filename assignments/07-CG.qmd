@@ -23,11 +23,11 @@ format:
 
 # Amnesty
 
-This week you can turn in all missing assignments to be assessed [here](https://github.com/course-fish546-2023/assistance-public/issues/15)
+This week you can turn in all missing assignments to be assessed. Indicate your decision to do this and which specific assignments [here](https://github.com/course-fish546-2023/assistance-public/issues/15)
 
 # CG Motifs
 
-For this you will take 10 sequences related to your project, ID CG motifs you emboss package: `fuzznuc`, and visualize in IGV. You do not have to follow this workflow exactly, but provided here for guidance. This uses R package `seqinr`.
+For this you will take 10 sequences related to your project, ID CG motifs using the emboss package: `fuzznuc`, and visualize in IGV. You do not have to follow this workflow exactly, but it is provided here for guidance. This uses R package `seqinr`.
 
 
 ````
@@ -84,7 +84,7 @@ fuzznuc -sequence ../output/10_seqs.fa -pattern CG -rformat gff -outfile ../outp
 ```
 ````
 
-Push these files to GitHub. Grab raw urls to visualize in IGV. Fasta file is "genome". Take 2 screenshots and place in code file. At the top of your code page be sure to provide link to visual report (rpubs). Alternatively you can also output to markdown. 
+Push these files to GitHub. Grab raw urls to visualize in IGV. Fasta file is the "genome". Take 2 screenshots and place in code file. At the top of your code page be sure to provide link to visual report (rpubs). Alternatively you can also output to markdown. 
 
 
 
