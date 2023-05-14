@@ -1,0 +1,19 @@
+---
+title: "Week 08 Questions"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+a)  **What is a genomic range and what 3 types of information do you need for a range?**
+
+b)  **What does 0-based and 1-based refer to? What are the advantages and disadvantages of each?**
+
+c)  **What is the value of BEDtools over the bioconductor package GenomicRange?**
+
+d)  **Describe one subcommand of the BEDtools suite as well as a practical use case.**

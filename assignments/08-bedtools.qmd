@@ -1,0 +1,104 @@
+---
+title: "BEDtools"
+subtitle: "doing arithmetic with sequences"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/U0F0-YmBjwJyA-)
+
+::: callout-important
+## Assignment
+
+1)  Run some basic commands in BEDtools.
+:::
+
+# Coverage
+
+For this sub command you will be using the same data as in Week 6, so you should already have it in you `data` directory. If not or you deleted it.
+
+````         
+```{{r, engine='bash'}}         
+cd ../data
+curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam
+curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam.bai
+```
+
+````
+
+You will also need a bed file to gene information.
+
+```{{r, engine='bash'}}         
+cd ../data
+curl -O https://eagle.fish.washington.edu/Cvirg_tracks/C_virginica-3.0_Gnomon_genes.bed
+```
+
+
+
+```{{r, engine='bash'}}         
+cd ../data
+curl -O https://eagle.fish.washington.edu/Cvirg_tracks/C_virginica-3.0_Gnomon_genes.bed
+```
+
+
+## Convert bam to bed
+
+bedtools bamtobed [OPTIONS] -i <BAM>
+
+
+## Get coverage of sequence reads on gene regions
+
+
+
+
+
+
+
+```{.bash}
+/home/shared/bedtools2/bin/bedtools coverage \
+-a ../data/C_virginica-3.0_Gnomon_genes.bed \
+-b ../data/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam \
+> ../output/08-coverage.out
+```
+
+
+
+
+
+
+
+
+# Intersect
+
+
+
+![](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_intersect__bedtools_2.31.0_documentation_2023-05-14_07-04-41.png)
+
+
+
+````         
+```{{r, engine='bash'}}         
+cd ../data
+curl -O http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_gene.gff
+curl -O http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_rm.te.bed
+curl -O http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_lncRNA.gff
+```
+
+```
+
+
+
+
+
+# CLosest
+
+
+![](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_closest__bedtools_2.31.0_documentation_2023-05-14_07-18-54.png)

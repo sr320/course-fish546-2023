@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bioinformatics - FISH 546 - Week 07 Questions</title>
+<title>Bioinformatics - FISH 546 - Genomic Ranges</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -170,14 +170,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#screen-recording" id="toc-screen-recording" class="nav-link active" data-scroll-target="#screen-recording">Screen Recording</a></li>
+  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#genomic-ranges" id="toc-genomic-ranges" class="nav-link" data-scroll-target="#genomic-ranges">Genomic Ranges:</a></li>
+  <li><a href="#coordinate-systems" id="toc-coordinate-systems" class="nav-link" data-scroll-target="#coordinate-systems">Coordinate Systems:</a></li>
+  <li><a href="#bedtools" id="toc-bedtools" class="nav-link" data-scroll-target="#bedtools">BEDTools:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Week 07 Questions</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<h1 class="title">Genomic Ranges</h1>
+<p class="subtitle lead">Coordinate Systems</p>
 </div>
 
 
@@ -192,17 +204,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<ol type="a">
-<li><p><strong>What is your current grade in the class? How many issues are open in our research repository?</strong></p></li>
-<li><p><strong>Re-reading this week’s reading, what are 2 things that resonate with you now that made little practical sense in week 2. What is one aspect that you still wonder about or is unclear?</strong></p></li>
-<li><p><strong>What is epigenetics and how could it relate to your own research project?</strong></p></li>
-<li><p><strong>Describe what a GFF file is?</strong></p></li>
-<li><p><strong>What are two ways describing CG motifs could have value?</strong></p></li>
+<section id="screen-recording" class="level1">
+<h1>Screen Recording</h1>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><a href="https://washington.zoom.us/rec/share/WOAWIh2i="><img src="../img/zoom.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="reading" class="level1">
+<h1>Reading</h1>
+<p>Textbook: Working with Range Data A crash course in Genomic Ranges 263-269<br>
+Working with Range Data with BEDtools 329-337</p>
+</section>
+<section id="objectives" class="level1">
+<h1>Objectives</h1>
+<p>Understand genomic ranges, what they are, and what they are usful for.</p>
+</section>
+<section id="genomic-ranges" class="level1">
+<h1>Genomic Ranges:</h1>
+<p>Genomic ranges are a way to represent regions of a genome, typically the start and end of specific features like genes, exons, or regulatory regions.</p>
+<p>A genomic range is typically represented by three pieces of information:</p>
+<ol type="1">
+<li><p><strong>Chromosome</strong>: The chromosome on which the feature is located.</p></li>
+<li><p><strong>Start position</strong>: The position on the chromosome where the feature begins.</p></li>
+<li><p><strong>End position</strong>: The position on the chromosome where the feature ends.</p></li>
 </ol>
+<p>It’s important to note that the start and end positions can refer to the genomic coordinates (see below), but it can also be as simple as the number of base pairs from the start of the chromosome.</p>
+</section>
+<section id="coordinate-systems" class="level1">
+<h1>Coordinate Systems:</h1>
+<p>In genomics, there are two main types of coordinate systems:</p>
+<ol type="1">
+<li><p><strong>1-based coordinate system</strong>: In this system, the first base of a sequence is numbered as 1. This system is commonly used in most biological research, including genome annotations in databases such as GenBank and Ensembl.</p></li>
+<li><p><strong>0-based coordinate system</strong>: In this system, the first base of a sequence is numbered as 0. This system is commonly used in some computational tools and languages, like Python and in the BED file format widely used in bioinformatics.</p></li>
+</ol>
+<p>The distinction between 1-based and 0-based is important because it can lead to off-by-one errors if not accounted for.</p>
+<p><strong>GenomicRanges Package:</strong></p>
+<p>In the R programming language, the <strong><code>GenomicRanges</code></strong> package is often used for handling genomic ranges. It provides a convenient and consistent way to handle and manipulate genomic ranges. Some of the functionalities include:</p>
+<ul>
+<li><p>Creating genomic ranges</p></li>
+<li><p>Finding overlaps between genomic ranges</p></li>
+<li><p>Finding the nearest genomic range</p></li>
+<li><p>Shifting or narrowing genomic ranges</p></li>
+</ul>
+<p>Here’s a basic example of how you can create a GenomicRange object in R:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the library</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GenomicRanges)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a GenomicRanges object</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">GRanges</span>(<span class="at">seqnames =</span> <span class="st">"chr1"</span>, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">ranges =</span> <span class="fu">IRanges</span>(<span class="at">start =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>), <span class="at">end =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">250</span>)))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing the object</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Understanding genomic ranges and coordinate systems is crucial when dealing with any kind of genomic data, as it allows precise representation and manipulation of genomic features. Be sure to always check the documentation of any tool or database you’re using to understand what kind of coordinate system it uses, and always be consistent in your own work.</p>
+</section>
+<section id="bedtools" class="level1">
+<h1>BEDTools:</h1>
+<p>BEDTools is a suite of utilities for comparing and manipulating genomic features in various formats such as BED, GFF/GTF, VCF, and BAM. These tools are incredibly powerful for handling genomic intervals and are often used in bioinformatics pipelines. Some of its features include:</p>
+<ul>
+<li><p>Comparing genomic features</p></li>
+<li><p>Manipulating genomic features</p></li>
+<li><p>Counting genomic features</p></li>
+<li><p>Creating coverage tracks</p></li>
+</ul>
+<p>Here’s a basic rundown of some of the most commonly used BEDTools subcommands:</p>
+<ol type="1">
+<li><p><strong>intersect</strong></p>
+<p><strong><code>bedtools intersect</code></strong> is used to find overlapping regions between two BED files. For example, you could use it to find genes (from a genes.BED file) that overlap with regulatory regions (from a regulatory_regions.BED file):</p>
+<pre><code>bedtools intersect -a genes.BED -b regulatory_regions.BED</code></pre></li>
+<li><p><strong>merge</strong></p>
+<p><strong><code>bedtools merge</code></strong> combines overlapping intervals into a single interval. For example, if you have a BED file with multiple overlapping regions, you can merge them into single, continuous regions:</p>
+<pre><code>bedtools merge -i input.BED</code></pre></li>
+<li><p><strong>sort</strong></p>
+<p><strong><code>bedtools sort</code></strong> sorts a BED file by chromosome and then by start position. This is often necessary before using other BEDTools commands, as many require sorted input:</p>
+<pre><code>bedtools sort -i input.BED</code></pre></li>
+<li><p><strong>closest</strong></p>
+<p><strong><code>bedtools closest</code></strong> finds the closest non-overlapping interval. For example, for each gene (in genes.BED), you could find the closest regulatory region (in regulatory_regions.BED):</p>
+<pre><code>bedtools closest -a genes.BED -b regulatory_regions.BED</code></pre></li>
+<li><p><strong>coverage</strong></p>
+<p><strong><code>bedtools coverage</code></strong> calculates the coverage of one set of intervals over another. For example, you could calculate the coverage of sequencing reads (in reads.BED) over genes (in genes.BED):</p>
+<pre><code>bedtools coverage -a genes.BED -b reads.BED</code></pre></li>
+</ol>
+<p>Lastly, BEDTools is flexible and powerful, but it can be complex. Always check the <a href="https://bedtools.readthedocs.io/en/latest/content/bedtools-suite.html">documentation</a> and test your commands on small, controlled datasets to make sure they’re doing what you expect.</p>
 
 
-<!-- -->
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -385,57 +473,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -503,29 +540,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Week 07 Questions"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>a)  **What is your current grade in the class? How many issues are open in our research repository?**</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>b)  **Re-reading this week's reading, what are 2 things that resonate with you now that made little practical sense in week 2. What is one aspect that you still wonder about or is unclear?**</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>c)  **What is epigenetics and how could it relate to your own research project?**</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>d)  **Describe what a GFF file is?**</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>e)  **What are two ways describing CG motifs could have value?**</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+</script>
 </div> <!-- /content -->
 
 

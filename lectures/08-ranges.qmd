@@ -1,0 +1,133 @@
+---
+title: "Genomic Ranges"
+subtitle: Coordinate Systems
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Screen Recording
+
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/WOAWIh2i=)
+
+# Reading
+
+Textbook: Working with Range Data A crash course in Genomic Ranges 263-269\
+Working with Range Data with BEDtools 329-337
+
+# Objectives
+
+Understand genomic ranges, what they are, and what they are usful for.
+
+# Genomic Ranges:
+
+Genomic ranges are a way to represent regions of a genome, typically the start and end of specific features like genes, exons, or regulatory regions.
+
+A genomic range is typically represented by three pieces of information:
+
+1.  **Chromosome**: The chromosome on which the feature is located.
+
+2.  **Start position**: The position on the chromosome where the feature begins.
+
+3.  **End position**: The position on the chromosome where the feature ends.
+
+It's important to note that the start and end positions can refer to the genomic coordinates (see below), but it can also be as simple as the number of base pairs from the start of the chromosome.
+
+# Coordinate Systems:
+
+In genomics, there are two main types of coordinate systems:
+
+1.  **1-based coordinate system**: In this system, the first base of a sequence is numbered as 1. This system is commonly used in most biological research, including genome annotations in databases such as GenBank and Ensembl.
+
+2.  **0-based coordinate system**: In this system, the first base of a sequence is numbered as 0. This system is commonly used in some computational tools and languages, like Python and in the BED file format widely used in bioinformatics.
+
+The distinction between 1-based and 0-based is important because it can lead to off-by-one errors if not accounted for.
+
+**GenomicRanges Package:**
+
+In the R programming language, the **`GenomicRanges`** package is often used for handling genomic ranges. It provides a convenient and consistent way to handle and manipulate genomic ranges. Some of the functionalities include:
+
+-   Creating genomic ranges
+
+-   Finding overlaps between genomic ranges
+
+-   Finding the nearest genomic range
+
+-   Shifting or narrowing genomic ranges
+
+Here's a basic example of how you can create a GenomicRange object in R:
+
+``` r
+# Loading the library
+library(GenomicRanges)
+
+# Creating a GenomicRanges object
+gr <- GRanges(seqnames = "chr1", 
+              ranges = IRanges(start = c(100, 200), end = c(150, 250)))
+
+# Printing the object
+print(gr)
+```
+
+Understanding genomic ranges and coordinate systems is crucial when dealing with any kind of genomic data, as it allows precise representation and manipulation of genomic features. Be sure to always check the documentation of any tool or database you're using to understand what kind of coordinate system it uses, and always be consistent in your own work.
+
+# BEDTools:
+
+BEDTools is a suite of utilities for comparing and manipulating genomic features in various formats such as BED, GFF/GTF, VCF, and BAM. These tools are incredibly powerful for handling genomic intervals and are often used in bioinformatics pipelines. Some of its features include:
+
+-   Comparing genomic features
+
+-   Manipulating genomic features
+
+-   Counting genomic features
+
+-   Creating coverage tracks
+
+Here's a basic rundown of some of the most commonly used BEDTools subcommands:
+
+1.  **intersect**
+
+    **`bedtools intersect`** is used to find overlapping regions between two BED files. For example, you could use it to find genes (from a genes.BED file) that overlap with regulatory regions (from a regulatory_regions.BED file):
+
+    ```         
+    bedtools intersect -a genes.BED -b regulatory_regions.BED
+    ```
+
+2.  **merge**
+
+    **`bedtools merge`** combines overlapping intervals into a single interval. For example, if you have a BED file with multiple overlapping regions, you can merge them into single, continuous regions:
+
+    ```         
+    bedtools merge -i input.BED
+    ```
+
+3.  **sort**
+
+    **`bedtools sort`** sorts a BED file by chromosome and then by start position. This is often necessary before using other BEDTools commands, as many require sorted input:
+
+    ```         
+    bedtools sort -i input.BED
+    ```
+
+4.  **closest**
+
+    **`bedtools closest`** finds the closest non-overlapping interval. For example, for each gene (in genes.BED), you could find the closest regulatory region (in regulatory_regions.BED):
+
+    ```         
+    bedtools closest -a genes.BED -b regulatory_regions.BED
+    ```
+
+5.  **coverage**
+
+    **`bedtools coverage`** calculates the coverage of one set of intervals over another. For example, you could calculate the coverage of sequencing reads (in reads.BED) over genes (in genes.BED):
+
+    ```         
+    bedtools coverage -a genes.BED -b reads.BED
+    ```
+
+Lastly, BEDTools is flexible and powerful, but it can be complex. Always check the [documentation](https://bedtools.readthedocs.io/en/latest/content/bedtools-suite.html) and test your commands on small, controlled datasets to make sure they're doing what you expect.
