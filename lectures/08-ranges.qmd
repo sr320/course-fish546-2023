@@ -22,7 +22,7 @@ Working with Range Data with BEDtools 329-337
 
 # Objectives
 
-Understand genomic ranges, what they are, and what they are usful for.
+Understand genomic ranges, what they are, and what they are useful for.
 
 # Genomic Ranges:
 

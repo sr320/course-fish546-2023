@@ -18,14 +18,14 @@ format:
 ::: callout-important
 ## Assignment
 
-Run some basic commands in BEDtools.
+Run some basic sub-commands in BEDtools.
 :::
 
 # Coverage
 
 ![](http://gannet.fish.washington.edu/seashell/snaps/Monosnap_coverage__bedtools_2.31.0_documentation_2023-05-14_07-59-15.png)
 
-For this sub command you will be using the same data as in Week 6, so you should already have it in you `data` directory. If not or you deleted it.
+For this sub command you will be using the same data as in Week 6, so you should already have it in you `data` directory. If not or if you deleted it...
 
 ``` bash
 cd ../data 
@@ -33,7 +33,7 @@ curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/
 curl -O https://gannet.fish.washington.edu/seashell/bu-mox/scrubbed/120321-cvBS/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam.bai
 ```
 
-You will also need a bed file to gene information.
+You will also need a bed file with gene information.
 
 ``` bash
 cd ../data 
@@ -45,7 +45,7 @@ curl -O https://eagle.fish.washington.edu/Cvirg_tracks/C_virginica-3.0_Gnomon_ge
 ``` bash
 /home/shared/bedtools2/bin/bedtools bamtobed \ 
 -i ../data/19F_R1_val_1_bismark_bt2_pe.deduplicated.sorted.bam \ 
-> ../output/08-19F.bed`
+> ../output/08-19F.bed
 ```
 
 ::: callout-warning
@@ -85,7 +85,6 @@ curl -O http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_rosl
 curl -O http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_lncRNA.gff
 ```
 
-
 ``` bash
 /home/shared/bedtools2/bin/bedtools intersect \
 -a ../data/cgigas_uk_roslin_v1_gene.gff \
@@ -94,13 +93,6 @@ curl -O http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_rosl
 
 head -2 ../output/08-gene-TE-intersect.out
 ```
-
-
-
-
-
-
-
 
 # Closest
 
