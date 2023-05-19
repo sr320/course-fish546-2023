@@ -13,7 +13,7 @@ format:
 
 # Screen Recording
 
-[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/WOAWIh2i=)
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/4nnvfeJAa5kUgiGNxfkkq91YcmNwl0-wON9AbDD3Y69-kazkySxeSfCe7QkjNfKr.v2XQC3kIwX3EwwD3?startTime=1684274335000)
 
 # Reading
 
