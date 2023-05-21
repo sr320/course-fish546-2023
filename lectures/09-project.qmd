@@ -11,9 +11,6 @@ format:
     code-overflow: wrap
 ---
 
-# Screen Recording
-
-[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/4nnvfeJAa5kUgiGN)
 
 # Objectives
 
