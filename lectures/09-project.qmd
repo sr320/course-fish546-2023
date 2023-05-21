@@ -1,6 +1,6 @@
 ---
-title: "Genomic Ranges"
-subtitle: Coordinate Systems
+title: "Archiving"
+subtitle: "Preparing for the future"
 
 format:
   html:
@@ -13,28 +13,60 @@ format:
 
 # Screen Recording
 
-[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/4nnvfeJAa5kUgiGNxfkkq91YcmNwl0-wON9AbDD3Y69-kazkySxeSfCe7QkjNfKr.v2XQC3kIwX3EwwD3?startTime=1684274335000)
+[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/4nnvfeJAa5kUgiGN)
 
 # Objectives
 
-Understand genomic ranges, what they are, and what they are useful for.
+Learn how to backup data and code so others can understand and your future self can understand.
+
+# Documenting and backing up code
+
+Documenting and backing up code and data are crucial practices in genomics, data science, and other fields that involve programming or handling large amounts of data. Here's why:
+
+1.  **Traceability and reproducibility**: Clear documentation ensures that every piece of code, data, or computational process is traceable and reproducible. This is especially important when you want to replicate an analysis or experiment, debug an issue, or understand the progression and changes in the code or data over time.
+
+2.  **Knowledge sharing and collaboration**: Documentation allows others to understand your work, making it easier for collaboration. It also enables knowledge transfer when team members change over time. Code without documentation is often useless to others and sometimes even to the person who originally wrote it after some time has passed.
+
+3.  **Professionalism and quality assurance**: Good documentation is a sign of professionalism and maturity in software development. It shows that the code or data has been well thought out and tested, and it allows for quality assurance processes such as code reviews and audits.
+
+4.  **Disaster recovery**: Backups are essential for disaster recovery. If a server fails, or data gets corrupted, having a backup means you can restore the code or data and continue with minimal disruption. Backups also protect against accidental deletions and malicious actions.
+
+Here's how to document and backup effectively:
+
+1.  **Comment your code**: Write clear comments in your code explaining what specific sections or lines of code are doing. Wherever possible, use self-explanatory variable and function names.
+
+2.  **Write documentation**: Use readme files, wikis, or similar resources to provide high-level documentation. This can include how to use and install the software, the structure of the code or data, known issues, and more. Tools like Doxygen or Javadoc can be helpful.
+
+3.  **Use version control systems**: Tools like Git can track changes in code and help document the history and reasoning behind those changes. Git, in combination with platforms like GitHub, also allows you to back up your code online and collaborate with others.
+
+4.  **Automate backups**: Use automated tools to regularly back up your code and data. This could be a simple cron job that copies files to a different location, or more sophisticated solutions that can handle large datasets, such as AWS S3, Google Cloud Storage, or other data backup services.
+
+5.  **Implement a testing framework**: This will serve as an additional form of documentation, explaining how the code is supposed to behave, and it provides a way to verify that changes to the code have not broken anything.
+
+6.  **Use data versioning tools**: In case of data science projects, tools like DVC can be used to track changes in data and models over time, similar to how Git is used for code.
+
+Documenting and backing up code and data are crucial practices in software development, data science, and other fields that involve programming or handling large amounts of data. Here's why:
+
+Remember, good documentation and regular backups are not afterthoughts or luxuries---they're essential components of professional, reliable, and resilient projects.
+
+
 
 # Archiving a repo with Zenodo
 
 Archiving your GitHub repository with Zenodo allows you to have a digital object identifier (DOI) for your repo, which is useful for citing your software in academic papers. Here's a step-by-step guide:
 
-1\. \*\*Create a Zenodo account.\*\* You'll need to visit Zenodo's homepage (https://zenodo.org/) and sign up for an account if you don't already have one.
+1. **Create a Zenodo account.** You'll need to visit Zenodo's homepage (https://zenodo.org/) and sign up for an account if you don't already have one.
 
-2\. \*\*Link GitHub with Zenodo.\*\* After you've set up your Zenodo account, you can navigate to the "GitHub" section in the dashboard and link your GitHub account to Zenodo.
+2. **Link GitHub with Zenodo.** After you've set up your Zenodo account, you can navigate to the "GitHub" section in the dashboard and link your GitHub account to Zenodo.
 
-3\. \*\*Authorize Zenodo on GitHub.\*\* Zenodo will request access to your GitHub repositories. You can either allow Zenodo to access all your repositories or only select ones. After you've made your choice, click "Authorize Zenodo."
+3. **Authorize Zenodo on GitHub.** Zenodo will request access to your GitHub repositories. You can either allow Zenodo to access all your repositories or only select ones. After you've made your choice, click "Authorize Zenodo."
 
-4\. \*\*Select the repository.\*\* Back in Zenodo, you should see a list of all your GitHub repositories. You can choose to archive any repository by toggling the switch to "on" next to the repository name. Zenodo will now create a "webhook" for this repository, which will notify Zenodo whenever there is a new release of the repository on GitHub.
+4. **Select the repository.** Back in Zenodo, you should see a list of all your GitHub repositories. You can choose to archive any repository by toggling the switch to "on" next to the repository name. Zenodo will now create a "webhook" for this repository, which will notify Zenodo whenever there is a new release of the repository on GitHub.
 
-5\. \*\*Create a new release on GitHub.\*\* If you haven't done so already, you should create a new release of your repository on GitHub. Go to your repository page, click "releases" then "create a new release". Tag version with the version number (for example "v1.0") and add some description about this release. Zenodo will be notified once the release is published.
+5. **Create a new release on GitHub.** If you haven't done so already, you should create a new release of your repository on GitHub. Go to your repository page, click "releases" then "create a new release". Tag version with the version number (for example "v1.0") and add some description about this release. Zenodo will be notified once the release is published.
 
-6\. \*\*Check Zenodo for the deposit.\*\* After creating a new release, go back to Zenodo. You should see the new release in the "Upload" section. Zenodo automatically fills in some of the metadata for you, such as the title and authors, but you can edit this if needed.
+6. **Check Zenodo for the deposit.** After creating a new release, go back to Zenodo. You should see the new release in the "Upload" section. Zenodo automatically fills in some of the metadata for you, such as the title and authors, but you can edit this if needed.
 
-7\. \*\*Publish the archive on Zenodo.\*\* Finally, you can publish the archive on Zenodo. Make sure all the information is correct, and then click the "Publish" button. Your repository is now archived, and you will have a DOI that you can use to cite your software.
+7. **Publish the archive on Zenodo.** Finally, you can publish the archive on Zenodo. Make sure all the information is correct, and then click the "Publish" button. Your repository is now archived, and you will have a DOI that you can use to cite your software.
 
 Remember that Zenodo will archive a new version of your repository every time you create a new release on GitHub, so it's important to create meaningful and well-documented releases. Zenodo also allows you to link different versions of your software together, so that it's clear how the software has changed over time.

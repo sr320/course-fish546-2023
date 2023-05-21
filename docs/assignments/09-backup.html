@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bioinformatics - FISH 546 - Archiving</title>
+<title>Bioinformatics - FISH 546 - Backup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -107,24 +170,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#screen-recording" id="toc-screen-recording" class="nav-link active" data-scroll-target="#screen-recording">Screen Recording</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#documenting-and-backing-up-code" id="toc-documenting-and-backing-up-code" class="nav-link" data-scroll-target="#documenting-and-backing-up-code">Documenting and backing up code</a></li>
-  <li><a href="#archiving-a-repo-with-zenodo" id="toc-archiving-a-repo-with-zenodo" class="nav-link" data-scroll-target="#archiving-a-repo-with-zenodo">Archiving a repo with Zenodo</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Archiving</h1>
-<p class="subtitle lead">Preparing for the future</p>
+<div class="quarto-title-block"><div><h1 class="title">Backup</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Be Prepared</p>
 </div>
 
 
@@ -139,55 +193,25 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="screen-recording" class="level1">
-<h1>Screen Recording</h1>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><a href="https://washington.zoom.us/rec/share/4nnvfeJAa5kUgiGN"><img src="../img/zoom.png" class="img-fluid figure-img"></a></p>
-</figure>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</section>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
-<p>Learn how to backup data and code so others can understand and your future self can understand.</p>
-</section>
-<section id="documenting-and-backing-up-code" class="level1">
-<h1>Documenting and backing up code</h1>
-<p>Documenting and backing up code and data are crucial practices in genomics, data science, and other fields that involve programming or handling large amounts of data. Here’s why:</p>
-<ol type="1">
-<li><p><strong>Traceability and reproducibility</strong>: Clear documentation ensures that every piece of code, data, or computational process is traceable and reproducible. This is especially important when you want to replicate an analysis or experiment, debug an issue, or understand the progression and changes in the code or data over time.</p></li>
-<li><p><strong>Knowledge sharing and collaboration</strong>: Documentation allows others to understand your work, making it easier for collaboration. It also enables knowledge transfer when team members change over time. Code without documentation is often useless to others and sometimes even to the person who originally wrote it after some time has passed.</p></li>
-<li><p><strong>Professionalism and quality assurance</strong>: Good documentation is a sign of professionalism and maturity in software development. It shows that the code or data has been well thought out and tested, and it allows for quality assurance processes such as code reviews and audits.</p></li>
-<li><p><strong>Disaster recovery</strong>: Backups are essential for disaster recovery. If a server fails, or data gets corrupted, having a backup means you can restore the code or data and continue with minimal disruption. Backups also protect against accidental deletions and malicious actions.</p></li>
-</ol>
-<p>Here’s how to document and backup effectively:</p>
-<ol type="1">
-<li><p><strong>Comment your code</strong>: Write clear comments in your code explaining what specific sections or lines of code are doing. Wherever possible, use self-explanatory variable and function names.</p></li>
-<li><p><strong>Write documentation</strong>: Use readme files, wikis, or similar resources to provide high-level documentation. This can include how to use and install the software, the structure of the code or data, known issues, and more. Tools like Doxygen or Javadoc can be helpful.</p></li>
-<li><p><strong>Use version control systems</strong>: Tools like Git can track changes in code and help document the history and reasoning behind those changes. Git, in combination with platforms like GitHub, also allows you to back up your code online and collaborate with others.</p></li>
-<li><p><strong>Automate backups</strong>: Use automated tools to regularly back up your code and data. This could be a simple cron job that copies files to a different location, or more sophisticated solutions that can handle large datasets, such as AWS S3, Google Cloud Storage, or other data backup services.</p></li>
-<li><p><strong>Implement a testing framework</strong>: This will serve as an additional form of documentation, explaining how the code is supposed to behave, and it provides a way to verify that changes to the code have not broken anything.</p></li>
-<li><p><strong>Use data versioning tools</strong>: In case of data science projects, tools like DVC can be used to track changes in data and models over time, similar to how Git is used for code.</p></li>
-</ol>
-<p>Documenting and backing up code and data are crucial practices in software development, data science, and other fields that involve programming or handling large amounts of data. Here’s why:</p>
-<p>Remember, good documentation and regular backups are not afterthoughts or luxuries—they’re essential components of professional, reliable, and resilient projects.</p>
-</section>
-<section id="archiving-a-repo-with-zenodo" class="level1">
-<h1>Archiving a repo with Zenodo</h1>
-<p>Archiving your GitHub repository with Zenodo allows you to have a digital object identifier (DOI) for your repo, which is useful for citing your software in academic papers. Here’s a step-by-step guide:</p>
-<ol type="1">
-<li><p><strong>Create a Zenodo account.</strong> You’ll need to visit Zenodo’s homepage (https://zenodo.org/) and sign up for an account if you don’t already have one.</p></li>
-<li><p><strong>Link GitHub with Zenodo.</strong> After you’ve set up your Zenodo account, you can navigate to the “GitHub” section in the dashboard and link your GitHub account to Zenodo.</p></li>
-<li><p><strong>Authorize Zenodo on GitHub.</strong> Zenodo will request access to your GitHub repositories. You can either allow Zenodo to access all your repositories or only select ones. After you’ve made your choice, click “Authorize Zenodo.”</p></li>
-<li><p><strong>Select the repository.</strong> Back in Zenodo, you should see a list of all your GitHub repositories. You can choose to archive any repository by toggling the switch to “on” next to the repository name. Zenodo will now create a “webhook” for this repository, which will notify Zenodo whenever there is a new release of the repository on GitHub.</p></li>
-<li><p><strong>Create a new release on GitHub.</strong> If you haven’t done so already, you should create a new release of your repository on GitHub. Go to your repository page, click “releases” then “create a new release”. Tag version with the version number (for example “v1.0”) and add some description about this release. Zenodo will be notified once the release is published.</p></li>
-<li><p><strong>Check Zenodo for the deposit.</strong> After creating a new release, go back to Zenodo. You should see the new release in the “Upload” section. Zenodo automatically fills in some of the metadata for you, such as the title and authors, but you can edit this if needed.</p></li>
-<li><p><strong>Publish the archive on Zenodo.</strong> Finally, you can publish the archive on Zenodo. Make sure all the information is correct, and then click the “Publish” button. Your repository is now archived, and you will have a DOI that you can use to cite your software.</p></li>
-</ol>
-<p>Remember that Zenodo will archive a new version of your repository every time you create a new release on GitHub, so it’s important to create meaningful and well-documented releases. Zenodo also allows you to link different versions of your software together, so that it’s clear how the software has changed over time.</p>
+<div class="callout-caption-container flex-fill">
+Assignment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Archive your research repo with Zenodo AND rsync to another computer.</p>
+</div>
+</div>
+<p>This week you will use Zenodo to archive your repo. See <a href="lectures/09-project.qmd">these instructions</a>. Add the DOI from zenondo to your rpubs website.</p>
+<p>We have used <code>rsync</code> in week 04. Use it this week to backup your entire directory on raven to another computer. In your code directory create a shell script named 00-rsync.sh with the rsync code used to backup your repo.</p>
 
 
-</section>
+<!-- -->
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -370,6 +394,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -437,7 +512,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Backup"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Be Prepared"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: github</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assignment</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Archive your research repo with Zenodo AND rsync to another computer.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>This week you will use Zenodo to archive your repo. See <span class="co">[</span><span class="ot">these instructions</span><span class="co">](lectures/09-project.qmd)</span>. Add the DOI from zenondo to your rpubs website. </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>We have used <span class="in">`rsync`</span> in week 04. Use it this week to backup your entire directory on raven to another computer. In your code directory create a shell script named 00-rsync.sh with the rsync code used to backup your repo.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
