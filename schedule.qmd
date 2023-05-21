@@ -12,7 +12,7 @@ format:
 ---
 
 | Date      | Questions                       | Topic                                                    | Assignment                                              | Project Status                                                                                                          |
-|-----------|---------------------------------|----------------------------------------------------------|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+|---------------|---------------|---------------|---------------|---------------|
 | last week |                                 | [Preparing for class](lectures/00-before.qmd)            | [bash](assignments/00-bash.qmd)                         |                                                                                                                         |
 | mar 27    | [week 01](questions/week01.md)  | [Getting Started](lectures/01-start-up.qmd)              | [NCBI Blast](assignments/01-blast.qmd)                  | Establish Repos                                                                                                         |
 | apr 03    | [week 02](questions/week02.qmd) | [RNA-seq](lectures/02-rna-seq.qmd) + Ariana Huffmyer     | [Differential Gene Expression](assignments/02-DGE.qmd)  | Explore data, QC, add hashes                                                                                            |
@@ -22,7 +22,7 @@ format:
 | may 01    | [week 06](questions/week06.qmd) | [Alignment Data](lectures/06-snps.qmd)                   | [Variants and Visualize](assignments/06-rnaseq-snp.qmd) | A weeks' progress                                                                                                       |
 | may 08    | [week 07](questions/week07.qmd) | [Epigenetics](lectures/07-methylation.qmd) + Matt George | [Amnesty, Motifs, and IGV](assignments/07-CG.qmd)       | Launch project report ([rpubs)](https://github.com/course-fish546-2023/assistance-public/issues/16), all sections noted |
 | may 15    | [week 08](questions/week08.qmd) | [Genomic Ranges](lectures/08-ranges.qmd)                 | [BEDtools](assignments/08-bedtools.qmd)                 | example / mock ultimate figure                                                                                          |
-| may 22    | week 09                         | Project focus                                            |                                                         |                                                                                                                         |
+| may 22    | [week 09](questions/week09.qmd) | Project focus                                            |                                                         |                                                                                                                         |
 | may 29    | week 10                         | Presentations                                            |                                                         | Compendium                                                                                                              |
 |           |                                 |                                                          |                                                         |                                                                                                                         |
 

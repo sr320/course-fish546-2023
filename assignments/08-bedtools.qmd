@@ -11,9 +11,7 @@ format:
     code-overflow: wrap
 ---
 
-# Screen Recording
 
-[![](/img/zoom.png){fig-align="right"}](https://washington.zoom.us/rec/share/U0F0-YmBjwJyA-)
 
 ::: callout-important
 ## Assignment
