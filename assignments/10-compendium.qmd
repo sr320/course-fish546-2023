@@ -1,0 +1,20 @@
+---
+title: "New Release"
+subtitle: "Zenodo"
+
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+::: callout-important
+## Assignment
+
+Make new release of repo such that Zenodo archive will be updated with better version of your repo.
+:::
+
+

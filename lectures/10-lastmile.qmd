@@ -1,0 +1,31 @@
+---
+title: "Final Presentations"
+subtitle: "Almost done :("
+
+format:
+  html:
+    code-fold: true
+    code-tools: FALSE
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+---
+
+# Objectives
+
+To get you repo in pristine condition and effectively present your research compendium via your rpubs page.
+
+# Details
+
+On Thursday you will be presenting your research project to the class. Everyone will have 10 minutes.
+
+This presentation along with the rpubs compendium contents will be your Project Completion assignment grade.
+
+This specific breakdown the Project Completion grade is as follows.
+
+1)  Github repo with clear directory structure, files in proper directory, code files numbered in order. (25%)
+2)  Rpubs page that has clear description of project at top targetting a general audience. (10%)
+3)  Rpubs page that has clear worflow taking intitial files to resulting finding (in figure format). Visualization (eg `head`) of intermediate files and simple access to ultimate findings (eg tables). (30%)
+4)  Presentation to the class that follows logical, planned highlighting of content. Things to include are research problem, workflow, findings, implication of findings ane next steps (35%)
+
+Make sure thre is only one URL (and it is the correct url) [here](https://github.com/course-fish546-2023/assistance-public/issues/16)
